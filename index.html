@@ -1090,11 +1090,20 @@ function renderResult(handle,site){
 }
 
 // ══ WHATSAPP ══
+
 function openWA(plan){
-  var p=plan||'Growth';
-  var ig=document.getElementById('ig-input').value.trim()||'seu perfil';
-  var msg=encodeURIComponent('Olá! Fiz o diagnóstico gratuito da krad agência ('+ig+') e tenho interesse no plano '+p+'. Podemos conversar?');
-  window.open('https://wa.me/5511999999999?text='+msg,'_blank');
+  var p = plan || 'Growth';
+  var igField = document.getElementById('ig-input');
+  var ig = igField ? igField.value.trim() : '';
+  if(!ig) ig = 'meu perfil';
+  var msg = encodeURIComponent(
+    'Olá! Fiz o diagnóstico no site da KRAD (krad.com.br) usando o perfil (' + ig + ').\n\n' +
+    'Percebi oportunidades de crescimento e gostaria de entender como vocês podem me ajudar.\n\n' +
+    'Tenho interesse no plano ' + p + '. Podemos conversar?'
+  );
+  var url = 'https://wa.me/5511977842164?text=' + msg;
+  console.log(url); // pra testar
+  window.open(url, '_blank');
 }
 
 // ══ TOAST ══
