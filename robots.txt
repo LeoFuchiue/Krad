@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://krad.com.br/sitemap.xml
+
+# KRAD SEO setup
+Host: krad.com.br
