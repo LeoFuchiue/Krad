@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>krad agência — Sistema de Crescimento</title>
+<meta name="description" content="A krad agência transforma sua presença digital em resultado real. Diagnóstico gratuito com IA.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   TOKENS — identidade krad agência
+   Olive: #4E5B1F  Creme: #EDE4C5
+═══════════════════════════════════════ */
+:root {
+  --k:   #4E5B1F;  /* olive brand */
+  --k2:  #6A7A2C;  /* olive mid */
+  --k3:  #3A4418;  /* olive dark */
+  --k4:  #28300F;  /* olive deeper */
+  --k5:  #1A2009;  /* olive darkest */
+  --cr:  #EDE4C5;  /* creme brand */
+  --cr2: #F5EFDC;  /* creme light */
+  --cr3: #C8BE9A;  /* creme mid */
+  --bg:  #070806;
+  --bg2: #0B0D08;
+  --bg3: #10130C;
+  --bg4: #161910;
+  --bg5: #1C2014;
+  --b1:  rgba(78,91,31,.14);
+  --b2:  rgba(78,91,31,.26);
+  --b3:  rgba(78,91,31,.44);
+  --t1:  #F0EFE6;
+  --t2:  #A8A89A;
+  --t3:  #686860;
+  --t4:  #3A3A34;
+  --glow:rgba(78,91,31,.35);
+  --dim: rgba(78,91,31,.09);
+  --cr-glow:rgba(237,228,197,.12);
+  --tf: 150ms ease; --tm: 260ms ease; --ts: 440ms ease;
+  --r1:4px; --r2:8px; --r3:14px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Manrope',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer;border:none}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--k2);border-radius:3px}
+
+/* ═══ KEYFRAMES ═══ */
+@keyframes fadeUp   {from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn   {from{opacity:0}to{opacity:1}}
+@keyframes shimmer  {0%,100%{background-position:0%}50%{background-position:100%}}
+@keyframes pulse    {0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.65)}}
+@keyframes spin     {to{transform:rotate(360deg)}}
+@keyframes ticker   {from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes float    {0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-22px) rotate(3deg)}}
+@keyframes orbMove  {0%{transform:translate(0,0)}25%{transform:translate(60px,-40px)}50%{transform:translate(30px,60px)}75%{transform:translate(-50px,20px)}100%{transform:translate(0,0)}}
+@keyframes scaleUp  {from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes logoReveal{0%{opacity:0;transform:scale(.5) rotate(-5deg)}60%{opacity:1;transform:scale(1.04) rotate(.5deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}}
+@keyframes introOut {0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.06);pointer-events:none}}
+@keyframes popIn    {0%{opacity:0;transform:scale(.93) translateY(12px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes lineIn   {from{scaleX:0}to{scaleX:1}}
+@keyframes countUp  {from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes borderGlow{0%,100%{box-shadow:0 0 0 0 rgba(78,91,31,0)}50%{box-shadow:0 0 24px 4px rgba(78,91,31,.3)}}
+
+/* ═══ SCROLL PROGRESS ═══ */
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--k3),var(--k2),var(--cr3),var(--k2));
+  background-size:200%;
+  animation:shimmer 2s ease infinite;
+  transition:width .1s linear;
+}
+
+/* ═══════════════════════════════════════
+   INTRO SCREEN
+═══════════════════════════════════════ */
+#intro{
+  position:fixed;inset:0;z-index:8000;
+  background:var(--k4);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:24px;
+  transition:opacity .7s ease, transform .7s ease;
+}
+#intro.out{opacity:0;transform:scale(1.05);pointer-events:none}
+.intro-logo-svg{
+  width:200px;height:200px;
+  animation:logoReveal .9s cubic-bezier(.16,1,.3,1) .2s both;
+}
+.intro-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;
+  color:var(--cr3);opacity:.7;
+  animation:fadeUp .6s ease .9s both;
+}
+.intro-bar{
+  width:120px;height:1px;background:rgba(237,228,197,.15);
+  margin-top:8px;overflow:hidden;
+  animation:fadeIn .4s ease .8s both;
+}
+.intro-fill{
+  height:100%;background:linear-gradient(90deg,var(--k3),var(--cr3));
+  width:0;transition:width 1.8s cubic-bezier(.4,0,.2,1);
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  background:rgba(7,8,6,.96);
+  border-bottom:1px solid var(--b1);
+  transition:box-shadow var(--tm),background var(--tm);
+}
+.nav.scrolled{box-shadow:0 2px 40px rgba(0,0,0,.55);background:rgba(7,8,6,.99)}
+
+.nav-brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.nav-logo{width:38px;height:38px;flex-shrink:0;transition:transform var(--tm)}
+.nav-brand:hover .nav-logo{transform:rotate(5deg) scale(1.06)}
+.nav-name{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:800;
+  background:linear-gradient(135deg,var(--cr2),var(--cr3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1;
+}
+.nav-name small{
+  display:block;
+  font-family:'Manrope',sans-serif;
+  font-size:9px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--k2);-webkit-text-fill-color:var(--k2);margin-top:1px;
+}
+
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{
+  padding:7px 13px;font-size:12px;font-weight:600;color:var(--t2);
+  border-radius:var(--r1);transition:all var(--tf);
+}
+.nav-a:hover{color:var(--t1);background:var(--dim)}
+.nav-portal{
+  margin-left:8px;padding:8px 18px;
+  border:1px solid var(--b2);border-radius:var(--r1);
+  font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--k2);transition:all var(--tm);
+}
+.nav-portal:hover{border-color:var(--k2);background:var(--dim);color:var(--cr)}
+.nav-cta{
+  margin-left:6px;padding:9px 20px;
+  background:var(--k);border-radius:var(--r1);
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--cr);box-shadow:0 4px 16px var(--glow);
+  transition:all var(--tm);
+}
+.nav-cta:hover{background:var(--k2);transform:translateY(-1px);box-shadow:0 8px 28px var(--glow);color:var(--cr2)}
+.nav-hamburger{display:none;background:none;border:none;color:var(--t1);font-size:24px;padding:6px}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 24px 80px;
+  position:relative;overflow:hidden;
+}
+#hero-canvas{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  opacity:.6;
+}
+.hero-orb{
+  position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+  animation:orbMove 18s ease-in-out infinite;
+}
+.hero-orb-1{width:500px;height:500px;top:-10%;left:-5%;background:radial-gradient(circle,rgba(78,91,31,.14),transparent 70%);animation-delay:0s}
+.hero-orb-2{width:400px;height:400px;bottom:-5%;right:-5%;background:radial-gradient(circle,rgba(78,91,31,.10),transparent 70%);animation-delay:-9s}
+.hero-orb-3{width:300px;height:300px;top:40%;left:60%;background:radial-gradient(circle,rgba(237,228,197,.04),transparent 70%);animation-delay:-4s}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(78,91,31,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(78,91,31,.04) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,black,transparent);
+  pointer-events:none;
+}
+
+.hero-inner{max-width:760px;width:100%;position:relative;z-index:1}
+
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 18px;border:1px solid var(--b2);border-radius:100px;
+  background:rgba(78,91,31,.08);
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--k2);font-family:'JetBrains Mono',monospace;
+  margin-bottom:32px;
+  opacity:0;animation:fadeUp .7s ease .1s forwards;
+  backdrop-filter:blur(8px);
+}
+.pill-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--k2);box-shadow:0 0 8px var(--k2);
+  animation:pulse 2s infinite;
+}
+
+.hero-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(40px,6.5vw,78px);
+  font-weight:800;line-height:1.05;letter-spacing:-.5px;
+  margin-bottom:24px;
+  opacity:0;animation:fadeUp .85s ease .25s forwards;
+}
+.hero-h em{
+  font-style:italic;
+  background:linear-gradient(135deg,var(--k2) 0%,var(--cr3) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+.hero-p{
+  font-size:clamp(14px,2vw,18px);font-weight:300;color:var(--t2);
+  max-width:520px;margin:0 auto 44px;line-height:1.85;
+  opacity:0;animation:fadeUp .85s ease .4s forwards;
+}
+
+/* ══ ANALYZER ══ */
+.az-wrap{
+  max-width:600px;width:100%;margin:0 auto;
+  opacity:0;animation:fadeUp .85s ease .55s forwards;
+  position:relative;z-index:10;
+}
+.az-card{
+  background:rgba(11,13,8,.92);
+  border:1px solid var(--b2);border-radius:var(--r3);
+  position:relative;
+  backdrop-filter:blur(20px);
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+}
+.az-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  border-radius:var(--r3) var(--r3) 0 0;
+  background:linear-gradient(90deg,var(--k4),var(--k2),var(--cr3),var(--k2),var(--k4));
+  background-size:200%;animation:shimmer 3s ease infinite;
+}
+.az-form-head{
+  padding:16px 22px 14px;border-bottom:1px solid var(--b1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.az-form-title{font-size:13px;font-weight:800;letter-spacing:.2px}
+.az-form-sub{font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-top:2px}
+.az-badge{
+  padding:3px 10px;border-radius:100px;
+  background:var(--dim);border:1px solid var(--b2);
+  font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--k2);font-family:'JetBrains Mono',monospace;
+}
+.az-body{padding:18px 22px}
+.az-fields{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.az-row{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(22,25,16,.8);border:1px solid var(--b1);border-radius:var(--r2);
+  padding:11px 14px;transition:border-color var(--tf),box-shadow var(--tf);
+}
+.az-row:focus-within{border-color:var(--k2);box-shadow:0 0 0 3px rgba(78,91,31,.1)}
+.az-ico{font-size:15px;flex-shrink:0}
+.az-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--t3);font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.az-row input{flex:1;border:none;background:transparent;outline:none;font-family:'Manrope',sans-serif;font-size:13px;font-weight:500;color:var(--t1)}
+.az-row input::placeholder{color:var(--t4);font-style:italic;font-weight:300}
+.az-btn{
+  width:100%;padding:14px;
+  background:var(--k);color:var(--cr);
+  border-radius:var(--r2);border:none;
+  font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 6px 24px var(--glow);
+  transition:background var(--tm),transform var(--tf),box-shadow var(--tm),color var(--tf);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  position:relative;overflow:hidden;
+}
+.az-btn::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(237,228,197,.15),transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.az-btn:hover::after{opacity:1}
+.az-btn:hover{background:var(--k2);transform:translateY(-1px);box-shadow:0 12px 36px var(--glow);color:var(--cr2)}
+.az-hints{display:flex;justify-content:center;gap:20px;margin-top:11px}
+.az-hint{font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace}
+
+/* loading */
+.az-loading{display:none;padding:36px 22px;flex-direction:column;align-items:center;gap:20px}
+.az-loading.show{display:flex}
+.az-spinner{width:42px;height:42px;border-radius:50%;border:2px solid var(--b1);border-top-color:var(--k2);animation:spin .75s linear infinite}
+.az-steps-list{width:100%;max-width:290px;display:flex;flex-direction:column;gap:4px}
+.az-step{display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:var(--r2);font-size:11px;font-weight:500;color:var(--t3);transition:all .25s;border-left:2px solid transparent}
+.az-step.cur{background:var(--dim);color:var(--k2);border-left-color:var(--k2)}
+.az-step.done{color:#6AAB5A}
+.az-step-i{width:16px;flex-shrink:0;text-align:center}
+
+/* result */
+.az-result{display:none}
+.az-result.show{display:block;animation:popIn .45s cubic-bezier(.16,1,.3,1)}
+.az-result-hd{
+  padding:18px 22px;border-bottom:1px solid var(--b1);
+  background:linear-gradient(90deg,rgba(78,91,31,.08),transparent);
+  display:flex;align-items:center;gap:14px;
+}
+.az-ring{
+  width:58px;height:58px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:22px;font-weight:800;
+  border:2.5px solid;flex-shrink:0;
+}
+.r-low{border-color:#C75B5B;color:#C75B5B}
+.r-mid{border-color:var(--cr3);color:var(--cr3)}
+.r-high{border-color:var(--k2);color:var(--k2)}
+.az-verdict{font-size:13px;font-weight:800;margin-bottom:3px}
+.az-handle-txt{font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace}
+.az-score-chip{margin-left:auto;padding:4px 11px;border-radius:100px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;border:1px solid;flex-shrink:0}
+.az-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b1);border-bottom:1px solid var(--b1)}
+.az-pillar{background:var(--bg2);padding:12px 8px;text-align:center}
+.azp-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1;margin-bottom:3px}
+.azp-lbl{font-size:8px;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);font-family:'JetBrains Mono',monospace}
+.azp-bar{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-top:7px}
+.azp-fill{height:100%;border-radius:2px;width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+.az-findings{padding:14px 22px;display:flex;flex-direction:column;gap:7px}
+.az-finding{display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border-radius:var(--r2);border:1px solid}
+.az-finding.good{background:rgba(106,171,90,.06);border-color:rgba(106,171,90,.2)}
+.az-finding.warn{background:rgba(200,190,154,.06);border-color:rgba(200,190,154,.2)}
+.az-finding.crit{background:rgba(199,91,91,.06);border-color:rgba(199,91,91,.2)}
+.af-ico{font-size:14px;flex-shrink:0;margin-top:1px}
+.af-title{font-size:12px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.af-desc{font-size:11px;color:var(--t2);line-height:1.55}
+.az-result-cta{padding:14px 22px;border-top:1px solid var(--b1)}
+.az-cta{width:100%;padding:13px;background:var(--k);color:var(--cr);border:none;border-radius:var(--r2);font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;box-shadow:0 4px 20px var(--glow);transition:background var(--tm),transform var(--tf)}
+.az-cta:hover{background:var(--k2);transform:translateY(-1px)}
+
+/* ══ PROOF ══ */
+.proof{
+  display:flex;align-items:center;justify-content:center;
+  gap:40px;flex-wrap:wrap;
+  padding-top:56px;border-top:1px solid var(--b1);margin-top:56px;
+  opacity:0;animation:fadeUp .85s ease .7s forwards;
+}
+.pf-item{text-align:center}
+.pf-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--k2);line-height:1}
+.pf-lbl{font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-top:4px}
+.pf-sep{width:1px;height:48px;background:var(--b1)}
+
+/* ═══════════════════════════════════════
+   TICKER
+═══════════════════════════════════════ */
+.ticker-wrap{background:var(--bg2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);padding:12px 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:ticker 36s linear infinite}
+.t-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace}
+.t-item strong{color:var(--k2)}
+.t-sep{color:var(--b2);margin:0 2px}
+
+/* ═══════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════ */
+.wrap{max-width:1100px;margin:0 auto}
+.sec{padding:96px 48px}
+.sec-dark{background:var(--bg2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1)}
+
+.eye{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--k2);font-family:'JetBrains Mono',monospace;margin-bottom:12px}
+.sh{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.3px;margin-bottom:14px}
+.sh em{font-style:italic;color:var(--k2)}
+.sp{font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;max-width:520px;margin-bottom:52px}
+
+/* ══ PILARES ══ */
+.pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:var(--r3);overflow:hidden}
+.pillar{
+  background:var(--bg2);padding:28px 20px;
+  transition:background var(--tm),transform var(--tm);
+  position:relative;overflow:hidden;
+}
+.pillar::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(78,91,31,.12),transparent 60%);
+  opacity:0;transition:opacity var(--tm);
+}
+.pillar:hover{background:var(--bg3)}
+.pillar:hover::after{opacity:1}
+.pl-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--b2);line-height:1;margin-bottom:14px}
+.pl-ico{font-size:24px;margin-bottom:12px}
+.pl-name{font-size:13px;font-weight:800;margin-bottom:7px}
+.pl-desc{font-size:12px;color:var(--t2);line-height:1.65;font-weight:300}
+
+/* ══ PROBLEM ══ */
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.prob-eye{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-bottom:16px}
+.prob-h{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,40px);font-weight:700;line-height:1.15;margin-bottom:18px}
+.prob-p{font-size:14px;font-weight:300;color:var(--t2);line-height:1.9}
+.prob-p strong{color:var(--t1);font-weight:600}
+.sol-stack{display:flex;flex-direction:column;gap:10px}
+.sol-item{
+  display:flex;align-items:flex-start;gap:13px;
+  padding:16px 18px;background:var(--bg3);border:1px solid var(--b1);border-radius:var(--r2);
+  transition:border-color var(--tm),transform var(--tm),box-shadow var(--tm);
+}
+.sol-item:hover{border-color:var(--b2);transform:translateX(5px);box-shadow:0 4px 24px rgba(0,0,0,.3)}
+.sol-ico{width:36px;height:36px;border-radius:var(--r2);background:var(--dim);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.sol-t{font-size:13px;font-weight:700;margin-bottom:3px}
+.sol-d{font-size:11px;color:var(--t2);line-height:1.6;font-weight:300}
+
+/* ══ CASES ══ */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.case{
+  background:var(--bg3);border:1px solid var(--b1);border-radius:var(--r3);overflow:hidden;
+  transition:border-color var(--tm),transform var(--ts),box-shadow var(--ts);
+  transform-style:preserve-3d;
+}
+.case:hover{border-color:var(--b2);transform:translateY(-6px) rotateX(2deg);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.case-top{padding:18px 20px 12px;border-bottom:1px solid var(--b1);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.case-biz{font-size:13px;font-weight:700;margin-bottom:2px}
+.case-seg{font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace}
+.case-tag{padding:3px 9px;border-radius:100px;background:var(--dim);border:1px solid var(--b2);font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--k2);font-family:'JetBrains Mono',monospace;white-space:nowrap;flex-shrink:0}
+.case-nums{display:grid;grid-template-columns:1fr 1fr;padding:14px 20px;gap:10px}
+.case-val{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--k2);line-height:1}
+.case-lbl{font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-top:2px}
+.case-q{padding:12px 20px 18px;border-top:1px solid var(--b1);font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:var(--t2);line-height:1.65}
+.case-author{font-size:11px;color:var(--k2);font-style:normal;font-weight:700;margin-top:6px;font-family:'Manrope',sans-serif}
+
+/* ══ PORTAL CARD ══ */
+.portal-card{
+  margin-top:52px;
+  background:linear-gradient(135deg,var(--k5) 0%,var(--bg3) 50%,var(--bg4) 100%);
+  border:1px solid var(--b2);border-radius:var(--r3);
+  padding:44px;display:flex;align-items:center;gap:44px;
+  position:relative;overflow:hidden;
+}
+.portal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--k4),var(--k2),var(--cr3),var(--k2),var(--k4));background-size:200%;animation:shimmer 3s ease infinite}
+.portal-card-ico{font-size:56px;flex-shrink:0;filter:drop-shadow(0 0 20px rgba(78,91,31,.4))}
+.portal-card-body{flex:1}
+.portal-card-tag{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--k2);font-family:'JetBrains Mono',monospace;margin-bottom:10px}
+.portal-card-h{font-family:'Playfair Display',serif;font-size:clamp(18px,3vw,28px);font-weight:700;line-height:1.2;margin-bottom:10px}
+.portal-card-h em{font-style:italic;color:var(--k2)}
+.portal-card-p{font-size:13px;color:var(--t2);line-height:1.75;font-weight:300}
+.portal-btn{
+  flex-shrink:0;padding:15px 34px;background:var(--k);color:var(--cr);
+  border-radius:var(--r1);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  display:inline-block;box-shadow:0 6px 24px var(--glow);
+  transition:background var(--tm),transform var(--tf),box-shadow var(--tm);
+  white-space:nowrap;
+}
+.portal-btn:hover{background:var(--k2);transform:translateY(-2px);box-shadow:0 16px 40px var(--glow);color:var(--cr2)}
+
+/* ══ PLANS ══ */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+.plan{background:var(--bg3);border:1px solid var(--b1);border-radius:var(--r3);padding:28px 24px;position:relative;overflow:hidden;transition:border-color var(--tm),transform var(--ts),box-shadow var(--ts)}
+.plan:hover{border-color:var(--b2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.plan.hot{border-color:var(--k2);background:linear-gradient(160deg,var(--bg4),var(--bg3))}
+.plan.hot::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--k4),var(--k2),var(--cr3),var(--k4))}
+.plan-badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:16px}
+.pb-n{background:var(--bg5);color:var(--t3);border:1px solid var(--b1)}
+.pb-h{background:var(--dim);color:var(--k2);border:1px solid var(--b2)}
+.pb-p{background:rgba(237,228,197,.08);color:var(--cr3);border:1px solid rgba(237,228,197,.2)}
+.plan-name{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;margin-bottom:6px}
+.plan-desc{font-size:12px;color:var(--t2);margin-bottom:20px;line-height:1.6;font-weight:300}
+.plan-price{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--k2);line-height:1}
+.plan-price sup{font-family:'Manrope',sans-serif;font-size:16px;font-weight:400;color:var(--t3)}
+.plan-price sub{font-family:'Manrope',sans-serif;font-size:13px;font-weight:300;color:var(--t3)}
+.plan-line{height:1px;background:var(--b1);margin:16px 0}
+.plan-feat{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--t2);line-height:1.4;margin-bottom:8px}
+.pf-y{color:var(--k2);flex-shrink:0}
+.pf-n{color:var(--t4);flex-shrink:0}
+.plan-btn{width:100%;margin-top:22px;padding:13px;border-radius:var(--r1);border:none;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all var(--tm)}
+.pb1{background:transparent;border:1px solid var(--b2);color:var(--t2)}
+.pb1:hover{border-color:var(--k2);color:var(--t1);background:var(--dim)}
+.pb2{background:var(--k);color:var(--cr);box-shadow:0 4px 20px var(--glow)}
+.pb2:hover{background:var(--k2);color:var(--cr2)}
+.pb3{background:linear-gradient(135deg,var(--cr3),var(--cr));color:var(--k4)}
+.pb3:hover{transform:translateY(-1px);box-shadow:0 7px 26px var(--cr-glow)}
+
+/* ══ TESTIMONIALS ══ */
+.testis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+.testi{background:var(--bg2);border:1px solid var(--b1);border-radius:var(--r3);padding:26px 22px;transition:border-color var(--tm),transform var(--ts)}
+.testi:hover{border-color:var(--b2);transform:translateY(-3px)}
+.testi-stars{color:var(--k2);font-size:14px;letter-spacing:3px;margin-bottom:14px}
+.testi-q{font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--t2);line-height:1.75;margin-bottom:18px}
+.testi-who{display:flex;align-items:center;gap:10px}
+.testi-av{width:38px;height:38px;border-radius:50%;background:var(--k4);border:1px solid var(--b2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;color:var(--cr3)}
+.testi-name{font-size:12px;font-weight:700}
+.testi-role{font-size:10px;color:var(--t3);margin-top:1px}
+
+/* ══ FINAL CTA ══ */
+.cta-final{padding:112px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(78,91,31,.09),transparent 68%);pointer-events:none}
+.cta-h{font-family:'Playfair Display',serif;font-size:clamp(32px,5.5vw,60px);font-weight:800;line-height:1.1;letter-spacing:-.3px;margin-bottom:18px;position:relative;z-index:1}
+.cta-h em{font-style:italic;color:var(--k2)}
+.cta-p{font-size:17px;font-weight:300;color:var(--t2);max-width:460px;margin:0 auto 44px;line-height:1.8;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-main{
+  padding:16px 40px;background:var(--k);color:var(--cr);border:none;border-radius:var(--r1);
+  font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  box-shadow:0 6px 28px var(--glow);
+  transition:background var(--tm),transform var(--tf),box-shadow var(--tm),color var(--tf);
+}
+.btn-main:hover{background:var(--k2);transform:translateY(-2px);box-shadow:0 16px 44px var(--glow);color:var(--cr2)}
+.btn-out{padding:16px 40px;background:transparent;color:var(--t2);display:inline-block;border:1px solid var(--b2);border-radius:var(--r1);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:all var(--tf)}
+.btn-out:hover{color:var(--t1);border-color:var(--k2);background:var(--dim)}
+
+/* ══ FOOTER ══ */
+.footer{background:var(--bg2);border-top:1px solid var(--b1);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-logo{width:36px;height:36px}
+.footer-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;background:linear-gradient(135deg,var(--cr2),var(--cr3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-sub{font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-link{font-size:11px;color:var(--t3);transition:color var(--tf)}
+.footer-link:hover{color:var(--t1)}
+.footer-copy{font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace}
+
+/* ══ REVEAL ══ */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:none}
+.rv-left{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease}
+.rv-left.vis{opacity:1;transform:none}
+.rv-right{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s ease}
+.rv-right.vis{opacity:1;transform:none}
+
+/* ══ TOAST ══ */
+.toast{position:fixed;bottom:22px;right:22px;z-index:9999;background:var(--k);color:var(--cr);padding:12px 20px;border-radius:var(--r1);font-size:12px;font-weight:700;letter-spacing:1px;box-shadow:0 8px 24px rgba(0,0,0,.4);transform:translateY(70px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.toast.on{transform:translateY(0);opacity:1}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1000px){
+  .pillars{grid-template-columns:1fr 1fr}
+  .cases{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr}
+  .testis{grid-template-columns:1fr}
+  .prob-grid{grid-template-columns:1fr;gap:44px}
+  .portal-card{flex-direction:column;gap:24px;padding:32px}
+  .portal-btn{width:100%;text-align:center}
+  .sec{padding:72px 24px}
+  .cta-final{padding:72px 24px}
+  .footer{padding:24px;flex-direction:column;text-align:center}
+}
+@media(max-width:720px){
+  .nav{padding:0 20px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .hero{padding:88px 20px 60px}
+  .pf-sep{display:none}
+  .proof{gap:20px}
+  .az-pillars{grid-template-columns:repeat(2,1fr)}
+  .pillars{grid-template-columns:1fr}
+}
+.nav-links.open{display:flex;flex-direction:column;gap:0;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(7,8,6,.98);padding:24px 28px;border-top:1px solid var(--b1);z-index:499;overflow-y:auto}
+.nav-links.open .nav-a{font-size:17px;padding:14px 0;border-bottom:1px solid var(--b1);border-radius:0;color:var(--t1)}
+.nav-links.open .nav-portal,.nav-links.open .nav-cta{margin:10px 0 0;width:100%;text-align:center;padding:13px;display:block}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- ══ INTRO ══ -->
+<div id="intro">
+  <svg class="intro-logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="97" fill="#3A4418"/>
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#EDE4C5" stroke-width="1.2" opacity=".6"/>
+    <text x="100" y="96" font-family="Georgia,serif" font-size="56" font-weight="900" fill="#EDE4C5" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
+    <text x="100" y="140" font-family="Georgia,serif" font-size="24" fill="#EDE4C5" text-anchor="middle" letter-spacing="1">agência</text>
+  </svg>
+  <div class="intro-tag">Sistema de Crescimento</div>
+  <div class="intro-bar"><div class="intro-fill" id="intro-fill"></div></div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">
+    <svg class="nav-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="97" fill="#3A4418"/>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#EDE4C5" stroke-width="1.2" opacity=".6"/>
+      <text x="100" y="93" font-family="Georgia,serif" font-size="54" font-weight="900" fill="#EDE4C5" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
+      <text x="100" y="137" font-family="Georgia,serif" font-size="23" fill="#EDE4C5" text-anchor="middle" letter-spacing="1">agência</text>
+    </svg>
+    <div>
+      <div class="nav-name">krad <small>agência</small></div>
+    </div>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#sistema" class="nav-a">Sistema</a>
+    <a href="#resultados" class="nav-a">Resultados</a>
+    <a href="#planos" class="nav-a">Planos</a>
+    <a href="#depoimentos" class="nav-a">Depoimentos</a>
+    <a href="index.html" class="nav-portal">🔐 Área do Cliente</a>
+    <button class="nav-cta" onclick="focusAnalyzer()">Diagnóstico Grátis</button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()">☰</button>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <div class="hero-pill">
+      <span class="pill-dot"></span>
+      IA + Estratégia + Execução — Resultado mensurável
+    </div>
+
+    <h1 class="hero-h">
+      Seu negócio crescendo<br>
+      com <em>dados, clareza</em><br>
+      e resultado real.
+    </h1>
+
+    <p class="hero-p">
+      Cole o @ do seu Instagram e o link do seu site. Nossa IA analisa sua presença digital e mostra exatamente o que está travando o seu crescimento — em 30 segundos, de graça.
+    </p>
+
+    <!-- ANALYZER -->
+    <div class="az-wrap" id="az-wrap">
+      <!-- FORM -->
+      <div class="az-card" id="az-form-card">
+        <div class="az-form-head">
+          <div>
+            <div class="az-form-title">Diagnóstico de Presença Digital</div>
+            <div class="az-form-sub">GRATUITO · SEM CADASTRO · RESULTADO EM 30S</div>
+          </div>
+          <div class="az-badge">IA KRAD</div>
+        </div>
+        <div class="az-body">
+          <div class="az-fields">
+            <div class="az-row" id="ig-row">
+              <span class="az-ico">📷</span>
+              <span class="az-lbl">Instagram</span>
+              <input type="text" id="ig-input" placeholder="@seuperfil" autocomplete="off"/>
+            </div>
+            <div class="az-row">
+              <span class="az-ico">🌐</span>
+              <span class="az-lbl">Site</span>
+              <input type="text" id="site-input" placeholder="www.seusite.com.br  (opcional)" autocomplete="off"/>
+            </div>
+          </div>
+          <button class="az-btn" id="az-btn" onclick="runAnalysis()">
+            <span>⚡</span> Analisar agora — é grátis
+          </button>
+          <div class="az-hints">
+            <span class="az-hint">✓ +140 clientes</span>
+            <span class="az-hint">★ 4.9 / 5.0</span>
+            <span class="az-hint">🔒 Sem salvar dados</span>
+          </div>
+        </div>
+      </div>
+      <!-- LOADING -->
+      <div class="az-card az-loading" id="az-load-card">
+        <div class="az-spinner"></div>
+        <div class="az-steps-list">
+          <div class="az-step" id="s1"><span class="az-step-i">🔍</span> Analisando perfil do Instagram...</div>
+          <div class="az-step" id="s2"><span class="az-step-i">🌐</span> Verificando site e SEO...</div>
+          <div class="az-step" id="s3"><span class="az-step-i">📊</span> Calculando score de presença...</div>
+          <div class="az-step" id="s4"><span class="az-step-i">🧠</span> Gerando recomendações personalizadas...</div>
+        </div>
+      </div>
+      <!-- RESULT -->
+      <div class="az-card az-result" id="az-res-card">
+        <div class="az-result-hd">
+          <div class="az-ring" id="az-ring">--</div>
+          <div style="flex:1;min-width:0">
+            <div class="az-verdict" id="az-verdict">–</div>
+            <div class="az-handle-txt" id="az-handle">–</div>
+          </div>
+          <div class="az-score-chip" id="az-chip">–</div>
+        </div>
+        <div class="az-pillars" id="az-pillars"></div>
+        <div class="az-findings" id="az-findings"></div>
+        <div class="az-result-cta">
+          <button class="az-cta" onclick="openWA()">🚀 Quero corrigir isso — falar com a krad</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROOF STRIP -->
+    <div class="proof">
+      <div class="pf-item"><div class="pf-num" data-target="140" data-prefix="+">0</div><div class="pf-lbl">Clientes ativos</div></div>
+      <div class="pf-sep"></div>
+      <div class="pf-item"><div class="pf-num" data-target="312" data-suffix="%">0</div><div class="pf-lbl">ROI médio</div></div>
+      <div class="pf-sep"></div>
+      <div class="pf-item"><div class="pf-num" data-target="4.9" data-suffix="★" data-float="1">0</div><div class="pf-lbl">Satisfação</div></div>
+      <div class="pf-sep"></div>
+      <div class="pf-item"><div class="pf-num" data-target="2" data-suffix="×">0</div><div class="pf-lbl">Crescimento médio / 90 dias</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="t-item">🍕 <strong>Pizzaria Bella Napoli</strong><span class="t-sep">·</span>+380% alcance em 60 dias</span>
+    <span class="t-item">👗 <strong>Atelier Sofia</strong><span class="t-sep">·</span>214 vendas via Instagram no mês</span>
+    <span class="t-item">🦷 <strong>Dr. Henrique Odonto</strong><span class="t-sep">·</span>agenda cheia 3 semanas à frente</span>
+    <span class="t-item">☕ <strong>Café Origem</strong><span class="t-sep">·</span>cresceu de 2k para 28k seguidores</span>
+    <span class="t-item">🏋️ <strong>Studio Forma</strong><span class="t-sep">·</span>+167 alunos em 4 meses</span>
+    <span class="t-item">🎂 <strong>Confeitaria Luna</strong><span class="t-sep">·</span>3× mais encomendas pelo direct</span>
+    <span class="t-item">🍕 <strong>Pizzaria Bella Napoli</strong><span class="t-sep">·</span>+380% alcance em 60 dias</span>
+    <span class="t-item">👗 <strong>Atelier Sofia</strong><span class="t-sep">·</span>214 vendas via Instagram no mês</span>
+    <span class="t-item">🦷 <strong>Dr. Henrique Odonto</strong><span class="t-sep">·</span>agenda cheia 3 semanas à frente</span>
+    <span class="t-item">☕ <strong>Café Origem</strong><span class="t-sep">·</span>cresceu de 2k para 28k seguidores</span>
+    <span class="t-item">🏋️ <strong>Studio Forma</strong><span class="t-sep">·</span>+167 alunos em 4 meses</span>
+    <span class="t-item">🎂 <strong>Confeitaria Luna</strong><span class="t-sep">·</span>3× mais encomendas pelo direct</span>
+  </div>
+</div>
+
+<!-- SISTEMA -->
+<section class="sec" id="sistema">
+  <div class="wrap">
+    <div class="eye rv">O SISTEMA KRAD</div>
+    <h2 class="sh rv">Cinco pilares que <em>transformam</em><br>presença em faturamento.</h2>
+    <p class="sp rv">Não é só "postar no Instagram". É um sistema completo que conecta estratégia, criação, dados e relacionamento para gerar clientes de verdade.</p>
+    <div class="pillars rv">
+      <div class="pillar"><div class="pl-num">01</div><div class="pl-ico">🔍</div><div class="pl-name">Diagnóstico & Estratégia</div><div class="pl-desc">IA analisa seu perfil, mercado e concorrência. Definimos metas reais e o caminho mais curto.</div></div>
+      <div class="pillar"><div class="pl-num">02</div><div class="pl-ico">🎨</div><div class="pl-name">Criação Premium</div><div class="pl-desc">Posts, Reels, Stories e campanhas com identidade visual única e CTA que converte.</div></div>
+      <div class="pillar"><div class="pl-num">03</div><div class="pl-ico">📅</div><div class="pl-name">Calendário Inteligente</div><div class="pl-desc">Publicação no horário de pico do seu público, com frequência consistente e aprovação prévia.</div></div>
+      <div class="pillar"><div class="pl-num">04</div><div class="pl-ico">📊</div><div class="pl-name">Dados & Relatórios</div><div class="pl-desc">Dashboard em tempo real. Relatório mensal mostrando ROI em reais, não em curtidas.</div></div>
+      <div class="pillar"><div class="pl-num">05</div><div class="pl-ico">🤖</div><div class="pl-name">IA Consultora 24h</div><div class="pl-desc">Tire dúvidas e receba análises a qualquer hora pelo portal exclusivo do cliente.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<div class="sec sec-dark">
+  <div class="wrap">
+    <div class="prob-grid">
+      <div class="rv-left">
+        <div class="prob-eye">O PROBLEMA QUE TODO MUNDO TEM</div>
+        <h2 class="prob-h">Você posta, mas <strong>não vende.</strong><br>Sabe que precisa do digital, mas <strong>não tem tempo.</strong></h2>
+        <p class="prob-p">Você investe horas criando conteúdo sem estratégia, contrata um designer que entrega posts bonitos sem resultado, ou paga uma agência grande que trata seu negócio como mais um número.<br><br><strong>Seguidores que não compram. Budget que some. A sensação de que o digital não funciona.</strong><br><br>Funciona. Você só precisa de sistema, não de post aleatório.</p>
+      </div>
+      <div class="sol-stack rv-right">
+        <div class="sol-item"><div class="sol-ico">🎯</div><div><div class="sol-t">Estratégia baseada em dados</div><div class="sol-d">Nada no feeling. Cada decisão é baseada no comportamento do seu público, mercado e concorrentes.</div></div></div>
+        <div class="sol-item"><div class="sol-ico">👁️</div><div><div class="sol-t">Transparência total via portal</div><div class="sol-d">Veja em tempo real o que está sendo feito, aprove cada conteúdo e acompanhe métricas reais.</div></div></div>
+        <div class="sol-item"><div class="sol-ico">💰</div><div><div class="sol-t">ROI mensurável</div><div class="sol-d">Relatório mensal com impacto financeiro real. Não entregamos curtidas — entregamos clientes.</div></div></div>
+        <div class="sol-item"><div class="sol-ico">🤝</div><div><div class="sol-t">Equipe dedicada ao seu negócio</div><div class="sol-d">Estrategista, designer, copywriter e IA trabalhando juntos. Você foca no que sabe fazer.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTADOS -->
+<section class="sec" id="resultados">
+  <div class="wrap">
+    <div class="eye rv">CASOS REAIS</div>
+    <h2 class="sh rv">Clientes que <em>cresceram</em><br>com o sistema krad.</h2>
+    <div class="cases">
+      <div class="case rv"><div class="case-top"><div><div class="case-biz">Restaurante Dom João</div><div class="case-seg">GASTRONOMIA · PLANO GROWTH</div></div><span class="case-tag">90 dias</span></div><div class="case-nums"><div><div class="case-val">+34%</div><div class="case-lbl">Alcance mensal</div></div><div><div class="case-val">142</div><div class="case-lbl">Reservas via IG</div></div><div><div class="case-val">5.8%</div><div class="case-lbl">Engajamento</div></div><div><div class="case-val">R$18k</div><div class="case-lbl">ROI estimado</div></div></div><div class="case-q">"Em 2 meses nossa agenda de sábado à noite ficou cheia. O portal é incrível — vejo tudo em tempo real e aprovo cada conteúdo antes de publicar."<div class="case-author">João Ferreira · Proprietário</div></div></div>
+      <div class="case rv"><div class="case-top"><div><div class="case-biz">Atelier Sofia Dress</div><div class="case-seg">MODA · PLANO GROWTH</div></div><span class="case-tag">120 dias</span></div><div class="case-nums"><div><div class="case-val">+8.2k</div><div class="case-lbl">Novos seguidores</div></div><div><div class="case-val">214</div><div class="case-lbl">Vendas/mês</div></div><div><div class="case-val">R$41k</div><div class="case-lbl">ROI direto</div></div><div><div class="case-val">×3.1</div><div class="case-lbl">Retorno</div></div></div><div class="case-q">"Antes eu postava e não vendia nada. Agora tenho fila de espera para pronta-entrega. A krad mudou a realidade do meu negócio."<div class="case-author">Sofia Moraes · Fundadora</div></div></div>
+      <div class="case rv"><div class="case-top"><div><div class="case-biz">Clínica Dr. Henrique</div><div class="case-seg">SAÚDE · PLANO SCALE</div></div><span class="case-tag">60 dias</span></div><div class="case-nums"><div><div class="case-val">+280%</div><div class="case-lbl">Agendamentos</div></div><div><div class="case-val">18k</div><div class="case-lbl">Seguidores</div></div><div><div class="case-val">4 sem</div><div class="case-lbl">Agenda cheia</div></div><div><div class="case-val">4.9★</div><div class="case-lbl">Google</div></div></div><div class="case-q">"Minha clínica cresceu mais em 4 meses do que nos últimos 3 anos. O relatório mensal mostra o ROI em reais — é impressionante."<div class="case-author">Dr. Henrique Lima · Sócio-fundador</div></div></div>
+    </div>
+    <div class="portal-card rv">
+      <div class="portal-card-ico">🔐</div>
+      <div class="portal-card-body">
+        <div class="portal-card-tag">Exclusivo para clientes krad</div>
+        <h3 class="portal-card-h">Já é cliente? <em>Acesse seu portal</em> e acompanhe tudo em tempo real.</h3>
+        <p class="portal-card-p">Métricas, aprovação de conteúdos, agenda editorial, relatório mensal, consultora IA — tudo em um só lugar, com transparência total.</p>
+      </div>
+      <a href="index.html" class="portal-btn">Entrar na Área do Cliente →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<div class="sec sec-dark" id="planos">
+  <div class="wrap">
+    <div class="eye rv">INVESTIMENTO</div>
+    <h2 class="sh rv">Transparência <em>total</em> no preço.<br>Sem surpresas, sem letras miúdas.</h2>
+    <p class="sp rv">Sem taxa de adesão. Sem fidelidade forçada. Cancele quando quiser — mas você não vai querer.</p>
+    <div class="plans">
+      <div class="plan rv"><div class="plan-badge pb-n">Starter</div><div class="plan-name">ESSENCIAL</div><div class="plan-desc">Para quem quer profissionalizar a presença digital e começar a gerar resultados.</div><div class="plan-price"><sup>R$</sup>1.490<sub>/mês</sub></div><div class="plan-line"></div><div class="plan-feat"><span class="pf-y">✓</span> 8 posts para feed por mês</div><div class="plan-feat"><span class="pf-y">✓</span> 4 Reels mensais</div><div class="plan-feat"><span class="pf-y">✓</span> Gerenciamento Instagram</div><div class="plan-feat"><span class="pf-y">✓</span> Relatório básico mensal</div><div class="plan-feat"><span class="pf-y">✓</span> Portal do cliente</div><div class="plan-feat"><span class="pf-y">✓</span> Diagnóstico de presença</div><div class="plan-feat"><span class="pf-n">—</span> Sessões de captação</div><div class="plan-feat"><span class="pf-n">—</span> Consultora IA ilimitada</div><button class="plan-btn pb1" onclick="openWA('Essencial')">Começar com Essencial</button></div>
+      <div class="plan hot rv"><div class="plan-badge pb-h">Mais popular</div><div class="plan-name">GROWTH</div><div class="plan-desc">Para quem quer crescer com consistência, dados e resultado financeiro mensurável.</div><div class="plan-price"><sup>R$</sup>2.800<sub>/mês</sub></div><div class="plan-line"></div><div class="plan-feat"><span class="pf-y">✓</span> 12 posts para feed por mês</div><div class="plan-feat"><span class="pf-y">✓</span> 8 Reels mensais</div><div class="plan-feat"><span class="pf-y">✓</span> 2 sessões de captação</div><div class="plan-feat"><span class="pf-y">✓</span> Relatório storytelling completo</div><div class="plan-feat"><span class="pf-y">✓</span> Consultora IA ilimitada</div><div class="plan-feat"><span class="pf-y">✓</span> Export stories de resultados</div><div class="plan-feat"><span class="pf-y">✓</span> Diagnóstico IA mensal</div><div class="plan-feat"><span class="pf-y">✓</span> Reunião mensal de estratégia</div><button class="plan-btn pb2" onclick="openWA('Growth')">Quero crescer com Growth →</button></div>
+      <div class="plan rv"><div class="plan-badge pb-p">Premium</div><div class="plan-name">SCALE</div><div class="plan-desc">Para marcas que querem dominar o digital no segmento e escalar com tráfego pago.</div><div class="plan-price"><sup>R$</sup>4.900<sub>/mês</sub></div><div class="plan-line"></div><div class="plan-feat"><span class="pf-y">✓</span> Tudo do Growth</div><div class="plan-feat"><span class="pf-y">✓</span> Gestão de tráfego pago</div><div class="plan-feat"><span class="pf-y">✓</span> Campanha de influenciadores</div><div class="plan-feat"><span class="pf-y">✓</span> Dashboard ROI em tempo real</div><div class="plan-feat"><span class="pf-y">✓</span> 2+ redes sociais</div><div class="plan-feat"><span class="pf-y">✓</span> Estrategista dedicado</div><div class="plan-feat"><span class="pf-y">✓</span> Suporte com prioridade máxima</div><button class="plan-btn pb3" onclick="openWA('Scale')">Quero dominar com Scale</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<section class="sec" id="depoimentos">
+  <div class="wrap">
+    <div class="eye rv">DEPOIMENTOS</div>
+    <h2 class="sh rv">O que os clientes <em>dizem</em><br>depois de ver resultado.</h2>
+    <div class="testis">
+      <div class="testi rv"><div class="testi-stars">★★★★★</div><p class="testi-q">"Contratei assustada, achando que era mais do mesmo. Em 45 dias meu restaurante estava aparecendo pra todo mundo da cidade. O portal é incrível — vejo tudo em tempo real e sei exatamente onde meu dinheiro está indo."</p><div class="testi-who"><div class="testi-av">CM</div><div><div class="testi-name">Carla Monteiro</div><div class="testi-role">Bistrô da Carla · São Paulo</div></div></div></div>
+      <div class="testi rv"><div class="testi-stars">★★★★★</div><p class="testi-q">"Antes eu tentava fazer sozinho e perdia horas sem resultado. Com a krad, minha clínica ficou com agenda cheia e eu recebo um relatório mensal que mostra em reais o retorno sobre o investimento."</p><div class="testi-who"><div class="testi-av" style="background:var(--k)">RH</div><div><div class="testi-name">Dr. Rafael Henrique</div><div class="testi-role">Clínica RH Odonto · Campinas</div></div></div></div>
+      <div class="testi rv"><div class="testi-stars">★★★★★</div><p class="testi-q">"O que mais me impressionou foi a transparência total. Aprovo cada conteúdo antes de publicar e recebo notificação no portal. Me sinto dona do processo mesmo sem entender nada de marketing."</p><div class="testi-who"><div class="testi-av" style="background:var(--cr3);color:var(--k4)">JS</div><div><div class="testi-name">Juliana Santos</div><div class="testi-role">Atelier Juliana · Rio de Janeiro</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <div class="cta-orb"></div>
+  <h2 class="cta-h rv">Seu concorrente já está<br>crescendo. <em>E você?</em></h2>
+  <p class="cta-p rv">Faça o diagnóstico gratuito agora e descubra o potencial real da sua marca em 30 segundos.</p>
+  <div class="cta-btns rv">
+    <button class="btn-main" onclick="focusAnalyzer()">⚡ Diagnóstico gratuito</button>
+    <a href="index.html" class="btn-out">🔐 Já sou cliente</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">
+    <svg class="footer-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="97" fill="#3A4418"/>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#EDE4C5" stroke-width="1.2" opacity=".6"/>
+      <text x="100" y="93" font-family="Georgia,serif" font-size="54" font-weight="900" fill="#EDE4C5" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
+      <text x="100" y="137" font-family="Georgia,serif" font-size="23" fill="#EDE4C5" text-anchor="middle" letter-spacing="1">agência</text>
+    </svg>
+    <div><div class="footer-name">krad agência</div><div class="footer-sub">Sistema de Crescimento</div></div>
+  </div>
+  <div class="footer-links">
+    <a href="#" class="footer-link">Privacidade</a>
+    <a href="#" class="footer-link">Termos de uso</a>
+    <a href="index.html" class="footer-link">Portal do cliente</a>
+    <a href="#" class="footer-link">Contato</a>
+  </div>
+  <div class="footer-copy">© 2026 krad agência — Todos os direitos reservados</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════
+   KRAD LANDING — JS COMPLETO
+═══════════════════════════════════════════ */
+
+// ══ INTRO ══
+(function() {
+  var fill = document.getElementById('intro-fill');
+  var intro = document.getElementById('intro');
+  setTimeout(function() { fill.style.width = '100%'; }, 50);
+  setTimeout(function() {
+    intro.classList.add('out');
+    setTimeout(function() { intro.style.display = 'none'; }, 750);
+  }, 2200);
+})();
+
+// ══ PROGRESS BAR ══
+window.addEventListener('scroll', function() {
+  var s = document.documentElement.scrollTop || document.body.scrollTop;
+  var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progress-bar').style.width = (s/h*100) + '%';
+  document.getElementById('nav').classList.toggle('scrolled', s > 20);
+});
+
+// ══ PARTICLES ══
+(function() {
+  var canvas = document.getElementById('hero-canvas');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  for (var i = 0; i < 55; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.8 + .4,
+      vx: (Math.random() - .5) * .28,
+      vy: (Math.random() - .5) * .28,
+      a: Math.random() * .55 + .08
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(function(p) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(106,122,44,' + p.a + ')';
+      ctx.fill();
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+    });
+
+    // connect nearby particles
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i+1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(78,91,31,' + (.12 * (1 - dist/110)) + ')';
+          ctx.lineWidth = .6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ══ COUNTER ANIMATIONS ══
+function animateCount(el) {
+  var target   = parseFloat(el.dataset.target);
+  var prefix   = el.dataset.prefix   || '';
+  var suffix   = el.dataset.suffix   || '';
+  var isFloat  = !!el.dataset.float;
+  var dur      = 1600;
+  var start    = performance.now();
+  function step(now) {
+    var p = Math.min((now - start) / dur, 1);
+    var ease = 1 - Math.pow(1 - p, 3);
+    var val  = target * ease;
+    el.textContent = prefix + (isFloat ? val.toFixed(1) : Math.floor(val)) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ══ SCROLL REVEAL + COUNTERS ══
+var countersDone = false;
+var revObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      revObs.unobserve(e.target);
+
+      // trigger counters when proof strip is visible
+      if (!countersDone && e.target.classList.contains('proof')) {
+        countersDone = true;
+        setTimeout(function() {
+          document.querySelectorAll('[data-target]').forEach(animateCount);
+        }, 300);
+      }
+    }
+  });
+}, { threshold: 0.08 });
+
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.rv,.rv-left,.rv-right,.proof').forEach(function(el) {
+    revObs.observe(el);
+  });
+
+  // enter key
+  ['ig-input','site-input'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', function(e) { if (e.key==='Enter') runAnalysis(); });
+  });
+
+  // magnetic buttons
+  document.querySelectorAll('.az-btn,.btn-main,.portal-btn').forEach(function(btn) {
+    btn.addEventListener('mousemove', function(e) {
+      var r = btn.getBoundingClientRect();
+      var x = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
+      var y = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
+      btn.style.setProperty('--mx', x + '%');
+      btn.style.setProperty('--my', y + '%');
+    });
+  });
+});
+
+// ══ NAV MOBILE ══
+function toggleNav() {
+  var links = document.getElementById('nav-links');
+  var btn   = document.getElementById('hamburger');
+  btn.textContent = links.classList.toggle('open') ? '✕' : '☰';
+}
+
+// ══ FOCUS ANALYZER ══
+function focusAnalyzer() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').textContent = '☰';
+  document.querySelector('.hero').scrollIntoView({ behavior:'smooth' });
+  setTimeout(function() {
+    showPanel('form');
+    document.getElementById('ig-input').focus();
+  }, 500);
+}
+
+// ══ PANEL SWITCH ══
+function showPanel(which) {
+  document.getElementById('az-form-card').style.display = which==='form'    ? 'block':'none';
+  document.getElementById('az-load-card').style.display = which==='loading' ? 'block':'none';
+  document.getElementById('az-res-card').style.display  = which==='result'  ? 'block':'none';
+  if (which==='result') document.getElementById('az-res-card').className='az-card az-result show';
+}
+
+// ══ RUN ANALYSIS ══
+function runAnalysis() {
+  var igRaw = document.getElementById('ig-input').value.trim();
+  if (!igRaw) {
+    var row = document.getElementById('ig-row');
+    row.style.borderColor='var(--red)';row.style.boxShadow='0 0 0 3px rgba(199,91,91,.08)';
+    document.getElementById('ig-input').focus();
+    setTimeout(function(){row.style.borderColor='';row.style.boxShadow='';},2000);
+    return;
+  }
+  var handle = igRaw.startsWith('@') ? igRaw : '@'+igRaw;
+  var site   = document.getElementById('site-input').value.trim();
+
+  // reset steps
+  var sids  = ['s1','s2','s3','s4'];
+  var sicos = ['🔍','🌐','📊','🧠'];
+  sids.forEach(function(id,i){
+    var el=document.getElementById(id);
+    el.classList.remove('cur','done');
+    el.querySelector('.az-step-i').textContent=sicos[i];
+  });
+
+  showPanel('loading');
+  document.getElementById('az-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+
+  var idx=0;
+  function next() {
+    if(idx>0){var p=document.getElementById(sids[idx-1]);p.classList.remove('cur');p.classList.add('done');p.querySelector('.az-step-i').textContent='✓';}
+    if(idx<sids.length){document.getElementById(sids[idx]).classList.add('cur');idx++;setTimeout(next,780+Math.floor(Math.random()*360));}
+    else{setTimeout(function(){renderResult(handle,site);showPanel('result');setTimeout(function(){document.getElementById('az-wrap').scrollIntoView({behavior:'smooth',block:'start'});},80);},350);}
+  }
+  next();
+}
+
+// ══ COMPUTE DATA ══
+function computeData(handle, site) {
+  var h=handle.replace('@','').toLowerCase();
+  var hasSite=(site||'').replace(/https?:\/\//,'').replace('www.','').trim().length>3;
+  var seed=42;
+  for(var i=0;i<h.length;i++){seed=((seed*31)+h.charCodeAt(i))&0x7fffffff;}
+
+  var score   =36+(seed%34);
+  var presence=Math.min(76, 42+(seed%36));
+  var content =Math.min(68, 30+((seed*3)%40));
+  var convert =Math.min(56, 22+((seed*7)%36));
+  var authority=Math.min(74, 44+((seed*5)%32));
+
+  var findings=[];
+  if(presence<62){findings.push({type:'crit',ico:'❌',title:'Bio e highlights desatualizados',desc:'Perfis com bio otimizada têm até 3× mais cliques no link. Adicione palavras-chave do seu nicho e um CTA claro.'});}
+  else{findings.push({type:'good',ico:'✅',title:'Presença digital com boa base',desc:'Perfil bem configurado. O próximo passo é otimizar o link da bio e os highlights para converter mais visitantes.'});}
+  if(content<50){findings.push({type:'crit',ico:'❌',title:'Frequência de publicação abaixo do ideal',desc:'Perfis do seu segmento publicam 10-15× por mês. Menos que isso reduz drasticamente a visibilidade no algoritmo.'});}
+  else if(content<62){findings.push({type:'warn',ico:'⚠️',title:'Diversificação de formatos necessária',desc:'Reels têm 2-3× mais alcance que posts estáticos. Aumentar essa proporção pode dobrar seu alcance orgânico.'});}
+  else{findings.push({type:'good',ico:'✅',title:'Boa frequência de publicação',desc:'Consistência identificada. O próximo passo é qualidade estratégica e CTAs mais diretos nos posts.'});}
+  if(convert<40){findings.push({type:'crit',ico:'❌',title:'Chamadas para ação inexistentes ou fracas',desc:'Seus posts provavelmente não pedem nada ao seguidor. Corrigir isso pode triplicar suas conversões.'});}
+  else{findings.push({type:'warn',ico:'⚠️',title:'Potencial de conversão não explorado',desc:'Com remarketing e Stories estratégicos é possível aumentar conversões em até 80% sem investir mais em tráfego.'});}
+  if(!hasSite){findings.push({type:'warn',ico:'⚠️',title:'Site não informado ou inexistente',desc:'Negócios com site integrado ao Instagram têm 40% mais autoridade e conversão. Presença digital incompleta.'});}
+  else{findings.push({type:'good',ico:'✅',title:'Presença web identificada',desc:'Ter site e Instagram integrados aumenta autoridade da marca. Certifique-se de que o link na bio está otimizado.'});}
+
+  return{score:score,presence:presence,content:content,convert:convert,authority:authority,findings:findings};
+}
+
+// ══ RENDER RESULT ══
+function renderResult(handle,site){
+  var d=computeData(handle,site);
+  var ring=document.getElementById('az-ring');
+  ring.textContent=d.score;
+  ring.className='az-ring '+(d.score>=60?'r-high':d.score>=44?'r-mid':'r-low');
+
+  var verdicts=['Presença crítica — ação imediata necessária','Presença regular — pontos críticos a corrigir','Presença boa — com oportunidades de crescimento'];
+  var vi=d.score>=60?2:d.score>=44?1:0;
+  document.getElementById('az-verdict').textContent=verdicts[vi];
+  document.getElementById('az-handle').textContent=handle+'  ·  Analisado agora  ·  krad IA';
+
+  var chip=document.getElementById('az-chip');
+  var colors=[['#C75B5B','rgba(199,91,91,.25)','rgba(199,91,91,.06)'],['var(--cr3)','rgba(200,190,154,.25)','rgba(200,190,154,.06)'],['var(--k2)','rgba(78,91,31,.3)','var(--dim)']];
+  var cc=colors[vi];
+  chip.textContent='SCORE '+d.score+'/100';chip.style.color=cc[0];chip.style.borderColor=cc[1];chip.style.background=cc[2];
+
+  var pillars=[{lbl:'PRESENÇA',val:d.presence},{lbl:'CONTEÚDO',val:d.content},{lbl:'CONVERSÃO',val:d.convert},{lbl:'AUTORIDADE',val:d.authority}];
+  var pH='';
+  pillars.forEach(function(p){
+    var c=p.val>=65?'var(--k2)':p.val>=48?'var(--cr3)':'#C75B5B';
+    pH+='<div class="az-pillar"><div class="azp-num" style="color:'+c+'">'+p.val+'</div><div class="azp-lbl">'+p.lbl+'</div><div class="azp-bar"><div class="azp-fill" id="pf'+p.lbl+'" style="background:'+c+'"></div></div></div>';
+  });
+  document.getElementById('az-pillars').innerHTML=pH;
+  setTimeout(function(){pillars.forEach(function(p){var el=document.getElementById('pf'+p.lbl);if(el)el.style.width=p.val+'%';});},100);
+
+  var fH='';
+  d.findings.forEach(function(f){fH+='<div class="az-finding '+f.type+'"><span class="af-ico">'+f.ico+'</span><div><div class="af-title">'+f.title+'</div><div class="af-desc">'+f.desc+'</div></div></div>';});
+  document.getElementById('az-findings').innerHTML=fH;
+}
+
+// ══ WHATSAPP ══
+function openWA(plan){
+  var p=plan||'Growth';
+  var ig=document.getElementById('ig-input').value.trim()||'seu perfil';
+  var msg=encodeURIComponent('Olá! Fiz o diagnóstico gratuito da krad agência ('+ig+') e tenho interesse no plano '+p+'. Podemos conversar?');
+  window.open('https://wa.me/5511999999999?text='+msg,'_blank');
+}
+
+// ══ TOAST ══
+function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(function(){t.classList.remove('on');},3000);}
+</script>
+</body>
+</html>

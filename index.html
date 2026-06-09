@@ -1,0 +1,2519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRAD Portal — Plataforma de Crescimento</title>
+<meta name="description" content="Portal do cliente KRAD — Acompanhe resultados, aprove conteúdos e cresça com clareza.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════
+   DESIGN TOKENS — KRAD PORTAL
+   Inspiração: Linear + Notion + Stripe
+   Cor assinatura: Verde oliva com acentos âmbar
+════════════════════════════════════════════ */
+:root {
+  --k1: #3A4A24;
+  --k2: #556B35;
+  --k3: #7A9248;
+  --k4: #A8BE78;
+  --k5: #D4E8A8;
+
+  --a1: #B8852A;
+  --a2: #D4A043;
+  --a3: #F2C55C;
+  --a4: #FAE1A0;
+
+  --n0: #FFFFFF;
+  --n1: #F8F9F6;
+  --n2: #EFF1EB;
+  --n3: #D8DCCE;
+  --n4: #A8AE99;
+  --n5: #6B7260;
+  --n6: #3C4135;
+  --n7: #1E211A;
+  --n8: #0E100A;
+
+  --success: #4CAF6F;
+  --warning: #D4A043;
+  --danger:  #D45C5C;
+  --info:    #4A8FD4;
+
+  --surface:      var(--n1);
+  --surface-card: #FFFFFF;
+  --surface-dark: var(--n7);
+
+  --ff-ui:      'Inter', sans-serif;
+  --ff-display: 'Playfair Display', serif;
+  --ff-mono:    'JetBrains Mono', monospace;
+
+  --sp1: 4px; --sp2: 8px; --sp3: 12px; --sp4: 16px;
+  --sp5: 24px; --sp6: 32px; --sp7: 48px; --sp8: 64px;
+
+  --r1: 4px; --r2: 8px; --r3: 12px; --r4: 16px; --r5: 24px;
+
+  --sh1: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --sh2: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --sh3: 0 12px 32px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.04);
+  --sh-olive: 0 8px 24px rgba(58,74,36,.18);
+
+  --tf: 140ms cubic-bezier(.4,0,.2,1);
+  --tm: 240ms cubic-bezier(.4,0,.2,1);
+  --ts: 400ms cubic-bezier(.16,1,.3,1);
+}
+
+[data-theme="dark"] {
+  --surface: #161915;
+  --surface-card: #1E221A;
+  --n1: #161915; --n2: #1E221A; --n3: #2A2F24;
+  --n4: #4A5040; --n5: #6B7260; --n6: #A8AE99;
+  --n7: #D8DCCE; --n8: #F8F9F6;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-ui);
+  background: var(--n1);
+  color: var(--n7);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--n3); border-radius: 3px; }
+:focus-visible { outline: 2px solid var(--k3); outline-offset: 2px; }
+
+/* ══════════════════════════════════════
+   LOGIN SCREEN
+══════════════════════════════════════ */
+#screen-login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  animation: fadeInLogin .6s ease;
+}
+@keyframes fadeInLogin { from { opacity: 0; } to { opacity: 1; } }
+
+.login-left {
+  background: linear-gradient(160deg, var(--k1) 0%, var(--k2) 60%, var(--n7) 100%);
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: space-between;
+  padding: 48px;
+  position: relative; overflow: hidden;
+}
+.login-left::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(168,190,120,.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212,160,67,.08) 0%, transparent 50%);
+}
+.login-left::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -30%;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.05);
+  animation: floatOrb 20s infinite ease-in-out;
+}
+@keyframes floatOrb { 0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)} }
+
+.login-brand {
+  display: flex; align-items: center; gap: 10px;
+  position: relative; z-index: 1;
+}
+.login-brand-mark {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: var(--r2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; color: white;
+  backdrop-filter: blur(8px);
+}
+.login-brand-name {
+  font-size: 20px; font-weight: 800;
+  letter-spacing: 2px; color: white;
+}
+.login-hero { position: relative; z-index: 1; }
+.login-hero-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--k5); margin-bottom: 20px;
+}
+.login-hero-h {
+  font-family: var(--ff-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700; color: white;
+  line-height: 1.1; letter-spacing: -.5px;
+  margin-bottom: 16px;
+}
+.login-hero-h em { font-style: italic; color: var(--a3); }
+.login-hero-p {
+  font-size: 15px; color: rgba(255,255,255,.6);
+  max-width: 380px; line-height: 1.7;
+}
+.login-stats {
+  display: flex; gap: 32px;
+  position: relative; z-index: 1;
+}
+.login-stat-val { font-size: 24px; font-weight: 800; color: white; line-height: 1; }
+.login-stat-lbl { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 2px; letter-spacing: .5px; }
+
+.login-right {
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px; background: white;
+}
+.login-form-wrap { width: 100%; max-width: 380px; }
+.login-form-title { font-size: 24px; font-weight: 700; margin-bottom: 6px; color: var(--n7); }
+.login-form-sub { font-size: 14px; color: var(--n4); margin-bottom: 32px; }
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 12px; font-weight: 600; color: var(--n6); margin-bottom: 6px; letter-spacing: .3px; }
+.form-input {
+  width: 100%; padding: 11px 14px;
+  border: 1.5px solid var(--n3); border-radius: var(--r2);
+  font-size: 14px; color: var(--n7); background: white;
+  transition: border-color var(--tf), box-shadow var(--tf);
+  outline: none;
+}
+.form-input:focus { border-color: var(--k3); box-shadow: 0 0 0 3px rgba(122,146,72,.12); }
+.btn-login {
+  width: 100%; padding: 12px;
+  background: var(--k2); color: white;
+  border: none; border-radius: var(--r2);
+  font-size: 14px; font-weight: 700; letter-spacing: .5px;
+  transition: background var(--tf), transform var(--tf), box-shadow var(--tf);
+  box-shadow: var(--sh-olive); margin-top: 8px;
+}
+.btn-login:hover { background: var(--k3); transform: translateY(-1px); box-shadow: 0 12px 32px rgba(58,74,36,.25); }
+.login-demo { margin-top: 20px; text-align: center; font-size: 12px; color: var(--n4); }
+.login-demo a { color: var(--k2); font-weight: 600; cursor: pointer; text-decoration: none; }
+.login-demo a:hover { color: var(--k3); }
+
+/* ══════════════════════════════════════
+   APP SHELL
+══════════════════════════════════════ */
+#screen-app { display: none; }
+.app-layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+/* SIDEBAR */
+.sidebar {
+  background: white; border-right: 1px solid var(--n2);
+  display: flex; flex-direction: column;
+  position: sticky; top: 0; height: 100vh;
+  overflow: hidden; box-shadow: var(--sh1);
+}
+.sidebar-header { padding: 20px 18px 16px; border-bottom: 1px solid var(--n2); }
+.sidebar-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.sb-mark {
+  width: 32px; height: 32px; background: var(--k1);
+  border-radius: var(--r2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: white;
+}
+.sb-name { font-size: 16px; font-weight: 800; letter-spacing: 1px; color: var(--n7); }
+.sb-sub { font-size: 9px; color: var(--n4); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: -1px; }
+.client-switcher {
+  background: var(--n1); border: 1px solid var(--n2);
+  border-radius: var(--r2); padding: 8px 10px;
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; transition: border-color var(--tf);
+}
+.client-switcher:hover { border-color: var(--n3); }
+.cs-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--k2), var(--k3));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: white; flex-shrink: 0;
+}
+.cs-name { font-size: 12px; font-weight: 600; line-height: 1.2; }
+.cs-plan { font-size: 10px; color: var(--k2); font-family: var(--ff-mono); }
+.cs-arrow { margin-left: auto; color: var(--n4); font-size: 10px; }
+
+.sidebar-nav { flex: 1; overflow-y: auto; padding: 12px 10px; }
+.nav-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--n4);
+  padding: 0 8px; margin: 14px 0 4px;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; border-radius: var(--r2);
+  font-size: 13px; font-weight: 500; color: var(--n5);
+  cursor: pointer; transition: all var(--tf);
+  margin-bottom: 1px; border: none; background: none;
+  width: 100%; text-align: left;
+}
+.nav-item:hover { background: var(--n1); color: var(--n7); }
+.nav-item.active { background: var(--k1); color: white; font-weight: 600; }
+.nav-item.active .nav-ico { opacity: 1; }
+.nav-ico { font-size: 15px; flex-shrink: 0; opacity: .7; }
+.nav-badge {
+  margin-left: auto; background: var(--danger);
+  color: white; font-size: 9px; font-weight: 700;
+  padding: 2px 6px; border-radius: 100px;
+}
+.nav-badge-new {
+  margin-left: auto; background: var(--k3);
+  color: white; font-size: 9px; font-weight: 700;
+  padding: 2px 6px; border-radius: 100px;
+}
+
+.sidebar-footer { padding: 12px; border-top: 1px solid var(--n2); }
+.scope-card {
+  background: linear-gradient(135deg, var(--k1), var(--k2));
+  border-radius: var(--r3); padding: 14px; color: white;
+}
+.scope-title { font-size: 11px; font-weight: 700; margin-bottom: 8px; opacity: .8; }
+.scope-bars { display: flex; flex-direction: column; gap: 6px; }
+.scope-bar-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+.scope-bar-label { font-size: 10px; opacity: .7; }
+.scope-bar-val { font-size: 10px; font-weight: 700; font-family: var(--ff-mono); }
+.scope-track { height: 4px; background: rgba(255,255,255,.2); border-radius: 2px; overflow: hidden; }
+.scope-fill { height: 100%; border-radius: 2px; background: white; transition: width 1s ease; }
+.scope-fill.warn { background: var(--a3); }
+.scope-fill.over { background: var(--danger); }
+
+/* CONTENT */
+.content { display: flex; flex-direction: column; overflow: hidden; background: var(--n1); }
+.topbar {
+  height: 58px; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: white; border-bottom: 1px solid var(--n2);
+  position: sticky; top: 0; z-index: 50; box-shadow: var(--sh1);
+}
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.topbar-title { font-size: 16px; font-weight: 700; color: var(--n7); }
+.topbar-sub { font-size: 11px; color: var(--n4); font-family: var(--ff-mono); }
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+.tb-month {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 12px; background: var(--n1);
+  border: 1px solid var(--n2); border-radius: var(--r5);
+  font-size: 12px; font-weight: 600; color: var(--n6);
+  cursor: pointer; transition: border-color var(--tf);
+}
+.tb-month:hover { border-color: var(--n3); }
+.notif-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--n1); border: 1px solid var(--n2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; cursor: pointer; position: relative;
+  transition: border-color var(--tf);
+}
+.notif-btn:hover { border-color: var(--n3); }
+.notif-dot {
+  position: absolute; top: 5px; right: 5px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--danger); border: 2px solid white;
+}
+.user-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--k2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: white; cursor: pointer;
+}
+
+.page-wrap { flex: 1; overflow-y: auto; }
+.page { display: none; padding: 28px; animation: pgIn .25s ease; }
+.page.active { display: block; }
+@keyframes pgIn { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
+
+/* ══════════════════════════════════════
+   COMPONENT LIBRARY
+══════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 18px; border-radius: var(--r2);
+  font-size: 13px; font-weight: 600;
+  border: none; cursor: pointer; transition: all var(--tf);
+}
+.btn-primary { background: var(--k2); color: white; box-shadow: 0 2px 8px rgba(58,74,36,.2); }
+.btn-primary:hover { background: var(--k3); transform: translateY(-1px); }
+.btn-outline { background: white; color: var(--n6); border: 1.5px solid var(--n3); }
+.btn-outline:hover { border-color: var(--n4); color: var(--n7); }
+.btn-ghost { background: transparent; color: var(--n5); }
+.btn-ghost:hover { background: var(--n2); color: var(--n7); }
+.btn-danger { background: var(--danger); color: white; }
+.btn-success { background: var(--success); color: white; }
+.btn-amber { background: var(--a2); color: white; }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+.btn-xs { padding: 4px 9px; font-size: 11px; border-radius: var(--r1); }
+.btn-icon { padding: 8px; border-radius: var(--r2); }
+
+/* CARDS */
+.card {
+  background: white; border: 1px solid var(--n2);
+  border-radius: var(--r3); box-shadow: var(--sh1); overflow: hidden;
+}
+.card-header {
+  padding: 16px 20px; border-bottom: 1px solid var(--n2);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.card-title { font-size: 14px; font-weight: 700; color: var(--n7); }
+.card-sub { font-size: 11px; color: var(--n4); font-family: var(--ff-mono); margin-top: 1px; }
+.card-body { padding: 20px; }
+
+/* METRICS */
+.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+.metric-card {
+  background: white; border: 1px solid var(--n2);
+  border-radius: var(--r3); padding: 18px;
+  position: relative; overflow: hidden;
+  transition: box-shadow var(--tm), transform var(--tm);
+}
+.metric-card:hover { box-shadow: var(--sh2); transform: translateY(-1px); }
+.metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.mc-olive::before   { background: linear-gradient(90deg, var(--k2), var(--k4)); }
+.mc-amber::before   { background: linear-gradient(90deg, var(--a1), var(--a3)); }
+.mc-success::before { background: linear-gradient(90deg, var(--success), #80D9A0); }
+.mc-info::before    { background: linear-gradient(90deg, var(--info), #80C0F0); }
+.mc-danger::before  { background: linear-gradient(90deg, var(--danger), #F0A0A0); }
+.metric-icon {
+  width: 36px; height: 36px; border-radius: var(--r2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; margin-bottom: 12px;
+}
+.mic-olive   { background: rgba(85,107,53,.10); }
+.mic-amber   { background: rgba(212,160,67,.10); }
+.mic-success { background: rgba(76,175,111,.10); }
+.mic-info    { background: rgba(74,143,212,.10); }
+.mic-danger  { background: rgba(212,92,92,.10); }
+.metric-label { font-size: 11px; font-weight: 600; color: var(--n4); letter-spacing: .5px; text-transform: uppercase; margin-bottom: 6px; }
+.metric-value { font-size: 28px; font-weight: 800; color: var(--n7); line-height: 1; margin-bottom: 6px; }
+.metric-delta { font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+.delta-up { color: var(--success); }
+.delta-dn { color: var(--danger); }
+.delta-nu { color: var(--n4); }
+
+/* BADGE */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; letter-spacing: .3px;
+}
+.badge-olive   { background: rgba(85,107,53,.1); color: var(--k2); }
+.badge-amber   { background: rgba(212,160,67,.12); color: var(--a1); }
+.badge-success { background: rgba(76,175,111,.12); color: #2E7D47; }
+.badge-danger  { background: rgba(212,92,92,.10); color: #B03030; }
+.badge-info    { background: rgba(74,143,212,.10); color: #2060A0; }
+.badge-neutral { background: var(--n2); color: var(--n5); }
+
+.tag {
+  display: inline-block; padding: 2px 8px;
+  background: var(--n2); border-radius: 100px;
+  font-size: 10px; font-weight: 600; color: var(--n5);
+}
+
+/* PROGRESS */
+.progress-row { margin-bottom: 10px; }
+.progress-hd { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.progress-label { font-size: 12px; font-weight: 600; }
+.progress-val { font-size: 12px; color: var(--n4); font-family: var(--ff-mono); }
+.progress-track { height: 6px; background: var(--n2); border-radius: 3px; overflow: hidden; }
+.progress-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--k2), var(--k3));
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+.progress-fill.warn { background: linear-gradient(90deg, var(--a1), var(--a3)); }
+.progress-fill.over { background: var(--danger); }
+
+.divider { height: 1px; background: var(--n2); margin: 20px 0; }
+
+.empty-state {
+  padding: 48px; text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+.empty-ico { font-size: 40px; margin-bottom: 14px; opacity: .6; }
+.empty-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.empty-sub { font-size: 13px; color: var(--n4); max-width: 280px; line-height: 1.6; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th {
+  padding: 10px 14px; text-align: left;
+  font-size: 11px; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; color: var(--n4);
+  border-bottom: 2px solid var(--n2); background: var(--n1);
+}
+.data-table td { padding: 12px 14px; border-bottom: 1px solid var(--n2); }
+.data-table tr:last-child td { border: none; }
+.data-table tr:hover td { background: var(--n1); }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  background: var(--n7); color: white;
+  padding: 12px 20px; border-radius: var(--r3);
+  font-size: 13px; font-weight: 600;
+  box-shadow: var(--sh3);
+  display: flex; align-items: center; gap: 8px;
+  transform: translateY(72px); opacity: 0;
+  transition: all .35s cubic-bezier(.16,1,.3,1);
+  max-width: 320px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.success { background: var(--success); }
+.toast.danger  { background: var(--danger); }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 800;
+  background: rgba(0,0,0,.4);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; opacity: 0; pointer-events: none;
+  transition: opacity var(--tm);
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: white; border-radius: var(--r4);
+  width: 100%; max-width: 560px;
+  box-shadow: var(--sh3);
+  transform: scale(.95) translateY(16px);
+  transition: transform var(--ts);
+}
+.modal-overlay.open .modal { transform: scale(1) translateY(0); }
+.modal-header {
+  padding: 20px 24px; border-bottom: 1px solid var(--n2);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-title { font-size: 16px; font-weight: 700; }
+.modal-close {
+  width: 30px; height: 30px; border-radius: var(--r1);
+  background: none; border: none; font-size: 18px;
+  color: var(--n4); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--tf);
+}
+.modal-close:hover { background: var(--n1); }
+.modal-body { padding: 24px; }
+.modal-footer {
+  padding: 16px 24px; border-top: 1px solid var(--n2);
+  display: flex; justify-content: flex-end; gap: 8px;
+}
+
+/* INPUT */
+.input-field {
+  width: 100%; padding: 10px 13px;
+  border: 1.5px solid var(--n3); border-radius: var(--r2);
+  font-size: 13px; color: var(--n7); background: white;
+  transition: border-color var(--tf), box-shadow var(--tf);
+  outline: none;
+}
+.input-field:focus { border-color: var(--k3); box-shadow: 0 0 0 3px rgba(122,146,72,.1); }
+.input-label { display: block; font-size: 12px; font-weight: 600; color: var(--n6); margin-bottom: 5px; }
+.input-group { margin-bottom: 14px; }
+textarea.input-field { resize: vertical; min-height: 80px; line-height: 1.6; }
+
+/* AI CHAT */
+.chat-container {
+  display: flex; flex-direction: column;
+  height: 480px; background: white;
+  border: 1px solid var(--n2); border-radius: var(--r3); overflow: hidden;
+}
+.chat-header {
+  padding: 12px 16px; border-bottom: 1px solid var(--n2);
+  display: flex; align-items: center; gap: 10px;
+  background: linear-gradient(90deg, rgba(58,74,36,.04), transparent);
+}
+.chat-av {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--k2); display: flex; align-items: center;
+  justify-content: center; font-size: 14px;
+}
+.chat-name { font-size: 13px; font-weight: 700; }
+.chat-status { font-size: 10px; color: var(--k2); font-family: var(--ff-mono); }
+.chat-status-dot {
+  display: inline-block; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--success);
+  margin-right: 4px; animation: pulseStatus 2s infinite;
+}
+@keyframes pulseStatus { 0%,100%{opacity:1}50%{opacity:.4} }
+.chat-messages {
+  flex: 1; overflow-y: auto; padding: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.msg-ai { display: flex; gap: 8px; }
+.msg-user { display: flex; justify-content: flex-end; }
+.bubble-ai {
+  background: var(--n1); border: 1px solid var(--n2);
+  border-radius: 12px 12px 12px 3px;
+  padding: 10px 13px; font-size: 13px; line-height: 1.65;
+  color: var(--n7); max-width: 85%;
+}
+.bubble-user {
+  background: var(--k2); color: white;
+  border-radius: 12px 12px 3px 12px;
+  padding: 10px 13px; font-size: 13px; line-height: 1.65;
+  max-width: 80%;
+}
+.msg-ico { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.chat-input-row {
+  padding: 10px 12px; border-top: 1px solid var(--n2);
+  display: flex; gap: 7px;
+}
+.chat-inp {
+  flex: 1; padding: 9px 12px;
+  background: var(--n1); border: 1.5px solid var(--n2);
+  border-radius: var(--r2); font-size: 13px;
+  outline: none; transition: border-color var(--tf);
+}
+.chat-inp:focus { border-color: var(--k3); }
+.chat-inp::placeholder { color: var(--n4); }
+.chat-send {
+  width: 36px; height: 36px;
+  background: var(--k2); border: none; border-radius: var(--r2);
+  color: white; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--tf);
+}
+.chat-send:hover { background: var(--k3); }
+.chat-send:disabled { opacity: .5; cursor: not-allowed; }
+.typing-indicator {
+  display: flex; gap: 3px; align-items: center;
+  padding: 10px 13px; background: var(--n1);
+  border: 1px solid var(--n2);
+  border-radius: 12px 12px 12px 3px; width: fit-content;
+}
+.typing-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--n4); animation: tdot .8s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: .15s; }
+.typing-dot:nth-child(3) { animation-delay: .30s; }
+@keyframes tdot { 0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)} }
+
+/* QUICK ACTIONS */
+.quick-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.quick-action {
+  padding: 6px 12px; border-radius: 100px;
+  background: var(--n1); border: 1px solid var(--n2);
+  font-size: 11px; font-weight: 600; color: var(--n5);
+  cursor: pointer; transition: all var(--tf);
+}
+.quick-action:hover { border-color: var(--k3); color: var(--k2); background: rgba(85,107,53,.05); }
+
+/* ══════════════════════════════════════
+   PAGE: DASHBOARD
+══════════════════════════════════════ */
+.dash-greeting { margin-bottom: 24px; }
+.dash-greeting-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(85,107,53,.08);
+  border: 1px solid rgba(85,107,53,.15);
+  border-radius: 100px; padding: 4px 12px;
+  font-size: 11px; font-weight: 700;
+  color: var(--k2); margin-bottom: 8px;
+}
+.dash-greeting-h {
+  font-family: var(--ff-display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--n7); margin-bottom: 6px;
+}
+.dash-greeting-h em { font-style: italic; color: var(--k2); }
+.dash-greeting-sub { font-size: 14px; color: var(--n4); }
+
+.story-card {
+  background: linear-gradient(135deg, var(--k1) 0%, var(--k2) 60%, #4A6030 100%);
+  border-radius: var(--r4); padding: 28px 32px;
+  color: white; position: relative; overflow: hidden;
+  margin-bottom: 20px;
+}
+.story-card::before {
+  content: ''; position: absolute; top: -40%; right: -10%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.story-card::after {
+  content: ''; position: absolute; bottom: -20%; left: 20%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(212,224,168,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.story-month-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; opacity: .6;
+  font-family: var(--ff-mono); margin-bottom: 10px;
+}
+.story-headline {
+  font-family: var(--ff-display);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 700; line-height: 1.2;
+  margin-bottom: 8px; position: relative; z-index: 1;
+}
+.story-body {
+  font-size: 14px; opacity: .75;
+  max-width: 600px; line-height: 1.7;
+  position: relative; z-index: 1; margin-bottom: 20px;
+}
+.story-highlights {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.story-hl {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--r2); padding: 8px 14px;
+  backdrop-filter: blur(8px);
+}
+.story-hl-val { font-size: 18px; font-weight: 800; }
+.story-hl-lbl { font-size: 11px; opacity: .7; }
+
+.dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+
+.insight-list { display: flex; flex-direction: column; gap: 8px; }
+.insight-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 14px; background: var(--n1);
+  border: 1px solid var(--n2); border-radius: var(--r2);
+  transition: border-color var(--tf);
+}
+.insight-item:hover { border-color: var(--n3); }
+.insight-ico {
+  width: 28px; height: 28px; border-radius: var(--r1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+}
+.insight-text { font-size: 12px; line-height: 1.5; }
+.insight-text strong { color: var(--n7); font-weight: 700; display: block; margin-bottom: 1px; }
+.insight-text span { color: var(--n4); }
+
+.activity-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--n2);
+}
+.activity-item:last-child { border: none; }
+.activity-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 5px;
+}
+.activity-text { font-size: 12px; line-height: 1.5; color: var(--n6); }
+.activity-text strong { color: var(--n7); font-weight: 600; }
+.activity-time { font-size: 10px; color: var(--n4); font-family: var(--ff-mono); margin-top: 2px; }
+
+/* ══════════════════════════════════════
+   PAGE: APROVAÇÃO
+══════════════════════════════════════ */
+.approval-tabs { display: flex; gap: 4px; margin-bottom: 20px; }
+.approval-tab {
+  padding: 8px 16px; border-radius: var(--r2);
+  font-size: 12px; font-weight: 600; color: var(--n5);
+  background: white; border: 1px solid var(--n2);
+  cursor: pointer; transition: all var(--tf);
+}
+.approval-tab.active { background: var(--k1); color: white; border-color: var(--k1); }
+.approval-tab:hover:not(.active) { border-color: var(--n3); }
+
+.approval-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.approval-card {
+  background: white; border: 1.5px solid var(--n2);
+  border-radius: var(--r3); overflow: hidden;
+  transition: all var(--tm);
+}
+.approval-card:hover { box-shadow: var(--sh2); }
+.approval-card.pending { border-color: var(--a2); }
+.approval-card.approved { border-color: var(--success); }
+.approval-card.revision { border-color: var(--danger); }
+.approval-thumb {
+  aspect-ratio: 1; background: var(--n1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; position: relative; overflow: hidden;
+}
+.approval-thumb-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity var(--tf);
+  backdrop-filter: blur(4px); background: rgba(0,0,0,.3);
+}
+.approval-card:hover .approval-thumb-overlay { opacity: 1; }
+.approval-info { padding: 14px; }
+.approval-type { margin-bottom: 4px; }
+.approval-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.approval-date { font-size: 11px; color: var(--n4); font-family: var(--ff-mono); margin-bottom: 12px; }
+.approval-actions { display: flex; gap: 6px; }
+
+.revision-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.revision-tag {
+  padding: 6px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+  border: 1.5px solid var(--n3); cursor: pointer;
+  color: var(--n5); transition: all var(--tf); background: white;
+}
+.revision-tag.selected { border-color: var(--k2); color: var(--k2); background: rgba(85,107,53,.07); }
+
+/* ══════════════════════════════════════
+   PAGE: AGENDA
+══════════════════════════════════════ */
+.agenda-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+.agenda-rule {
+  padding: 14px 16px; border-radius: var(--r3);
+  border-left: 3px solid; background: white;
+  border-top: 1px solid var(--n2); border-right: 1px solid var(--n2);
+  border-bottom: 1px solid var(--n2);
+}
+.agenda-rule.info { border-left-color: var(--info); }
+.agenda-rule.warning { border-left-color: var(--warning); }
+.agenda-rule.success { border-left-color: var(--success); }
+.ar-title { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+.ar-text { font-size: 11px; color: var(--n4); line-height: 1.5; }
+
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-header { font-size: 11px; font-weight: 700; color: var(--n4); text-align: center; padding: 8px 0; text-transform: uppercase; letter-spacing: .5px; }
+.cal-day {
+  border-radius: var(--r2); display: flex; flex-direction: column;
+  cursor: pointer; transition: background var(--tf);
+  position: relative; padding: 4px;
+  background: white; border: 1px solid var(--n2);
+  min-height: 80px; align-items: flex-start; justify-content: flex-start;
+}
+.cal-day:hover { border-color: var(--k4); }
+.cal-day.today { border-color: var(--k2); background: rgba(85,107,53,.04); }
+.cal-day.other-month { opacity: .4; }
+.cal-day-num { font-size: 12px; font-weight: 600; color: var(--n6); padding: 4px 6px; }
+.cal-day.today .cal-day-num { color: var(--k2); font-weight: 800; }
+.cal-events { padding: 0 4px 4px; display: flex; flex-direction: column; gap: 2px; width: 100%; }
+.cal-event {
+  font-size: 9px; font-weight: 600; padding: 2px 5px;
+  border-radius: 3px; overflow: hidden;
+  white-space: nowrap; text-overflow: ellipsis;
+}
+.cal-ev-captacao { background: rgba(74,143,212,.15); color: #2060A0; }
+.cal-ev-postagem { background: rgba(85,107,53,.12); color: var(--k2); }
+.cal-ev-aprovacao { background: rgba(212,160,67,.15); color: var(--a1); }
+.cal-ev-reuniao { background: rgba(212,92,92,.1); color: #B03030; }
+
+/* ══════════════════════════════════════
+   PAGE: RELATÓRIO
+══════════════════════════════════════ */
+.report-hero {
+  background: linear-gradient(135deg, var(--n7) 0%, #2A3020 100%);
+  border-radius: var(--r4); padding: 36px;
+  color: white; margin-bottom: 20px;
+  position: relative; overflow: hidden;
+}
+.report-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.report-month-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 100px; font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--k5); margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.report-title {
+  font-family: var(--ff-display);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 700; line-height: 1.1;
+  margin-bottom: 10px; position: relative; z-index: 1;
+}
+.report-title em { font-style: italic; color: var(--a3); }
+.report-story-text {
+  font-size: 15px; line-height: 1.8;
+  opacity: .75; max-width: 700px;
+  position: relative; z-index: 1;
+}
+.report-kpis {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-top: 24px; position: relative; z-index: 1;
+}
+.report-kpi {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--r2); padding: 14px;
+  backdrop-filter: blur(8px);
+}
+.report-kpi-val { font-size: 24px; font-weight: 800; margin-bottom: 3px; }
+.report-kpi-lbl { font-size: 10px; opacity: .6; text-transform: uppercase; letter-spacing: 1px; }
+
+.report-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.report-insight-box {
+  padding: 18px; background: white;
+  border: 1px solid var(--n2); border-radius: var(--r3);
+}
+.rib-icon { font-size: 24px; margin-bottom: 10px; }
+.rib-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.rib-text { font-size: 13px; color: var(--n5); line-height: 1.6; }
+.rib-highlight {
+  display: inline-block; margin-top: 8px;
+  padding: 4px 10px; border-radius: 100px;
+  font-size: 12px; font-weight: 700;
+  background: rgba(85,107,53,.1); color: var(--k2);
+}
+
+/* ══════════════════════════════════════
+   PAGE: STORIES EXPORT
+══════════════════════════════════════ */
+.stories-preview {
+  display: flex; gap: 16px; overflow-x: auto;
+  padding-bottom: 12px; margin-bottom: 24px;
+}
+.story-slide {
+  flex-shrink: 0; width: 200px;
+  aspect-ratio: 9/16;
+  border-radius: 18px; overflow: hidden;
+  box-shadow: var(--sh3); cursor: pointer;
+  transition: transform var(--tm); position: relative;
+}
+.story-slide:hover { transform: translateY(-4px); }
+.story-slide-inner {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 20px; text-align: center;
+}
+.ss-cover { background: linear-gradient(160deg, var(--k1), var(--k2), #2A4020); }
+.ss-results { background: linear-gradient(160deg, #1A2A40, #204060); }
+.ss-insights { background: linear-gradient(160deg, #2A1A30, #402040); }
+.ss-destaque { background: linear-gradient(160deg, #2A2010, #403020); }
+.ss-cta { background: linear-gradient(160deg, var(--n8), var(--k1)); }
+.ss-slide-num {
+  position: absolute; top: 10px; right: 10px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: white;
+}
+.ss-logo { font-size: 16px; font-weight: 800; letter-spacing: 2px; color: white; margin-bottom: 16px; }
+.ss-title { font-size: 14px; font-weight: 800; color: white; line-height: 1.2; margin-bottom: 8px; }
+.ss-sub { font-size: 10px; color: rgba(255,255,255,.6); line-height: 1.4; }
+.ss-metric { font-size: 28px; font-weight: 900; color: white; }
+.ss-metric-lbl { font-size: 9px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; }
+.ss-krad { font-size: 11px; color: rgba(255,255,255,.5); margin-top: auto; }
+.ss-krad strong { color: var(--k5); }
+
+/* ══════════════════════════════════════
+   PAGE: DIAGNÓSTICO IA
+══════════════════════════════════════ */
+.diag-input-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.diag-input-card {
+  background: white; border: 1.5px solid var(--n2);
+  border-radius: var(--r3); padding: 18px;
+  transition: border-color var(--tm);
+}
+.diag-input-card:hover { border-color: var(--k4); }
+.dic-ico { font-size: 24px; margin-bottom: 10px; }
+.dic-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.dic-sub { font-size: 11px; color: var(--n4); margin-bottom: 12px; line-height: 1.5; }
+
+.diag-result {
+  background: white; border: 1px solid var(--n2);
+  border-radius: var(--r3); overflow: hidden;
+}
+.diag-result-header {
+  padding: 18px 20px; border-bottom: 1px solid var(--n2);
+  background: linear-gradient(90deg, rgba(85,107,53,.05), transparent);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.diag-score { display: flex; align-items: center; gap: 16px; }
+.diag-score-ring {
+  width: 60px; height: 60px; border-radius: 50%;
+  border: 4px solid var(--n2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; color: var(--n7);
+  position: relative;
+}
+.diag-score-ring.good { border-color: var(--success); color: var(--success); }
+.diag-score-ring.ok { border-color: var(--warning); color: var(--warning); }
+.diag-score-ring.bad { border-color: var(--danger); color: var(--danger); }
+
+.diag-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 20px; }
+.diag-pillar {
+  text-align: center; padding: 14px;
+  background: var(--n1); border-radius: var(--r2);
+  border: 1px solid var(--n2);
+}
+.dp-val { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+.dp-lbl { font-size: 10px; color: var(--n4); text-transform: uppercase; letter-spacing: .8px; }
+.dp-bar { height: 4px; background: var(--n2); border-radius: 2px; overflow: hidden; margin-top: 8px; }
+.dp-bar-fill { height: 100%; border-radius: 2px; }
+
+.diag-items { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 8px; }
+.diag-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px; border-radius: var(--r2);
+  border: 1px solid var(--n2); background: var(--n1);
+}
+.diag-item.good { background: rgba(76,175,111,.05); border-color: rgba(76,175,111,.2); }
+.diag-item.warn { background: rgba(212,160,67,.05); border-color: rgba(212,160,67,.2); }
+.diag-item.bad  { background: rgba(212,92,92,.05); border-color: rgba(212,92,92,.2); }
+.di-ico { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.di-title { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.di-text { font-size: 11px; color: var(--n5); line-height: 1.5; }
+
+/* ══════════════════════════════════════
+   PAGE: ESCOPO
+══════════════════════════════════════ */
+.scope-overview {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin-bottom: 20px;
+}
+.scope-item {
+  background: white; border: 1.5px solid var(--n2);
+  border-radius: var(--r3); padding: 18px;
+  text-align: center; transition: all var(--tm);
+}
+.scope-item.over { border-color: var(--danger); }
+.scope-item.warn { border-color: var(--warning); }
+.scope-item.ok   { border-color: var(--n2); }
+.scope-ico { font-size: 28px; margin-bottom: 10px; }
+.scope-type { font-size: 11px; font-weight: 700; color: var(--n4); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px; }
+.scope-fraction { font-size: 28px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+.scope-fraction.ok   { color: var(--n7); }
+.scope-fraction.warn { color: var(--warning); }
+.scope-fraction.over { color: var(--danger); }
+
+/* ══════════════════════════════════════
+   PAGE: NEGÓCIO
+══════════════════════════════════════ */
+.tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tip-card {
+  background: white; border: 1px solid var(--n2);
+  border-radius: var(--r3); padding: 20px;
+  transition: all var(--tm); cursor: pointer;
+}
+.tip-card:hover { box-shadow: var(--sh2); transform: translateY(-2px); }
+.tip-ico { font-size: 32px; margin-bottom: 14px; }
+.tip-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--n7); }
+.tip-text { font-size: 13px; color: var(--n5); line-height: 1.6; margin-bottom: 12px; }
+.tip-tag { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; }
+
+/* ══════════════════════════════════════
+   MINI CHART (CSS-only)
+══════════════════════════════════════ */
+.mini-chart { display: flex; align-items: flex-end; gap: 3px; height: 40px; }
+.mini-bar {
+  flex: 1; border-radius: 2px 2px 0 0;
+  background: var(--k3); opacity: .7;
+  transition: height .5s ease;
+  min-width: 6px;
+}
+.mini-bar:hover { opacity: 1; }
+
+/* ══════════════════════════════════════
+   LAYOUT UTILITIES
+══════════════════════════════════════ */
+.flex    { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-5 { margin-bottom: 20px; }
+.mb-6 { margin-bottom: 24px; }
+.text-sm { font-size: 13px; }
+.text-xs { font-size: 11px; }
+.text-muted { color: var(--n4); }
+.font-bold { font-weight: 700; }
+.w-full { width: 100%; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .approval-grid { grid-template-columns: 1fr 1fr; }
+  .report-sections { grid-template-columns: 1fr; }
+  .diag-input-grid { grid-template-columns: 1fr; }
+  .diag-pillars { grid-template-columns: 1fr 1fr; }
+  .scope-overview { grid-template-columns: 1fr 1fr; }
+  .report-kpis { grid-template-columns: 1fr 1fr; }
+  .dash-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .agenda-rules { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  #screen-login { grid-template-columns: 1fr; }
+  .login-left { display: none; }
+  .app-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .page { padding: 16px; }
+  .metric-grid { grid-template-columns: 1fr; }
+  .approval-grid { grid-template-columns: 1fr; }
+  .calendar-grid { font-size: 10px; }
+  .stories-preview { gap: 10px; }
+  .story-slide { width: 140px; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+   LOGIN SCREEN
+══════════════════════════════════════ -->
+<div id="screen-login">
+  <div class="login-left">
+    <div class="login-brand">
+      <div class="login-brand-mark">K</div>
+      <div class="login-brand-name">KRAD</div>
+    </div>
+    <div class="login-hero">
+      <div class="login-hero-tag">Portal do Cliente</div>
+      <h1 class="login-hero-h">
+        Seu negócio<br>
+        crescendo com <em>clareza.</em>
+      </h1>
+      <p class="login-hero-p">
+        Acompanhe em tempo real o que está sendo feito, aprove conteúdos, entenda seus resultados e veja cada real investido gerando retorno.
+      </p>
+    </div>
+    <div class="login-stats">
+      <div>
+        <div class="login-stat-val">+140</div>
+        <div class="login-stat-lbl">Clientes ativos</div>
+      </div>
+      <div>
+        <div class="login-stat-val">312%</div>
+        <div class="login-stat-lbl">ROI médio</div>
+      </div>
+      <div>
+        <div class="login-stat-val">4.9★</div>
+        <div class="login-stat-lbl">Satisfação</div>
+      </div>
+    </div>
+  </div>
+  <div class="login-right">
+    <div class="login-form-wrap">
+      <h2 class="login-form-title">Acessar meu portal</h2>
+      <p class="login-form-sub">Entre com os dados enviados pela KRAD para você.</p>
+      <div class="input-group">
+        <label class="input-label">E-mail</label>
+        <input type="email" class="form-input" placeholder="seu@email.com" id="login-email" value="joao@restaurante.com" />
+      </div>
+      <div class="input-group">
+        <label class="input-label">Senha</label>
+        <input type="password" class="form-input" placeholder="••••••••" id="login-pass" value="krad2026" />
+      </div>
+      <button class="btn-login" id="btn-do-login" onclick="doLogin()">Entrar no portal</button>
+      <div class="login-demo">
+        Demonstração? <a onclick="doLogin()">Clique aqui para entrar com dados demo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+   APP SHELL
+══════════════════════════════════════ -->
+<div id="screen-app">
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <div class="sb-mark">K</div>
+        <div>
+          <div class="sb-name">KRAD</div>
+          <small class="sb-sub">Portal do Cliente</small>
+        </div>
+      </div>
+      <div class="client-switcher">
+        <div class="cs-avatar" id="csAvatar">RJ</div>
+        <div>
+          <div class="cs-name" id="csName">Restaurante Dom João</div>
+          <div class="cs-plan" id="csPlan">✦ Plano Growth</div>
+        </div>
+        <span class="cs-arrow">▾</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <button class="nav-item active" data-page="dashboard" onclick="goPage('dashboard',this)">
+        <span class="nav-ico">🏠</span>Início
+      </button>
+      <button class="nav-item" data-page="aprovacao" onclick="goPage('aprovacao',this)">
+        <span class="nav-ico">✅</span>Aprovações
+        <span class="nav-badge" id="approval-badge">3</span>
+      </button>
+      <button class="nav-item" data-page="agenda" onclick="goPage('agenda',this)">
+        <span class="nav-ico">📅</span>Agenda
+      </button>
+      <button class="nav-item" data-page="escopo" onclick="goPage('escopo',this)">
+        <span class="nav-ico">📦</span>Meu Plano
+      </button>
+
+      <div class="nav-section-label">Resultados</div>
+      <button class="nav-item" data-page="relatorio" onclick="goPage('relatorio',this)">
+        <span class="nav-ico">📊</span>Relatório Mensal
+        <span class="nav-badge-new">NOVO</span>
+      </button>
+      <button class="nav-item" data-page="stories" onclick="goPage('stories',this)">
+        <span class="nav-ico">✨</span>Exportar Stories
+      </button>
+
+      <div class="nav-section-label">Inteligência</div>
+      <button class="nav-item" data-page="diagnostico" onclick="goPage('diagnostico',this)">
+        <span class="nav-ico">🔍</span>Diagnóstico IA
+      </button>
+      <button class="nav-item" data-page="ia" onclick="goPage('ia',this)">
+        <span class="nav-ico">🤖</span>Consultora KRAD
+      </button>
+      <button class="nav-item" data-page="negocio" onclick="goPage('negocio',this)">
+        <span class="nav-ico">💡</span>Dicas do Negócio
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="scope-card">
+        <div class="scope-title">USO DO PLANO — JUNHO</div>
+        <div class="scope-bars">
+          <div>
+            <div class="scope-bar-row">
+              <span class="scope-bar-label">Posts</span>
+              <span class="scope-bar-val">9/12</span>
+            </div>
+            <div class="scope-track"><div class="scope-fill" style="width:75%"></div></div>
+          </div>
+          <div>
+            <div class="scope-bar-row">
+              <span class="scope-bar-label">Reels</span>
+              <span class="scope-bar-val">5/8</span>
+            </div>
+            <div class="scope-track"><div class="scope-fill" style="width:62%"></div></div>
+          </div>
+          <div>
+            <div class="scope-bar-row">
+              <span class="scope-bar-label">Stories extras</span>
+              <span class="scope-bar-val">2/0</span>
+            </div>
+            <div class="scope-track"><div class="scope-fill over" style="width:100%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <div>
+          <div class="topbar-title" id="topbar-title">Início</div>
+          <div class="topbar-sub" id="topbar-sub">Junho 2026</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="tb-month">
+          <span>📅</span>
+          <span>Junho 2026</span>
+        </button>
+        <button class="notif-btn" onclick="showToast('🔔 3 aprovações pendentes','')">
+          <span>🔔</span>
+          <div class="notif-dot"></div>
+        </button>
+        <div class="user-btn" title="João Silva">JS</div>
+      </div>
+    </header>
+
+    <div class="page-wrap">
+
+      <!-- ═══════ PAGE: DASHBOARD ═══════ -->
+      <section class="page active" id="pg-dashboard">
+        <div class="dash-greeting">
+          <div class="dash-greeting-tag">🌿 Bom dia, João</div>
+          <h2 class="dash-greeting-h">Aqui está o resumo do seu <em>crescimento.</em></h2>
+          <p class="dash-greeting-sub">Última atualização: hoje às 09:32 · Mês de Junho 2026</p>
+        </div>
+
+        <!-- Story Card -->
+        <div class="story-card">
+          <div class="story-month-tag">Destaque de Maio 2026</div>
+          <h3 class="story-headline">Seu Instagram cresceu 34% em alcance e você bateu recorde de reservas pelo perfil.</h3>
+          <p class="story-body">
+            O conteúdo de bastidores do chef foi responsável por 60% do engajamento. Reels com receitas rápidas tiveram 3x mais compartilhamentos que o normal. A estratégia de conteúdo local está funcionando.
+          </p>
+          <div class="story-highlights">
+            <div class="story-hl">
+              <div class="story-hl-val">+2.4k</div>
+              <div class="story-hl-lbl">Seguidores</div>
+            </div>
+            <div class="story-hl">
+              <div class="story-hl-val">5.8%</div>
+              <div class="story-hl-lbl">Engajamento</div>
+            </div>
+            <div class="story-hl">
+              <div class="story-hl-val">142</div>
+              <div class="story-hl-lbl">Reservas via IG</div>
+            </div>
+            <div class="story-hl">
+              <div class="story-hl-val">R$18.6k</div>
+              <div class="story-hl-lbl">ROI estimado</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="metric-grid">
+          <div class="metric-card mc-olive">
+            <div class="metric-icon mic-olive">👥</div>
+            <div class="metric-label">Seguidores</div>
+            <div class="metric-value">14.2k</div>
+            <div class="metric-delta delta-up">↑ +2.4k (20.3%)</div>
+          </div>
+          <div class="metric-card mc-amber">
+            <div class="metric-icon mic-amber">💬</div>
+            <div class="metric-label">Engajamento</div>
+            <div class="metric-value">5.8%</div>
+            <div class="metric-delta delta-up">↑ +1.2pp</div>
+          </div>
+          <div class="metric-card mc-success">
+            <div class="metric-icon mic-success">👁️</div>
+            <div class="metric-label">Alcance mensal</div>
+            <div class="metric-value">89.4k</div>
+            <div class="metric-delta delta-up">↑ +34%</div>
+          </div>
+          <div class="metric-card mc-info">
+            <div class="metric-icon mic-info">🎯</div>
+            <div class="metric-label">Conversões</div>
+            <div class="metric-value">142</div>
+            <div class="metric-delta delta-up">↑ +28 vs. abril</div>
+          </div>
+        </div>
+
+        <!-- 2-col grid -->
+        <div class="dash-grid">
+          <!-- Insights -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Insights da IA</div>
+                <div class="card-sub">Análise automática</div>
+              </div>
+              <span class="badge badge-olive">🧠 IA</span>
+            </div>
+            <div class="card-body">
+              <div class="insight-list">
+                <div class="insight-item">
+                  <div class="insight-ico mic-success">🚀</div>
+                  <div class="insight-text">
+                    <strong>Reels têm 3x mais alcance</strong>
+                    <span>Vídeos curtos do chef geraram 60% do engajamento total do mês.</span>
+                  </div>
+                </div>
+                <div class="insight-item">
+                  <div class="insight-ico mic-amber">⏰</div>
+                  <div class="insight-text">
+                    <strong>Melhor horário: 18h-20h</strong>
+                    <span>Posts nesse horário têm 42% mais interações que em outros períodos.</span>
+                  </div>
+                </div>
+                <div class="insight-item">
+                  <div class="insight-ico mic-info">📍</div>
+                  <div class="insight-text">
+                    <strong>78% do público é local</strong>
+                    <span>Região metropolitana domina o alcance. Ideal para promoções geográficas.</span>
+                  </div>
+                </div>
+                <div class="insight-item">
+                  <div class="insight-ico mic-olive">📸</div>
+                  <div class="insight-text">
+                    <strong>Fotos de pratos: top 3 posts</strong>
+                    <span>Conteúdo gastronômico de qualidade converte melhor que promoções.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Atividade recente</div>
+                <div class="card-sub">Últimos 7 dias</div>
+              </div>
+              <button class="btn btn-ghost btn-sm">Ver tudo</button>
+            </div>
+            <div class="card-body">
+              <div class="activity-item">
+                <div class="activity-dot" style="background:var(--success)"></div>
+                <div>
+                  <div class="activity-text"><strong>Post aprovado</strong> — "Festival de Inverno" publicado com sucesso</div>
+                  <div class="activity-time">Hoje, 09:14</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot" style="background:var(--a2)"></div>
+                <div>
+                  <div class="activity-text"><strong>3 conteúdos aguardam</strong> — Aprovação pendente desde 06/jun</div>
+                  <div class="activity-time">06 Jun, 15:30</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot" style="background:var(--info)"></div>
+                <div>
+                  <div class="activity-text"><strong>Reel publicado</strong> — "Receita relâmpago: Bruschetta" atingiu 12k views</div>
+                  <div class="activity-time">05 Jun, 18:00</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot" style="background:var(--k2)"></div>
+                <div>
+                  <div class="activity-text"><strong>Relatório de Maio</strong> — Disponível para visualização</div>
+                  <div class="activity-time">01 Jun, 10:00</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot" style="background:var(--danger)"></div>
+                <div>
+                  <div class="activity-text"><strong>Revisão solicitada</strong> — Post "Promoção Terça" precisa de ajustes</div>
+                  <div class="activity-time">31 Mai, 16:45</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini chart row -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Engajamento diário — Junho</div>
+              <div class="card-sub">Interações por dia</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="mini-chart" style="height:60px">
+              <div class="mini-bar" style="height:45%"></div>
+              <div class="mini-bar" style="height:62%"></div>
+              <div class="mini-bar" style="height:38%"></div>
+              <div class="mini-bar" style="height:74%"></div>
+              <div class="mini-bar" style="height:55%"></div>
+              <div class="mini-bar" style="height:91%" title="Dia 6: Recorde!"></div>
+              <div class="mini-bar" style="height:68%"></div>
+              <div class="mini-bar" style="height:52%; background:var(--a3); opacity:.9"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:6px">
+              <span style="font-size:10px;color:var(--n4)">01 Jun</span>
+              <span style="font-size:10px;color:var(--n4)">08 Jun (hoje)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: APROVAÇÃO ═══════ -->
+      <section class="page" id="pg-aprovacao">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 style="font-size:20px;font-weight:700">Aprovações de Conteúdo</h2>
+            <p class="text-xs text-muted" style="margin-top:2px">Revise e aprove os conteúdos antes da publicação</p>
+          </div>
+          <div class="flex gap-2">
+            <span class="badge badge-amber">⏳ 3 pendentes</span>
+            <span class="badge badge-success">✓ 9 aprovados</span>
+          </div>
+        </div>
+
+        <div class="approval-tabs" id="approval-tabs">
+          <button class="approval-tab active" onclick="filterApprovals('all', this)">Todos (12)</button>
+          <button class="approval-tab" onclick="filterApprovals('pending', this)">Pendentes (3)</button>
+          <button class="approval-tab" onclick="filterApprovals('approved', this)">Aprovados (9)</button>
+          <button class="approval-tab" onclick="filterApprovals('revision', this)">Revisão (0)</button>
+        </div>
+
+        <div class="approval-grid" id="approval-grid">
+          <!-- Pending 1 -->
+          <div class="approval-card pending" data-status="pending" id="ac-1">
+            <div class="approval-thumb" style="background:linear-gradient(135deg,#2d4a1e,#4a7a2e)">
+              <span style="font-size:48px">🍕</span>
+              <div class="approval-thumb-overlay">
+                <button class="btn btn-sm" style="background:white;color:var(--n7)">👁️ Visualizar</button>
+              </div>
+            </div>
+            <div class="approval-info">
+              <span class="badge badge-amber approval-type">⏳ Pendente</span>
+              <div class="approval-name">Pizza Artesanal — Sexta de Sabor</div>
+              <div class="approval-date">Prazo: 10 Jun · Post feed</div>
+              <div class="approval-actions">
+                <button class="btn btn-success btn-sm" onclick="approveContent('ac-1')">✓ Aprovar</button>
+                <button class="btn btn-outline btn-sm" onclick="openRevisionModal('ac-1')">✎ Revisão</button>
+              </div>
+            </div>
+          </div>
+          <!-- Pending 2 -->
+          <div class="approval-card pending" data-status="pending" id="ac-2">
+            <div class="approval-thumb" style="background:linear-gradient(135deg,#1a2a40,#2a4a60)">
+              <span style="font-size:48px">🎬</span>
+              <div class="approval-thumb-overlay">
+                <button class="btn btn-sm" style="background:white;color:var(--n7)">👁️ Visualizar</button>
+              </div>
+            </div>
+            <div class="approval-info">
+              <span class="badge badge-amber approval-type">⏳ Pendente</span>
+              <div class="approval-name">Reel — Chef preparando Risoto</div>
+              <div class="approval-date">Prazo: 11 Jun · Reels</div>
+              <div class="approval-actions">
+                <button class="btn btn-success btn-sm" onclick="approveContent('ac-2')">✓ Aprovar</button>
+                <button class="btn btn-outline btn-sm" onclick="openRevisionModal('ac-2')">✎ Revisão</button>
+              </div>
+            </div>
+          </div>
+          <!-- Pending 3 -->
+          <div class="approval-card pending" data-status="pending" id="ac-3">
+            <div class="approval-thumb" style="background:linear-gradient(135deg,#3a2a10,#5a4a20)">
+              <span style="font-size:48px">🥂</span>
+              <div class="approval-thumb-overlay">
+                <button class="btn btn-sm" style="background:white;color:var(--n7)">👁️ Visualizar</button>
+              </div>
+            </div>
+            <div class="approval-info">
+              <span class="badge badge-amber approval-type">⏳ Pendente</span>
+              <div class="approval-name">Happy Hour — Promo Quinta</div>
+              <div class="approval-date">Prazo: 12 Jun · Stories</div>
+              <div class="approval-actions">
+                <button class="btn btn-success btn-sm" onclick="approveContent('ac-3')">✓ Aprovar</button>
+                <button class="btn btn-outline btn-sm" onclick="openRevisionModal('ac-3')">✎ Revisão</button>
+              </div>
+            </div>
+          </div>
+          <!-- Approved 1 -->
+          <div class="approval-card approved" data-status="approved">
+            <div class="approval-thumb" style="background:linear-gradient(135deg,#1e3a1e,#2e5a2e)">
+              <span style="font-size:48px">❄️</span>
+            </div>
+            <div class="approval-info">
+              <span class="badge badge-success approval-type">✓ Aprovado</span>
+              <div class="approval-name">Festival de Inverno</div>
+              <div class="approval-date">Publicado: 08 Jun · Post feed</div>
+            </div>
+          </div>
+          <!-- Approved 2 -->
+          <div class="approval-card approved" data-status="approved">
+            <div class="approval-thumb" style="background:linear-gradient(135deg,#2a1a30,#402040)">
+              <span style="font-size:48px">🍷</span>
+            </div>
+            <div class="approval-info">
+              <span class="badge badge-success approval-type">✓ Aprovado</span>
+              <div class="approval-name">Noite de Vinhos — Especial</div>
+              <div class="approval-date">Publicado: 05 Jun · Carrossel</div>
+            </div>
+          </div>
+          <!-- Approved 3 -->
+          <div class="approval-card approved" data-status="approved">
+            <div class="approval-thumb" style="background:linear-gradient(135deg,#1a2a40,#204060)">
+              <span style="font-size:48px">🎥</span>
+            </div>
+            <div class="approval-info">
+              <span class="badge badge-success approval-type">✓ Aprovado</span>
+              <div class="approval-name">Reel — Bruschetta Relâmpago</div>
+              <div class="approval-date">Publicado: 04 Jun · Reels</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: AGENDA ═══════ -->
+      <section class="page" id="pg-agenda">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 style="font-size:20px;font-weight:700">Agenda de Conteúdo</h2>
+            <p class="text-xs text-muted" style="margin-top:2px">Calendário editorial — Junho 2026</p>
+          </div>
+        </div>
+
+        <div class="agenda-rules">
+          <div class="agenda-rule info">
+            <div class="ar-title">📸 Captação</div>
+            <div class="ar-text">Sessões de foto/vídeo agendadas com antecedência mínima de 48h.</div>
+          </div>
+          <div class="agenda-rule warning">
+            <div class="ar-title">✏️ Aprovação</div>
+            <div class="ar-text">Conteúdos enviados 3 dias úteis antes da publicação para revisão.</div>
+          </div>
+          <div class="agenda-rule success">
+            <div class="ar-title">🚀 Publicação</div>
+            <div class="ar-text">Posts são publicados no horário ideal identificado pela IA (18h-20h).</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Junho 2026</div>
+            <div class="flex gap-2">
+              <span class="badge badge-olive">🟢 Postagem</span>
+              <span class="badge badge-amber">🟡 Aprovação</span>
+              <span class="badge badge-info">🔵 Captação</span>
+              <span class="badge badge-danger">🔴 Reunião</span>
+            </div>
+          </div>
+          <div class="card-body" style="padding:12px">
+            <div class="calendar-grid" id="calendar-grid">
+              <!-- Generated by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: ESCOPO ═══════ -->
+      <section class="page" id="pg-escopo">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 style="font-size:20px;font-weight:700">Meu Plano — Growth</h2>
+            <p class="text-xs text-muted" style="margin-top:2px">Acompanhe o uso de cada entrega do seu plano KRAD</p>
+          </div>
+          <span class="badge badge-olive">✦ Plano Growth</span>
+        </div>
+
+        <div class="scope-overview">
+          <div class="scope-item ok">
+            <div class="scope-ico">📝</div>
+            <div class="scope-type">Posts Feed</div>
+            <div class="scope-fraction ok">9 <span style="font-size:14px;font-weight:400;color:var(--n4)">/ 12</span></div>
+            <div class="progress-track" style="margin-top:8px"><div class="progress-fill" style="width:75%"></div></div>
+            <div style="font-size:10px;color:var(--n4);margin-top:4px">3 restantes</div>
+          </div>
+          <div class="scope-item ok">
+            <div class="scope-ico">🎬</div>
+            <div class="scope-type">Reels</div>
+            <div class="scope-fraction ok">5 <span style="font-size:14px;font-weight:400;color:var(--n4)">/ 8</span></div>
+            <div class="progress-track" style="margin-top:8px"><div class="progress-fill" style="width:62%"></div></div>
+            <div style="font-size:10px;color:var(--n4);margin-top:4px">3 restantes</div>
+          </div>
+          <div class="scope-item over">
+            <div class="scope-ico">📱</div>
+            <div class="scope-type">Stories</div>
+            <div class="scope-fraction over">2 <span style="font-size:14px;font-weight:400;color:var(--n4)">/ 0</span></div>
+            <div class="progress-track" style="margin-top:8px"><div class="progress-fill over" style="width:100%"></div></div>
+            <div style="font-size:10px;color:var(--danger);margin-top:4px">+2 extras (cortesia)</div>
+          </div>
+          <div class="scope-item ok">
+            <div class="scope-ico">📊</div>
+            <div class="scope-type">Relatórios</div>
+            <div class="scope-fraction ok">1 <span style="font-size:14px;font-weight:400;color:var(--n4)">/ 1</span></div>
+            <div class="progress-track" style="margin-top:8px"><div class="progress-fill" style="width:100%"></div></div>
+            <div style="font-size:10px;color:var(--success);margin-top:4px">✓ Entregue</div>
+          </div>
+        </div>
+
+        <!-- Plan details table -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Detalhes do Plano Growth</div>
+            <span class="badge badge-olive">R$ 2.800/mês</span>
+          </div>
+          <div class="card-body" style="padding:0">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Entrega</th>
+                  <th>Quantidade</th>
+                  <th>Usado</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Posts para Feed</strong></td>
+                  <td>12 / mês</td>
+                  <td>9</td>
+                  <td><span class="badge badge-success">No prazo</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Reels</strong></td>
+                  <td>8 / mês</td>
+                  <td>5</td>
+                  <td><span class="badge badge-success">No prazo</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Stories Extras</strong></td>
+                  <td>Não incluso</td>
+                  <td>2</td>
+                  <td><span class="badge badge-danger">Excedente</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Relatório Mensal</strong></td>
+                  <td>1 / mês</td>
+                  <td>1</td>
+                  <td><span class="badge badge-success">Entregue</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Sessão de Captação</strong></td>
+                  <td>2 / mês</td>
+                  <td>1</td>
+                  <td><span class="badge badge-amber">1 pendente</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Reunião de Alinhamento</strong></td>
+                  <td>1 / mês</td>
+                  <td>1</td>
+                  <td><span class="badge badge-success">Realizada</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Consultoria IA</strong></td>
+                  <td>Ilimitado</td>
+                  <td>8 consultas</td>
+                  <td><span class="badge badge-olive">Ativo</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: RELATÓRIO ═══════ -->
+      <section class="page" id="pg-relatorio">
+        <div class="report-hero">
+          <div class="report-month-badge">📊 Relatório · Maio 2026</div>
+          <h2 class="report-title">Mês de <em>crescimento</em> e<br>recordes de engajamento.</h2>
+          <p class="report-story-text">
+            Em maio, sua presença digital deu um salto. O conteúdo de bastidores conectou emocionalmente com seu público, resultando em 34% mais alcance e um crescimento orgânico expressivo de 2.400 novos seguidores. Cada real investido retornou R$6,64 em faturamento atribuído.
+          </p>
+          <div class="report-kpis">
+            <div class="report-kpi">
+              <div class="report-kpi-val">14.2k</div>
+              <div class="report-kpi-lbl">Seguidores totais</div>
+            </div>
+            <div class="report-kpi">
+              <div class="report-kpi-val">5.8%</div>
+              <div class="report-kpi-lbl">Taxa de engajamento</div>
+            </div>
+            <div class="report-kpi">
+              <div class="report-kpi-val">89.4k</div>
+              <div class="report-kpi-lbl">Alcance total</div>
+            </div>
+            <div class="report-kpi">
+              <div class="report-kpi-val">R$18.6k</div>
+              <div class="report-kpi-lbl">ROI estimado</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="report-sections">
+          <div class="report-insight-box">
+            <div class="rib-icon">📈</div>
+            <div class="rib-title">O que mais funcionou</div>
+            <div class="rib-text">
+              Reels de bastidores do chef tiveram o melhor desempenho. O vídeo "Risoto do Zero" alcançou 24k views em 48h. Conteúdo autêntico e não-produzido gerou 3x mais salvamentos.
+            </div>
+            <span class="rib-highlight">🏆 Top: Reels de bastidores</span>
+          </div>
+          <div class="report-insight-box">
+            <div class="rib-icon">🎯</div>
+            <div class="rib-title">Conversão e resultado</div>
+            <div class="rib-text">
+              142 reservas foram atribuídas ao Instagram, um aumento de 24% em relação a abril. O link na bio gerou 890 cliques, com taxa de conversão de 16%.
+            </div>
+            <span class="rib-highlight">💰 142 reservas pelo perfil</span>
+          </div>
+          <div class="report-insight-box">
+            <div class="rib-icon">👥</div>
+            <div class="rib-title">Perfil do público</div>
+            <div class="rib-text">
+              78% do público está na região metropolitana. Faixa etária dominante: 25-44 anos. Horário de pico: 18h-20h (jantar). 64% feminino.
+            </div>
+            <span class="rib-highlight">📍 78% público local</span>
+          </div>
+          <div class="report-insight-box">
+            <div class="rib-icon">💡</div>
+            <div class="rib-title">Recomendações para Junho</div>
+            <div class="rib-text">
+              Investir mais em Reels de receitas rápidas. Testar lives nos domingos. Criar série "Prato da Semana" com votação nos Stories para aumentar interação.
+            </div>
+            <span class="rib-highlight">🚀 Ação: Mais Reels + Lives</span>
+          </div>
+        </div>
+
+        <!-- Top posts -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Top 5 publicações de Maio</div>
+          </div>
+          <div class="card-body" style="padding:0">
+            <table class="data-table">
+              <thead>
+                <tr><th>#</th><th>Conteúdo</th><th>Tipo</th><th>Alcance</th><th>Engajamento</th><th>Salvamentos</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>1</strong></td><td>Risoto do Zero</td><td><span class="badge badge-info">Reel</span></td><td>24.2k</td><td>8.4%</td><td>342</td></tr>
+                <tr><td><strong>2</strong></td><td>Bastidores da Cozinha</td><td><span class="badge badge-info">Reel</span></td><td>18.9k</td><td>7.1%</td><td>218</td></tr>
+                <tr><td><strong>3</strong></td><td>Festival de Inverno</td><td><span class="badge badge-olive">Post</span></td><td>12.4k</td><td>6.2%</td><td>156</td></tr>
+                <tr><td><strong>4</strong></td><td>Noite de Vinhos</td><td><span class="badge badge-olive">Carrossel</span></td><td>9.8k</td><td>5.8%</td><td>124</td></tr>
+                <tr><td><strong>5</strong></td><td>Prato do Dia: Salmão</td><td><span class="badge badge-olive">Post</span></td><td>8.1k</td><td>4.9%</td><td>89</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: STORIES EXPORT ═══════ -->
+      <section class="page" id="pg-stories">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 style="font-size:20px;font-weight:700">Exportar Stories de Resultados</h2>
+            <p class="text-xs text-muted" style="margin-top:2px">Mostre seus resultados no Instagram com stories prontos</p>
+          </div>
+          <button class="btn btn-primary" onclick="showToast('📲 Stories prontos para compartilhar!','success')">
+            ⬇️ Exportar todos
+          </button>
+        </div>
+
+        <div class="stories-preview">
+          <div class="story-slide">
+            <div class="story-slide-inner ss-cover">
+              <div class="ss-slide-num">1</div>
+              <div class="ss-logo">KRAD</div>
+              <div class="ss-title">Relatório de Resultados</div>
+              <div class="ss-sub">Maio 2026<br>Restaurante Dom João</div>
+              <div class="ss-krad" style="margin-top:auto"><strong>krad.com.br</strong></div>
+            </div>
+          </div>
+          <div class="story-slide">
+            <div class="story-slide-inner ss-results">
+              <div class="ss-slide-num">2</div>
+              <div class="ss-title" style="font-size:11px;margin-bottom:20px">Nossos números</div>
+              <div class="ss-metric">14.2k</div>
+              <div class="ss-metric-lbl">Seguidores</div>
+              <div style="margin:12px 0;height:1px;background:rgba(255,255,255,.15);width:60%"></div>
+              <div class="ss-metric">+34%</div>
+              <div class="ss-metric-lbl">Alcance</div>
+              <div class="ss-krad"><strong>KRAD</strong> Growth</div>
+            </div>
+          </div>
+          <div class="story-slide">
+            <div class="story-slide-inner ss-insights">
+              <div class="ss-slide-num">3</div>
+              <div class="ss-title">O que funcionou</div>
+              <div class="ss-sub" style="text-align:left;line-height:1.8">
+                🎬 Reels +3x alcance<br>
+                📸 Bastidores: 60% engajamento<br>
+                ⏰ Horário ideal: 18h-20h<br>
+                📍 78% público local
+              </div>
+              <div class="ss-krad"><strong>KRAD</strong> Insights</div>
+            </div>
+          </div>
+          <div class="story-slide">
+            <div class="story-slide-inner ss-destaque">
+              <div class="ss-slide-num">4</div>
+              <div class="ss-title" style="font-size:11px;margin-bottom:14px">Destaque do mês</div>
+              <div style="font-size:36px;margin-bottom:10px">🍽️</div>
+              <div class="ss-title">142 reservas</div>
+              <div class="ss-sub">pelo Instagram no mês de Maio</div>
+              <div class="ss-krad"><strong>KRAD</strong> Results</div>
+            </div>
+          </div>
+          <div class="story-slide">
+            <div class="story-slide-inner ss-cta">
+              <div class="ss-slide-num">5</div>
+              <div class="ss-logo">KRAD</div>
+              <div class="ss-title">Quer crescer assim também?</div>
+              <div class="ss-sub" style="margin-bottom:16px">Fale com a KRAD e descubra o potencial do seu negócio.</div>
+              <div style="padding:8px 16px;background:var(--k2);border-radius:8px;font-size:11px;font-weight:700;color:white">
+                Saiba mais →
+              </div>
+              <div class="ss-krad"><strong>krad.com.br</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="font-size:24px">💡</span>
+              <div>
+                <div style="font-size:13px;font-weight:700">Dica de compartilhamento</div>
+                <div style="font-size:12px;color:var(--n4);line-height:1.5">
+                  Publique cada story com 2-3 horas de intervalo para maximizar a retenção. Use a enquete do Instagram no story de destaque para gerar interação. Marque @krad.oficial para repostagem.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: DIAGNÓSTICO IA ═══════ -->
+      <section class="page" id="pg-diagnostico">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 style="font-size:20px;font-weight:700">Diagnóstico Inteligente</h2>
+            <p class="text-xs text-muted" style="margin-top:2px">Análise automática do desempenho digital da sua marca</p>
+          </div>
+          <button class="btn btn-primary" onclick="runDiagnostic()">🔍 Atualizar diagnóstico</button>
+        </div>
+
+        <div class="diag-input-grid">
+          <div class="diag-input-card">
+            <div class="dic-ico">📱</div>
+            <div class="dic-title">Presença Digital</div>
+            <div class="dic-sub">Análise de perfil, bio, highlights, link e consistência visual.</div>
+            <span class="badge badge-success">Score: 85/100</span>
+          </div>
+          <div class="diag-input-card">
+            <div class="dic-ico">📊</div>
+            <div class="dic-title">Performance de Conteúdo</div>
+            <div class="dic-sub">Avaliação de frequência, formatos, horários e engajamento.</div>
+            <span class="badge badge-success">Score: 78/100</span>
+          </div>
+          <div class="diag-input-card">
+            <div class="dic-ico">🎯</div>
+            <div class="dic-title">Conversão e Resultado</div>
+            <div class="dic-sub">Mensuração de CTA, cliques, reservas e retorno sobre investimento.</div>
+            <span class="badge badge-amber">Score: 64/100</span>
+          </div>
+        </div>
+
+        <div class="diag-result" id="diag-result">
+          <div class="diag-result-header">
+            <div class="diag-score">
+              <div class="diag-score-ring good" id="diag-ring">76</div>
+              <div>
+                <div style="font-size:16px;font-weight:800">Score Geral: Bom</div>
+                <div style="font-size:12px;color:var(--n4)">Sua marca está acima da média do setor gastronômico</div>
+              </div>
+            </div>
+            <span class="badge badge-success">↑ +8 pts vs. abril</span>
+          </div>
+
+          <div class="diag-pillars">
+            <div class="diag-pillar">
+              <div class="dp-val" style="color:var(--success)">85</div>
+              <div class="dp-lbl">Presença</div>
+              <div class="dp-bar"><div class="dp-bar-fill" style="width:85%;background:var(--success)"></div></div>
+            </div>
+            <div class="diag-pillar">
+              <div class="dp-val" style="color:var(--success)">78</div>
+              <div class="dp-lbl">Conteúdo</div>
+              <div class="dp-bar"><div class="dp-bar-fill" style="width:78%;background:var(--success)"></div></div>
+            </div>
+            <div class="diag-pillar">
+              <div class="dp-val" style="color:var(--warning)">64</div>
+              <div class="dp-lbl">Conversão</div>
+              <div class="dp-bar"><div class="dp-bar-fill" style="width:64%;background:var(--warning)"></div></div>
+            </div>
+            <div class="diag-pillar">
+              <div class="dp-val" style="color:var(--success)">80</div>
+              <div class="dp-lbl">Autoridade</div>
+              <div class="dp-bar"><div class="dp-bar-fill" style="width:80%;background:var(--success)"></div></div>
+            </div>
+          </div>
+
+          <div class="diag-items">
+            <div class="diag-item good">
+              <span class="di-ico">✅</span>
+              <div>
+                <div class="di-title">Frequência de postagem excelente</div>
+                <div class="di-text">Você manteve 12 posts/mês consistentemente nos últimos 3 meses. Isso está acima dos 8 recomendados.</div>
+              </div>
+            </div>
+            <div class="diag-item good">
+              <span class="di-ico">✅</span>
+              <div>
+                <div class="di-title">Engajamento acima da média</div>
+                <div class="di-text">Taxa de 5.8% vs. média do setor de 3.2%. Seu conteúdo autêntico ressoa com o público.</div>
+              </div>
+            </div>
+            <div class="diag-item warn">
+              <span class="di-ico">⚠️</span>
+              <div>
+                <div class="di-title">CTA pode ser otimizado</div>
+                <div class="di-text">O link na bio tem boa conversão (16%), mas os CTAs nos posts podem ser mais diretos. Teste "Reserve agora" vs. "Saiba mais".</div>
+              </div>
+            </div>
+            <div class="diag-item warn">
+              <span class="di-ico">⚠️</span>
+              <div>
+                <div class="di-title">Stories subutilizados</div>
+                <div class="di-text">Apenas 2 stories extras foram criados. Stories têm alto potencial de conversão para restaurantes — considere ampliar.</div>
+              </div>
+            </div>
+            <div class="diag-item bad">
+              <span class="di-ico">❌</span>
+              <div>
+                <div class="di-title">Falta remarketing com tráfego pago</div>
+                <div class="di-text">Não há campanhas de retargeting ativas. Usuários que visitaram o perfil poderiam ser impactados com anúncios de conversão.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: IA CHAT ═══════ -->
+      <section class="page" id="pg-ia">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 style="font-size:20px;font-weight:700">Consultora KRAD IA</h2>
+            <p class="text-xs text-muted" style="margin-top:2px">Tire dúvidas sobre marketing, estratégia e resultados</p>
+          </div>
+        </div>
+
+        <div class="g2">
+          <div class="chat-container" id="chat-container">
+            <div class="chat-header">
+              <div class="chat-av">🤖</div>
+              <div>
+                <div class="chat-name">KRAD IA</div>
+                <div class="chat-status">
+                  <span class="chat-status-dot"></span>Online · Pronta para ajudar
+                </div>
+              </div>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+              <div class="msg-ai">
+                <span class="msg-ico">🤖</span>
+                <div class="bubble-ai">
+                  Olá, João! 👋 Sou a consultora IA da KRAD. Posso ajudar com estratégias de conteúdo, análise de métricas, dicas para o seu restaurante e muito mais. O que deseja saber?
+                </div>
+              </div>
+            </div>
+            <div class="quick-actions" style="padding:0 12px 6px" id="quick-actions">
+              <button class="quick-action" onclick="sendQuickChat('Como posso aumentar meu engajamento?')">💬 Aumentar engajamento</button>
+              <button class="quick-action" onclick="sendQuickChat('Qual o melhor horário para postar?')">⏰ Melhor horário</button>
+              <button class="quick-action" onclick="sendQuickChat('Dicas para Reels de restaurante')">🎬 Dicas de Reels</button>
+              <button class="quick-action" onclick="sendQuickChat('Como converter seguidores em clientes?')">🎯 Converter seguidores</button>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" class="chat-inp" id="chat-input" placeholder="Digite sua pergunta..." onkeydown="if(event.key==='Enter')sendChat()" />
+              <button class="chat-send" id="chat-send-btn" onclick="sendChat()">➤</button>
+            </div>
+          </div>
+
+          <!-- Tips sidebar -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Perguntas populares</div>
+            </div>
+            <div class="card-body">
+              <div class="insight-list">
+                <div class="insight-item" style="cursor:pointer" onclick="sendQuickChat('Como usar hashtags de forma eficiente?')">
+                  <div class="insight-ico mic-olive">#️⃣</div>
+                  <div class="insight-text">
+                    <strong>Hashtags eficientes</strong>
+                    <span>Como escolher e usar as melhores hashtags</span>
+                  </div>
+                </div>
+                <div class="insight-item" style="cursor:pointer" onclick="sendQuickChat('Qual formato de conteúdo gera mais resultado para restaurantes?')">
+                  <div class="insight-ico mic-amber">📊</div>
+                  <div class="insight-text">
+                    <strong>Melhor formato de conteúdo</strong>
+                    <span>Reels vs Posts vs Carrossel para restaurantes</span>
+                  </div>
+                </div>
+                <div class="insight-item" style="cursor:pointer" onclick="sendQuickChat('Como fazer promoções sem parecer desesperado?')">
+                  <div class="insight-ico mic-info">🎁</div>
+                  <div class="insight-text">
+                    <strong>Promoções inteligentes</strong>
+                    <span>Estratégias que funcionam sem desvalorizar</span>
+                  </div>
+                </div>
+                <div class="insight-item" style="cursor:pointer" onclick="sendQuickChat('Como responder comentários negativos?')">
+                  <div class="insight-ico mic-danger">🛡️</div>
+                  <div class="insight-text">
+                    <strong>Gestão de crises</strong>
+                    <span>Comentários negativos e avaliações ruins</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ PAGE: NEGÓCIO ═══════ -->
+      <section class="page" id="pg-negocio">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 style="font-size:20px;font-weight:700">Dicas para seu Negócio</h2>
+            <p class="text-xs text-muted" style="margin-top:2px">Recomendações personalizadas para o Restaurante Dom João</p>
+          </div>
+          <span class="badge badge-olive">🧠 Personalizado por IA</span>
+        </div>
+
+        <div class="tips-grid">
+          <div class="tip-card">
+            <div class="tip-ico">🎬</div>
+            <div class="tip-title">Crie uma série semanal de Reels</div>
+            <div class="tip-text">
+              Seus Reels têm 3x mais alcance que posts estáticos. Crie uma série "Receita em 60s" toda terça-feira para criar hábito no público e aumentar o alcance consistentemente.
+            </div>
+            <span class="tip-tag" style="background:rgba(85,107,53,.1);color:var(--k2)">📈 Alto impacto</span>
+          </div>
+          <div class="tip-card">
+            <div class="tip-ico">📍</div>
+            <div class="tip-title">Explore o público local</div>
+            <div class="tip-text">
+              78% do seu público está na região. Use geotags, hashtags locais e parcerias com influenciadores da cidade para dominar o mercado gastronômico local.
+            </div>
+            <span class="tip-tag" style="background:rgba(74,143,212,.1);color:#2060A0">📍 Estratégia local</span>
+          </div>
+          <div class="tip-card">
+            <div class="tip-ico">🗳️</div>
+            <div class="tip-title">Use enquetes nos Stories</div>
+            <div class="tip-text">
+              Crie uma votação "Prato da Semana" nos Stories. Isso aumenta interação, gera dados sobre preferências e cria senso de participação no público.
+            </div>
+            <span class="tip-tag" style="background:rgba(212,160,67,.1);color:var(--a1)">💬 Engajamento</span>
+          </div>
+          <div class="tip-card">
+            <div class="tip-ico">📸</div>
+            <div class="tip-title">Invista em foto de pratos premium</div>
+            <div class="tip-text">
+              Fotos de alta qualidade dos pratos estão no top 3 dos seus posts mais engajados. Considere sessões mensais com fotógrafo gastronômico profissional.
+            </div>
+            <span class="tip-tag" style="background:rgba(85,107,53,.1);color:var(--k2)">📸 Visual</span>
+          </div>
+          <div class="tip-card">
+            <div class="tip-ico">🔄</div>
+            <div class="tip-title">Ative remarketing no Instagram</div>
+            <div class="tip-text">
+              Configure anúncios de retargeting para quem visitou seu perfil nos últimos 30 dias. Com R$500/mês, é possível impactar até 15k pessoas que já conhecem sua marca.
+            </div>
+            <span class="tip-tag" style="background:rgba(212,92,92,.1);color:#B03030">🚨 Urgente</span>
+          </div>
+          <div class="tip-card">
+            <div class="tip-ico">🤝</div>
+            <div class="tip-title">Parcerias com influenciadores</div>
+            <div class="tip-text">
+              Micro-influenciadores (5k-20k seguidores) da sua cidade geram 4x mais conversão que grandes influenciadores. Convide 2-3 por mês para jantar e criar conteúdo.
+            </div>
+            <span class="tip-tag" style="background:rgba(74,143,212,.1);color:#2060A0">🤝 Parcerias</span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /page-wrap -->
+  </main>
+</div><!-- /app-layout -->
+</div><!-- /screen-app -->
+
+<!-- REVISION MODAL -->
+<div class="modal-overlay" id="modal-revision">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Solicitar Revisão</div>
+      <button class="modal-close" onclick="closeModal('modal-revision')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px;color:var(--n5);margin-bottom:14px">
+        Selecione os motivos da revisão e adicione um comentário:
+      </p>
+      <div class="revision-tags" id="revision-tags">
+        <button class="revision-tag" onclick="toggleRevisionTag(this)">Texto incorreto</button>
+        <button class="revision-tag" onclick="toggleRevisionTag(this)">Ajustar cores</button>
+        <button class="revision-tag" onclick="toggleRevisionTag(this)">Trocar imagem</button>
+        <button class="revision-tag" onclick="toggleRevisionTag(this)">Mudar legenda</button>
+        <button class="revision-tag" onclick="toggleRevisionTag(this)">Layout diferente</button>
+        <button class="revision-tag" onclick="toggleRevisionTag(this)">Outro</button>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Comentário (opcional)</label>
+        <textarea class="input-field" id="revision-comment" placeholder="Descreva o que precisa ser ajustado..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-revision')">Cancelar</button>
+      <button class="btn btn-primary" onclick="submitRevision()">Enviar revisão</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════
+   JAVASCRIPT — KRAD PORTAL
+══════════════════════════════════════ */
+
+// ── STATE ──
+let currentRevisionCardId = null;
+let pendingCount = 3;
+
+// ── LOGIN ──
+function doLogin() {
+  const loginScreen = document.getElementById('screen-login');
+  const appScreen = document.getElementById('screen-app');
+  
+  loginScreen.style.opacity = '0';
+  loginScreen.style.transform = 'scale(0.98)';
+  loginScreen.style.transition = 'all .4s ease';
+  
+  setTimeout(() => {
+    loginScreen.style.display = 'none';
+    appScreen.style.display = 'block';
+    appScreen.style.opacity = '0';
+    appScreen.style.transition = 'opacity .4s ease';
+    requestAnimationFrame(() => { appScreen.style.opacity = '1'; });
+    showToast('🌿 Bem-vindo ao KRAD, João!', 'success');
+    buildCalendar();
+  }, 350);
+}
+
+// ── NAVIGATION ──
+function goPage(pageId, btn) {
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  
+  // Update pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('pg-' + pageId);
+  if (page) page.classList.add('active');
+  
+  // Update topbar
+  const titles = {
+    dashboard: 'Início',
+    aprovacao: 'Aprovações',
+    agenda: 'Agenda',
+    escopo: 'Meu Plano',
+    relatorio: 'Relatório Mensal',
+    stories: 'Exportar Stories',
+    diagnostico: 'Diagnóstico IA',
+    ia: 'Consultora KRAD',
+    negocio: 'Dicas do Negócio'
+  };
+  document.getElementById('topbar-title').textContent = titles[pageId] || pageId;
+  
+  // Build calendar if navigating to agenda
+  if (pageId === 'agenda') buildCalendar();
+}
+
+// ── TOAST ──
+function showToast(msg, type) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'toast' + (type ? ' ' + type : '');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ── MODAL ──
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+// ── APPROVAL SYSTEM ──
+function filterApprovals(status, btn) {
+  document.querySelectorAll('.approval-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  
+  document.querySelectorAll('.approval-card').forEach(card => {
+    if (status === 'all') {
+      card.style.display = '';
+    } else {
+      card.style.display = card.dataset.status === status ? '' : 'none';
+    }
+  });
+}
+
+function approveContent(cardId) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  card.classList.remove('pending');
+  card.classList.add('approved');
+  card.dataset.status = 'approved';
+  
+  const badge = card.querySelector('.approval-type');
+  if (badge) {
+    badge.className = 'badge badge-success approval-type';
+    badge.textContent = '✓ Aprovado';
+  }
+  
+  const actions = card.querySelector('.approval-actions');
+  if (actions) actions.remove();
+  
+  pendingCount--;
+  updatePendingBadge();
+  showToast('✅ Conteúdo aprovado com sucesso!', 'success');
+}
+
+function openRevisionModal(cardId) {
+  currentRevisionCardId = cardId;
+  // Reset tags
+  document.querySelectorAll('.revision-tag').forEach(t => t.classList.remove('selected'));
+  document.getElementById('revision-comment').value = '';
+  openModal('modal-revision');
+}
+
+function toggleRevisionTag(el) {
+  el.classList.toggle('selected');
+}
+
+function submitRevision() {
+  const card = document.getElementById(currentRevisionCardId);
+  if (!card) return;
+  
+  card.classList.remove('pending');
+  card.classList.add('revision');
+  card.dataset.status = 'revision';
+  
+  const badge = card.querySelector('.approval-type');
+  if (badge) {
+    badge.className = 'badge badge-danger approval-type';
+    badge.textContent = '✎ Em revisão';
+  }
+  
+  const actions = card.querySelector('.approval-actions');
+  if (actions) actions.remove();
+  
+  pendingCount--;
+  updatePendingBadge();
+  closeModal('modal-revision');
+  showToast('📝 Revisão enviada com sucesso!', '');
+}
+
+function updatePendingBadge() {
+  const badge = document.getElementById('approval-badge');
+  if (badge) {
+    badge.textContent = pendingCount;
+    if (pendingCount <= 0) badge.style.display = 'none';
+  }
+}
+
+// ── CALENDAR ──
+function buildCalendar() {
+  const grid = document.getElementById('calendar-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  
+  const days = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM'];
+  days.forEach(d => {
+    const h = document.createElement('div');
+    h.className = 'cal-header';
+    h.textContent = d;
+    grid.appendChild(h);
+  });
+  
+  // June 2026: starts on Monday (1st)
+  const today = 8; // June 8
+  const daysInMonth = 30;
+  
+  // Calendar events
+  const events = {
+    1: [{ text: 'Reunião alinhamento', cls: 'cal-ev-reuniao' }],
+    2: [{ text: 'Captação fotos', cls: 'cal-ev-captacao' }],
+    3: [{ text: 'Post: Prato especial', cls: 'cal-ev-postagem' }],
+    5: [{ text: 'Reel: Bruschetta', cls: 'cal-ev-postagem' }],
+    6: [{ text: 'Aprovação batch', cls: 'cal-ev-aprovacao' }],
+    8: [{ text: 'Post: Inverno', cls: 'cal-ev-postagem' }],
+    10: [{ text: 'Post: Pizza', cls: 'cal-ev-aprovacao' }],
+    11: [{ text: 'Reel: Risoto', cls: 'cal-ev-aprovacao' }],
+    12: [{ text: 'Stories: Happy Hour', cls: 'cal-ev-aprovacao' }, { text: 'Post: Sexta', cls: 'cal-ev-postagem' }],
+    15: [{ text: 'Reunião mensal', cls: 'cal-ev-reuniao' }],
+    16: [{ text: 'Captação vídeo', cls: 'cal-ev-captacao' }],
+    17: [{ text: 'Post: Cardápio', cls: 'cal-ev-postagem' }],
+    19: [{ text: 'Reel: Chef', cls: 'cal-ev-postagem' }],
+    22: [{ text: 'Post: Sobremesa', cls: 'cal-ev-postagem' }],
+    24: [{ text: 'Reel: Drinks', cls: 'cal-ev-postagem' }],
+    25: [{ text: 'Aprovação batch 2', cls: 'cal-ev-aprovacao' }],
+    26: [{ text: 'Post: Weekend', cls: 'cal-ev-postagem' }],
+    29: [{ text: 'Captação mensal', cls: 'cal-ev-captacao' }],
+    30: [{ text: 'Post: Fechamento', cls: 'cal-ev-postagem' }],
+  };
+  
+  // Previous month days (May ends on Sunday, so no overflow since June 1 = Monday)
+  // June 1 is Monday, so no previous month days needed
+  
+  for (let d = 1; d <= daysInMonth; d++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-day' + (d === today ? ' today' : '');
+    
+    const num = document.createElement('div');
+    num.className = 'cal-day-num';
+    num.textContent = d;
+    cell.appendChild(num);
+    
+    if (events[d]) {
+      const evWrap = document.createElement('div');
+      evWrap.className = 'cal-events';
+      events[d].forEach(ev => {
+        const e = document.createElement('div');
+        e.className = 'cal-event ' + ev.cls;
+        e.textContent = ev.text;
+        evWrap.appendChild(e);
+      });
+      cell.appendChild(evWrap);
+    }
+    
+    grid.appendChild(cell);
+  }
+  
+  // Fill remaining cells for last row (June has 30 days, 30 cells, 30/7 = 4 weeks + 2 days)
+  // 30 days starting Monday: need to fill up to complete the grid row
+  // 30 mod 7 = 2, so we need 5 more empty cells
+  const remainder = (7 - (daysInMonth % 7)) % 7;
+  for (let i = 1; i <= remainder; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-day other-month';
+    const num = document.createElement('div');
+    num.className = 'cal-day-num';
+    num.textContent = i;
+    cell.appendChild(num);
+    grid.appendChild(cell);
+  }
+}
+
+// ── DIAGNOSTIC ──
+function runDiagnostic() {
+  showToast('🔍 Atualizando diagnóstico...', '');
+  
+  const ring = document.getElementById('diag-ring');
+  if (ring) {
+    ring.textContent = '...';
+    setTimeout(() => {
+      ring.textContent = '78';
+      showToast('✅ Diagnóstico atualizado!', 'success');
+    }, 2000);
+  }
+}
+
+// ── AI CHAT ──
+const aiResponses = {
+  'Como posso aumentar meu engajamento?': `Ótima pergunta, João! 📈 Com base nos seus dados, aqui vão 4 estratégias:\n\n1. **Mais Reels de bastidores** — seus vídeos do chef têm 3x mais alcance\n2. **Poste entre 18h-20h** — é quando 42% mais interações acontecem\n3. **Use enquetes nos Stories** — aumenta interação em até 60%\n4. **Responda comentários em até 1h** — o algoritmo prioriza perfis responsivos\n\nSeu engajamento atual (5.8%) já está ótimo, mas podemos chegar a 7%+ com essas ações!`,
+  
+  'Qual o melhor horário para postar?': `Baseado na análise do seu público, João: ⏰\n\n🏆 **Melhor horário**: 18h-20h (dias úteis)\n📊 Posts nesse horário têm 42% mais interações\n\n📅 Por dia da semana:\n• **Terça e Quinta**: Melhor para Reels (alcance máximo)\n• **Sexta**: Ideal para promoções de fim de semana\n• **Sábado 12h**: Bom para conteúdo de almoço\n\n⚠️ Evite postar entre 8h-11h — seu público está menos ativo nesse período.`,
+  
+  'Dicas para Reels de restaurante': `🎬 Seus Reels são sua arma secreta! Aqui vão dicas específicas:\n\n1. **"Receita em 60s"** — Formato campeão de visualizações\n2. **Bastidores crus** — Sem edição pesada, autenticidade vende\n3. **Before/After** — Ingredientes → Prato pronto (satisfying content)\n4. **POV do cliente** — "Quando você chega no Dom João e..."\n\n🎵 Use áudios em alta (trending sounds)\n📏 Duração ideal: 15-30 segundos\n🔤 Sempre com legenda (85% assiste sem som)\n\nSeu Reel "Risoto do Zero" teve 24k views. Faça mais assim!`,
+  
+  'Como converter seguidores em clientes?': `🎯 Conversão é o jogo! Com 14.2k seguidores, você tem potencial enorme:\n\n1. **Link na bio otimizado** — Use Linktree com "Reserve agora" em destaque\n2. **Stories com swipe-up** — Promo exclusiva "só para seguidores"\n3. **Código de desconto único** — "DOM10" para rastrear conversões do IG\n4. **Destaque "Cardápio"** — Sempre atualizado com preços e fotos\n\n💡 Atualmente: 142 reservas/mês pelo Instagram\n🎯 Meta realista: 200 reservas/mês com essas otimizações\n\nVou sugerir à equipe KRAD criar um funil específico para você!`,
+  
+  'Como usar hashtags de forma eficiente?': `#️⃣ Estratégia de hashtags para o Dom João:\n\n**Fórmula 10-5-5:**\n• 10 hashtags de nicho (#gastronomiaartesanal, #cheflife)\n• 5 hashtags locais (#restaurante[suacidade], #onde comer)\n• 5 hashtags amplas (#foodporn, #instafood)\n\n⚠️ Evite:\n• Hashtags com +10M de posts (muita competição)\n• Hashtags repetidas em todo post\n• Mais de 20 hashtags por post\n\n✅ Melhores para você:\n#restaurantedomjoao #pizzaartesanal #chefbrasil #comidacaseira #gastronomiabr`,
+  
+  'Qual formato de conteúdo gera mais resultado para restaurantes?': `📊 Ranking por performance no seu perfil:\n\n🥇 **Reels (45% do alcance total)**\n→ 3x mais alcance que posts estáticos\n→ Melhor para: bastidores, receitas, antes/depois\n\n🥈 **Carrossel (28% do engajamento)**\n→ Maior taxa de salvamento\n→ Melhor para: cardápio, dicas, história do restaurante\n\n🥉 **Post único (17% do alcance)**\n→ Bom para: fotos premium de pratos\n→ Ideal com CTA direto\n\n🏅 **Stories (10% das conversões)**\n→ Melhor para: promos relâmpago, enquetes\n→ Subutilizado no seu perfil atual!`,
+  
+  'Como fazer promoções sem parecer desesperado?': `🎁 Promoções inteligentes para restaurantes:\n\n✅ **O que funciona:**\n• "Menu degustação exclusivo para seguidores" (exclusividade)\n• "Happy Hour estendido — só quinta" (escassez)\n• "Traga um amigo, ganhe a sobremesa" (indicação)\n• "Avalie no Google, ganhe um café" (reputação)\n\n❌ **Evite:**\n• "50% OFF em tudo" (desvaloriza)\n• Promoções todo dia (fadiga)\n• Comparar com concorrentes\n\n💡 Regra de ouro: Promova a EXPERIÊNCIA, não o desconto.\n"Noite especial de vinhos com o chef" > "Pizza com 30% off"`,
+  
+  'Como responder comentários negativos?': `🛡️ Protocolo para comentários negativos:\n\n**1. Responda rápido** (até 2h)\n**2. Agradeça o feedback** — sempre\n**3. Leve para o privado** — "Vou te chamar no DM para resolver"\n**4. Resolva e peça atualização** — "Gostaríamos de te convidar novamente"\n\n📝 Template:\n"Oi [nome], obrigado pelo feedback. Sentimos muito pela experiência. Vou te enviar uma mensagem para entendermos o que aconteceu e garantir que não se repita. 🙏"\n\n⚠️ NUNCA:\n• Delete comentários (fica pior)\n• Seja defensivo\n• Ignore\n\nComentários negativos bem resolvidos aumentam a credibilidade!`
+};
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  
+  input.value = '';
+  addChatMessage(msg, 'user');
+  
+  // Show typing
+  const messages = document.getElementById('chat-messages');
+  const typing = document.createElement('div');
+  typing.className = 'msg-ai';
+  typing.id = 'typing-ind';
+  typing.innerHTML = `
+    <span class="msg-ico">🤖</span>
+    <div class="typing-indicator">
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    </div>
+  `;
+  messages.appendChild(typing);
+  messages.scrollTop = messages.scrollHeight;
+  
+  // Disable input
+  document.getElementById('chat-send-btn').disabled = true;
+  
+  setTimeout(() => {
+    // Remove typing
+    const t = document.getElementById('typing-ind');
+    if (t) t.remove();
+    
+    // Find matching response or give generic
+    let response = aiResponses[msg];
+    if (!response) {
+      // Try partial match
+      const keys = Object.keys(aiResponses);
+      const match = keys.find(k => msg.toLowerCase().includes(k.toLowerCase().split(' ').slice(0, 3).join(' ')));
+      response = match ? aiResponses[match] : getGenericResponse(msg);
+    }
+    
+    addChatMessage(response, 'ai');
+    document.getElementById('chat-send-btn').disabled = false;
+  }, 1200 + Math.random() * 800);
+}
+
+function sendQuickChat(msg) {
+  document.getElementById('chat-input').value = msg;
+  
+  // Navigate to IA page if not there
+  const iaPage = document.getElementById('pg-ia');
+  if (!iaPage.classList.contains('active')) {
+    const iaBtn = document.querySelector('[data-page="ia"]');
+    goPage('ia', iaBtn);
+  }
+  
+  sendChat();
+}
+
+function addChatMessage(text, type) {
+  const messages = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  
+  if (type === 'user') {
+    div.className = 'msg-user';
+    div.innerHTML = `<div class="bubble-user">${escapeHtml(text)}</div>`;
+  } else {
+    div.className = 'msg-ai';
+    // Format markdown-like text
+    const formatted = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>');
+    div.innerHTML = `<span class="msg-ico">🤖</span><div class="bubble-ai">${formatted}</div>`;
+  }
+  
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function getGenericResponse(msg) {
+  const responses = [
+    `Ótima pergunta! 🤔 Baseado nos dados do Restaurante Dom João, posso dizer que o foco deve estar em conteúdo autêntico e na frequência de publicação. Quer que eu aprofunde algum ponto específico?`,
+    `Entendi sua dúvida! 💡 Para o segmento gastronômico, a chave está em mostrar o processo, os ingredientes frescos e a experiência do restaurante. Posso elaborar uma estratégia completa para isso.`,
+    `Interessante! 📊 Seus números mostram que você está no caminho certo. Com seu engajamento de 5.8% e 14.2k seguidores, existem várias oportunidades. Me diga mais sobre o que gostaria de focar.`,
+  ];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+
+function escapeHtml(text) {
+  const d = document.createElement('div');
+  d.textContent = text;
+  return d.innerHTML;
+}
+
+// ── KEYBOARD SHORTCUT ──
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+});
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  // Allow Enter on login
+  document.getElementById('login-pass').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') doLogin();
+  });
+});
+</script>
+</body>
+</html>
