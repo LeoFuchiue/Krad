@@ -243,6 +243,32 @@ Retorne estritamente um objeto JSON com o seguinte formato, sem marcações mark
 function getDeterministicMockData(username) {
   const cleanUser = username.toLowerCase().trim();
 
+  // KRAD Agência (Perfil do Usuário)
+  if (cleanUser.includes('krad') || cleanUser.includes('leofuchiue')) {
+    return {
+      username: username,
+      fullName: 'krad agência',
+      followers: 1250,
+      following: 320,
+      bio: '🚀 Posicionamento & Tráfego Pago para Negócios Locais\n📸 Captação Premium (Gravações no local)\n👇 Conheça nossa agência',
+      profilePic: '',
+      externalUrl: 'https://krad.com.br',
+      postCount: 42,
+      averageLikes: 124,
+      averageComments: 18,
+      averageSaves: 16,
+      averageShares: 22,
+      engagementRate: 11.36,
+      postsPerMonth: 12,
+      followerGrowthRate: 2.1,
+      reachRateNonFollowers: 68,
+      reelsCompletionRate: 54,
+      bestFormat: 'Reels',
+      hasLink: true,
+      activeHours: 'Segunda e Quinta às 18:30'
+    };
+  }
+
   // Allan Esfihas Atibaia
   if (cleanUser.includes('allan') && (cleanUser.includes('esfiha') || cleanUser.includes('cafe'))) {
     return {
