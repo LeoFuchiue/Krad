@@ -646,6 +646,9 @@ a{text-decoration:none;color:inherit}
 .nav-links.open .nav-a{font-size:17px;padding:14px 0;border-bottom:1px solid var(--b1);border-radius:0;color:var(--t1)}
 .nav-links.open .nav-cta{margin:20px 0 0;width:100%;text-align:center;padding:13px;display:block}
 
+.nav-links.open .nav-a{font-size:17px;padding:14px 0;border-bottom:1px solid var(--b1);border-radius:0;color:var(--t1)}
+.nav-links.open .nav-cta{margin:20px 0 0;width:100%;text-align:center;padding:13px;display:block}
+
 /* ══ ANALISADOR DE PERFIL ══ */
 .analyzer-card {
   background: var(--bg2);
@@ -655,7 +658,7 @@ a{text-decoration:none;color:inherit}
   position: relative;
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0,0,0,.3);
-  max-width: 800px;
+  max-width: 850px;
   margin: 32px auto 0;
   text-align: center;
 }
@@ -771,6 +774,138 @@ a{text-decoration:none;color:inherit}
   font-family: 'Playfair Display', serif; font-size: 24px;
   font-weight: 700; color: var(--k2);
 }
+
+/* Benchmark Dashboard */
+.analyzer-benchmarks {
+  background: var(--bg3); border: 1px solid var(--b1);
+  border-radius: var(--r2); padding: 24px; margin-bottom: 28px; text-align: left;
+}
+.analyzer-benchmarks h3 {
+  font-family: 'Playfair Display', serif; font-size: 15px;
+  font-weight: 700; color: var(--t1); margin-bottom: 20px;
+  border-bottom: 1px solid var(--b1); padding-bottom: 10px;
+}
+.benchmark-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.benchmark-row {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.benchmark-labels {
+  display: flex; justify-content: space-between; font-size: 11px;
+}
+.benchmark-label { color: var(--t2); font-weight: 500; }
+.benchmark-value { font-family: 'JetBrains Mono', monospace; color: var(--k2); font-weight: 700; }
+.benchmark-track {
+  height: 8px; background: var(--bg4); border-radius: 4px; overflow: hidden;
+  position: relative;
+}
+.benchmark-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--k4), var(--k2));
+  transition: width 1.2s ease;
+}
+.benchmark-fill.warning { background: linear-gradient(90deg, var(--cr3), #D4A043); }
+.benchmark-fill.danger { background: #D45C5C; }
+.benchmark-target-marker {
+  position: absolute; top: 0; bottom: 0; width: 2px; background: rgba(237,228,197,.3);
+}
+
+/* Deep Insights Grid */
+.deep-insights-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px;
+}
+.insight-card {
+  background: var(--bg3); border: 1px solid var(--b1); border-radius: var(--r2);
+  padding: 18px; text-align: left;
+}
+.insight-card h5 {
+  font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;
+}
+.insight-card .val {
+  font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--t1);
+}
+.insight-card .desc {
+  font-size: 11px; color: var(--t2); margin-top: 4px; line-height: 1.4;
+}
+
+/* Trigger Cards (Gatilhos de Solução) */
+.analyzer-triggers-title {
+  font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700;
+  color: var(--t1); text-align: left; margin: 32px 0 16px;
+}
+.trigger-cards-list {
+  display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px;
+}
+.trigger-card {
+  border-radius: var(--r2); border: 1px solid var(--b1); overflow: hidden;
+  text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.trigger-card-header {
+  padding: 12px 18px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+}
+.tc-warning { border-color: rgba(212,160,67,.3); }
+.tc-warning .trigger-card-header { background: rgba(212,160,67,.08); color: #D4A043; }
+.tc-danger { border-color: rgba(212,92,92,.3); }
+.tc-danger .trigger-card-header { background: rgba(212,92,92,.08); color: #D45C5C; }
+
+.trigger-card-body {
+  padding: 20px; background: var(--bg3);
+  display: flex; flex-direction: column; gap: 14px;
+}
+.trigger-free-tip {
+  font-size: 12.5px; color: var(--t2); line-height: 1.6;
+}
+.trigger-free-tip strong { color: var(--t1); }
+.trigger-agency-hook {
+  background: var(--dim); border-left: 2px solid var(--k2);
+  padding: 12px 16px; font-size: 12px; color: var(--t2); line-height: 1.5;
+}
+.trigger-agency-hook strong { color: var(--cr); }
+
+/* Antes vs Depois Table */
+.analyzer-comparison-title {
+  font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700;
+  color: var(--t1); text-align: left; margin: 32px 0 16px;
+}
+.comparison-table-wrap {
+  width: 100%; overflow-x: auto; border: 1px solid var(--b1);
+  border-radius: var(--r2); margin-bottom: 32px;
+}
+.comparison-table {
+  width: 100%; border-collapse: collapse; text-align: left; font-size: 12.5px; min-width: 600px;
+}
+.comparison-table th {
+  background: var(--bg3); padding: 12px 16px; font-weight: 700;
+  color: var(--t1); border-bottom: 1px solid var(--b1);
+}
+.comparison-table td {
+  padding: 16px; border-bottom: 1px solid var(--b1); line-height: 1.6; vertical-align: top;
+}
+.comparison-table tr:last-child td { border-bottom: none; }
+.comp-erro { color: #E0A0A0; font-weight: 600; }
+.comp-solucao { color: #C8BE9A; font-weight: 600; }
+.comp-solucao strong { color: var(--t1); }
+.comp-why { color: var(--t2); font-size: 11.5px; }
+
+/* Intelligence/Volume Card */
+.analyzer-format-card {
+  background: var(--bg3); border: 1px solid var(--b1); border-radius: var(--r2);
+  padding: 20px; margin-bottom: 28px; text-align: left; display: flex; gap: 20px;
+  align-items: center; flex-wrap: wrap;
+}
+.format-icon {
+  font-size: 36px;
+}
+.format-info h4 {
+  font-family: 'Playfair Display', serif; font-size: 15px; color: var(--t1); margin-bottom: 6px;
+}
+.format-info p {
+  font-size: 12.5px; color: var(--t2); line-height: 1.6;
+}
+
 .analyzer-details {
   display: flex; flex-direction: column; gap: 16px;
   margin-bottom: 32px;
@@ -823,8 +958,9 @@ a{text-decoration:none;color:inherit}
   box-shadow: 0 8px 24px rgba(37,211,102,.5);
 }
 
-@media(max-width: 600px) {
-  .analyzer-metrics { grid-template-columns: 1fr; }
+@media(max-width: 900px) {
+  .benchmark-grid { grid-template-columns: 1fr; }
+  .deep-insights-grid { grid-template-columns: 1fr; }
   .analyzer-card { padding: 20px; }
   .analyzer-whatsapp-btn { width: 100%; font-size: 10px; padding: 14px 12px; }
 }
@@ -898,24 +1034,35 @@ a{text-decoration:none;color:inherit}
         Nós cuidamos do operacional completo: sessões de captação de fotos/vídeos no seu estabelecimento, roteiros, edição de Reels de alto impacto e anúncios focados em vendas.
       </p>
 
-      <!-- HERO CTA CARD (WhatsApp lead box) -->
+      <!-- HERO CTA CARD (Instagram Profile Analyzer integration) -->
       <div class="hero-cta-card">
         <div class="hero-cta-head">
-          <span class="hero-cta-badge">Atendimento em Atibaia & Região</span>
-          <h2 class="hero-cta-title">Gostaria de atrair mais clientes locais para a sua empresa?</h2>
+          <span class="hero-cta-badge">Ferramenta Inteligente Gratuita</span>
+          <h2 class="hero-cta-title">Analise o seu perfil do Instagram comercial em tempo real</h2>
         </div>
-        <div class="hero-cta-features">
-          <div class="hero-cta-feat"><span>✓</span> Fotos & Gravações no local</div>
-          <div class="hero-cta-feat"><span>✓</span> Reels editados para viralizar</div>
-          <div class="hero-cta-feat"><span>✓</span> Anúncios locais no Instagram/Google</div>
-          <div class="hero-cta-feat"><span>✓</span> Mensuração transparente do ROI</div>
+        <p style="font-size:12px; color:var(--t2); margin-bottom:18px; line-height:1.6; font-weight:300;">
+          Nossa inteligência artificial analisa suas métricas públicas, engajamento e consistência para sugerir melhorias imediatas de vendas.
+        </p>
+        
+        <div style="display:flex; gap:10px; align-items:center; margin-bottom:18px; flex-wrap:wrap;">
+          <div class="analyzer-input-group" style="margin:0; flex:1; background:rgba(7,8,6,0.6); border-color:var(--b2);">
+            <span class="analyzer-at">@</span>
+            <input type="text" id="hero-analyzer-username" placeholder="seu.perfil.comercial" onkeydown="if(event.key==='Enter')analyzeFromHero()" />
+          </div>
+          <button class="hero-cta-btn" onclick="analyzeFromHero()" style="width:auto; padding:0 24px; height:52px; white-space:nowrap;">
+            Analisar Grátis
+          </button>
         </div>
-        <button class="hero-cta-btn" onclick="openWA('hero')">
-          <span>⚡</span> Solicitar Diagnóstico Gratuito via WhatsApp
-        </button>
-        <div class="hero-cta-footer">
-          <span class="hero-cta-hint">Converse direto com nossa equipe · Sem compromisso</span>
-          <a href="#analisador" style="display:block;text-align:center;font-size:10px;color:var(--k2);font-family:'JetBrains Mono';margin-top:12px;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Ou use o analisador de perfil automático →</a>
+
+        <div class="hero-cta-features" style="grid-template-columns:1fr; gap:6px; margin-bottom:12px;">
+          <div class="hero-cta-feat" style="font-size:10px;"><span>✓</span> Score Geral & Comparativo de mercado local</div>
+          <div class="hero-cta-feat" style="font-size:10px;"><span>✓</span> Dicas práticas (Quick Wins) de Bio e conteúdo</div>
+          <div class="hero-cta-feat" style="font-size:10px;"><span>✓</span> Plano de mudança personalizado da KRAD</div>
+        </div>
+
+        <div class="hero-cta-footer" style="margin-top:14px; border-top:1px solid var(--b1); padding-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <span class="hero-cta-hint" style="font-size:8.5px;">Quer falar direto com a gente?</span>
+          <button onclick="openWA('hero')" style="background:none; border:none; color:var(--cr3); font-size:10px; font-weight:700; font-family:'JetBrains Mono'; cursor:pointer; text-decoration:underline; padding:0; letter-spacing:0.5px; text-transform:uppercase;">Falar no WhatsApp →</button>
         </div>
       </div>
     </div>
@@ -1026,7 +1173,7 @@ a{text-decoration:none;color:inherit}
   <div class="wrap">
     <div class="eye rv">FERRAMENTA EXCLUSIVA</div>
     <h2 class="sh rv">Diagnóstico de Perfil <em>Real-Time</em></h2>
-    <p class="sp rv">Insira seu @ do Instagram comercial abaixo. Nosso backend buscará as métricas públicas do perfil (seguidores, engajamento médio e consistência) e gerará um relatório personalizado de posicionamento.</p>
+    <p class="sp rv">Insira o seu @ do Instagram comercial abaixo. Nosso backend buscará as métricas públicas do perfil (seguidores, engajamento médio e consistência) e gerará um relatório personalizado de posicionamento.</p>
     
     <div class="analyzer-card rv">
       <!-- Form Wrapper -->
@@ -1051,12 +1198,13 @@ a{text-decoration:none;color:inherit}
             <div class="analyzer-score-circle" id="result-score-circle">0</div>
             <div>
               <div class="analyzer-score-title" id="result-score-title">Score Geral</div>
-              <div class="analyzer-score-desc" id="result-score-desc">Avaliação calculada de posicionamento e atração local.</div>
+              <div class="analyzer-score-desc" id="result-score-desc">Avaliação baseada no mercado local e em benchmarks de performance.</div>
             </div>
           </div>
           <button class="analyzer-retry-btn" onclick="resetAnalyzer()">Nova Análise</button>
         </div>
         
+        <!-- Métricas básicas -->
         <div class="analyzer-metrics">
           <div class="analyzer-metric-card">
             <div class="amc-icon">👥</div>
@@ -1074,14 +1222,127 @@ a{text-decoration:none;color:inherit}
             <div class="amc-value" id="result-frequency">0</div>
           </div>
         </div>
-        
+
+        <!-- Painel de Comparação com Metas de Mercado (Benchmarks) -->
+        <div class="analyzer-benchmarks">
+          <h3>Comparativo com Metas de Mercado (Local Benchmarks)</h3>
+          <div class="benchmark-grid">
+            <div class="benchmark-row">
+              <div class="benchmark-labels">
+                <span class="benchmark-label">Taxa de Engajamento</span>
+                <span class="benchmark-value" id="bench-eng-val">0.0%</span>
+              </div>
+              <div class="benchmark-track">
+                <div class="benchmark-fill" id="bench-eng-fill" style="width: 0%;"></div>
+                <div class="benchmark-target-marker" style="left: 70%;" title="Meta saudavel: 2.50%"></div>
+              </div>
+            </div>
+            <div class="benchmark-row">
+              <div class="benchmark-labels">
+                <span class="benchmark-label">Consistência (Posts/Mês)</span>
+                <span class="benchmark-value" id="bench-freq-val">0 posts</span>
+              </div>
+              <div class="benchmark-track">
+                <div class="benchmark-fill" id="bench-freq-fill" style="width: 0%;"></div>
+                <div class="benchmark-target-marker" style="left: 80%;" title="Meta saudavel: 10 posts/mês"></div>
+              </div>
+            </div>
+            <div class="benchmark-row">
+              <div class="benchmark-labels">
+                <span class="benchmark-label">Crescimento de Seguidores</span>
+                <span class="benchmark-value" id="bench-growth-val">0.0%</span>
+              </div>
+              <div class="benchmark-track">
+                <div class="benchmark-fill" id="bench-growth-fill" style="width: 0%;"></div>
+                <div class="benchmark-target-marker" style="left: 75%;" title="Meta saudavel: 1.5% ao mês"></div>
+              </div>
+            </div>
+            <div class="benchmark-row">
+              <div class="benchmark-labels">
+                <span class="benchmark-label">Proporção de Salvamentos</span>
+                <span class="benchmark-value" id="bench-save-val">0%</span>
+              </div>
+              <div class="benchmark-track">
+                <div class="benchmark-fill" id="bench-save-fill" style="width: 0%;"></div>
+                <div class="benchmark-target-marker" style="left: 80%;" title="Meta saudavel: 10% de saves por likes"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mídias e Retenção Profunda -->
+        <div class="deep-insights-grid">
+          <div class="insight-card">
+            <h5>Alcance de Não-Seguidores</h5>
+            <div class="val" id="result-nonfollowers">0%</div>
+            <div class="desc" id="result-nonfollowers-desc">Distribuição orgânica do perfil.</div>
+          </div>
+          <div class="insight-card">
+            <h5>Retenção Reels (3 seg)</h5>
+            <div class="val" id="result-completion">0%</div>
+            <div class="desc" id="result-completion-desc">Retenção de atenção nos vídeos.</div>
+          </div>
+          <div class="insight-card">
+            <h5>Janela de Oportunidade</h5>
+            <div class="val" id="result-activehours">—</div>
+            <div class="desc">Dias e horários de maior pico de público ativo.</div>
+          </div>
+        </div>
+
+        <!-- Gatilhos de Solução Inteligentes (Ações Imediatas Grátis) -->
+        <div class="analyzer-triggers-title">💡 Gatilhos de Solução Automatizada</div>
+        <div class="trigger-cards-list" id="analyzer-triggers">
+          <!-- Dinâmico via JS -->
+        </div>
+
+        <!-- Formato Campeão Card -->
+        <div class="analyzer-format-card">
+          <div class="format-icon" id="format-icon">🎬</div>
+          <div class="format-info">
+            <h4 id="format-title">Identificando Melhor Formato...</h4>
+            <p id="format-desc">Carregando análise estratégica do conteúdo...</p>
+          </div>
+        </div>
+
+        <!-- Tabela comparativa Antes vs Depois -->
+        <div class="analyzer-comparison-title">🔄 O Plano de Mudança da KRAD para o Seu Negócio</div>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th style="width: 30%">O Erro Clássico (Como está hoje)</th>
+                <th style="width: 35%">Como a KRAD muda seu Perfil</th>
+                <th style="width: 35%">Por que isso gera Vendas?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="comp-erro"><strong>Post Panfleto:</strong> Foto estática do produto com preço e legenda curta ("Compre já").</td>
+                <td class="comp-solucao"><strong>Post de Desejo:</strong> Reels mostrando o benefício do produto na vida real, resolvendo um problema do cliente.</td>
+                <td class="comp-why">O cliente entra no Instagram para se entreter, não para ver anúncios. Geramos o desejo primeiro para vender depois.</td>
+              </tr>
+              <tr>
+                <td class="comp-erro"><strong>Fotos de Banco de Imagens:</strong> Postagens frias e genéricas que tiram a identidade da marca.</td>
+                <td class="comp-solucao"><strong>Presença Premium Real:</strong> Produção de fotos e vídeos sofisticados feitos direto no seu estabelecimento comercial.</td>
+                <td class="comp-why">Transmite profissionalismo, humanidade e autoridade local. Perfil com cara de amador não consegue cobrar caro.</td>
+              </tr>
+              <tr>
+                <td class="comp-erro"><strong>Legendas Curtas ou Vazias:</strong> Apenas emojis ou frases prontas ("Foco e Fé").</td>
+                <td class="comp-solucao"><strong>Legendas com Copy:</strong> Textos envolventes com ganchos fortes de leitura e chamada clara para ação (CTA).</td>
+                <td class="comp-why">Aumenta o tempo que a pessoa passa interagindo na sua postagem, fazendo o algoritmo entregar seu perfil para mais pessoas na cidade.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Detalhes da Auditoria KRAD -->
         <div class="analyzer-details">
           <div class="analyzer-detail-box">
-            <h4>📋 Diagnóstico da Bio</h4>
+            <h4>📋 Diagnóstico de Posicionamento e Bio</h4>
             <p id="result-bio-feedback">Carregando...</p>
           </div>
           <div class="analyzer-detail-box">
-            <h4>📈 Qualidade do Conteúdo</h4>
+            <h4>📈 Avaliação de Conteúdo & Engajamento</h4>
             <p id="result-content-feedback">Carregando...</p>
           </div>
           <div class="analyzer-detail-box">
@@ -1092,9 +1353,11 @@ a{text-decoration:none;color:inherit}
           </div>
         </div>
         
+        <!-- Gancho final da agência -->
         <div class="analyzer-cta-box">
-          <h3>Quer atrair mais clientes locais de forma profissional?</h3>
-          <p>Nossa equipe faz todo o trabalho operacional: criamos os roteiros, gravamos no seu espaço, editamos no padrão de retenção e gerenciamos os anúncios locais.</p>
+          <p id="result-sales-hook" style="font-size: 13.5px; color: var(--t2); line-height: 1.7; text-align: left; margin-bottom: 20px;">
+            Carregando diagnóstico de conversão comercial...
+          </p>
           <button class="analyzer-whatsapp-btn" id="analyzer-wa-btn" onclick="openAnalyzerWA()">
             <span>⚡</span> Otimizar Meu Perfil com a KRAD via WhatsApp
           </button>
@@ -1599,14 +1862,127 @@ async function startAnalysis() {
     
     lastAnalysisResult = data;
     
-    // Fill result fields
+    // Fill basic metrics
     document.getElementById('result-followers').textContent = data.profile.followers.toLocaleString('pt-BR');
     document.getElementById('result-engagement').textContent = data.profile.engagementRate.toFixed(2) + '%';
     document.getElementById('result-frequency').textContent = data.profile.postsPerMonth + '/mês';
+    
+    // Fill detailed feedbacks
     document.getElementById('result-bio-feedback').textContent = data.analysis.bio_feedback;
     document.getElementById('result-content-feedback').textContent = data.analysis.content_feedback;
     
-    // Tips
+    // Progress Bars (Benchmarks)
+    // 1. Engajamento: ideal 2.5%
+    const engPct = Math.min(Math.round((data.profile.engagementRate / 2.5) * 100), 100);
+    const engFill = document.getElementById('bench-eng-fill');
+    engFill.style.width = engPct + '%';
+    document.getElementById('bench-eng-val').textContent = data.profile.engagementRate.toFixed(2) + '%';
+    engFill.className = 'benchmark-fill' + (data.profile.engagementRate < 1.5 ? ' danger' : (data.profile.engagementRate < 2.5 ? ' warning' : ''));
+
+    // 2. Frequência: ideal 10 posts
+    const freqPct = Math.min(Math.round((data.profile.postsPerMonth / 10) * 100), 100);
+    const freqFill = document.getElementById('bench-freq-fill');
+    freqFill.style.width = freqPct + '%';
+    document.getElementById('bench-freq-val').textContent = data.profile.postsPerMonth + ' posts';
+    freqFill.className = 'benchmark-fill' + (data.profile.postsPerMonth < 6 ? ' danger' : (data.profile.postsPerMonth < 10 ? ' warning' : ''));
+
+    // 3. Crescimento: ideal 1.5%
+    const growthVal = data.profile.followerGrowthRate;
+    const growthPct = Math.min(Math.max(Math.round(((growthVal + 0.5) / 2.0) * 100), 5), 100); // map -0.5%..1.5%
+    const growthFill = document.getElementById('bench-growth-fill');
+    growthFill.style.width = growthPct + '%';
+    document.getElementById('bench-growth-val').textContent = (growthVal >= 0 ? '+' : '') + growthVal.toFixed(2) + '%';
+    growthFill.className = 'benchmark-fill' + (growthVal < 0 ? ' danger' : (growthVal < 1.0 ? ' warning' : ''));
+
+    // 4. Proporção de salvamentos: ideal 10%
+    const savePct = Math.round((data.profile.averageSaves / data.profile.averageLikes) * 100);
+    const saveFillPct = Math.min(Math.round((savePct / 10) * 100), 100);
+    const saveFill = document.getElementById('bench-save-fill');
+    saveFill.style.width = saveFillPct + '%';
+    document.getElementById('bench-save-val').textContent = savePct + '%';
+    saveFill.className = 'benchmark-fill' + (savePct < 5 ? ' danger' : (savePct < 10 ? ' warning' : ''));
+
+    // Deep Insights
+    document.getElementById('result-nonfollowers').textContent = data.profile.reachRateNonFollowers + '%';
+    document.getElementById('result-nonfollowers-desc').textContent = data.profile.reachRateNonFollowers < 40 
+      ? 'Bolha detectada. Pouco alcance viral.' 
+      : 'Bom alcance de novos potenciais clientes.';
+      
+    document.getElementById('result-completion').textContent = data.profile.reelsCompletionRate + '%';
+    document.getElementById('result-completion-desc').textContent = data.profile.reelsCompletionRate < 35 
+      ? 'Retenção baixa nos primeiros segundos.' 
+      : 'Excelente engajamento e retenção de público.';
+
+    document.getElementById('result-activehours').textContent = data.profile.activeHours;
+
+    // Trigger-Based Solution Box
+    const triggersList = document.getElementById('analyzer-triggers');
+    triggersList.innerHTML = '';
+    
+    // 1. Link na bio
+    if (data.analysis.triggers.noLink) {
+      triggersList.appendChild(createTriggerCard('tc-danger', '🚨 Gatilho: Link Ausente ou Ineficiente', 
+        `Seu perfil é uma loja sem porta. Como você não tem um link estratégico na bio, as pessoas entram, se interessam, mas não sabem onde comprar. Mude isso hoje: Acesse suas configurações e coloque o link direto para o seu WhatsApp Comercial ou catálogo. Não force o cliente a te procurar no direct; facilite o caminho do dinheiro.`,
+        `Colocar o link é o passo zero. Nós criamos páginas de alta conversão (Landing Pages) específicas para o Instagram, que transformam visitantes em clientes em 2 cliques.`
+      ));
+    }
+    
+    // 2. Frequência
+    if (data.analysis.triggers.lowFrequency) {
+      triggersList.appendChild(createTriggerCard('tc-warning', '⏳ Gatilho: Baixo Volume de Postagens', 
+        `Seu perfil está em modo fantasma. O algoritmo do Instagram pune contas com baixa frequência. Para o mercado notar que você está vivo, você precisa de volume com estratégia.<br>Seu desafio para os próximos 7 dias: Poste 3 Reels estruturados (com dicas rápidas do seu nicho) e faça pelo menos 1 sequência de 5 Stories por dia mostrando os bastidores do seu produto/serviço. Alimente o algoritmo.`,
+        `Falta de tempo para produzir conteúdo é o que quebra a consistência. A nossa agência cuida de todo o seu calendário editorial, design e roteiros para você focar apenas em atender os clientes que vão chegar.`
+      ));
+    }
+
+    // 3. Engajamento
+    if (data.analysis.triggers.lowEngagement) {
+      triggersList.appendChild(createTriggerCard('tc-danger', '📢 Gatilho: Baixa Taxa de Interação (Você está falando sozinho)', 
+        `Seus posts atuais são muito institucionais ou panfletários (tipo 'compre de mim'). As pessoas entram no Instagram para se entreter ou aprender, não para ver anúncios.<br>Mude sua estratégia hoje: Pegue a maior dúvida que seu cliente real tem e responda em formato de Carrossel de 5 páginas. No final, use a palavra mágica: 'Gostou? Salve para consultar depois'. O botão de salvar vale ouro para o algoritmo voltar a te entregar.`,
+        `Nós dominamos as linhas editoriais que geram conexão e engajamento real, fazendo seu perfil ser recomendado na aba 'Explorar' para quem ainda não te segue.`
+      ));
+    }
+
+    // 4. Bio
+    if (data.analysis.triggers.confusingBio) {
+      triggersList.appendChild(createTriggerCard('tc-warning', '✏️ Gatilho: Promessa da Bio Fraca ou Confusa', 
+        `Sua promessa está fraca. Escreva sua Bio respondendo a 3 perguntas em linhas separadas:<br><br><strong>O que você faz por mim?</strong> (Ex: Te ajudo a emagrecer sem dieta maluca)<br><strong>Por que devo confiar em você?</strong> (Ex: +500 vidas transformadas)<br><strong>O que eu faço agora?</strong> (Ex: Clique abaixo e agende sua avaliação 👇).`,
+        `O posicionamento de marca e a bio são o coração do seu marketing. Nós redesenhamos toda a identidade do seu perfil para atrair o público com maior poder aquisitivo do seu nicho.`
+      ));
+    }
+
+    // Se nenhum gatilho disparou (perfil perfeito), mostrar um feedback positivo
+    if (triggersList.children.length === 0) {
+      triggersList.innerHTML = `
+        <div class="trigger-card tc-warning" style="border-color:var(--k2)">
+          <div class="trigger-card-header" style="background:var(--dim);color:var(--cr)">✓ Perfil Otimizado</div>
+          <div class="trigger-card-body">
+            <div class="trigger-free-tip">Seu perfil está acima da média de mercado em todos os quesitos básicos. Para continuar crescendo, o segredo é otimizar a distribuição do conteúdo com campanhas de tráfego pago local e remarketing.</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Format Card
+    const formatCardIcon = document.getElementById('format-icon');
+    const formatCardTitle = document.getElementById('format-title');
+    const formatCardDesc = document.getElementById('format-desc');
+    
+    if (data.profile.bestFormat === 'Reels') {
+      formatCardIcon.textContent = '🎬';
+      formatCardTitle.textContent = 'Formato Campeão: Vídeos Curtos (Reels)';
+      formatCardDesc.textContent = 'Seu público responde muito melhor a Reels. Pare de postar fotos estáticas do seu produto. Transforme seu conhecimento em Reels de até 30 segundos: mostre os bastidores, resolva uma dor rápida no vídeo e use legendas dinâmicas.';
+    } else if (data.profile.bestFormat === 'Carrossel') {
+      formatCardIcon.textContent = '📊';
+      formatCardTitle.textContent = 'Formato Campeão: Conteúdos Educativos (Carrossel)';
+      formatCardDesc.textContent = 'Sua audiência gosta de ler e aprender com você. Em vez de posts soltos, crie carrosséis em formato de "Passo a Passo", "3 Erros que você comete" ou listas. A última página do carrossel deve ter uma chamada clara para o WhatsApp.';
+    } else {
+      formatCardIcon.textContent = '👥';
+      formatCardTitle.textContent = 'Formato Campeão: Conexão Pessoal (Humanização)';
+      formatCardDesc.textContent = 'Seu cliente compra de quem ele confia. Apareça mais! Tire fotos reais trabalhando, conte a história de como você começou a empresa ou mostre o depoimento de um cliente satisfeito com uma foto sua ao lado.';
+    }
+
+    // Fill AI Tips
     const tipsList = document.getElementById('result-tips-list');
     tipsList.innerHTML = '';
     data.analysis.tips.forEach(tip => {
@@ -1619,7 +1995,6 @@ async function startAnalysis() {
     const scoreCircle = document.getElementById('result-score-circle');
     scoreCircle.textContent = data.analysis.score;
     
-    // Adjust score circle color
     scoreCircle.className = 'analyzer-score-circle';
     if (data.analysis.score >= 70) {
       scoreCircle.style.borderColor = '#4CAF6F';
@@ -1634,6 +2009,15 @@ async function startAnalysis() {
       scoreCircle.style.color = '#D45C5C';
       document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#D45C5C">Ajustes Críticos (${data.analysis.score}/100)</span>`;
     }
+
+    // Final Sales Hook text
+    let targetFormatName = data.profile.bestFormat === 'Reels' ? 'vídeos curtos (Reels)' : (data.profile.bestFormat === 'Carrossel' ? 'carrosséis educativos' : 'conteúdo humanizado');
+    let targetFreqValue = data.profile.postsPerMonth < 8 ? '3' : '4';
+    
+    document.getElementById('result-sales-hook').innerHTML = `
+      Nossa inteligência identificou que o seu perfil precisa de mais <strong>${targetFormatName}</strong> e uma frequência de pelo menos <strong>${targetFreqValue} postagens</strong> por semana para voltar a crescer.<br><br>
+      Produzir tudo isso sozinho dá trabalho e toma o tempo que você deveria usar cuidando do seu negócio. Deixe que a nossa agência faça todo esse trabalho duro por você. Nós criamos os roteiros, gravamos no seu espaço, editamos e gerenciamos os anúncios locais.
+    `;
     
     // Transition out loading, in results
     loadingDiv.style.display = 'none';
@@ -1645,6 +2029,19 @@ async function startAnalysis() {
     showToastMsg('Erro ao conectar ao servidor de análise.');
     resetAnalyzer();
   }
+}
+
+function createTriggerCard(cls, title, freeTip, agencyHook) {
+  const card = document.createElement('div');
+  card.className = 'trigger-card ' + cls;
+  card.innerHTML = `
+    <div class="trigger-card-header">${title}</div>
+    <div class="trigger-card-body">
+      <div class="trigger-free-tip"><strong>💡 Ação Imediata Grátis:</strong> ${freeTip}</div>
+      <div class="trigger-agency-hook"><strong>🚀 Como a KRAD resolve:</strong> ${agencyHook}</div>
+    </div>
+  `;
+  return card;
 }
 
 function resetAnalyzer() {
@@ -1673,13 +2070,37 @@ function openAnalyzerWA() {
   if (!lastAnalysisResult) return;
   const username = lastAnalysisResult.profile.username;
   const score = lastAnalysisResult.analysis.score;
-  const eng = lastAnalysisResult.profile.engagementRate;
+  const format = lastAnalysisResult.profile.bestFormat;
   
-  const msg = `Olá! Fiz o diagnóstico do meu Instagram @${username} no site da krad agência. Meu score deu ${score}/100 com engajamento de ${eng}%. Gostaria de agendar uma conversa para ver como vocês podem me ajudar a melhorar meu posicionamento!`;
+  const msg = `Olá! Fiz a análise do meu Instagram @${username} no site da krad agência. Meu score deu ${score}/100 e o formato recomendado foi ${format}. Gostaria de entender como a krad agência pode me ajudar a gerenciar meu perfil profissionalmente!`;
   
   const phone = "5511977842164";
   const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
   window.open(url, '_blank');
+}
+
+function analyzeFromHero() {
+  const input = document.getElementById('hero-analyzer-username');
+  const username = input.value.trim().replace(/^@/, '');
+  
+  if (!username) {
+    showToastMsg('Por favor, digite o seu perfil do Instagram.');
+    return;
+  }
+  
+  // Set in main form
+  document.getElementById('analyzer-username').value = username;
+  
+  // Scroll to analisador section
+  const section = document.getElementById('analisador');
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  // Trigger analysis after a short delay for scroll to start
+  setTimeout(() => {
+    startAnalysis();
+  }, 450);
 }
 </script>
 </body>
