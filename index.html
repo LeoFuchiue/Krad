@@ -1849,7 +1849,11 @@ async function startAnalysis() {
   }, 900);
   
   try {
-    const response = await fetch(`/api/analyze?username=${encodeURIComponent(username)}`);
+    let apiUrl = '/api/analyze';
+    if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      apiUrl = 'https://krad-psi.vercel.app/api/analyze';
+    }
+    const response = await fetch(`${apiUrl}?username=${encodeURIComponent(username)}`);
     const data = await response.json();
     
     clearInterval(stepInterval);

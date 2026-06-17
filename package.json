@@ -1,10 +1,10 @@
 {
   "name": "krad-portal",
   "version": "1.0.0",
-  "description": "krad agência — Landing Page & Instagram Profile Analyzer API",
+  "description": "krad agência landing page & profile analyzer",
   "main": "api/analyze.js",
-  "scripts": {
-    "start": "node api/analyze.js"
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {}
 }
