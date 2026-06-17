@@ -176,22 +176,10 @@ a{text-decoration:none;color:inherit}
   mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,black,transparent);
   pointer-events:none;
 }
-
-.hero-grid-layout {
-  display:grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap:64px;
-  align-items:center;
-  max-width:1150px;
-  width:100%;
-  position:relative;
-  z-index:1;
+.hero-centered-layout {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  max-width: 850px; width: 100%; position: relative; z-index: 1;
 }
-
-.hero-left-col {
-  text-align:left;
-}
-
 .hero-pill{
   display:inline-flex;align-items:center;gap:8px;
   padding:6px 18px;border:1px solid var(--b2);border-radius:100px;
@@ -207,7 +195,6 @@ a{text-decoration:none;color:inherit}
   background:var(--k2);box-shadow:0 0 8px var(--k2);
   animation:pulse 2s infinite;
 }
-
 .hero-h{
   font-family:'Playfair Display',serif;
   font-size:clamp(32px,5vw,62px);
@@ -220,14 +207,11 @@ a{text-decoration:none;color:inherit}
   background:linear-gradient(135deg,var(--k2) 0%,var(--cr3) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
-
 .hero-p{
   font-size:clamp(14px,1.6vw,16px);font-weight:300;color:var(--t2);
   max-width:540px;margin-bottom:36px;line-height:1.7;
   opacity:0;animation:fadeUp .85s ease .4s forwards;
 }
-
-/* ══ HERO CTA CARD (Sleek Lead Box) ══ */
 .hero-cta-card {
   background:rgba(11,13,8,.94);
   border:1px solid var(--b2);border-radius:var(--r3);
@@ -287,135 +271,6 @@ a{text-decoration:none;color:inherit}
 .hero-cta-hint {
   font-size:9px;color:var(--t3);font-family:'JetBrains Mono',monospace;
 }
-
-/* ══ VISUAL COLUMN: INSTAGRAM REELS SIMULATION ══ */
-.hero-right-col {
-  display:flex;justify-content:center;align-items:center;
-  position:relative;
-  opacity:0;animation:fadeIn .9s ease .6s forwards;
-}
-.phone-mockup {
-  position:relative;
-  width:290px;
-  height:560px;
-  background:#090b07;
-  border:10px solid #28300f;
-  border-radius:36px;
-  box-shadow:0 30px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(78,91,31,0.15);
-  overflow:hidden;
-}
-.phone-screen {
-  position:relative;
-  width:100%;
-  height:100%;
-  background:linear-gradient(180deg,#14180d,#070806);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:14px;
-}
-.phone-header {
-  display:flex;justify-content:space-between;
-  font-size:8px;color:var(--t3);
-  font-family:'JetBrains Mono',monospace;
-  letter-spacing:0.5px;
-}
-.phone-content {
-  flex:1;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;margin:12px 0;
-}
-.reels-simulation {
-  width:100%;
-  height:100%;
-  border-radius:18px;
-  background:linear-gradient(145deg, #242c0f 0%, #070806 100%);
-  position:relative;
-  overflow:hidden;
-  border:1px solid rgba(237,228,197,0.06);
-  display:flex;justify-content:center;align-items:center;
-}
-
-/* Simulated video food visual representation */
-.food-visual-glow {
-  position:absolute;width:140px;height:140px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(237,228,197,0.18) 0%,rgba(78,91,31,0.3) 50%,transparent 70%);
-  animation:float 4s ease-in-out infinite;
-}
-.food-art {
-  width:100px;height:100px;
-  background:linear-gradient(135deg,#5e6c27,#28300f);
-  border:2px solid var(--cr3);
-  border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;
-  box-shadow:0 15px 35px rgba(0,0,0,0.6);
-  animation:floatOpposite 5s ease-in-out infinite;
-  display:flex;align-items:center;justify-content:center;
-  font-size:36px;
-}
-
-.reels-overlay {
-  position:absolute;bottom:12px;left:12px;right:12px;
-  text-align:left;z-index:2;
-}
-.reels-user {
-  font-size:10px;font-weight:700;color:var(--t1);
-  display:flex;align-items:center;gap:6px;margin-bottom:4px;
-}
-.reels-user-av {
-  width:18px;height:18px;border-radius:50%;
-  background:var(--cr3);color:var(--k5);
-  font-size:7px;display:flex;align-items:center;justify-content:center;font-weight:900;
-}
-.reels-caption {
-  font-size:9px;color:var(--t2);line-height:1.4;
-}
-.reels-sidebar {
-  position:absolute;right:10px;bottom:60px;
-  display:flex;flex-direction:column;gap:14px;
-  align-items:center;color:var(--t1);z-index:2;
-}
-.reels-sidebar-item {
-  display:flex;flex-direction:column;align-items:center;gap:1px;
-}
-.reels-sidebar-item span {
-  font-size:8px;color:var(--t3);font-family:'JetBrains Mono',monospace;
-}
-
-/* Floating Metrics Badges around the smartphone */
-.floating-badge {
-  position:absolute;
-  background:rgba(11,13,8,.94);
-  border:1px solid var(--b2);
-  border-radius:12px;
-  padding:10px 14px;
-  font-size:11px;font-weight:700;
-  backdrop-filter:blur(8px);
-  box-shadow:0 15px 35px rgba(0,0,0,0.5);
-  display:flex;align-items:center;gap:8px;
-  z-index:5;
-  white-space:nowrap;
-}
-.fb-views {
-  top:50px;left:-60px;
-  animation:float 4s ease-in-out infinite;
-}
-.fb-faturamento {
-  bottom:140px;right:-70px;
-  animation:floatOpposite 5s ease-in-out infinite;
-}
-.fb-seguidores {
-  top:220px;left:-75px;
-  animation:float 4.5s ease-in-out infinite 0.5s;
-}
-.fb-icon {
-  width:16px;height:16px;border-radius:4px;
-  background:var(--dim);border:1px solid var(--b2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:9px;color:var(--k2);
-}
-
-/* ══ PROOF STRIP ══ */
 .proof{
   display:flex;align-items:center;justify-content:center;
   gap:40px;flex-wrap:wrap;
@@ -958,11 +813,380 @@ a{text-decoration:none;color:inherit}
   box-shadow: 0 8px 24px rgba(37,211,102,.5);
 }
 
+/* --- Visual Dashboard Upgrades --- */
+.analyzer-score-circle-svg-wrap {
+  position: relative; width: 84px; height: 84px; flex-shrink: 0;
+}
+.score-circle-svg {
+  transform: rotate(-90deg); width: 100%; height: 100%;
+}
+.score-circle-fill {
+  transition: stroke-dashoffset 1.5s cubic-bezier(.4, 0, .2, 1), stroke 0.3s;
+}
+.score-circle-text {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 800; color: var(--t1); font-family: 'Playfair Display', serif;
+}
+
+.analyzer-funnel-section {
+  background: var(--bg3); border: 1px solid var(--b1);
+  border-radius: var(--r2); padding: 24px; margin-bottom: 28px; text-align: left;
+}
+.analyzer-funnel-section h3 {
+  font-family: 'Playfair Display', serif; font-size: 15px;
+  font-weight: 700; color: var(--t1); margin-bottom: 20px;
+  border-bottom: 1px solid var(--b1); padding-bottom: 10px;
+}
+.funnel-container {
+  display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.funnel-step {
+  display: flex; align-items: center; width: 100%; gap: 16px;
+}
+.funnel-shape {
+  position: relative; height: 42px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 18px; color: var(--cr); font-weight: 700; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; border-radius: var(--r2);
+  transition: width 1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.step-reach .funnel-shape {
+  width: 100%; background: linear-gradient(90deg, var(--k4), var(--k3)); border: 1px solid var(--b3);
+}
+.step-engage .funnel-shape {
+  width: 80%; background: linear-gradient(90deg, var(--k3), var(--k2)); border: 1px solid var(--b2);
+  margin: 0 auto;
+}
+.step-convert .funnel-shape {
+  width: 60%; background: linear-gradient(90deg, var(--k2), var(--cr3)); border: 1px solid rgba(237,228,197,.3);
+  margin: 0 auto;
+}
+.funnel-label {
+  opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.funnel-value {
+  font-size: 12px; color: var(--t1);
+}
+.funnel-info {
+  flex: 1; font-size: 11px; color: var(--t2); line-height: 1.45;
+}
+.funnel-bottleneck-card {
+  display: flex; gap: 14px; padding: 16px; background: rgba(212,92,92,.06);
+  border: 1px solid rgba(212,92,92,.15); border-radius: var(--r2); align-items: center;
+}
+.funnel-bottleneck-card.healthy {
+  background: rgba(76,175,111,.06); border-color: rgba(76,175,111,.15);
+}
+.bottleneck-icon {
+  font-size: 22px; flex-shrink: 0;
+}
+.bottleneck-text h4 {
+  font-size: 12.5px; color: var(--t1); margin-bottom: 2px;
+}
+.bottleneck-text p {
+  font-size: 11px; color: var(--t2); line-height: 1.45;
+}
+
+.active-hours-heatmap {
+  margin-top: 14px; border: 1px solid var(--b1); border-radius: var(--r1);
+  background: var(--bg4); padding: 10px;
+}
+.heatmap-header {
+  font-size: 8px; color: var(--t3); text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; letter-spacing: 0.5px;
+}
+.heatmap-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+}
+.heatmap-cell {
+  aspect-ratio: 1.3; background: var(--bg5); border-radius: 2px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-size: 7px; color: var(--t3); font-family: 'JetBrains Mono', monospace;
+  transition: all var(--tm); position: relative;
+}
+.heatmap-cell.active {
+  background: var(--k2); color: var(--cr); box-shadow: 0 0 6px var(--glow);
+  font-weight: 700;
+}
+.heatmap-cell.peak {
+  background: var(--cr3); color: var(--k5); box-shadow: 0 0 10px var(--cr-glow);
+  font-weight: 900;
+}
+
+@media(max-width: 600px) {
+  .funnel-step { flex-direction: column; align-items: flex-start; gap: 6px; width: 100%; }
+  .step-engage .funnel-shape, .step-convert .funnel-shape { margin: 0; }
+  .funnel-shape { width: 100% !important; }
+}
+
 @media(max-width: 900px) {
   .benchmark-grid { grid-template-columns: 1fr; }
   .deep-insights-grid { grid-template-columns: 1fr; }
   .analyzer-card { padding: 20px; }
   .analyzer-whatsapp-btn { width: 100%; font-size: 10px; padding: 14px 12px; }
+}
+
+/* --- Upgraded Visual Dashboard Styles --- */
+.analyzer-metric-card {
+  background: var(--bg3); border: 1px solid var(--b1);
+  border-radius: var(--r2); padding: 24px 18px; text-align: center;
+  position: relative; overflow: visible;
+  transition: transform var(--tf), border-color var(--tf);
+}
+.analyzer-metric-card:hover {
+  transform: translateY(-2px); border-color: var(--b2);
+}
+.amc-badge-wrap {
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  z-index: 2; width: 100%; text-align: center;
+}
+.amc-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 100px;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+  white-space: nowrap;
+}
+.amc-badge.green {
+  background: rgba(76,175,111,0.15); border: 1px solid rgba(76,175,111,0.4); color: #4CAF6F;
+}
+.amc-badge.yellow {
+  background: rgba(212,160,67,0.15); border: 1px solid rgba(212,160,67,0.4); color: #D4A043;
+}
+.amc-badge.red {
+  background: rgba(212,92,92,0.15); border: 1px solid rgba(212,92,92,0.4); color: #D45C5C;
+}
+.amc-badge.blue {
+  background: rgba(78,91,31,0.15); border: 1px solid var(--b3); color: var(--cr3);
+}
+
+.double-bar-container {
+  display: flex; flex-direction: column; gap: 8px; background: rgba(7,8,6,0.25); padding: 10px 14px; border-radius: 8px; margin-top: 10px;
+}
+.bar-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.bar-lbl {
+  font-size: 8px; color: var(--t3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; width: 110px; flex-shrink: 0; text-align: left;
+}
+.bar-track {
+  flex: 1; height: 6px; background: var(--bg4); border-radius: 3px; overflow: hidden;
+}
+.bar-fill {
+  height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(.4, 0, .2, 1);
+}
+.meta-fill {
+  background: var(--t4);
+}
+.client-fill {
+  background: linear-gradient(90deg, var(--k4), var(--k2));
+}
+.client-fill.warning {
+  background: linear-gradient(90deg, var(--cr3), #D4A043);
+}
+.client-fill.danger {
+  background: #D45C5C;
+}
+
+.donut-chart-wrap {
+  position: relative; width: 100px; height: 100px; margin: 12px auto;
+}
+.donut-svg {
+  width: 100%; height: 100%; transform: rotate(-90deg);
+}
+.donut-ring {
+  stroke: var(--bg5);
+}
+.donut-segment {
+  transition: stroke-dashoffset 1.5s cubic-bezier(.4, 0, .2, 1), stroke 0.3s;
+}
+.donut-center-text {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; line-height: 1;
+}
+.donut-center-text span {
+  font-size: 20px; font-weight: 800; color: var(--t1);
+}
+.donut-center-text small {
+  font-size: 7px; color: var(--t3); font-family: 'JetBrains Mono', monospace; font-weight: 700; margin-top: 3px;
+}
+.donut-label-legend {
+  display: flex; justify-content: center; gap: 14px; margin-top: 4px;
+}
+.insight-card.bolha-alerta {
+  border-color: rgba(212,92,92,0.4) !important;
+  box-shadow: 0 0 14px rgba(212,92,92,0.1) !important;
+  animation: glowPulse 2s infinite ease-in-out;
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(212,92,92,0.1); }
+  50% { box-shadow: 0 0 20px rgba(212,92,92,0.25); }
+}
+
+.comparison-cards-slider-wrap {
+  width: 100%; overflow: hidden; position: relative; margin-bottom: 32px;
+}
+.comparison-slider-track {
+  display: flex; transition: transform var(--tm) cubic-bezier(.4, 0, .2, 1); width: 300%;
+}
+.comparison-slide {
+  width: 33.333%; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex-shrink: 0; padding: 4px;
+}
+.comp-card {
+  background: var(--bg3); border: 1px solid var(--b1); border-radius: var(--r3);
+  padding: 24px; position: relative; text-align: left; display: flex; flex-direction: column; gap: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.card-before {
+  background: #0f100d; border-color: rgba(212,92,92,0.15);
+}
+.card-after {
+  background: linear-gradient(135deg, var(--bg3) 0%, rgba(78,91,31,0.12) 100%);
+  border-color: rgba(78,91,31,0.3);
+}
+.comp-card-badge {
+  display: inline-block; align-self: flex-start; padding: 2px 8px; border-radius: 100px;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+.badge-before {
+  background: rgba(212,92,92,0.1); border: 1px solid rgba(212,92,92,0.3); color: #D45C5C;
+}
+.badge-after {
+  background: var(--dim); border: 1px solid var(--b2); color: var(--cr3);
+}
+.comp-card-icon {
+  font-size: 28px;
+}
+.comp-card h4 {
+  font-family: 'Playfair Display', serif; font-size: 16px; color: var(--t1); margin-top: 4px;
+}
+.comp-card p {
+  font-size: 12px; color: var(--t2); line-height: 1.5; flex: 1;
+}
+.comp-card-why-label {
+  font-size: 8px; color: var(--t3); text-transform: uppercase; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px;
+  border-top: 1px solid var(--b1); padding-top: 8px;
+}
+.comp-card-why-text {
+  font-size: 11.5px; color: var(--t2); line-height: 1.5; font-style: italic;
+}
+.card-after .comp-card-why-text {
+  color: var(--t1);
+}
+.comparison-slider-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 18px;
+}
+.slider-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--b2); cursor: pointer; transition: all var(--tf);
+}
+.slider-dot.active {
+  background: var(--k2); width: 20px; border-radius: 4px;
+}
+
+.instagram-simulator-card {
+  background: #121212; border: 1px solid #262626; border-radius: 12px;
+  padding: 18px; margin-bottom: 24px; position: relative; max-width: 420px; margin: 0 auto 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left;
+}
+.instagram-header-sim {
+  display: flex; gap: 20px; align-items: center; margin-bottom: 12px;
+}
+.insta-sim-avatar {
+  width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  padding: 3px; display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 800; font-size: 16px; position: relative;
+}
+.insta-sim-avatar::after {
+  content: ''; width: 62px; height: 62px; background: #121212; position: absolute; z-index: 0; border-radius: 50%;
+}
+.insta-sim-avatar span {
+  position: relative; z-index: 1;
+}
+.insta-stats-col {
+  flex: 1;
+}
+.insta-sim-username {
+  font-weight: 700; font-size: 14px; margin-bottom: 6px; color: #f5f5f5;
+}
+.insta-stats-row {
+  display: flex; justify-content: space-between; text-align: center; font-size: 11px; color: #a8a8a8;
+}
+.insta-stats-row strong {
+  color: #f5f5f5; font-size: 13px;
+}
+.instagram-bio-sim {
+  font-size: 12.5px; line-height: 1.5; color: #f5f5f5;
+}
+.insta-sim-fullname {
+  font-weight: 700; margin-bottom: 4px;
+}
+.insta-sim-bio-text-wrap {
+  position: relative; margin-bottom: 8px; cursor: pointer; padding: 6px; border-radius: 6px;
+  transition: background 0.2s; border: 1px dashed transparent;
+}
+.insta-sim-bio-text-wrap:hover {
+  background: rgba(255,255,255,0.04); border-color: rgba(237,228,197,0.2);
+}
+.insta-pulsing-marker {
+  position: absolute; right: 8px; top: 8px; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center;
+}
+.ping-dot {
+  position: absolute; width: 100%; height: 100%; border-radius: 50%; background: #D45C5C; opacity: 0.75;
+  animation: pulse 1.8s infinite;
+}
+.main-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #D45C5C; position: relative; z-index: 2;
+}
+.insta-sim-link-wrap {
+  position: relative; display: inline-block; cursor: pointer; padding: 4px 8px; border-radius: 6px;
+  border: 1px dashed transparent; margin-top: 4px;
+}
+.insta-sim-link-wrap:hover {
+  background: rgba(255,255,255,0.04); border-color: rgba(237,228,197,0.2);
+}
+.insta-sim-link {
+  color: #e0f1ff; font-weight: 600; text-decoration: none;
+}
+.insta-bio-tooltip {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 10;
+  background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: var(--r2); padding: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6); display: none;
+  animation: popIn 0.25s cubic-bezier(.16,1,.3,1);
+}
+.insta-sim-bio-text-wrap:hover .insta-bio-tooltip, 
+.insta-sim-bio-text-wrap.active .insta-bio-tooltip,
+.insta-sim-link-wrap:hover .insta-bio-tooltip,
+.insta-sim-link-wrap.active .insta-bio-tooltip {
+  display: block;
+}
+.tooltip-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #D4A043;
+  text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px;
+}
+
+.sticky-whatsapp-cta {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+  z-index: 1000; transition: transform var(--tm) cubic-bezier(.4, 0, .2, 1);
+  width: calc(100% - 48px); max-width: 460px;
+}
+.sticky-whatsapp-cta.show {
+  transform: translateX(-50%) translateY(0);
+}
+.sticky-whatsapp-cta button {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 14px 22px; background: #25D366; color: white;
+  border: none; border-radius: 12px; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  box-shadow: 0 10px 30px rgba(37,211,102,.4), 0 0 0 1px rgba(255,255,255,0.1);
+  transition: all var(--tm);
+}
+.sticky-whatsapp-cta button:hover {
+  background: #20ba59; transform: scale(1.02);
+}
+
+@media(max-width: 768px) {
+  .comparison-slide { grid-template-columns: 1fr; gap: 14px; }
 }
 </style>
 </head>
@@ -1015,118 +1239,52 @@ a{text-decoration:none;color:inherit}
   <div class="hero-orb hero-orb-3"></div>
   <div class="hero-grid"></div>
 
-  <!-- TWO-COLUMN HERO LAYOUT -->
-  <div class="hero-grid-layout">
-    <!-- LEFT COLUMN: COPY & WhatsApp lead card -->
-    <div class="hero-left-col">
-      <div class="hero-pill">
-        <span class="pill-dot"></span>
-        Estratégia + Captação + Anúncios Locais
-      </div>
-
-      <h1 class="hero-h">
-        Seu negócio crescendo<br>
-        com <em>presença premium</em><br>
-        e tráfego estratégico.
-      </h1>
-
-      <p class="hero-p">
-        Nós cuidamos do operacional completo: sessões de captação de fotos/vídeos no seu estabelecimento, roteiros, edição de Reels de alto impacto e anúncios focados em vendas.
-      </p>
-
-      <!-- HERO CTA CARD (Instagram Profile Analyzer integration) -->
-      <div class="hero-cta-card">
-        <div class="hero-cta-head">
-          <span class="hero-cta-badge">Ferramenta Inteligente Gratuita</span>
-          <h2 class="hero-cta-title">Analise o seu perfil do Instagram comercial em tempo real</h2>
-        </div>
-        <p style="font-size:12px; color:var(--t2); margin-bottom:18px; line-height:1.6; font-weight:300;">
-          Nossa inteligência artificial analisa suas métricas públicas, engajamento e consistência para sugerir melhorias imediatas de vendas.
-        </p>
-        
-        <div style="display:flex; gap:10px; align-items:center; margin-bottom:18px; flex-wrap:wrap;">
-          <div class="analyzer-input-group" style="margin:0; flex:1; background:rgba(7,8,6,0.6); border-color:var(--b2);">
-            <span class="analyzer-at">@</span>
-            <input type="text" id="hero-analyzer-username" placeholder="seu.perfil.comercial" onkeydown="if(event.key==='Enter')analyzeFromHero()" />
-          </div>
-          <button class="hero-cta-btn" onclick="analyzeFromHero()" style="width:auto; padding:0 24px; height:52px; white-space:nowrap;">
-            Analisar Grátis
-          </button>
-        </div>
-
-        <div class="hero-cta-features" style="grid-template-columns:1fr; gap:6px; margin-bottom:12px;">
-          <div class="hero-cta-feat" style="font-size:10px;"><span>✓</span> Score Geral & Comparativo de mercado local</div>
-          <div class="hero-cta-feat" style="font-size:10px;"><span>✓</span> Dicas práticas (Quick Wins) de Bio e conteúdo</div>
-          <div class="hero-cta-feat" style="font-size:10px;"><span>✓</span> Plano de mudança personalizado da KRAD</div>
-        </div>
-
-        <div class="hero-cta-footer" style="margin-top:14px; border-top:1px solid var(--b1); padding-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-          <span class="hero-cta-hint" style="font-size:8.5px;">Quer falar direto com a gente?</span>
-          <button onclick="openWA('hero')" style="background:none; border:none; color:var(--cr3); font-size:10px; font-weight:700; font-family:'JetBrains Mono'; cursor:pointer; text-decoration:underline; padding:0; letter-spacing:0.5px; text-transform:uppercase;">Falar no WhatsApp →</button>
-        </div>
-      </div>
+  <!-- CENTERED HERO LAYOUT (SaaS Style) -->
+  <div class="hero-centered-layout">
+    <div class="hero-pill">
+      <span class="pill-dot"></span>
+      Estratégia + Captação + Anúncios Locais
     </div>
 
-    <!-- RIGHT COLUMN: VISUAL SMARTPHONE SIMULATION -->
-    <div class="hero-right-col">
-      <!-- Floating metrics badges -->
-      <div class="floating-badge fb-views">
-        <div class="fb-icon">🎥</div>
-        <div>
-          <div style="font-size: 13px; color: var(--k2)">25k views</div>
-          <div style="font-size: 8px; color: var(--t3); text-transform: uppercase; font-family:'JetBrains Mono'">orgânico/vídeo</div>
-        </div>
+    <h1 class="hero-h">
+      Seu negócio crescendo<br>
+      com <em>presença premium</em><br>
+      e tráfego estratégico.
+    </h1>
+
+    <p class="hero-p" style="max-width: 680px; margin-left: auto; margin-right: auto;">
+      Nós cuidamos do operacional completo: sessões de captação de fotos/vídeos no seu estabelecimento, roteiros, edição de Reels de alto impacto e anúncios focados em vendas.
+    </p>
+
+    <!-- HERO CTA CARD (Instagram Profile Analyzer integration) -->
+    <div class="hero-cta-card" style="margin: 0 auto; width: 100%; max-width: 640px;">
+      <div class="hero-cta-head" style="text-align: center;">
+        <span class="hero-cta-badge">Ferramenta Inteligente Gratuita</span>
+        <h2 class="hero-cta-title">Analise o seu perfil do Instagram comercial em tempo real</h2>
       </div>
+      <p style="font-size:12px; color:var(--t2); margin-bottom:18px; line-height:1.6; font-weight:300; text-align: center;">
+        Nossa inteligência artificial analisa suas métricas públicas, engajamento e consistência para sugerir melhorias imediatas de vendas.
+      </p>
       
-      <div class="floating-badge fb-faturamento">
-        <div class="fb-icon">📈</div>
-        <div>
-          <div style="font-size: 13px; color: var(--cr3)">+45%</div>
-          <div style="font-size: 8px; color: var(--t3); text-transform: uppercase; font-family:'JetBrains Mono'">no faturamento</div>
+      <div style="display:flex; gap:10px; align-items:center; margin-bottom:18px; flex-wrap:wrap;">
+        <div class="analyzer-input-group" style="margin:0; flex:1; background:rgba(7,8,6,0.6); border-color:var(--b2);">
+          <span class="analyzer-at">@</span>
+          <input type="text" id="hero-analyzer-username" placeholder="seu.perfil.comercial" onkeydown="if(event.key==='Enter')analyzeFromHero()" />
         </div>
+        <button class="hero-cta-btn" onclick="analyzeFromHero()" style="width:auto; padding:0 24px; height:52px; white-space:nowrap;">
+          Analisar Grátis
+        </button>
       </div>
 
-      <div class="floating-badge fb-seguidores">
-        <div class="fb-icon">⚖️</div>
-        <div>
-          <div style="font-size: 13px; color: var(--t1)">+30%</div>
-          <div style="font-size: 8px; color: var(--t3); text-transform: uppercase; font-family:'JetBrains Mono'">em seguidores</div>
-        </div>
+      <div class="hero-cta-features" style="grid-template-columns:1fr; gap:6px; margin-bottom:12px;">
+        <div class="hero-cta-feat" style="font-size:10px; justify-content: center;"><span>✓</span> Score Geral & Comparativo de mercado local</div>
+        <div class="hero-cta-feat" style="font-size:10px; justify-content: center;"><span>✓</span> Dicas práticas (Quick Wins) de Bio e conteúdo</div>
+        <div class="hero-cta-feat" style="font-size:10px; justify-content: center;"><span>✓</span> Plano de mudança personalizado da KRAD</div>
       </div>
 
-      <div class="phone-mockup">
-        <div class="phone-screen">
-          <div class="phone-header">
-            <span>krad_operator</span>
-            <span>12:00 PM</span>
-            <span>🔋 100%</span>
-          </div>
-          <div class="phone-content">
-            <div class="reels-simulation">
-              <div class="food-visual-glow"></div>
-              <div class="food-art">🍕</div>
-              
-              <!-- Instagram Sidebar Mockup -->
-              <div class="reels-sidebar">
-                <div class="reels-sidebar-item">❤️<span>2.4k</span></div>
-                <div class="reels-sidebar-item">💬<span>182</span></div>
-                <div class="reels-sidebar-item">✈️<span>492</span></div>
-                <div class="reels-sidebar-item">🎵</div>
-              </div>
-
-              <!-- Instagram Text Mockup -->
-              <div class="reels-overlay">
-                <div class="reels-user">
-                  <div class="reels-user-av">AE</div>
-                  allanesfihas.atibaia
-                </div>
-                <div class="reels-caption">
-                  A melhor esfiha de Atibaia! Crocante, quentinha e com recheio de verdade. Peça pelo link...
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="hero-cta-footer" style="margin-top:14px; border-top:1px solid var(--b1); padding-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <span class="hero-cta-hint" style="font-size:8.5px;">Quer falar direto com a gente?</span>
+        <button onclick="openWA('hero')" style="background:none; border:none; color:var(--cr3); font-size:10px; font-weight:700; font-family:'JetBrains Mono'; cursor:pointer; text-decoration:underline; padding:0; letter-spacing:0.5px; text-transform:uppercase;">Falar no WhatsApp →</button>
       </div>
     </div>
   </div>
@@ -1193,12 +1351,21 @@ a{text-decoration:none;color:inherit}
       
       <!-- Result State -->
       <div id="analyzer-result" style="display:none;">
-        <div class="analyzer-result-header">
-          <div class="analyzer-score-wrap">
-            <div class="analyzer-score-circle" id="result-score-circle">0</div>
-            <div>
+        <div class="analyzer-result-header" style="flex-direction: column; align-items: center; gap: 24px; text-align: center;">
+          <div class="analyzer-score-wrap" style="flex-direction: column; align-items: center; gap: 16px;">
+            <div class="analyzer-score-circle-svg-wrap" style="width: 140px; height: 140px;">
+              <svg class="score-circle-svg" viewBox="0 0 100 100">
+                <circle class="score-circle-bg" cx="50" cy="50" r="42" fill="transparent" stroke="var(--b2)" stroke-width="8" />
+                <circle class="score-circle-fill" id="result-score-svg-fill" cx="50" cy="50" r="42" fill="transparent" stroke="var(--k2)" stroke-width="8" stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round" />
+              </svg>
+              <div class="score-circle-text">
+                <span class="score-circle-number" id="result-score-circle">0</span>
+                <span class="score-circle-label" id="result-score-label">Analisando</span>
+              </div>
+            </div>
+            <div style="text-align: center;">
               <div class="analyzer-score-title" id="result-score-title">Score Geral</div>
-              <div class="analyzer-score-desc" id="result-score-desc">Avaliação baseada no mercado local e em benchmarks de performance.</div>
+              <div class="analyzer-score-desc" id="result-score-desc" style="max-width: 320px; margin: 4px auto 0;">Avaliação baseada no mercado local e em benchmarks de performance.</div>
             </div>
           </div>
           <button class="analyzer-retry-btn" onclick="resetAnalyzer()">Nova Análise</button>
@@ -1206,17 +1373,26 @@ a{text-decoration:none;color:inherit}
         
         <!-- Métricas básicas -->
         <div class="analyzer-metrics">
-          <div class="analyzer-metric-card">
+          <div class="analyzer-metric-card" style="position: relative;">
+            <div class="amc-badge-wrap">
+              <span class="amc-badge blue" id="badge-followers">Foco Regional</span>
+            </div>
             <div class="amc-icon">👥</div>
             <div class="amc-label">Seguidores</div>
             <div class="amc-value" id="result-followers">0</div>
           </div>
-          <div class="analyzer-metric-card">
+          <div class="analyzer-metric-card" style="position: relative;">
+            <div class="amc-badge-wrap">
+              <span class="amc-badge green" id="badge-engagement">Carregando</span>
+            </div>
             <div class="amc-icon">⚡</div>
             <div class="amc-label">Engajamento</div>
             <div class="amc-value" id="result-engagement">0.0%</div>
           </div>
-          <div class="analyzer-metric-card">
+          <div class="analyzer-metric-card" style="position: relative;">
+            <div class="amc-badge-wrap">
+              <span class="amc-badge yellow" id="badge-frequency">Aguardando</span>
+            </div>
             <div class="amc-icon">📅</div>
             <div class="amc-label">Frequência/Mês</div>
             <div class="amc-value" id="result-frequency">0</div>
@@ -1227,65 +1403,185 @@ a{text-decoration:none;color:inherit}
         <div class="analyzer-benchmarks">
           <h3>Comparativo com Metas de Mercado (Local Benchmarks)</h3>
           <div class="benchmark-grid">
+            
             <div class="benchmark-row">
               <div class="benchmark-labels">
                 <span class="benchmark-label">Taxa de Engajamento</span>
                 <span class="benchmark-value" id="bench-eng-val">0.0%</span>
               </div>
-              <div class="benchmark-track">
-                <div class="benchmark-fill" id="bench-eng-fill" style="width: 0%;"></div>
-                <div class="benchmark-target-marker" style="left: 70%;" title="Meta saudavel: 2.50%"></div>
+              <div class="double-bar-container">
+                <div class="bar-row">
+                  <span class="bar-lbl">Meta Mercado</span>
+                  <div class="bar-track">
+                    <div class="bar-fill meta-fill" style="width: 50%;"></div>
+                  </div>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-lbl">Seu Perfil</span>
+                  <div class="bar-track">
+                    <div class="bar-fill client-fill" id="bench-eng-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="benchmark-row">
               <div class="benchmark-labels">
                 <span class="benchmark-label">Consistência (Posts/Mês)</span>
                 <span class="benchmark-value" id="bench-freq-val">0 posts</span>
               </div>
-              <div class="benchmark-track">
-                <div class="benchmark-fill" id="bench-freq-fill" style="width: 0%;"></div>
-                <div class="benchmark-target-marker" style="left: 80%;" title="Meta saudavel: 10 posts/mês"></div>
+              <div class="double-bar-container">
+                <div class="bar-row">
+                  <span class="bar-lbl">Meta Mercado</span>
+                  <div class="bar-track">
+                    <div class="bar-fill meta-fill" style="width: 50%;"></div>
+                  </div>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-lbl">Seu Perfil</span>
+                  <div class="bar-track">
+                    <div class="bar-fill client-fill" id="bench-freq-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="benchmark-row">
               <div class="benchmark-labels">
                 <span class="benchmark-label">Crescimento de Seguidores</span>
                 <span class="benchmark-value" id="bench-growth-val">0.0%</span>
               </div>
-              <div class="benchmark-track">
-                <div class="benchmark-fill" id="bench-growth-fill" style="width: 0%;"></div>
-                <div class="benchmark-target-marker" style="left: 75%;" title="Meta saudavel: 1.5% ao mês"></div>
+              <div class="double-bar-container">
+                <div class="bar-row">
+                  <span class="bar-lbl">Meta Mercado</span>
+                  <div class="bar-track">
+                    <div class="bar-fill meta-fill" style="width: 50%;"></div>
+                  </div>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-lbl">Seu Perfil</span>
+                  <div class="bar-track">
+                    <div class="bar-fill client-fill" id="bench-growth-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="benchmark-row">
               <div class="benchmark-labels">
                 <span class="benchmark-label">Proporção de Salvamentos</span>
                 <span class="benchmark-value" id="bench-save-val">0%</span>
               </div>
-              <div class="benchmark-track">
-                <div class="benchmark-fill" id="bench-save-fill" style="width: 0%;"></div>
-                <div class="benchmark-target-marker" style="left: 80%;" title="Meta saudavel: 10% de saves por likes"></div>
+              <div class="double-bar-container">
+                <div class="bar-row">
+                  <span class="bar-lbl">Meta Mercado</span>
+                  <div class="bar-track">
+                    <div class="bar-fill meta-fill" style="width: 50%;"></div>
+                  </div>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-lbl">Seu Perfil</span>
+                  <div class="bar-track">
+                    <div class="bar-fill client-fill" id="bench-save-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
               </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Funil de Conversão & Gargalos -->
+        <div class="analyzer-funnel-section">
+          <h3>Funil de Conversão & Diagnóstico de Gargalos</h3>
+          <div class="funnel-container">
+            <!-- Funnel Step 1: Alcance -->
+            <div class="funnel-step step-reach" id="funnel-reach">
+              <div class="funnel-shape">
+                <span class="funnel-label">ATRAÇÃO (Seguidores/Alcance)</span>
+                <span class="funnel-value" id="funnel-reach-val">0</span>
+              </div>
+              <div class="funnel-info">
+                <p>Volume de público que te acompanha. Base para atração local.</p>
+              </div>
+            </div>
+            <!-- Funnel Step 2: Engajamento -->
+            <div class="funnel-step step-engage" id="funnel-engage">
+              <div class="funnel-shape">
+                <span class="funnel-label">RETENÇÃO (Interações)</span>
+                <span class="funnel-value" id="funnel-engage-val">0.0%</span>
+              </div>
+              <div class="funnel-info">
+                <p>Taxa de engajamento do público. Um conteúdo atrativo cria desejo de compra.</p>
+              </div>
+            </div>
+            <!-- Funnel Step 3: Conversão -->
+            <div class="funnel-step step-convert" id="funnel-convert">
+              <div class="funnel-shape">
+                <span class="funnel-label">AÇÃO (Cliques no Link)</span>
+                <span class="funnel-value" id="funnel-convert-val">0%</span>
+              </div>
+              <div class="funnel-info">
+                <p>Visitantes que clicam no seu link da bio e iniciam contato comercial.</p>
+              </div>
+            </div>
+          </div>
+          <div class="funnel-bottleneck-card" id="funnel-bottleneck-card">
+            <div class="bottleneck-icon">⚠️</div>
+            <div class="bottleneck-text">
+              <h4 id="funnel-bottleneck-title">Analisando Gargalo do Funil...</h4>
+              <p id="funnel-bottleneck-desc">Processando suas taxas de conversão...</p>
             </div>
           </div>
         </div>
 
         <!-- Mídias e Retenção Profunda -->
         <div class="deep-insights-grid">
-          <div class="insight-card">
+          
+          <!-- Alcance de Não-Seguidores com Donut Chart -->
+          <div class="insight-card" id="nonfollowers-card" style="transition: all 0.3s ease;">
             <h5>Alcance de Não-Seguidores</h5>
-            <div class="val" id="result-nonfollowers">0%</div>
-            <div class="desc" id="result-nonfollowers-desc">Distribuição orgânica do perfil.</div>
+            <div class="donut-chart-wrap">
+              <svg class="donut-svg" viewBox="0 0 36 36">
+                <!-- Background Ring (Followers) -->
+                <circle class="donut-ring" cx="18" cy="18" r="15.915" fill="transparent" stroke="var(--bg5)" stroke-width="4" />
+                <!-- Foreground Segment (Non-Followers) -->
+                <circle class="donut-segment" id="donut-nonfollowers-segment" cx="18" cy="18" r="15.915" fill="transparent" stroke="var(--k2)" stroke-width="4" stroke-dasharray="0 100" stroke-dashoffset="0" stroke-linecap="round" />
+              </svg>
+              <div class="donut-center-text">
+                <span id="result-nonfollowers">0%</span>
+                <small>PÚBLICO NOVO</small>
+              </div>
+            </div>
+            <div class="donut-label-legend">
+              <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--bg5); border-radius:50%; margin-right:4px;"></span>Seguidores</span>
+              <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--k2); border-radius:50%; margin-right:4px;" id="donut-legend-color"></span>Público Novo</span>
+            </div>
+            <div class="desc" id="result-nonfollowers-desc" style="margin-top: 10px;">Distribuição orgânica do perfil.</div>
+            
+            <!-- Bolha Alerta Box -->
+            <div id="bubble-alert-box" style="display:none; margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(212,92,92,0.25); align-items: flex-start; gap: 8px; text-align: left;">
+              <span style="font-size:14px; margin-top:1px;">🚨</span>
+              <div style="font-size:10px; color:#D45C5C; line-height:1.4;">
+                <strong>Diagnóstico KRAD:</strong> Seu perfil está trancado em uma bolha local. Você só fala para quem já te conhece.
+              </div>
+            </div>
           </div>
+
           <div class="insight-card">
             <h5>Retenção Reels (3 seg)</h5>
             <div class="val" id="result-completion">0%</div>
             <div class="desc" id="result-completion-desc">Retenção de atenção nos vídeos.</div>
           </div>
+          
           <div class="insight-card">
             <h5>Janela de Oportunidade</h5>
             <div class="val" id="result-activehours">—</div>
-            <div class="desc">Dias e horários de maior pico de público ativo.</div>
+            <div class="desc" style="margin-bottom: 10px;">Dias e horários de maior pico de público ativo.</div>
+            <div class="active-hours-heatmap">
+              <div class="heatmap-header">Frequência Horária (Semana)</div>
+              <div class="heatmap-grid" id="result-heatmap-grid"></div>
+            </div>
           </div>
         </div>
 
@@ -1304,57 +1600,155 @@ a{text-decoration:none;color:inherit}
           </div>
         </div>
 
-        <!-- Tabela comparativa Antes vs Depois -->
+        <!-- Carrossel Antes vs Depois -->
         <div class="analyzer-comparison-title">🔄 O Plano de Mudança da KRAD para o Seu Negócio</div>
-        <div class="comparison-table-wrap">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th style="width: 30%">O Erro Clássico (Como está hoje)</th>
-                <th style="width: 35%">Como a KRAD muda seu Perfil</th>
-                <th style="width: 35%">Por que isso gera Vendas?</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="comp-erro"><strong>Post Panfleto:</strong> Foto estática do produto com preço e legenda curta ("Compre já").</td>
-                <td class="comp-solucao"><strong>Post de Desejo:</strong> Reels mostrando o benefício do produto na vida real, resolvendo um problema do cliente.</td>
-                <td class="comp-why">O cliente entra no Instagram para se entreter, não para ver anúncios. Geramos o desejo primeiro para vender depois.</td>
-              </tr>
-              <tr>
-                <td class="comp-erro"><strong>Fotos de Banco de Imagens:</strong> Postagens frias e genéricas que tiram a identidade da marca.</td>
-                <td class="comp-solucao"><strong>Presença Premium Real:</strong> Produção de fotos e vídeos sofisticados feitos direto no seu estabelecimento comercial.</td>
-                <td class="comp-why">Transmite profissionalismo, humanidade e autoridade local. Perfil com cara de amador não consegue cobrar caro.</td>
-              </tr>
-              <tr>
-                <td class="comp-erro"><strong>Legendas Curtas ou Vazias:</strong> Apenas emojis ou frases prontas ("Foco e Fé").</td>
-                <td class="comp-solucao"><strong>Legendas com Copy:</strong> Textos envolventes com ganchos fortes de leitura e chamada clara para ação (CTA).</td>
-                <td class="comp-why">Aumenta o tempo que a pessoa passa interagindo na sua postagem, fazendo o algoritmo entregar seu perfil para mais pessoas na cidade.</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="comparison-cards-slider-wrap">
+          <div class="comparison-slider-track" id="comp-slider-track">
+            <!-- Slide 1 -->
+            <div class="comparison-slide">
+              <div class="comp-card card-before">
+                <span class="comp-card-badge badge-before">Como está hoje</span>
+                <div class="comp-card-icon">🍳</div>
+                <h4>Post Panfleto</h4>
+                <p>Foto estática do produto com preço e legenda curta ("Compre já").</p>
+                <div class="comp-card-why-label">O Erro</div>
+                <p class="comp-card-why-text">O cliente entra no Instagram para se entreter, não para ver anúncios frios.</p>
+              </div>
+              <div class="comp-card card-after">
+                <span class="comp-card-badge badge-after">Com a KRAD</span>
+                <div class="comp-card-icon">🎬</div>
+                <h4>Post de Desejo</h4>
+                <p>Reels mostrando o benefício do produto na vida real, resolvendo um problema do cliente.</p>
+                <div class="comp-card-why-label">Como gera vendas</div>
+                <p class="comp-card-why-text">Desperta a curiosidade e o desejo de compra de forma natural e orgânica.</p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="comparison-slide">
+              <div class="comp-card card-before">
+                <span class="comp-card-badge badge-before">Como está hoje</span>
+                <div class="comp-card-icon">🖼️</div>
+                <h4>Banco de Imagens</h4>
+                <p>Postagens frias e genéricas que tiram a identidade da marca.</p>
+                <div class="comp-card-why-label">O Erro</div>
+                <p class="comp-card-why-text">Transmite amadorismo e falta de credibilidade. Clientes locais compram de marcas reais.</p>
+              </div>
+              <div class="comp-card card-after">
+                <span class="comp-card-badge badge-after">Com a KRAD</span>
+                <div class="comp-card-icon">📸</div>
+                <h4>Presença Premium Real</h4>
+                <p>Produção de fotos e vídeos sofisticados feitos direto no seu estabelecimento comercial.</p>
+                <div class="comp-card-why-label">Como gera vendas</div>
+                <p class="comp-card-why-text">Gera confiança imediata, autoridade e destaca você de qualquer concorrente na cidade.</p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="comparison-slide">
+              <div class="comp-card card-before">
+                <span class="comp-card-badge badge-before">Como está hoje</span>
+                <div class="comp-card-icon">✍️</div>
+                <h4>Legenda Curta/Vazia</h4>
+                <p>Apenas emojis ou frases prontas ("Foco e Fé").</p>
+                <div class="comp-card-why-label">O Erro</div>
+                <p class="comp-card-why-text">Não retém o leitor e desperdiça a chance de iniciar um contato direto.</p>
+              </div>
+              <div class="comp-card card-after">
+                <span class="comp-card-badge badge-after">Com a KRAD</span>
+                <div class="comp-card-icon">📝</div>
+                <h4>Legenda com Copy</h4>
+                <p>Textos envolventes com ganchos fortes de leitura e chamada clara para ação no link.</p>
+                <div class="comp-card-why-label">Como gera vendas</div>
+                <p class="comp-card-why-text">Aumenta o tempo de tela do post (otimizando o algoritmo) e direciona leads qualificados para o WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="comparison-slider-dots">
+            <span class="slider-dot active" onclick="setSlide(0)"></span>
+            <span class="slider-dot" onclick="setSlide(1)"></span>
+            <span class="slider-dot" onclick="setSlide(2)"></span>
+          </div>
         </div>
 
-        <!-- Detalhes da Auditoria KRAD -->
-        <div class="analyzer-details">
-          <div class="analyzer-detail-box">
-            <h4>📋 Diagnóstico de Posicionamento e Bio</h4>
-            <p id="result-bio-feedback">Carregando...</p>
+        <!-- Simulador do Instagram & Detalhes da Auditoria KRAD -->
+        <div class="analyzer-details" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <!-- Left: Instagram Simulator Frame -->
+          <div>
+            <h4 style="margin-bottom: 12px; font-family: 'Playfair Display', serif; font-size: 16px;">📱 Diagnóstico de Posicionamento e Bio</h4>
+            <div class="instagram-simulator-card" style="margin: 0 auto;">
+              <div class="instagram-header-sim">
+                <div class="insta-sim-avatar">
+                  <span id="insta-avatar-letter">U</span>
+                </div>
+                <div class="insta-stats-col">
+                  <div class="insta-sim-username" id="insta-username-val">@seu.perfil</div>
+                  <div class="insta-stats-row">
+                    <div><strong>128</strong><br>posts</div>
+                    <div><strong id="insta-followers-val">0</strong><br>seguidores</div>
+                    <div><strong>482</strong><br>seguindo</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="instagram-bio-sim">
+                <div class="insta-sim-fullname" id="insta-fullname-val">Seu Perfil Comercial</div>
+                
+                <!-- Interactive Bio Text Wrap -->
+                <div class="insta-sim-bio-text-wrap" id="insta-bio-text-wrap" onclick="toggleBioTooltip(event)">
+                  <div class="insta-pulsing-marker">
+                    <span class="ping-dot"></span>
+                    <span class="main-dot"></span>
+                  </div>
+                  <div id="insta-bio-text">Carregando biografia comercial...</div>
+                  
+                  <!-- Bio Tooltip -->
+                  <div class="insta-bio-tooltip">
+                    <div class="tooltip-title">Diagnóstico da Bio</div>
+                    <div style="font-size: 11px; line-height: 1.5; color: #f5f5f5;" id="insta-bio-tooltip-content">
+                      Sua promessa aqui está fraca. Você tem apenas 3 segundos para prender o cliente local. Veja abaixo como nossa agência resolve isso.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Interactive Link Wrap -->
+                <div class="insta-sim-link-wrap" id="insta-link-wrap" onclick="toggleLinkTooltip(event)">
+                  <div class="insta-pulsing-marker" style="right: 4px; top: 4px;">
+                    <span class="ping-dot"></span>
+                    <span class="main-dot"></span>
+                  </div>
+                  🔗 <span class="insta-sim-link" id="insta-link-val">linkin.bio/seu-negocio</span>
+                  
+                  <!-- Link Tooltip -->
+                  <div class="insta-bio-tooltip">
+                    <div class="tooltip-title">Diagnóstico do Link</div>
+                    <div style="font-size: 11px; line-height: 1.5; color: #f5f5f5;" id="insta-link-tooltip-content">
+                      Link ausente ou confuso. Mude para um link direto e profissional para facilitar a conversão.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="analyzer-detail-box">
-            <h4>📈 Avaliação de Conteúdo & Engajamento</h4>
-            <p id="result-content-feedback">Carregando...</p>
-          </div>
-          <div class="analyzer-detail-box">
-            <h4>💡 Recomendações KRAD (3 Ações Imediatas)</h4>
-            <ul id="result-tips-list">
-              <li>Carregando...</li>
-            </ul>
+
+          <!-- Right: Detailed AI Auditor Box & Recommendations -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="analyzer-detail-box" style="margin: 0;">
+              <h4>📈 Avaliação de Conteúdo & Engajamento</h4>
+              <p id="result-content-feedback">Carregando...</p>
+            </div>
+            <div class="analyzer-detail-box" style="margin: 0;">
+              <h4>💡 Recomendações KRAD (3 Ações Imediatas)</h4>
+              <ul id="result-tips-list">
+                <li>Carregando...</li>
+              </ul>
+            </div>
           </div>
         </div>
         
         <!-- Gancho final da agência -->
-        <div class="analyzer-cta-box">
+        <div class="analyzer-cta-box" style="margin-top: 28px;">
           <p id="result-sales-hook" style="font-size: 13.5px; color: var(--t2); line-height: 1.7; text-align: left; margin-bottom: 20px;">
             Carregando diagnóstico de conversão comercial...
           </p>
@@ -1870,54 +2264,165 @@ async function startAnalysis() {
     document.getElementById('result-followers').textContent = data.profile.followers.toLocaleString('pt-BR');
     document.getElementById('result-engagement').textContent = data.profile.engagementRate.toFixed(2) + '%';
     document.getElementById('result-frequency').textContent = data.profile.postsPerMonth + '/mês';
+
+    // Dynamic metrics badges
+    const followersBadge = document.getElementById('badge-followers');
+    if (data.profile.followers >= 5000) {
+      followersBadge.className = 'amc-badge green';
+      followersBadge.textContent = 'Forte Presença';
+    } else if (data.profile.followers >= 1500) {
+      followersBadge.className = 'amc-badge blue';
+      followersBadge.textContent = 'Média Regional';
+    } else {
+      followersBadge.className = 'amc-badge yellow';
+      followersBadge.textContent = 'Posicionamento Inicial';
+    }
+
+    const engagementBadge = document.getElementById('badge-engagement');
+    if (data.profile.engagementRate >= 2.5) {
+      engagementBadge.className = 'amc-badge green';
+      engagementBadge.textContent = 'Acima da Média Local';
+    } else if (data.profile.engagementRate >= 1.5) {
+      engagementBadge.className = 'amc-badge yellow';
+      engagementBadge.textContent = 'Média Local';
+    } else {
+      engagementBadge.className = 'amc-badge red';
+      engagementBadge.textContent = 'Abaixo da Média';
+    }
+
+    const frequencyBadge = document.getElementById('badge-frequency');
+    if (data.profile.postsPerMonth >= 12) {
+      frequencyBadge.className = 'amc-badge green';
+      frequencyBadge.textContent = 'Ideal Comercial';
+    } else if (data.profile.postsPerMonth >= 8) {
+      frequencyBadge.className = 'amc-badge green';
+      frequencyBadge.textContent = 'Consistente';
+    } else {
+      frequencyBadge.className = 'amc-badge red';
+      frequencyBadge.textContent = 'Abaixo do Ideal';
+    }
     
-    // Fill detailed feedbacks
-    document.getElementById('result-bio-feedback').textContent = data.analysis.bio_feedback;
+    // Fill detailed feedbacks (Content Auditor only since Bio goes to the simulator)
     document.getElementById('result-content-feedback').textContent = data.analysis.content_feedback;
     
     // Progress Bars (Benchmarks)
-    // 1. Engajamento: ideal 2.5%
-    const engPct = Math.min(Math.round((data.profile.engagementRate / 2.5) * 100), 100);
+    // 1. Engajamento: ideal 2.5% (Representado em escala de 5.0% max)
+    const engPct = Math.min(Math.round((data.profile.engagementRate / 5.0) * 100), 100);
     const engFill = document.getElementById('bench-eng-fill');
     engFill.style.width = engPct + '%';
     document.getElementById('bench-eng-val').textContent = data.profile.engagementRate.toFixed(2) + '%';
-    engFill.className = 'benchmark-fill' + (data.profile.engagementRate < 1.5 ? ' danger' : (data.profile.engagementRate < 2.5 ? ' warning' : ''));
+    engFill.className = 'bar-fill client-fill' + (data.profile.engagementRate < 1.5 ? ' danger' : (data.profile.engagementRate < 2.5 ? ' warning' : ''));
 
-    // 2. Frequência: ideal 10 posts
-    const freqPct = Math.min(Math.round((data.profile.postsPerMonth / 10) * 100), 100);
+    // 2. Frequência: ideal 10 posts (Representado em escala de 20 posts max)
+    const freqPct = Math.min(Math.round((data.profile.postsPerMonth / 20) * 100), 100);
     const freqFill = document.getElementById('bench-freq-fill');
     freqFill.style.width = freqPct + '%';
     document.getElementById('bench-freq-val').textContent = data.profile.postsPerMonth + ' posts';
-    freqFill.className = 'benchmark-fill' + (data.profile.postsPerMonth < 6 ? ' danger' : (data.profile.postsPerMonth < 10 ? ' warning' : ''));
+    freqFill.className = 'bar-fill client-fill' + (data.profile.postsPerMonth < 6 ? ' danger' : (data.profile.postsPerMonth < 10 ? ' warning' : ''));
 
-    // 3. Crescimento: ideal 1.5%
+    // 3. Crescimento: ideal 1.5% (Representado em escala de 3.0% max)
     const growthVal = data.profile.followerGrowthRate;
-    const growthPct = Math.min(Math.max(Math.round(((growthVal + 0.5) / 2.0) * 100), 5), 100); // map -0.5%..1.5%
+    const growthPct = Math.min(Math.round((growthVal / 3.0) * 100), 100);
     const growthFill = document.getElementById('bench-growth-fill');
-    growthFill.style.width = growthPct + '%';
+    growthFill.style.width = Math.max(growthPct, 5) + '%';
     document.getElementById('bench-growth-val').textContent = (growthVal >= 0 ? '+' : '') + growthVal.toFixed(2) + '%';
-    growthFill.className = 'benchmark-fill' + (growthVal < 0 ? ' danger' : (growthVal < 1.0 ? ' warning' : ''));
+    growthFill.className = 'bar-fill client-fill' + (growthVal < 0 ? ' danger' : (growthVal < 1.0 ? ' warning' : ''));
 
-    // 4. Proporção de salvamentos: ideal 10%
-    const savePct = Math.round((data.profile.averageSaves / data.profile.averageLikes) * 100);
-    const saveFillPct = Math.min(Math.round((savePct / 10) * 100), 100);
+    // 4. Proporção de salvamentos: ideal 10% (Representado em escala de 20% max)
+    const savePct = Math.round((data.profile.averageSaves / data.profile.averageLikes) * 100) || 0;
+    const saveFillPct = Math.min(Math.round((savePct / 20) * 100), 100);
     const saveFill = document.getElementById('bench-save-fill');
-    saveFill.style.width = saveFillPct + '%';
+    saveFill.style.width = Math.max(saveFillPct, 5) + '%';
     document.getElementById('bench-save-val').textContent = savePct + '%';
-    saveFill.className = 'benchmark-fill' + (savePct < 5 ? ' danger' : (savePct < 10 ? ' warning' : ''));
+    saveFill.className = 'bar-fill client-fill' + (savePct < 5 ? ' danger' : (savePct < 10 ? ' warning' : ''));
 
-    // Deep Insights
-    document.getElementById('result-nonfollowers').textContent = data.profile.reachRateNonFollowers + '%';
-    document.getElementById('result-nonfollowers-desc').textContent = data.profile.reachRateNonFollowers < 40 
-      ? 'Bolha detectada. Pouco alcance viral.' 
-      : 'Bom alcance de novos potenciais clientes.';
-      
+    // Donut Chart - Reach Non Followers
+    const nonFollowers = data.profile.reachRateNonFollowers;
+    document.getElementById('result-nonfollowers').textContent = nonFollowers + '%';
+    
+    const nonfollowersCard = document.getElementById('nonfollowers-card');
+    const bubbleAlertBox = document.getElementById('bubble-alert-box');
+    const donutSegment = document.getElementById('donut-nonfollowers-segment');
+    const donutLegendColor = document.getElementById('donut-legend-color');
+    
+    // Set circle segment stroke-dasharray and stroke-dashoffset (Circumference is exactly 100)
+    if (donutSegment) {
+      donutSegment.setAttribute('stroke-dasharray', `${nonFollowers} ${100 - nonFollowers}`);
+      donutSegment.setAttribute('stroke-dashoffset', '0');
+    }
+    
+    if (nonFollowers < 45) {
+      nonfollowersCard.classList.add('bolha-alerta');
+      bubbleAlertBox.style.display = 'flex';
+      document.getElementById('result-nonfollowers-desc').innerHTML = `Seu perfil está trancado em uma bolha.`;
+      if (donutSegment) donutSegment.setAttribute('stroke', '#D45C5C');
+      if (donutLegendColor) donutLegendColor.style.background = '#D45C5C';
+    } else {
+      nonfollowersCard.classList.remove('bolha-alerta');
+      bubbleAlertBox.style.display = 'none';
+      document.getElementById('result-nonfollowers-desc').innerHTML = `Excelente alcance viral de novos potenciais clientes.`;
+      if (donutSegment) donutSegment.setAttribute('stroke', 'var(--k2)');
+      if (donutLegendColor) donutLegendColor.style.background = 'var(--k2)';
+    }
+
+    // Reels completion rate
     document.getElementById('result-completion').textContent = data.profile.reelsCompletionRate + '%';
     document.getElementById('result-completion-desc').textContent = data.profile.reelsCompletionRate < 35 
       ? 'Retenção baixa nos primeiros segundos.' 
       : 'Excelente engajamento e retenção de público.';
 
     document.getElementById('result-activehours').textContent = data.profile.activeHours;
+
+    // --- FUNNEL AND HEATMAP CALCULATIONS ---
+    // Atração (Reach/Followers)
+    document.getElementById('funnel-reach-val').textContent = data.profile.followers.toLocaleString('pt-BR');
+
+    // Retenção (Engagement)
+    document.getElementById('funnel-engage-val').textContent = data.profile.engagementRate.toFixed(2) + '%';
+    const funnelEngageFill = document.getElementById('funnel-engage');
+    const engPctMapped = Math.min(Math.max(Math.round(40 + (data.profile.engagementRate * 12)), 40), 95);
+    funnelEngageFill.querySelector('.funnel-shape').style.width = engPctMapped + '%';
+
+    // Conversão (Clicks/Action)
+    const convertShape = document.getElementById('funnel-convert').querySelector('.funnel-shape');
+    const bottleneckCard = document.getElementById('funnel-bottleneck-card');
+    const bottleneckTitle = document.getElementById('funnel-bottleneck-title');
+    const bottleneckDesc = document.getElementById('funnel-bottleneck-desc');
+    
+    if (!data.profile.hasLink) {
+      document.getElementById('funnel-convert-val').textContent = '0%';
+      convertShape.style.width = '25%';
+      convertShape.style.background = '#D45C5C';
+      
+      bottleneckCard.className = 'funnel-bottleneck-card';
+      bottleneckTitle.innerHTML = '🚨 Gargalo Crítico: Fuga de Clientes na Conversão';
+      bottleneckDesc.innerHTML = `Seu perfil está atraindo visitantes, mas você **não possui um link ativo na biografia**. Interessados entram, mas não conseguem comprar ou agendar nada. Perda de vendas estimada: <strong>80%</strong>.`;
+    } else {
+      // Estimate action rate (cliques no link da bio)
+      const actionRate = parseFloat((data.profile.engagementRate * 0.35 + 0.4).toFixed(1));
+      document.getElementById('funnel-convert-val').textContent = actionRate + '%';
+      
+      const convertWidth = Math.min(Math.max(Math.round(30 + (actionRate * 15)), 35), 80);
+      convertShape.style.width = convertWidth + '%';
+      convertShape.style.background = 'linear-gradient(90deg, var(--k2), var(--cr3))';
+      
+      if (data.profile.engagementRate < 1.5) {
+        bottleneckCard.className = 'funnel-bottleneck-card';
+        bottleneckTitle.innerHTML = '⚠️ Gargalo de Retenção: Baixo Desejo de Compra';
+        bottleneckDesc.innerHTML = `Seu link está ativo, mas o engajamento baixo (${data.profile.engagementRate.toFixed(2)}%) indica que o conteúdo atual (fotos frias ou panfletos) não está gerando conexão ou desejo suficiente nos visitantes para levá-los a clicar.`;
+      } else if (data.profile.postsPerMonth < 8) {
+        bottleneckCard.className = 'funnel-bottleneck-card';
+        bottleneckTitle.innerHTML = '⏳ Gargalo de Distribuição: Postagens Fantasmas';
+        bottleneckDesc.innerHTML = `Sua taxa de clique é aceitável, mas sua frequência de postagem (${data.profile.postsPerMonth}/mês) está muito baixa. O algoritmo está entregando seu perfil para poucas pessoas. Aumente o volume de posts para reaquecer o funil.`;
+      } else {
+        bottleneckCard.className = 'funnel-bottleneck-card healthy';
+        bottleneckTitle.innerHTML = '✨ Funil Equilibrado: Pronto para Escala';
+        bottleneckDesc.innerHTML = `Parabéns! Suas taxas estão saudáveis. Para multiplicar seu faturamento, o passo recomendado é iniciar campanhas de <strong>Tráfego Pago Local</strong>, aumentando a quantidade de pessoas que entram no topo do seu funil comercial.`;
+      }
+    }
+
+    // Heatmap Grid Generation
+    generateHeatmap(data.profile.activeHours);
 
     // Trigger-Based Solution Box
     const triggersList = document.getElementById('analyzer-triggers');
@@ -1942,7 +2447,7 @@ async function startAnalysis() {
     // 3. Engajamento
     if (data.analysis.triggers.lowEngagement) {
       triggersList.appendChild(createTriggerCard('tc-danger', '📢 Gatilho: Baixa Taxa de Interação (Você está falando sozinho)', 
-        `Seus posts atuais são muito institucionais ou panfletários (tipo 'compre de mim'). As pessoas entram no Instagram para se entreter ou aprender, não para ver anúncios.<br>Mude sua estratégia hoje: Pegue a maior dúvida que seu cliente real tem e responda em formato de Carrossel de 5 páginas. No final, use a palavra mágica: 'Gostou? Salve para consultar depois'. O botão de salvar vale ouro para o algoritmo voltar a te entregar.`,
+        `Seus posts antigos são muito institucionais ou panfletários (tipo 'compre de mim'). As pessoas entram no Instagram para se entreter ou aprender, não para ver anúncios.<br>Mude sua estratégia hoje: Pegue a maior dúvida que seu cliente real tem e responda em formato de Carrossel de 5 páginas. No final, use a palavra mágica: 'Gostou? Salve para consultar depois'. O botão de salvar vale ouro para o algoritmo voltar a te entregar.`,
         `Nós dominamos as linhas editoriais que geram conexão e engajamento real, fazendo seu perfil ser recomendado na aba 'Explorar' para quem ainda não te segue.`
       ));
     }
@@ -1994,22 +2499,90 @@ async function startAnalysis() {
       li.textContent = tip;
       tipsList.appendChild(li);
     });
+
+    // Populate Instagram Bio Simulator
+    document.getElementById('insta-avatar-letter').textContent = username.charAt(0).toUpperCase();
+    document.getElementById('insta-username-val').textContent = '@' + username;
+    document.getElementById('insta-followers-val').textContent = data.profile.followers.toLocaleString('pt-BR');
+    document.getElementById('insta-fullname-val').textContent = username.split(/[._]/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     
-    // Score circle styling
+    const bioText = data.profile.bio ? data.profile.bio.replace(/\n/g, '<br>') : 'Perfil Comercial no Instagram';
+    document.getElementById('insta-bio-text').innerHTML = bioText;
+    
+    const extUrl = data.profile.externalUrl ? data.profile.externalUrl.replace(/https?:\/\/(www\.)?/, '') : 'linkin.bio/' + username;
+    document.getElementById('insta-link-val').textContent = extUrl;
+    
+    document.getElementById('insta-bio-tooltip-content').innerHTML = data.analysis.bio_feedback;
+    document.getElementById('insta-link-tooltip-content').innerHTML = data.profile.hasLink 
+      ? `Seu link está ativo e aponta para <strong>${data.profile.externalUrl}</strong>. Mas verifique abaixo se a chamada (copy) que leva o cliente a clicar é forte o suficiente.`
+      : `<strong>Alerta Crítico:</strong> Não encontramos link na sua bio. Visitantes se interessam pela sua página mas encontram a porta da loja fechada. Coloque um link direto para o WhatsApp!`;
+
+    // Score Circle SVG Gauge Animation (radius=42, circumference=263.89)
     const scoreCircle = document.getElementById('result-score-circle');
     scoreCircle.textContent = data.analysis.score;
     
-    scoreCircle.className = 'analyzer-score-circle';
+    const scoreVal = data.analysis.score;
+    const circleFill = document.getElementById('result-score-svg-fill');
+    const scoreLabel = document.getElementById('result-score-label');
+    
+    if (circleFill) {
+      const circumference = 263.89;
+      const offset = circumference - (scoreVal / 100) * circumference;
+      circleFill.style.strokeDasharray = circumference;
+      circleFill.style.strokeDashoffset = offset;
+      
+      let strokeColor = '#D45C5C';
+      let labelText = 'Crítico';
+      
+      if (scoreVal >= 80) {
+        strokeColor = '#4CAF6F';
+        labelText = 'BOM';
+        scoreCircle.style.color = '#4CAF6F';
+        if (scoreLabel) scoreLabel.style.color = '#4CAF6F';
+        document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#4CAF6F">Bom (${scoreVal}/100)</span>`;
+      } else if (scoreVal >= 50) {
+        strokeColor = '#D4A043';
+        labelText = 'REGULAR';
+        scoreCircle.style.color = '#D4A043';
+        if (scoreLabel) scoreLabel.style.color = '#D4A043';
+        document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#D4A043">Regular (${scoreVal}/100)</span>`;
+      } else {
+        scoreCircle.style.color = '#D45C5C';
+        if (scoreLabel) scoreLabel.style.color = '#D45C5C';
+        document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#D45C5C">Crítico (${scoreVal}/100)</span>`;
+      }
+      
+      circleFill.setAttribute('stroke', strokeColor);
+      if (scoreLabel) scoreLabel.textContent = labelText;
+    }
+
+    // Final Sales Hook text
+    let targetFormatName = data.profile.bestFormat === 'Reels' ? 'vídeos curtos (Reels)' : (data.profile.bestFormat === 'Carrossel' ? 'carrosséis educativos' : 'conteúdo humanizado');
+    let targetFreqValue = data.profile.postsPerMonth < 8 ? '3' : '4';
+    
+    document.getElementById('result-sales-hook').innerHTML = `
+      Nossa inteligência identificou que o seu perfil precisa de mais <strong>${targetFormatName}</strong> e uma frequência de pelo menos <strong>${targetFreqValue} postagens</strong> por semana para voltar a crescer.<br><br>
+      Produzir tudo isso sozinho dá trabalho e toma o tempo que você deveria usar cuidando do seu negócio. Deixe que a nossa agência faça todo esse trabalho duro por você. Nós criamos os roteiros, gravamos no seu espaço, editamos e gerenciamos os anúncios locais.
+    `;
+    
+    // Transition out loading, in results
+    loadingDiv.style.display = 'none';
+    document.getElementById('analyzer-result').style.display = 'block';ath.PI * radius; // 251.2
+      const offset = circumference - (scoreVal / 100) * circumference;
+      circleFill.style.strokeDasharray = circumference;
+      circleFill.style.strokeDashoffset = offset;
+      if (scoreVal >= 70) circleFill.setAttribute('stroke', '#4CAF6F');
+      else if (scoreVal >= 45) circleFill.setAttribute('stroke', '#D4A043');
+      else circleFill.setAttribute('stroke', '#D45C5C');
+    }
+    
     if (data.analysis.score >= 70) {
-      scoreCircle.style.borderColor = '#4CAF6F';
       scoreCircle.style.color = '#4CAF6F';
       document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#4CAF6F">Bom (${data.analysis.score}/100)</span>`;
     } else if (data.analysis.score >= 45) {
-      scoreCircle.style.borderColor = '#D4A043';
       scoreCircle.style.color = '#D4A043';
       document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#D4A043">Regular (${data.analysis.score}/100)</span>`;
     } else {
-      scoreCircle.style.borderColor = '#D45C5C';
       scoreCircle.style.color = '#D45C5C';
       document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#D45C5C">Ajustes Críticos (${data.analysis.score}/100)</span>`;
     }
@@ -2048,12 +2621,59 @@ function createTriggerCard(cls, title, freeTip, agencyHook) {
   return card;
 }
 
+function generateHeatmap(activeHoursStr) {
+  const grid = document.getElementById('result-heatmap-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  
+  const daysShort = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
+  const strLower = activeHoursStr.toLowerCase();
+  
+  for (let i = 0; i < 7; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'heatmap-cell';
+    cell.innerHTML = `<div>${daysShort[i]}</div>`;
+    
+    let isActive = false;
+    
+    if (i === 1 && (strLower.includes('segunda') || strLower.includes('seg'))) { isActive = true; }
+    if (i === 2 && (strLower.includes('terça') || strLower.includes('ter'))) { isActive = true; }
+    if (i === 3 && (strLower.includes('quarta') || strLower.includes('qua'))) { isActive = true; }
+    if (i === 4 && (strLower.includes('quinta') || strLower.includes('qui'))) { isActive = true; }
+    if (i === 5 && (strLower.includes('sexta') || strLower.includes('sex'))) { isActive = true; }
+    if (i === 6 && (strLower.includes('sábado') || strLower.includes('sáb'))) { isActive = true; }
+    
+    if (isActive) {
+      cell.className = 'heatmap-cell active';
+      const hourMatch = activeHoursStr.match(/\d{2}:\d{2}/);
+      if (hourMatch) {
+        cell.className = 'heatmap-cell peak';
+        cell.innerHTML += `<div style="font-size:7px; margin-top:2px;">${hourMatch[0]}</div>`;
+      }
+    }
+    grid.appendChild(cell);
+  }
+}
+
 function resetAnalyzer() {
   document.getElementById('analyzer-result').style.display = 'none';
   document.getElementById('analyzer-loading').style.display = 'none';
   document.getElementById('analyzer-form-wrap').style.display = 'flex';
   document.getElementById('analyzer-username').value = '';
   lastAnalysisResult = null;
+  
+  // Hide sticky CTA
+  const stickyCta = document.getElementById('sticky-wa-cta');
+  if (stickyCta) stickyCta.classList.remove('show');
+  
+  // Reset slider to first slide
+  setSlide(0);
+  
+  // Remove tooltip active states
+  const bioWrap = document.getElementById('insta-bio-text-wrap');
+  const linkWrap = document.getElementById('insta-link-wrap');
+  if (bioWrap) bioWrap.classList.remove('active');
+  if (linkWrap) linkWrap.classList.remove('active');
 }
 
 function showToastMsg(msg) {
@@ -2106,6 +2726,102 @@ function analyzeFromHero() {
     startAnalysis();
   }, 450);
 }
+
+// ══ BEFORE VS AFTER CAROUSEL SLIDER ══
+let activeSlide = 0;
+function setSlide(index) {
+  activeSlide = index;
+  const track = document.getElementById('comp-slider-track');
+  if (track) {
+    track.style.transform = `translateX(-${index * 33.333}%)`;
+  }
+  const dots = document.querySelectorAll('.slider-dot');
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === index);
+  });
+}
+
+// Mobile touch/swipe events for the carousel
+setTimeout(() => {
+  const track = document.getElementById('comp-slider-track');
+  if (track) {
+    let startX = 0;
+    let currentX = 0;
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    track.addEventListener('touchmove', (e) => {
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    track.addEventListener('touchend', () => {
+      const diff = startX - currentX;
+      if (Math.abs(diff) > 50 && currentX !== 0) {
+        if (diff > 0 && activeSlide < 2) {
+          setSlide(activeSlide + 1);
+        } else if (diff < 0 && activeSlide > 0) {
+          setSlide(activeSlide - 1);
+        }
+      }
+      startX = 0;
+      currentX = 0;
+    });
+  }
+}, 500);
+
+// ══ INSTAGRAM SIMULATOR TOOLTIPS ══
+function toggleBioTooltip(e) {
+  e.stopPropagation();
+  const wrap = document.getElementById('insta-bio-text-wrap');
+  const linkWrap = document.getElementById('insta-link-wrap');
+  if (linkWrap) linkWrap.classList.remove('active');
+  if (wrap) wrap.classList.toggle('active');
+}
+
+function toggleLinkTooltip(e) {
+  e.stopPropagation();
+  const wrap = document.getElementById('insta-link-wrap');
+  const bioWrap = document.getElementById('insta-bio-text-wrap');
+  if (bioWrap) bioWrap.classList.remove('active');
+  if (wrap) wrap.classList.toggle('active');
+}
+
+// Close simulator tooltips on click outside
+document.addEventListener('click', () => {
+  const bioWrap = document.getElementById('insta-bio-text-wrap');
+  const linkWrap = document.getElementById('insta-link-wrap');
+  if (bioWrap) bioWrap.classList.remove('active');
+  if (linkWrap) linkWrap.classList.remove('active');
+});
+
+// ══ SCROLL LISTENER FOR STICKY CTA ══
+window.addEventListener('scroll', function() {
+  const stickyCta = document.getElementById('sticky-wa-cta');
+  if (stickyCta) {
+    const resultSec = document.getElementById('analyzer-result');
+    const scoreCircle = document.getElementById('result-score-circle');
+    
+    if (lastAnalysisResult && resultSec && resultSec.style.display !== 'none' && scoreCircle) {
+      const rect = scoreCircle.getBoundingClientRect();
+      // Show when the score circle has scrolled out of view (rect.bottom < 0)
+      if (rect.bottom < 0) {
+        stickyCta.classList.add('show');
+      } else {
+        stickyCta.classList.remove('show');
+      }
+    } else {
+      stickyCta.classList.remove('show');
+    }
+  }
+});
 </script>
+<!-- Sticky WhatsApp CTA -->
+<div class="sticky-whatsapp-cta" id="sticky-wa-cta">
+  <button onclick="openAnalyzerWA()">
+    <span>💬</span> Conversar no WhatsApp & Otimizar Perfil
+  </button>
+</div>
+
 </body>
 </html>
