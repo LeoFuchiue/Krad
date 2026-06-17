@@ -2567,37 +2567,6 @@ async function startAnalysis() {
     
     // Transition out loading, in results
     loadingDiv.style.display = 'none';
-    document.getElementById('analyzer-result').style.display = 'block';ath.PI * radius; // 251.2
-      const offset = circumference - (scoreVal / 100) * circumference;
-      circleFill.style.strokeDasharray = circumference;
-      circleFill.style.strokeDashoffset = offset;
-      if (scoreVal >= 70) circleFill.setAttribute('stroke', '#4CAF6F');
-      else if (scoreVal >= 45) circleFill.setAttribute('stroke', '#D4A043');
-      else circleFill.setAttribute('stroke', '#D45C5C');
-    }
-    
-    if (data.analysis.score >= 70) {
-      scoreCircle.style.color = '#4CAF6F';
-      document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#4CAF6F">Bom (${data.analysis.score}/100)</span>`;
-    } else if (data.analysis.score >= 45) {
-      scoreCircle.style.color = '#D4A043';
-      document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#D4A043">Regular (${data.analysis.score}/100)</span>`;
-    } else {
-      scoreCircle.style.color = '#D45C5C';
-      document.getElementById('result-score-title').innerHTML = `Score Geral: <span style="color:#D45C5C">Ajustes Críticos (${data.analysis.score}/100)</span>`;
-    }
-
-    // Final Sales Hook text
-    let targetFormatName = data.profile.bestFormat === 'Reels' ? 'vídeos curtos (Reels)' : (data.profile.bestFormat === 'Carrossel' ? 'carrosséis educativos' : 'conteúdo humanizado');
-    let targetFreqValue = data.profile.postsPerMonth < 8 ? '3' : '4';
-    
-    document.getElementById('result-sales-hook').innerHTML = `
-      Nossa inteligência identificou que o seu perfil precisa de mais <strong>${targetFormatName}</strong> e uma frequência de pelo menos <strong>${targetFreqValue} postagens</strong> por semana para voltar a crescer.<br><br>
-      Produzir tudo isso sozinho dá trabalho e toma o tempo que você deveria usar cuidando do seu negócio. Deixe que a nossa agência faça todo esse trabalho duro por você. Nós criamos os roteiros, gravamos no seu espaço, editamos e gerenciamos os anúncios locais.
-    `;
-    
-    // Transition out loading, in results
-    loadingDiv.style.display = 'none';
     document.getElementById('analyzer-result').style.display = 'block';
     
   } catch (err) {
