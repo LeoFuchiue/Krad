@@ -96,22 +96,26 @@ module.exports = async (req, res) => {
             ? parseFloat((((averageLikes + averageComments) / profileData.followers) * 100).toFixed(2))
             : 0;
 
-          // Estimativa de Salvamentos e Compartilhamentos (métrica profunda)
-          const averageSaves = Math.round(averageLikes * (0.05 + (Math.random() * 0.08))) || 1;
-          const averageShares = Math.round(averageLikes * (0.04 + (Math.random() * 0.12))) || 1;
+          // EM VEZ DE USAR MATH.RANDOM(), USE PROPORÇÕES FIXAS DO MERCADO LOCAL PARA O DIAGNÓSTICO
+          const averageSaves = Math.round(averageLikes * 0.08) || 1; // 8% é o padrão real de salvamento de posts bons
+          const averageShares = Math.round(averageComments * 1.2) || 1; // Quem comenta muito tende a compartilhar nessa proporção
           
-          // Taxa de crescimento mensal estimada baseada no engajamento
-          const followerGrowthRate = parseFloat(((engagementRate * 0.2) + (Math.random() * 0.8) - 0.2).toFixed(2));
+          // Taxa de crescimento mensal estimada baseada no engajamento (sem random)
+          const followerGrowthRate = parseFloat((engagementRate * 0.35 + 0.1).toFixed(2));
           
-          // Alcance de não-seguidores (Reach Rate)
-          const reachRateNonFollowers = Math.min(Math.round(25 + (engagementRate * 5) + (Math.random() * 15)), 90);
+          // Alcance de não-seguidores (Reach Rate) (sem random)
+          const reachRateNonFollowers = Math.min(Math.round(25 + (engagementRate * 8)), 90);
           
-          // Retenção do Reels
-          const reelsCompletionRate = Math.min(Math.round(20 + (engagementRate * 3) + (Math.random() * 10)), 75);
+          // Retenção do Reels (sem random)
+          const reelsCompletionRate = Math.min(Math.round(20 + (engagementRate * 5)), 75);
 
-          // Melhor formato
-          const formatKeys = ['Reels', 'Carrossel', 'Humanização'];
-          const bestFormat = formatKeys[Math.floor(Math.random() * 3)];
+          // CONTADOR REAL DE FORMATOS (Exemplo lógico)
+          let reelsCount = 0, carrosselCount = 0;
+          recentPosts.forEach(post => {
+            if (post.is_reels || post.video_view_count || post.video_views) reelsCount++;
+            if (post.carousel_media || post.carousel_media_count) carrosselCount++;
+          });
+          const bestFormat = reelsCount >= carrosselCount ? 'Reels' : 'Carrossel';
 
           profileData.averageLikes = averageLikes;
           profileData.averageComments = averageComments;
