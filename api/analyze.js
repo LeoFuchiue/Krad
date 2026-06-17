@@ -33,13 +33,26 @@ module.exports = async (req, res) => {
     // 1. Tentar buscar dados reais do Instagram se a chave de API estiver presente
     if (apiKey) {
       try {
-        const response = await fetch(`https://${apiHost}/v1/info?username_or_id_or_url=${encodeURIComponent(username)}`, {
-          method: 'GET',
-          headers: {
-            'X-RapidAPI-Key': apiKey,
-            'X-RapidAPI-Host': apiHost
-          }
-        });
+        let response;
+        if (apiHost.includes('instagram120')) {
+          response = await fetch(`https://${apiHost}/api/instagram/profile`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-RapidAPI-Key': apiKey,
+              'X-RapidAPI-Host': apiHost
+            },
+            body: JSON.stringify({ username: username })
+          });
+        } else {
+          response = await fetch(`https://${apiHost}/v1/info?username_or_id_or_url=${encodeURIComponent(username)}`, {
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': apiKey,
+              'X-RapidAPI-Host': apiHost
+            }
+          });
+        }
 
         if (response.ok) {
           const raw = await response.json();
