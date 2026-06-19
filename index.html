@@ -2244,7 +2244,7 @@ async function startAnalysis() {
   
   try {
     let apiUrl = '/api/analyze';
-    if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || (!window.location.hostname.includes('vercel.app') && !window.location.hostname.includes('krad-psi'))) {
       apiUrl = 'https://krad-psi.vercel.app/api/analyze';
     }
     const response = await fetch(`${apiUrl}?username=${encodeURIComponent(username)}`);
