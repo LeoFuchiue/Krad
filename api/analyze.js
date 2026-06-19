@@ -27,6 +27,16 @@ module.exports = async (req, res) => {
     const apiKey = process.env.RAPIDAPI_KEY;
     const apiHost = process.env.RAPIDAPI_HOST || 'instagram-scraper-api2.p.rapidapi.com';
     
+    if (req.query.debug === '1') {
+      return res.status(200).json({
+        has_api_key: !!apiKey,
+        api_key_preview: apiKey ? `${apiKey.substring(0, 4)}...${apiKey.slice(-4)}` : null,
+        api_host: apiHost,
+        has_gemini_key: !!process.env.GEMINI_API_KEY,
+        node_version: process.version
+      });
+    }
+    
     let profileData = null;
     let isRealData = false;
 
