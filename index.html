@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>krad agência â Posicionamento & Tráfego Pago para Negócios Locais</title>
+<title>krad agência — Posicionamento & Tráfego Pago para Negócios Locais</title>
 <meta name="description" content="A krad agência transforma a presença digital do seu negócio local em resultado real. Produção de fotos, vídeos, anúncios e gestão completa.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* âââââââââââââââââââââââââââââââââââââââ
-   TOKENS â identidade krad agência
+/* ═══════════════════════════════════════
+   TOKENS — identidade krad agência
    Olive: #4E5B1F  Creme: #EDE4C5
-âââââââââââââââââââââââââââââââââââââââ */
+═══════════════════════════════════════ */
 :root {
   --k:   #4E5B1F;  /* olive brand */
   --k2:  #6A7A2C;  /* olive mid */
@@ -47,7 +47,7 @@ a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:var(--k2);border-radius:3px}
 
-/* âââ KEYFRAMES âââ */
+/* ═══ KEYFRAMES ═══ */
 @keyframes fadeUp   {from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn   {from{opacity:0}to{opacity:1}}
 @keyframes shimmer  {0%,100%{background-position:0%}50%{background-position:100%}}
@@ -61,7 +61,7 @@ a{text-decoration:none;color:inherit}
 @keyframes introOut {0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.06);pointer-events:none}}
 @keyframes popIn    {0%{opacity:0;transform:scale(.93) translateY(12px)}100%{opacity:1;transform:scale(1) translateY(0)}}
 
-/* âââ SCROLL PROGRESS âââ */
+/* ═══ SCROLL PROGRESS ═══ */
 #progress-bar{
   position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
   background:linear-gradient(90deg,var(--k3),var(--k2),var(--cr3),var(--k2));
@@ -70,9 +70,9 @@ a{text-decoration:none;color:inherit}
   transition:width .1s linear;
 }
 
-/* âââââââââââââââââââââââââââââââââââââââ
+/* ═══════════════════════════════════════
    INTRO SCREEN
-âââââââââââââââââââââââââââââââââââââââ */
+═══════════════════════════════════════ */
 #intro{
   position:fixed;inset:0;z-index:8000;
   background:var(--k4);
@@ -101,9 +101,9 @@ a{text-decoration:none;color:inherit}
   width:0;transition:width 1.8s cubic-bezier(.4,0,.2,1);
 }
 
-/* âââââââââââââââââââââââââââââââââââââââ
+/* ═══════════════════════════════════════
    NAV
-âââââââââââââââââââââââââââââââââââââââ */
+═══════════════════════════════════════ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   height:64px;display:flex;align-items:center;justify-content:space-between;
@@ -147,9 +147,9 @@ a{text-decoration:none;color:inherit}
 .nav-cta:hover{background:var(--k2);transform:translateY(-1px);box-shadow:0 8px 28px var(--glow);color:var(--cr2)}
 .nav-hamburger{display:none;background:none;border:none;color:var(--t1);font-size:24px;padding:6px}
 
-/* âââââââââââââââââââââââââââââââââââââââ
+/* ═══════════════════════════════════════
    HERO
-âââââââââââââââââââââââââââââââââââââââ */
+═══════════════════════════════════════ */
 .hero{
   min-height:100vh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -282,18 +282,18 @@ a{text-decoration:none;color:inherit}
 .pf-lbl{font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-top:4px}
 .pf-sep{width:1px;height:48px;background:var(--b1)}
 
-/* âââââââââââââââââââââââââââââââââââââââ
+/* ═══════════════════════════════════════
    TICKER
-âââââââââââââââââââââââââââââââââââââââ */
+═══════════════════════════════════════ */
 .ticker-wrap{background:var(--bg2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);padding:12px 0;overflow:hidden;white-space:nowrap}
 .ticker-track{display:inline-flex;animation:ticker 36s linear infinite}
 .t-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace}
 .t-item strong{color:var(--k2)}
 .t-sep{color:var(--b2);margin:0 2px}
 
-/* âââââââââââââââââââââââââââââââââââââââ
+/* ═══════════════════════════════════════
    SECTIONS
-âââââââââââââââââââââââââââââââââââââââ */
+═══════════════════════════════════════ */
 .wrap{max-width:1100px;margin:0 auto}
 .sec{padding:96px 48px}
 .sec-dark{background:var(--bg2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1)}
@@ -303,7 +303,7 @@ a{text-decoration:none;color:inherit}
 .sh em{font-style:italic;color:var(--k2)}
 .sp{font-size:15px;font-weight:300;color:var(--t2);line-height:1.8;max-width:620px;margin-bottom:52px}
 
-/* ââ SISTEMA (PILARES) ââ */
+/* ══ SISTEMA (PILARES) ══ */
 .pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:var(--r3);overflow:hidden}
 .pillar{
   background:var(--bg2);padding:28px 20px;
@@ -322,7 +322,7 @@ a{text-decoration:none;color:inherit}
 .pl-name{font-size:13px;font-weight:800;margin-bottom:7px}
 .pl-desc{font-size:12px;color:var(--t2);line-height:1.65;font-weight:300}
 
-/* ââ PROBLEM / SOLUTION ââ */
+/* ══ PROBLEM / SOLUTION ══ */
 .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .prob-eye{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-bottom:16px}
 .prob-h{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,40px);font-weight:700;line-height:1.15;margin-bottom:18px}
@@ -339,7 +339,7 @@ a{text-decoration:none;color:inherit}
 .sol-t{font-size:13px;font-weight:700;margin-bottom:3px}
 .sol-d{font-size:11px;color:var(--t2);line-height:1.6;font-weight:300}
 
-/* ââ CASES ââ */
+/* ══ CASES ══ */
 .cases{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;margin-top:48px}
 .case{
   background:var(--bg3);border:1px solid var(--b1);border-radius:var(--r3);overflow:hidden;
@@ -366,7 +366,7 @@ a{text-decoration:none;color:inherit}
 .case-btn:hover{
   border-color:var(--k2);color:var(--t1);background:var(--dim)}
 
-/* ââ CLIENTS LIST / PARTERNSHIPS ââ */
+/* ══ CLIENTS LIST / PARTERNSHIPS ══ */
 .clients-section {
   margin-top:64px;
   border-top:1px solid var(--b1);
@@ -411,7 +411,7 @@ a{text-decoration:none;color:inherit}
   text-transform: uppercase;
 }
 
-/* ââ SEGMENTOS ââ */
+/* ══ SEGMENTOS ══ */
 .segments{display:grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap:20px;margin-top:48px}
 .segment{background:var(--bg3);border:1px solid var(--b1);border-radius:var(--r3);padding:32px 24px;position:relative;overflow:hidden;transition:border-color var(--tm),transform var(--ts)}
 .segment:hover{border-color:var(--b2);transform:translateY(-4px)}
@@ -423,7 +423,7 @@ a{text-decoration:none;color:inherit}
 .seg-pain-txt{font-size:12px;color:var(--t1);font-weight:500;display:flex;align-items:center;gap:6px}
 .seg-pain-txt span{color:#C75B5B}
 
-/* ââ DEPOIMENTOS (TESTIMONIALS) ââ */
+/* ══ DEPOIMENTOS (TESTIMONIALS) ══ */
 .testis{display:grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap:14px;margin-top:52px}
 .testi{background:var(--bg2);border:1px solid var(--b1);border-radius:var(--r3);padding:26px 22px;transition:border-color var(--tm),transform var(--ts)}
 .testi:hover{border-color:var(--b2);transform:translateY(-3px)}
@@ -434,7 +434,7 @@ a{text-decoration:none;color:inherit}
 .testi-name{font-size:12px;font-weight:700}
 .testi-role{font-size:10px;color:var(--t3);margin-top:1px}
 
-/* ââ FINAL CTA ââ */
+/* ══ FINAL CTA ══ */
 .cta-final{padding:112px 48px;text-align:center;position:relative;overflow:hidden}
 .cta-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(78,91,31,.09),transparent 68%);pointer-events:none}
 .cta-h{font-family:'Playfair Display',serif;font-size:clamp(32px,5.5vw,60px);font-weight:800;line-height:1.1;letter-spacing:-.3px;margin-bottom:18px;position:relative;z-index:1}
@@ -449,7 +449,7 @@ a{text-decoration:none;color:inherit}
 }
 .btn-main:hover{background:var(--k2);transform:translateY(-2px);box-shadow:0 16px 44px var(--glow);color:var(--cr2)}
 
-/* ââ FOOTER ââ */
+/* ══ FOOTER ══ */
 .footer{background:var(--bg2);border-top:1px solid var(--b1);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .footer-brand{display:flex;align-items:center;gap:12px}
 .footer-logo{width:36px;height:36px}
@@ -460,7 +460,7 @@ a{text-decoration:none;color:inherit}
 .footer-link:hover{color:var(--t1)}
 .footer-copy{font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace}
 
-/* ââ REVEAL ââ */
+/* ══ REVEAL ══ */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .rv.vis{opacity:1;transform:none}
 .rv-left{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease}
@@ -468,11 +468,11 @@ a{text-decoration:none;color:inherit}
 .rv-right{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s ease}
 .rv-right.vis{opacity:1;transform:none}
 
-/* ââ TOAST ââ */
+/* ══ TOAST ══ */
 .toast{position:fixed;bottom:22px;right:22px;z-index:9999;background:var(--k);color:var(--cr);padding:12px 20px;border-radius:var(--r1);font-size:12px;font-weight:700;letter-spacing:1px;box-shadow:0 8px 24px rgba(0,0,0,.4);transform:translateY(70px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1)}
 .toast.on{transform:translateY(0);opacity:1}
 
-/* ââ RESPONSIVE ââ */
+/* ══ RESPONSIVE ══ */
 @media(max-width:1000px){
   .pillars{grid-template-columns:1fr 1fr}
   .cases{grid-template-columns:1fr}
@@ -504,7 +504,7 @@ a{text-decoration:none;color:inherit}
 .nav-links.open .nav-a{font-size:17px;padding:14px 0;border-bottom:1px solid var(--b1);border-radius:0;color:var(--t1)}
 .nav-links.open .nav-cta{margin:20px 0 0;width:100%;text-align:center;padding:13px;display:block}
 
-/* ââ ANALISADOR DE PERFIL ââ */
+/* ══ ANALISADOR DE PERFIL ══ */
 .analyzer-card {
   background: var(--bg2);
   border: 1px solid var(--b1);
@@ -786,7 +786,7 @@ a{text-decoration:none;color:inherit}
   position: relative; padding-left: 20px;
 }
 .analyzer-detail-box li::before {
-  content: 'â'; position: absolute; left: 0; color: var(--k2);
+  content: '→'; position: absolute; left: 0; color: var(--k2);
   font-weight: bold;
 }
 .analyzer-cta-box {
@@ -1195,7 +1195,7 @@ a{text-decoration:none;color:inherit}
 <!-- PROGRESS BAR -->
 <div id="progress-bar"></div>
 
-<!-- ââ INTRO ââ -->
+<!-- ══ INTRO ══ -->
 <div id="intro">
   <svg class="intro-logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <circle cx="100" cy="100" r="97" fill="#3A4418"/>
@@ -1207,7 +1207,7 @@ a{text-decoration:none;color:inherit}
   <div class="intro-bar"><div class="intro-fill" id="intro-fill"></div></div>
 </div>
 
-<!-- ââ NAV ââ -->
+<!-- ══ NAV ══ -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-brand">
     <svg class="nav-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -1231,7 +1231,7 @@ a{text-decoration:none;color:inherit}
   <button class="nav-hamburger" id="hamburger" onclick="toggleNav()">☰</button>
 </nav>
 
-<!-- ââ HERO ââ -->
+<!-- ══ HERO ══ -->
 <section class="hero" id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-orb hero-orb-1"></div>
@@ -1284,7 +1284,7 @@ a{text-decoration:none;color:inherit}
 
       <div class="hero-cta-footer" style="margin-top:14px; border-top:1px solid var(--b1); padding-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
         <span class="hero-cta-hint" style="font-size:8.5px;">Quer falar direto com a gente?</span>
-        <button onclick="openWA('hero')" style="background:none; border:none; color:var(--cr3); font-size:10px; font-weight:700; font-family:'JetBrains Mono'; cursor:pointer; text-decoration:underline; padding:0; letter-spacing:0.5px; text-transform:uppercase;">Falar no WhatsApp â</button>
+        <button onclick="openWA('hero')" style="background:none; border:none; color:var(--cr3); font-size:10px; font-weight:700; font-family:'JetBrains Mono'; cursor:pointer; text-decoration:underline; padding:0; letter-spacing:0.5px; text-transform:uppercase;">Falar no WhatsApp →</button>
       </div>
     </div>
   </div>
@@ -1306,23 +1306,23 @@ a{text-decoration:none;color:inherit}
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="t-item">🔥 <strong>Allan Esfihas Atibaia</strong><span class="t-sep">Â·</span>+45% faturamento</span>
-    <span class="t-item">âï¸ <strong>Dra. Nathalia Del Vecchio</strong><span class="t-sep">Â·</span>+30% seguidores no Instagram</span>
-    <span class="t-item">ð¥ <strong>Shin Ryu Atibaia</strong><span class="t-sep">Â·</span>Parceria de posicionamento</span>
-    <span class="t-item">ð¥© <strong>Picanha na Tábua Atibaia</strong><span class="t-sep">Â·</span>Gestão estratégica de redes</span>
-    <span class="t-item">ð <strong>Grill Sul Atibaia</strong><span class="t-sep">Â·</span>Movimentação local</span>
-    <span class="t-item">ð¾ <strong>Pets e Flora Guarulhos</strong><span class="t-sep">Â·</span>Presença digital ampliada</span>
-    <span class="t-item">ð <strong>Casa da Esfiha Guarulhos</strong><span class="t-sep">Â·</span>Relacionamento e engajamento</span>
-    <span class="t-item">ð¥¦ <strong>Hortifruti Maeda Atibaia</strong><span class="t-sep">Â·</span>Novo projeto em andamento</span>
+    <span class="t-item">🔥 <strong>Allan Esfihas Atibaia</strong><span class="t-sep">·</span>+45% faturamento</span>
+    <span class="t-item">⚖️ <strong>Dra. Nathalia Del Vecchio</strong><span class="t-sep">·</span>+30% seguidores no Instagram</span>
+    <span class="t-item">🥋 <strong>Shin Ryu Atibaia</strong><span class="t-sep">·</span>Parceria de posicionamento</span>
+    <span class="t-item">🥩 <strong>Picanha na Tábua Atibaia</strong><span class="t-sep">·</span>Gestão estratégica de redes</span>
+    <span class="t-item">🍔 <strong>Grill Sul Atibaia</strong><span class="t-sep">·</span>Movimentação local</span>
+    <span class="t-item">🐾 <strong>Pets e Flora Guarulhos</strong><span class="t-sep">·</span>Presença digital ampliada</span>
+    <span class="t-item">🍕 <strong>Casa da Esfiha Guarulhos</strong><span class="t-sep">·</span>Relacionamento e engajamento</span>
+    <span class="t-item">🥦 <strong>Hortifruti Maeda Atibaia</strong><span class="t-sep">·</span>Novo projeto em andamento</span>
     <!-- Repeat for infinite loop scroll -->
-    <span class="t-item">🔥 <strong>Allan Esfihas Atibaia</strong><span class="t-sep">Â·</span>+45% faturamento</span>
-    <span class="t-item">âï¸ <strong>Dra. Nathalia Del Vecchio</strong><span class="t-sep">Â·</span>+30% seguidores no Instagram</span>
-    <span class="t-item">ð¥ <strong>Shin Ryu Atibaia</strong><span class="t-sep">Â·</span>Parceria de posicionamento</span>
-    <span class="t-item">ð¥© <strong>Picanha na Tábua Atibaia</strong><span class="t-sep">Â·</span>Gestão estratégica de redes</span>
-    <span class="t-item">ð <strong>Grill Sul Atibaia</strong><span class="t-sep">Â·</span>Movimentação local</span>
-    <span class="t-item">ð¾ <strong>Pets e Flora Guarulhos</strong><span class="t-sep">Â·</span>Presença digital ampliada</span>
-    <span class="t-item">ð <strong>Casa da Esfiha Guarulhos</strong><span class="t-sep">Â·</span>Relacionamento e engajamento</span>
-    <span class="t-item">ð¥¦ <strong>Hortifruti Maeda Atibaia</strong><span class="t-sep">Â·</span>Novo projeto em andamento</span>
+    <span class="t-item">🔥 <strong>Allan Esfihas Atibaia</strong><span class="t-sep">·</span>+45% faturamento</span>
+    <span class="t-item">⚖️ <strong>Dra. Nathalia Del Vecchio</strong><span class="t-sep">·</span>+30% seguidores no Instagram</span>
+    <span class="t-item">🥋 <strong>Shin Ryu Atibaia</strong><span class="t-sep">·</span>Parceria de posicionamento</span>
+    <span class="t-item">🥩 <strong>Picanha na Tábua Atibaia</strong><span class="t-sep">·</span>Gestão estratégica de redes</span>
+    <span class="t-item">🍔 <strong>Grill Sul Atibaia</strong><span class="t-sep">·</span>Movimentação local</span>
+    <span class="t-item">🐾 <strong>Pets e Flora Guarulhos</strong><span class="t-sep">·</span>Presença digital ampliada</span>
+    <span class="t-item">🍕 <strong>Casa da Esfiha Guarulhos</strong><span class="t-sep">·</span>Relacionamento e engajamento</span>
+    <span class="t-item">🥦 <strong>Hortifruti Maeda Atibaia</strong><span class="t-sep">·</span>Novo projeto em andamento</span>
   </div>
 </div>
 
@@ -1377,7 +1377,7 @@ a{text-decoration:none;color:inherit}
             <div class="amc-badge-wrap">
               <span class="amc-badge blue" id="badge-followers">Foco Regional</span>
             </div>
-            <div class="amc-icon">ð¥</div>
+            <div class="amc-icon">👥</div>
             <div class="amc-label">Seguidores</div>
             <div class="amc-value" id="result-followers">0</div>
           </div>
@@ -1393,7 +1393,7 @@ a{text-decoration:none;color:inherit}
             <div class="amc-badge-wrap">
               <span class="amc-badge yellow" id="badge-frequency">Aguardando</span>
             </div>
-            <div class="amc-icon">ð</div>
+            <div class="amc-icon">📅</div>
             <div class="amc-label">Frequência/Mês</div>
             <div class="amc-value" id="result-frequency">0</div>
           </div>
@@ -1538,9 +1538,9 @@ a{text-decoration:none;color:inherit}
         <!-- Mídias e Retenção Profunda -->
         <div class="deep-insights-grid">
           
-          <!-- Alcance de NÃÂ£o-Seguidores com Donut Chart -->
+          <!-- Alcance de Não-Seguidores com Donut Chart -->
           <div class="insight-card" id="nonfollowers-card" style="transition: all 0.3s ease;">
-            <h5>Alcance de NÃÂ£o-Seguidores</h5>
+            <h5>Alcance de Não-Seguidores</h5>
             <div class="donut-chart-wrap">
               <svg class="donut-svg" viewBox="0 0 36 36">
                 <!-- Background Ring (Followers) -->
@@ -1550,27 +1550,27 @@ a{text-decoration:none;color:inherit}
               </svg>
               <div class="donut-center-text">
                 <span id="result-nonfollowers">0%</span>
-                <small>PÃÅ¡BLICO NOVO</small>
+                <small>PÚBLICO NOVO</small>
               </div>
             </div>
             <div class="donut-label-legend">
               <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--bg5); border-radius:50%; margin-right:4px;"></span>Seguidores</span>
-              <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--k2); border-radius:50%; margin-right:4px;" id="donut-legend-color"></span>PÃÂºblico Novo</span>
+              <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--k2); border-radius:50%; margin-right:4px;" id="donut-legend-color"></span>Público Novo</span>
             </div>
-            <div class="desc" id="result-nonfollowers-desc" style="margin-top: 10px;">DistribuiÃÂ§ÃÂ£o orgÃÂ¢nica do perfil.</div>
+            <div class="desc" id="result-nonfollowers-desc" style="margin-top: 10px;">Distribuição orgânica do perfil.</div>
             
             <!-- Bolha Alerta Box -->
             <div id="bubble-alert-box" style="display:none; margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(212,92,92,0.25); align-items: flex-start; gap: 8px; text-align: left;">
-              <span style="font-size:14px; margin-top:1px;">âÅ¡Â Ã¯Â¸Â</span>
+              <span style="font-size:14px; margin-top:1px;">⚠️</span>
               <div style="font-size:10px; color:#D45C5C; line-height:1.4;">
-                <strong>DiagnÃÂ³stico KRAD:</strong> Seu perfil estÃÂ¡ trancado em uma bolha local. VocÃÂª sÃÂ³ fala para quem jÃÂ¡ te conhece.
+                <strong>Diagnóstico KRAD:</strong> Seu perfil está trancado em uma bolha local. Você só fala para quem já te conhece.
               </div>
             </div>
           </div>
 
           <!-- Reels Retention Card -->
           <div class="insight-card">
-            <h5>RetenÃÂ§ÃÂ£o Reels (3 seg)</h5>
+            <h5>Retenção Reels (3 seg)</h5>
             <div style="display: flex; align-items: baseline; gap: 8px; margin: 16px 0 8px;">
               <span class="val" id="result-completion" style="font-size: 28px; font-weight: 800; color: var(--t1); line-height: 1;">0%</span>
               <span id="badge-retention" class="amc-badge" style="position: static; font-size: 8px; transform: none; padding: 2px 6px;">Aguardando</span>
@@ -1578,16 +1578,16 @@ a{text-decoration:none;color:inherit}
             <div class="bar-track" style="height: 6px; margin-bottom: 16px; background: var(--bg4); overflow: hidden; border-radius: 3px;">
               <div class="bar-fill client-fill" id="result-completion-fill" style="width: 0%;"></div>
             </div>
-            <div class="desc" id="result-completion-desc">RetenÃÂ§ÃÂ£o de atenÃÂ§ÃÂ£o nos vÃÂ­deos.</div>
+            <div class="desc" id="result-completion-desc">Retenção de atenção nos vídeos.</div>
           </div>
 
           <!-- High-Value Interactions Card -->
           <div class="insight-card" id="high-value-interactions-card">
-            <h5>InteraÃÂ§ÃÂµes de Alto Valor (MÃÂ©dia)</h5>
+            <h5>Interações de Alto Valor (Média)</h5>
             <div class="high-value-bars" style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
               <div class="interaction-bar-row">
                 <div style="display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace;">
-                  <span style="color: var(--t2);">âÅËÃ¯Â¸Â Compartilhamentos (DM)</span>
+                  <span style="color: var(--t2);">✈️ Compartilhamentos (DM)</span>
                   <strong style="color: var(--k2);" id="result-shares-val">0</strong>
                 </div>
                 <div class="bar-track" style="height: 6px; background: var(--bg4); overflow: hidden; border-radius: 3px;">
@@ -1596,7 +1596,7 @@ a{text-decoration:none;color:inherit}
               </div>
               <div class="interaction-bar-row">
                 <div style="display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace;">
-                  <span style="color: var(--t2);">Ã°Å¸âÂ¾ Salvos (ConteÃÂºdo ÃÅ¡til)</span>
+                  <span style="color: var(--t2);">💾 Salvos (Conteúdo Útil)</span>
                   <strong style="color: var(--cr3);" id="result-saves-val">0</strong>
                 </div>
                 <div class="bar-track" style="height: 6px; background: var(--bg4); overflow: hidden; border-radius: 3px;">
@@ -1605,19 +1605,19 @@ a{text-decoration:none;color:inherit}
               </div>
             </div>
             <div class="desc" style="margin-top: 14px; font-size: 9.5px; color: var(--t3); line-height: 1.4;">
-              DM (Sends) atrai novos clientes orgÃÂ¢nicos; salvos geram autoridade de marca.
+              DM (Sends) atrai novos clientes orgânicos; salvos geram autoridade de marca.
             </div>
           </div>
 
         </div><!-- Conselhos para Destravar Seu Perfil -->
-        <div class="analyzer-triggers-title">âÅ¡Â¡ O Que Fazer Hoje para Destravar Seu Perfil (Conselhos de Amigo)</div>
+        <div class="analyzer-triggers-title">⚡ O Que Fazer Hoje para Destravar Seu Perfil (Conselhos de Amigo)</div>
         <div class="trigger-cards-list" id="analyzer-triggers">
           <!-- Dinâmico via JS -->
         </div>
 
         <!-- Formato Campeão Card -->
         <div class="analyzer-format-card">
-          <div class="format-icon" id="format-icon">ð¬</div>
+          <div class="format-icon" id="format-icon">🎬</div>
           <div class="format-info">
             <h4 id="format-title">Identificando Melhor Formato...</h4>
             <p id="format-desc">Carregando análise estratégica do conteúdo...</p>
@@ -1700,7 +1700,7 @@ a{text-decoration:none;color:inherit}
         <div class="analyzer-details" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
           <!-- Left: Instagram Simulator Frame -->
           <div>
-            <h4 style="margin-bottom: 12px; font-family: 'Playfair Display', serif; font-size: 16px;">ð± Diagnóstico de Posicionamento e Bio</h4>
+            <h4 style="margin-bottom: 12px; font-family: 'Playfair Display', serif; font-size: 16px;">📱 Diagnóstico de Posicionamento e Bio</h4>
             <div class="instagram-simulator-card" style="margin: 0 auto;">
               <div class="instagram-header-sim">
                 <div class="insta-sim-avatar">
@@ -1742,7 +1742,7 @@ a{text-decoration:none;color:inherit}
                     <span class="ping-dot"></span>
                     <span class="main-dot"></span>
                   </div>
-                  ð <span class="insta-sim-link" id="insta-link-val">linkin.bio/seu-negocio</span>
+                  🔗 <span class="insta-sim-link" id="insta-link-val">linkin.bio/seu-negocio</span>
                   
                   <!-- Link Tooltip -->
                   <div class="insta-bio-tooltip">
@@ -1759,7 +1759,7 @@ a{text-decoration:none;color:inherit}
           <!-- Right: Detailed AI Auditor Box & Recommendations -->
           <div style="display: flex; flex-direction: column; gap: 20px;">
             <div class="analyzer-detail-box" style="margin: 0;">
-              <h4>ð Avaliação de Conteúdo & Engajamento</h4>
+              <h4>📈 Avaliação de Conteúdo & Engajamento</h4>
               <p id="result-content-feedback">Carregando...</p>
             </div>
             <div class="analyzer-detail-box" style="margin: 0;">
@@ -1792,11 +1792,11 @@ a{text-decoration:none;color:inherit}
     <h2 class="sh rv">Cinco etapas que <em>transformam</em><br>presença em faturamento.</h2>
     <p class="sp rv">Não cobramos apenas por artes soltas. Executamos uma engrenagem contínua projetada para dar relevância à sua marca e trazer contatos reais no WhatsApp.</p>
     <div class="pillars rv">
-      <div class="pillar"><div class="pl-num">01</div><div class="pl-ico">ð</div><div class="pl-name">Estratégia e Nicho</div><div class="pl-desc">Estudamos seus principais concorrentes na região, definimos seu posicionamento e o perfil do seu público ideal.</div></div>
+      <div class="pillar"><div class="pl-num">01</div><div class="pl-ico">🔍</div><div class="pl-name">Estratégia e Nicho</div><div class="pl-desc">Estudamos seus principais concorrentes na região, definimos seu posicionamento e o perfil do seu público ideal.</div></div>
       <div class="pillar"><div class="pl-num">02</div><div class="pl-ico">📸</div><div class="pl-name">Captação Profissional</div><div class="pl-desc">Produzimos fotos e captação de vídeos sofisticados direto no seu estabelecimento para gerar conexão imediata.</div></div>
-      <div class="pillar"><div class="pl-num">03</div><div class="pl-ico">ð</div><div class="pl-name">Copy & Edição Premium</div><div class="pl-desc">Escrevemos roteiros que retêm a atenção e editamos Reels dinâmicos focados no engajamento orgânico.</div></div>
+      <div class="pillar"><div class="pl-num">03</div><div class="pl-ico">📝</div><div class="pl-name">Copy & Edição Premium</div><div class="pl-desc">Escrevemos roteiros que retêm a atenção e editamos Reels dinâmicos focados no engajamento orgânico.</div></div>
       <div class="pillar"><div class="pl-num">04</div><div class="pl-ico">📢</div><div class="pl-name">Tráfego Pago Local</div><div class="pl-desc">Colocamos seus melhores vídeos na tela de quem mora perto do seu negócio, gerando fluxo direto de leads.</div></div>
-      <div class="pillar"><div class="pl-num">05</div><div class="pl-ico">ð</div><div class="pl-name">Mensuração & Relatórios</div><div class="pl-desc">Sem enrolação. Acompanhe o aumento real de contatos, alcance geográfico e o retorno gerado.</div></div>
+      <div class="pillar"><div class="pl-num">05</div><div class="pl-ico">📈</div><div class="pl-name">Mensuração & Relatórios</div><div class="pl-desc">Sem enrolação. Acompanhe o aumento real de contatos, alcance geográfico e o retorno gerado.</div></div>
     </div>
   </div>
 </section>
@@ -1811,10 +1811,10 @@ a{text-decoration:none;color:inherit}
         <p class="prob-p">Fazer postagens genéricas não atrai clientes. Pagar agências tradicionais que só criam layouts frios e não entendem a rotina de um negócio local também não funciona.<br><br><strong>Para crescer, você precisa de uma equipe focada que vá até você, produza conteúdo premium humanizado e direcione anúncios para a sua cidade.</strong><br><br>Nós fazemos todo o trabalho operacional. Você foca em atender a demanda.</p>
       </div>
       <div class="sol-stack rv-right">
-        <div class="sol-item"><div class="sol-ico">ð¯</div><div><div class="sol-t">Foco 100% no seu público local</div><div class="sol-d">Anúncios segmentados por raio de distância garantem que sua verba apareça para potenciais compradores locais.</div></div></div>
-        <div class="sol-item"><div class="sol-ico">📸</div><div><div class="sol-t">Humanização e credibilidade</div><div class="sol-d">Vídeos reais dos seus pratos, produtos ou serviços engajam até 10Ã mais do que banco de imagens.</div></div></div>
-        <div class="sol-item"><div class="sol-ico">ð°</div><div><div class="sol-t">Retorno transparente</div><div class="sol-d">Focamos em métricas que importam: mensagens no direct, cliques no link do WhatsApp e novos clientes.</div></div></div>
-        <div class="sol-item"><div class="sol-ico">ð¤</div><div><div class="sol-t">Parceria de verdade</div><div class="sol-d">Você tem contato direto com os estrategistas. Aprovamos o calendário editorial com antecedência e sem atrito.</div></div></div>
+        <div class="sol-item"><div class="sol-ico">🎯</div><div><div class="sol-t">Foco 100% no seu público local</div><div class="sol-d">Anúncios segmentados por raio de distância garantem que sua verba apareça para potenciais compradores locais.</div></div></div>
+        <div class="sol-item"><div class="sol-ico">📸</div><div><div class="sol-t">Humanização e credibilidade</div><div class="sol-d">Vídeos reais dos seus pratos, produtos ou serviços engajam até 10× mais do que banco de imagens.</div></div></div>
+        <div class="sol-item"><div class="sol-ico">💰</div><div><div class="sol-t">Retorno transparente</div><div class="sol-d">Focamos em métricas que importam: mensagens no direct, cliques no link do WhatsApp e novos clientes.</div></div></div>
+        <div class="sol-item"><div class="sol-ico">🤝</div><div><div class="sol-t">Parceria de verdade</div><div class="sol-d">Você tem contato direto com os estrategistas. Aprovamos o calendário editorial com antecedência e sem atrito.</div></div></div>
       </div>
     </div>
   </div>
@@ -1828,30 +1828,30 @@ a{text-decoration:none;color:inherit}
     <p class="sp rv">Cada tipo de negócio exige uma linguagem diferente. Otimizamos o tom de voz e as campanhas para atrair o público comprador ideal da sua categoria.</p>
     <div class="segments rv">
       <div class="segment">
-        <div class="seg-icon">ð</div>
+        <div class="seg-icon">🍔</div>
         <h3 class="seg-name">Gastronomia</h3>
         <p class="seg-desc">Restaurantes, esfiarias, cafés e bistrôs. Focamos no "food porn" com captação de dar água na boca e tráfego pago focado em dias/horários de pico de pedidos.</p>
         <div class="seg-pain">
           <div class="seg-pain-lbl">Principal problema resolvido</div>
-          <div class="seg-pain-txt"><span>â</span> Redes sociais frias que não despertam desejo de compra.</div>
+          <div class="seg-pain-txt"><span>✗</span> Redes sociais frias que não despertam desejo de compra.</div>
         </div>
       </div>
       <div class="segment">
-        <div class="seg-icon">ð©º</div>
+        <div class="seg-icon">🩺</div>
         <h3 class="seg-name">Clínicas e Profissionais</h3>
         <p class="seg-desc">Médicos, dentistas, advogados e estéticas. Posicionamento premium focado em gerar autoridade técnica, educar o público e encher a agenda de consultas particulares.</p>
         <div class="seg-pain">
           <div class="seg-pain-lbl">Principal problema resolvido</div>
-          <div class="seg-pain-txt"><span>â</span> Dificuldade em converter seguidores em pacientes/clientes.</div>
+          <div class="seg-pain-txt"><span>✗</span> Dificuldade em converter seguidores em pacientes/clientes.</div>
         </div>
       </div>
       <div class="segment">
-        <div class="seg-icon">ðï¸</div>
+        <div class="seg-icon">🛍️</div>
         <h3 class="seg-name">Varejo e Serviços</h3>
         <p class="seg-desc">Pet shops, lojas de móveis, varejo físico ou online. Atração de tráfego físico para a loja e campanhas de remarketing para engajar quem já conhece sua marca.</p>
         <div class="seg-pain">
           <div class="seg-pain-lbl">Principal problema resolvido</div>
-          <div class="seg-pain-txt"><span>â</span> Falta de fluxo de clientes novos vindos do ambiente digital.</div>
+          <div class="seg-pain-txt"><span>✗</span> Falta de fluxo de clientes novos vindos do ambiente digital.</div>
         </div>
       </div>
     </div>
@@ -1872,7 +1872,7 @@ a{text-decoration:none;color:inherit}
           <div class="case-top">
             <div>
               <div class="case-biz">Allan Esfihas Atibaia</div>
-              <div class="case-seg">GASTRONOMIA Â· POSICIONAMENTO LOCAL</div>
+              <div class="case-seg">GASTRONOMIA · POSICIONAMENTO LOCAL</div>
             </div>
             <span class="case-tag">Resultados Reais</span>
           </div>
@@ -1910,7 +1910,7 @@ a{text-decoration:none;color:inherit}
           <div class="case-top">
             <div>
               <div class="case-biz">Dra. Nathalia Del Vecchio</div>
-              <div class="case-seg">ADVOCACIA Â· TRABALHISTA E PREVIDENCIÁRIO</div>
+              <div class="case-seg">ADVOCACIA · TRABALHISTA E PREVIDENCIÁRIO</div>
             </div>
             <span class="case-tag">Crescimento Orgânico</span>
           </div>
@@ -1952,40 +1952,40 @@ a{text-decoration:none;color:inherit}
       
       <div class="clients-grid">
         <a href="https://www.google.com/search?q=allan+esfihas+atibaia" target="_blank" class="client-card">
-          <span class="client-name">ð Allan Esfihas Atibaia</span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">🍔 Allan Esfihas Atibaia</span>
+          <span class="client-arrow">↗</span>
         </a>
         <a href="https://www.google.com/search?q=maeda+hortifruti+atibaia" target="_blank" class="client-card">
-          <span class="client-name">ð¥¦ Hortifruti Maeda Atibaia <span class="client-tag-new">Novo</span></span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">🥦 Hortifruti Maeda Atibaia <span class="client-tag-new">Novo</span></span>
+          <span class="client-arrow">↗</span>
         </a>
         <a href="https://www.google.com/search?q=shin+ryu+atibaia" target="_blank" class="client-card">
-          <span class="client-name">ð¥ Shin Ryu Atibaia</span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">🥋 Shin Ryu Atibaia</span>
+          <span class="client-arrow">↗</span>
         </a>
         <a href="https://www.google.com/search?q=picanha+na+tabua+atibaia" target="_blank" class="client-card">
-          <span class="client-name">ð¥© Picanha na Tábua Atibaia</span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">🥩 Picanha na Tábua Atibaia</span>
+          <span class="client-arrow">↗</span>
         </a>
         <a href="https://www.google.com/search?q=grill+sul+atibaia" target="_blank" class="client-card">
-          <span class="client-name">ð Grill Sul Atibaia & Região</span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">🍖 Grill Sul Atibaia & Região</span>
+          <span class="client-arrow">↗</span>
         </a>
         <a href="https://www.google.com/search?q=pet+e+flora+guarulhos+loja" target="_blank" class="client-card">
-          <span class="client-name">ð¾ Pets e Flora Guarulhos</span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">🐾 Pets e Flora Guarulhos</span>
+          <span class="client-arrow">↗</span>
         </a>
         <a href="https://www.google.com/search?q=casa+da+Esfiha+guargukhis" target="_blank" class="client-card">
-          <span class="client-name">ð Casa da Esfiha Guarulhos</span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">🍕 Casa da Esfiha Guarulhos</span>
+          <span class="client-arrow">↗</span>
         </a>
         <a href="https://www.instagram.com/dra.nathaliadelvecchio/" target="_blank" class="client-card">
-          <span class="client-name">âï¸ Dra. Nathalia Del Vecchio</span>
-          <span class="client-arrow">â</span>
+          <span class="client-name">⚖️ Dra. Nathalia Del Vecchio</span>
+          <span class="client-arrow">↗</span>
         </a>
         <div class="client-card" style="opacity: 0.75;">
-          <span class="client-name">â Allan Café Atibaia <span class="client-tag-new">Em Crescimento</span></span>
-          <span class="client-arrow" style="opacity: 0;">â</span>
+          <span class="client-name">☕ Allan Café Atibaia <span class="client-tag-new">Em Crescimento</span></span>
+          <span class="client-arrow" style="opacity: 0;">—</span>
         </div>
       </div>
     </div>
@@ -1999,35 +1999,35 @@ a{text-decoration:none;color:inherit}
     <h2 class="sh rv">O que os parceiros <em>dizem</em><br>sobre nossa dedicação.</h2>
     <div class="testis">
       <div class="testi rv">
-        <div class="testi-stars">âââââ</div>
+        <div class="testi-stars">★★★★★</div>
         <p class="testi-q">"O trabalho da krad com vídeos e tráfego pago local é muito sério. Eles de fato entendem o que chama atenção do morador de Atibaia, e o crescimento orgânico dos conteúdos é nítido."</p>
         <div class="testi-who">
           <div class="testi-av">AE</div>
           <div>
             <div class="testi-name">Allan Silva</div>
-            <div class="testi-role">Proprietário Â· Allan Esfihas & Café</div>
+            <div class="testi-role">Proprietário · Allan Esfihas & Café</div>
           </div>
         </div>
       </div>
       <div class="testi rv">
-        <div class="testi-stars">âââââ</div>
+        <div class="testi-stars">★★★★★</div>
         <p class="testi-q">"Eles reestruturaram a identidade visual das minhas postagens de advocacia. Agora as postagens têm ar profissional, coerente e com boa leitura para os clientes que chegam pelas redes."</p>
         <div class="testi-who">
           <div class="testi-av" style="background:var(--k)">ND</div>
           <div>
             <div class="testi-name">Dra. Nathalia</div>
-            <div class="testi-role">Advogada Â· Trabalhista e Previdenciário</div>
+            <div class="testi-role">Advogada · Trabalhista e Previdenciário</div>
           </div>
         </div>
       </div>
       <div class="testi rv">
-        <div class="testi-stars">âââââ</div>
+        <div class="testi-stars">★★★★★</div>
         <p class="testi-q">"Além da captação de qualidade, o suporte deles é direto no WhatsApp. Sempre respondem rápido, organizam as pautas mensais com antecedência e facilitam o processo para quem é ocupado."</p>
         <div class="testi-who">
           <div class="testi-av" style="background:var(--cr3);color:var(--k4)">HM</div>
           <div>
             <div class="testi-name">Maeda Hortifruti</div>
-            <div class="testi-role">Gestão Comercial Â· Maeda Hortifruti Atibaia</div>
+            <div class="testi-role">Gestão Comercial · Maeda Hortifruti Atibaia</div>
           </div>
         </div>
       </div>
@@ -2061,17 +2061,17 @@ a{text-decoration:none;color:inherit}
     <a href="#" class="footer-link">Termos de uso</a>
     <a href="#" class="footer-link" onclick="openWA('footer-contato')">Contato</a>
   </div>
-  <div class="footer-copy">Â© 2026 krad agência â Todos os direitos reservados</div>
+  <div class="footer-copy">© 2026 krad agência — Todos os direitos reservados</div>
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* âââââââââââââââââââââââââââââââââââââââââââ
-   KRAD LANDING â JS OTIMIZADO & TRANSPARENTE
-âââââââââââââââââââââââââââââââââââââââââââ */
+/* ═══════════════════════════════════════════
+   KRAD LANDING — JS OTIMIZADO & TRANSPARENTE
+═══════════════════════════════════════════ */
 
-// ââ INTRO ââ
+// ══ INTRO ══
 (function() {
   var fill = document.getElementById('intro-fill');
   var intro = document.getElementById('intro');
@@ -2082,7 +2082,7 @@ a{text-decoration:none;color:inherit}
   }, 2200);
 })();
 
-// ââ PROGRESS BAR ââ
+// ══ PROGRESS BAR ══
 window.addEventListener('scroll', function() {
   var s = document.documentElement.scrollTop || document.body.scrollTop;
   var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -2090,7 +2090,7 @@ window.addEventListener('scroll', function() {
   document.getElementById('nav').classList.toggle('scrolled', s > 20);
 });
 
-// ââ PARTICLES ââ
+// ══ PARTICLES ══
 (function() {
   var canvas = document.getElementById('hero-canvas');
   if(!canvas) return;
@@ -2150,7 +2150,7 @@ window.addEventListener('scroll', function() {
   draw();
 })();
 
-// ââ COUNTER ANIMATIONS ââ
+// ══ COUNTER ANIMATIONS ══
 function animateCount(el) {
   var target   = parseFloat(el.dataset.target);
   var prefix   = el.dataset.prefix   || '';
@@ -2168,7 +2168,7 @@ function animateCount(el) {
   requestAnimationFrame(step);
 }
 
-// ââ SCROLL REVEAL + COUNTERS ââ
+// ══ SCROLL REVEAL + COUNTERS ══
 var countersDone = false;
 var revObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
@@ -2204,14 +2204,14 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// ââ NAV MOBILE ââ
+// ══ NAV MOBILE ══
 function toggleNav() {
   var links = document.getElementById('nav-links');
   var btn   = document.getElementById('hamburger');
   btn.textContent = links.classList.toggle('open') ? '✕' : '☰';
 }
 
-// ââ WHATSAPP CONTACT ROUTING ââ
+// ══ WHATSAPP CONTACT ROUTING ══
 function openWA(subject){
   var msg = "Olá! Vim pelo site da krad agência e gostaria de entender como funciona o trabalho de posicionamento e tráfego pago para o meu negócio.";
   
@@ -2230,7 +2230,7 @@ function openWA(subject){
   window.open(url, '_blank');
 }
 
-// ââ ANALYZER STATE & JS ââ
+// ══ ANALYZER STATE & JS ══
 let lastAnalysisResult = null;
 
 async function startAnalysis() {
@@ -2534,15 +2534,15 @@ async function startAnalysis() {
     const formatCardDesc = document.getElementById('format-desc');
     
     if (data.profile.bestFormat === 'Reels') {
-      formatCardIcon.textContent = 'ð¬';
+      formatCardIcon.textContent = '🎬';
       formatCardTitle.textContent = 'Formato Campeão: Vídeos Curtos (Reels)';
       formatCardDesc.textContent = 'Seu público responde muito melhor a Reels. Pare de postar fotos estáticas do seu produto. Transforme seu conhecimento em Reels de até 30 segundos: mostre os bastidores, resolva uma dor rápida no vídeo e use legendas dinâmicas.';
     } else if (data.profile.bestFormat === 'Carrossel') {
-      formatCardIcon.textContent = 'ð';
+      formatCardIcon.textContent = '📊';
       formatCardTitle.textContent = 'Formato Campeão: Conteúdos Educativos (Carrossel)';
       formatCardDesc.textContent = 'Sua audiência gosta de ler e aprender com você. Em vez de posts soltos, crie carrosséis em formato de "Passo a Passo", "3 Erros que você comete" ou listas. A última página do carrossel deve ter uma chamada clara para o WhatsApp.';
     } else {
-      formatCardIcon.textContent = 'ð¥';
+      formatCardIcon.textContent = '👥';
       formatCardTitle.textContent = 'Formato Campeão: Conexão Pessoal (Humanização)';
       formatCardDesc.textContent = 'Seu cliente compra de quem ele confia. Apareça mais! Tire fotos reais trabalhando, conte a história de como você começou a empresa ou mostre o depoimento de um cliente satisfeito com uma foto sua ao lado.';
     }
@@ -2652,7 +2652,7 @@ function generateHeatmap(activeHoursStr) {
   grid.innerHTML = '';
   
   const daysShort = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
-  const strLower = (activeHoursStr || 'Quarta e Sexta ï¿½s 12:00').toLowerCase();
+  const strLower = (activeHoursStr || 'Quarta e Sexta às 12:00').toLowerCase();
   
   for (let i = 0; i < 7; i++) {
     const cell = document.createElement('div');
@@ -2752,7 +2752,7 @@ function analyzeFromHero() {
   }, 450);
 }
 
-// ââ BEFORE VS AFTER CAROUSEL SLIDER ââ
+// ══ BEFORE VS AFTER CAROUSEL SLIDER ══
 let activeSlide = 0;
 function setSlide(index) {
   activeSlide = index;
@@ -2795,7 +2795,7 @@ setTimeout(() => {
   }
 }, 500);
 
-// ââ INSTAGRAM SIMULATOR TOOLTIPS ââ
+// ══ INSTAGRAM SIMULATOR TOOLTIPS ══
 function toggleBioTooltip(e) {
   e.stopPropagation();
   const wrap = document.getElementById('insta-bio-text-wrap');
@@ -2820,7 +2820,7 @@ document.addEventListener('click', () => {
   if (linkWrap) linkWrap.classList.remove('active');
 });
 
-// ââ SCROLL LISTENER FOR STICKY CTA ââ
+// ══ SCROLL LISTENER FOR STICKY CTA ══
 window.addEventListener('scroll', function() {
   const stickyCta = document.getElementById('sticky-wa-cta');
   if (stickyCta) {
@@ -2844,7 +2844,7 @@ window.addEventListener('scroll', function() {
 <!-- Sticky WhatsApp CTA -->
 <div class="sticky-whatsapp-cta" id="sticky-wa-cta">
   <button onclick="openAnalyzerWA()">
-    <span>ð¬</span> Conversar no WhatsApp & Otimizar Perfil
+    <span>💬</span> Conversar no WhatsApp & Otimizar Perfil
   </button>
 </div>
 
