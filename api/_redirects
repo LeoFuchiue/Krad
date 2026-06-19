@@ -1,9 +1,0 @@
-# krad.com.br ? landing page
-/           /index.html     200
-
-# www redireciona para raiz
-https://www.krad.com.br/*   https://krad.com.br/:splat   301!
-
-# Rota amigável para o portal
-/portal     /portal.html    200
-/cliente    /portal.html    200
