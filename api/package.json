@@ -1,0 +1,10 @@
+{
+  "name": "krad-portal",
+  "version": "1.0.0",
+  "description": "krad agência landing page & profile analyzer",
+  "main": "api/analyze.js",
+  "engines": {
+    "node": "24.x"
+  },
+  "dependencies": {}
+}
