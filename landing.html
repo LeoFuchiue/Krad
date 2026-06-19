@@ -412,7 +412,7 @@ a{text-decoration:none;color:inherit}
 }
 
 /* ══ SEGMENTOS ══ */
-.segments{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.segments{display:grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap:20px;margin-top:48px}
 .segment{background:var(--bg3);border:1px solid var(--b1);border-radius:var(--r3);padding:32px 24px;position:relative;overflow:hidden;transition:border-color var(--tm),transform var(--ts)}
 .segment:hover{border-color:var(--b2);transform:translateY(-4px)}
 .seg-icon{font-size:32px;margin-bottom:20px}
@@ -424,7 +424,7 @@ a{text-decoration:none;color:inherit}
 .seg-pain-txt span{color:#C75B5B}
 
 /* ══ DEPOIMENTOS (TESTIMONIALS) ══ */
-.testis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+.testis{display:grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap:14px;margin-top:52px}
 .testi{background:var(--bg2);border:1px solid var(--b1);border-radius:var(--r3);padding:26px 22px;transition:border-color var(--tm),transform var(--ts)}
 .testi:hover{border-color:var(--b2);transform:translateY(-3px)}
 .testi-stars{color:var(--k2);font-size:14px;letter-spacing:3px;margin-bottom:14px}
@@ -610,7 +610,7 @@ a{text-decoration:none;color:inherit}
   border-color: var(--k2); color: var(--t1); background: var(--dim);
 }
 .analyzer-metrics {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px; margin-bottom: 28px;
 }
 .analyzer-metric-card {
@@ -668,7 +668,7 @@ a{text-decoration:none;color:inherit}
 
 /* Deep Insights Grid */
 .deep-insights-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 28px;
 }
 .insight-card {
   background: var(--bg3); border: 1px solid var(--b1); border-radius: var(--r2);
@@ -1573,16 +1573,6 @@ a{text-decoration:none;color:inherit}
             <div class="val" id="result-completion">0%</div>
             <div class="desc" id="result-completion-desc">Retenção de atenção nos vídeos.</div>
           </div>
-          
-          <div class="insight-card">
-            <h5>Janela de Oportunidade</h5>
-            <div class="val" id="result-activehours">—</div>
-            <div class="desc" style="margin-bottom: 10px;">Dias e horários de maior pico de público ativo.</div>
-            <div class="active-hours-heatmap">
-              <div class="heatmap-header">Frequência Horária (Semana)</div>
-              <div class="heatmap-grid" id="result-heatmap-grid"></div>
-            </div>
-          </div>
         </div>
 
         <!-- Gatilhos de Solução Inteligentes (Ações Imediatas Grátis) -->
@@ -2371,7 +2361,7 @@ async function startAnalysis() {
       ? 'Retenção baixa nos primeiros segundos.' 
       : 'Excelente engajamento e retenção de público.';
 
-    document.getElementById('result-activehours').textContent = data.profile.activeHours;
+    // document.getElementById('result-activehours').textContent = data.profile.activeHours;
 
     // --- FUNNEL AND HEATMAP CALCULATIONS ---
     // Atração (Reach/Followers)
@@ -2422,7 +2412,7 @@ async function startAnalysis() {
     }
 
     // Heatmap Grid Generation
-    generateHeatmap(data.profile.activeHours);
+    // generateHeatmap(data.profile.activeHours);
 
     // Trigger-Based Solution Box
     const triggersList = document.getElementById('analyzer-triggers');
@@ -2596,7 +2586,7 @@ function generateHeatmap(activeHoursStr) {
   grid.innerHTML = '';
   
   const daysShort = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
-  const strLower = activeHoursStr.toLowerCase();
+  const strLower = (activeHoursStr || 'Quarta e Sexta �s 12:00').toLowerCase();
   
   for (let i = 0; i < 7; i++) {
     const cell = document.createElement('div');
@@ -2794,3 +2784,5 @@ window.addEventListener('scroll', function() {
 
 </body>
 </html>
+
+
