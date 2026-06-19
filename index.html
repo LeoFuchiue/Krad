@@ -2636,13 +2636,13 @@ async function startAnalysis() {
 function createTriggerCard(cls, title, freeTip, agencyHook) {
   const card = document.createElement('div');
   card.className = 'trigger-card ' + cls;
-  card.innerHTML = 
-    <div class="trigger-card-header">\</div>
+  card.innerHTML = `
+    <div class="trigger-card-header">${title}</div>
     <div class="trigger-card-body">
-      <div class="trigger-free-tip"><strong>💡 Conselho de amigo (De graça):</strong> \</div>
-      <div class="trigger-agency-hook"><strong>🔥 Como a KRAD resolve para você:</strong> \</div>
+      <div class="trigger-free-tip"><strong>💡 Conselho de amigo (De graça):</strong> ${freeTip}</div>
+      <div class="trigger-agency-hook"><strong>🔥 Como a KRAD resolve para você:</strong> ${agencyHook}</div>
     </div>
-  ;
+  `;
   return card;
 }
 
