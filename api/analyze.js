@@ -56,23 +56,31 @@ module.exports = async (req, res) => {
 
         if (response.ok) {
           const raw = await response.json();
-          const data = raw.data || raw;
+          
+          // Suporte para instagram120 que envolve em raw.result
+          const data = raw.result || raw.data || raw;
+          
+          const followers = data.edge_followed_by?.count || data.follower_count || data.followers || 0;
+          const following = data.edge_follow?.count || data.following_count || data.following || 0;
+          const bio = data.biography || data.bio || '';
+          const externalUrl = data.external_url || data.externalUrl || '';
+          const postCount = data.edge_owner_to_timeline_media?.count || data.media_count || data.postCount || 0;
           
           profileData = {
             username: data.username || username,
             fullName: data.full_name || data.fullName || username,
-            followers: data.follower_count || data.followers || 0,
-            following: data.following_count || data.following || 0,
-            bio: data.biography || data.bio || '',
-            profilePic: data.profile_pic_url || data.profilePic || '',
-            externalUrl: data.external_url || data.externalUrl || '',
-            postCount: data.media_count || data.postCount || 0,
+            followers: followers,
+            following: following,
+            bio: bio,
+            profilePic: data.profile_pic_url_hd || data.profile_pic_url || data.profilePic || '',
+            externalUrl: externalUrl,
+            postCount: postCount,
           };
 
           // Calcular engajamento e métricas a partir dos posts
           let averageLikes = 0;
           let averageComments = 0;
-          let recentPosts = data.feed?.items || data.recent_posts || [];
+          let recentPosts = data.feed?.items || data.recent_posts || data.edge_owner_to_timeline_media?.edges || [];
 
           if (recentPosts.length > 0) {
             let totalLikes = 0;
@@ -80,9 +88,10 @@ module.exports = async (req, res) => {
             const count = Math.min(recentPosts.length, 12);
 
             for (let i = 0; i < count; i++) {
-              const post = recentPosts[i];
-              totalLikes += post.like_count || post.likes || 0;
-              totalComments += post.comment_count || post.comments || 0;
+              const item = recentPosts[i];
+              const post = item.node || item; // node é usado no formato GraphQL edges
+              totalLikes += post.edge_liked_by?.count || post.like_count || post.likes || 0;
+              totalComments += post.edge_media_to_comment?.count || post.comment_count || post.comments || 0;
             }
             averageLikes = Math.round(totalLikes / count);
             averageComments = Math.round(totalComments / count);
