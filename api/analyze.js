@@ -44,16 +44,58 @@ module.exports = async (req, res) => {
     if (apiKey) {
       try {
         let response;
+        let extUrlFromUserInfo = '';
         if (apiHost.includes('instagram120')) {
-          response = await fetch(`https://${apiHost}/api/instagram/profile`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-RapidAPI-Key': apiKey,
-              'X-RapidAPI-Host': apiHost
-            },
-            body: JSON.stringify({ username: username })
-          });
+          const [profileRes, infoRes] = await Promise.all([
+            fetch(`https://${apiHost}/api/instagram/profile`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': apiHost
+              },
+              body: JSON.stringify({ username: username })
+            }),
+            fetch(`https://${apiHost}/api/instagram/userInfo`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': apiHost
+              },
+              body: JSON.stringify({ username: username })
+            }).catch(() => null)
+          ]);
+          
+          response = profileRes;
+          
+          if (infoRes && infoRes.ok) {
+            try {
+              const infoRaw = await infoRes.json();
+              let infoUser = {};
+              if (infoRaw) {
+                if (infoRaw.result) {
+                  if (Array.isArray(infoRaw.result)) {
+                    if (infoRaw.result[0]) {
+                      infoUser = infoRaw.result[0].user || infoRaw.result[0];
+                    }
+                  } else {
+                    infoUser = infoRaw.result.user || infoRaw.result;
+                  }
+                } else if (infoRaw.data) {
+                  infoUser = infoRaw.data.user || infoRaw.data;
+                } else {
+                  infoUser = infoRaw;
+                }
+              }
+              extUrlFromUserInfo = infoUser.external_url || infoUser.externalUrl || '';
+              if (!extUrlFromUserInfo && infoUser.bio_links && infoUser.bio_links.length > 0) {
+                extUrlFromUserInfo = infoUser.bio_links[0].url || infoUser.bio_links[0].lynk_url || '';
+              }
+            } catch (e) {
+              console.error('Erro ao ler link no userInfo:', e.message);
+            }
+          }
         } else {
           response = await fetch(`https://${apiHost}/v1/info?username_or_id_or_url=${encodeURIComponent(username)}`, {
             method: 'GET',
@@ -67,22 +109,44 @@ module.exports = async (req, res) => {
         if (response.ok) {
           const raw = await response.json();
           
-          // Suporte para instagram120 que envolve em raw.result
-          const data = raw.result || raw.data || raw;
+          let data = {};
+          if (raw) {
+            if (raw.result) {
+              if (Array.isArray(raw.result)) {
+                data = raw.result[0];
+              } else {
+                data = raw.result;
+              }
+            } else if (raw.data) {
+              data = raw.data;
+            } else {
+              data = raw;
+            }
+          }
           
-          const followers = data.edge_followed_by?.count || data.follower_count || data.followers || 0;
-          const following = data.edge_follow?.count || data.following_count || data.following || 0;
-          const bio = data.biography || data.bio || '';
-          const externalUrl = data.external_url || data.externalUrl || '';
-          const postCount = data.edge_owner_to_timeline_media?.count || data.media_count || data.postCount || 0;
+          const userObj = data.user || data;
+          
+          const followers = userObj.edge_followed_by?.count || userObj.follower_count || userObj.followers || 0;
+          const following = userObj.edge_follow?.count || userObj.following_count || userObj.following || 0;
+          const bio = userObj.biography || userObj.bio || '';
+          
+          let externalUrl = extUrlFromUserInfo || userObj.external_url || userObj.externalUrl || '';
+          if (!externalUrl) {
+            const bioLinks = userObj.bio_links || [];
+            if (bioLinks.length > 0) {
+              externalUrl = bioLinks[0].url || bioLinks[0].lynk_url || '';
+            }
+          }
+          
+          const postCount = userObj.edge_owner_to_timeline_media?.count || userObj.media_count || userObj.postCount || 0;
           
           profileData = {
-            username: data.username || username,
-            fullName: data.full_name || data.fullName || username,
+            username: userObj.username || username,
+            fullName: userObj.full_name || userObj.fullName || username,
             followers: followers,
             following: following,
             bio: bio,
-            profilePic: data.profile_pic_url_hd || data.profile_pic_url || data.profilePic || '',
+            profilePic: userObj.profile_pic_url_hd || userObj.profile_pic_url || userObj.profilePic || '',
             externalUrl: externalUrl,
             postCount: postCount,
           };
@@ -90,7 +154,7 @@ module.exports = async (req, res) => {
           // Calcular engajamento e métricas a partir dos posts
           let averageLikes = 0;
           let averageComments = 0;
-          let recentPosts = data.feed?.items || data.recent_posts || data.edge_owner_to_timeline_media?.edges || [];
+          let recentPosts = userObj.feed?.items || userObj.recent_posts || userObj.edge_owner_to_timeline_media?.edges || data.feed?.items || data.recent_posts || data.edge_owner_to_timeline_media?.edges || [];
 
           if (recentPosts.length > 0) {
             let totalLikes = 0;
@@ -171,40 +235,42 @@ module.exports = async (req, res) => {
 
     if (geminiKey) {
       try {
-        const prompt = `Você é o Diretor de Criação da "krad agência", especialista em posicionamento e tráfego local.
-Faça uma análise crítica, premium, sincera e realista do perfil do Instagram @${profileData.username}. 
-Não use termos genéricos. Você DEVE citar os números específicos do perfil na sua análise.
+        const prompt = `Você é o Diretor de Criação da "krad agência", especialista em posicionamento de marcas premium, tráfego pago local e estratégias de conversão de alto impacto no Instagram.
+Analise com máxima autoridade, clareza e realismo comercial o perfil do Instagram @${profileData.username}.
 
-DADOS REAIS DO PERFIL:
+DADOS REAIS DO PERFIL DO CLIENTE:
 - Nome: ${profileData.fullName}
 - Seguidores: ${profileData.followers.toLocaleString('pt-BR')}
-- Taxa de Engajamento: ${profileData.engagementRate}% (Benchmark local: 2.0% a 3.5%)
-- Frequência de Posts: ${profileData.postsPerMonth} posts nos últimos 30 dias (Benchmark saudável: 8 a 12 posts)
+- Taxa de Engajamento Real: ${profileData.engagementRate}% (Benchmark de mercado local: 2.5% a 4.0%)
+- Frequência de Postagem: ${profileData.postsPerMonth} posts nos últimos 30 dias (Mínimo recomendado comercialmente: 8 a 12 posts)
 - Curtidas Médias: ${profileData.averageLikes} | Comentários Médios: ${profileData.averageComments}
-- Proporção de Salvamentos: ${profileData.averageSaves} salvamentos médios por post (Meta: 10% das curtidas, ou seja, ${Math.round(profileData.averageLikes * 0.1)})
+- Proporção de Salvamentos: ${profileData.averageSaves} salvamentos por post (Meta ideal: 10% das curtidas)
 - Compartilhamentos Médios: ${profileData.averageShares}
-- Crescimento de Seguidores: ${profileData.followerGrowthRate}% ao mês (Benchmark: 1% a 2%)
-- Distribuição de Alcance (Não-Seguidores): ${profileData.reachRateNonFollowers}% (Benchmark Reels: 40% a 50%)
-- Retenção do Reels (primeiros 3 segundos): ${profileData.reelsCompletionRate}% (Benchmark: >35%)
 - Melhor Formato da Conta: ${profileData.bestFormat}
 - Link na Bio: ${profileData.hasLink ? profileData.externalUrl : 'NÃO POSSUI LINK NA BIO'}
 - Texto da Bio: "${profileData.bio}"
 
+INSTRUÇÕES DE ESCRITA (ATITUDE COMERCIAL DE VENDAS):
+Você deve estruturar seus comentários de feedback (bio_feedback e content_feedback) divididos estritamente em 3 partes de forma fluida (sem subtítulos ou marcações especiais):
+1. [IDENTIFICAÇÃO DA DOR]: Aponte de forma direta, sincera e impactante a principal dor/gargalo encontrada nos dados reais (ex: "Achei essa dor: [...]"). Seja o auditor experiente que diz o que ninguém tem coragem de dizer.
+2. [SOLUÇÃO IMEDIATA DE GRAÇA]: Dê uma orientação prática, acionável e gratuita para o cliente aplicar hoje mesmo e resolver/minimizar esse problema (ex: reescrever a bio, fazer um gancho específico de vídeo Reels). Mostre que nós realmente dominamos o assunto.
+3. [CTA COMERCIAL DA KRAD]: Faça um convite sutil de vendas indicando que, se ele quiser uma solução profissional, completa e escalável (como landing pages de alta conversão para o link ou produção e edição de vídeos de alto padrão com roteiros de atração), ele deve entrar em contato com a Krad agência.
+
 REGRAS DE RETORNO DO JSON:
-Retorne estritamente um objeto JSON com o seguinte formato, sem marcações markdown de código e sem textos adicionais:
+Retorne estritamente um objeto JSON com o seguinte formato, sem marcações markdown de código (como \`\`\`json) e sem qualquer texto adicional antes ou depois:
 {
   "score": ${profileData.score},
-  "bio_feedback": "sua análise crítica detalhada e sincera da biografia e posicionamento atual (responda se a promessa é fraca, se o link é inexistente ou ineficiente)",
-  "content_feedback": "sua análise crítica detalhada e sincera da taxa de engajamento, frequência de posts, salvamentos, e retenção de reels",
+  "bio_feedback": "Sua análise da bio e do link seguindo estritamente as 3 partes (Dor + Solução de Graça + CTA da Krad). Diga o que está errado e dê uma reescrita prática da bio para o nicho dele.",
+  "content_feedback": "Sua análise do engajamento e formato seguindo estritamente as 3 partes (Dor + Solução de Graça + CTA da Krad). Dê uma sugestão de roteiro/formato de reels ou post.",
   "tips": [
-    "Dica prática e imediata 1 baseada no formato ideal do perfil (${profileData.bestFormat})",
-    "Dica prática e imediata 2 baseada no engajamento (${profileData.engagementRate}%) ou na proporção de salvamentos (${profileData.averageSaves})",
-    "Dica prática e imediata 3 baseada na presença de link ou no crescimento de seguidores (${profileData.followerGrowthRate}%)"
+    "Dica de ouro prática 1 baseada no formato ideal (${profileData.bestFormat})",
+    "Dica de ouro prática 2 focada em engajamento ou salvamentos",
+    "Dica de ouro prática 3 para funil de captação de clientes locais"
   ],
   "triggers": {
     "noLink": ${!profileData.hasLink},
-    "lowFrequency": ${profileData.postsPerMonth < 8},
-    "lowEngagement": ${profileData.engagementRate < 1.5},
+    "lowFrequency": ${profileData.postsPerMonth < 10},
+    "lowEngagement": ${profileData.engagementRate < 2.5},
     "confusingBio": ${profileData.bio.length < 30 || !profileData.bio.includes('\n')}
   }
 }`;
@@ -280,29 +346,159 @@ Retorne estritamente um objeto JSON com o seguinte formato, sem marcações mark
 function getDeterministicMockData(username) {
   const cleanUser = username.toLowerCase().trim();
 
-  // KRAD Agência (Perfil do Usuário)
-  if (cleanUser.includes('krad') || cleanUser.includes('leofuchiue')) {
+  // 1. KRAD Agência
+  if (cleanUser === 'kradagencia') {
     return {
-      username: username,
+      username: 'kradagencia',
       fullName: 'krad agência',
-      followers: 1250,
-      following: 320,
+      followers: 127,
+      following: 89,
       bio: '🚀 Posicionamento & Tráfego Pago para Negócios Locais\n📸 Captação Premium (Gravações no local)\n👇 Conheça nossa agência',
       profilePic: '',
       externalUrl: 'https://krad.com.br',
       postCount: 42,
-      averageLikes: 124,
-      averageComments: 18,
-      averageSaves: 16,
-      averageShares: 22,
-      engagementRate: 11.36,
+      averageLikes: 35,
+      averageComments: 8,
+      averageSaves: 6,
+      averageShares: 9,
+      engagementRate: 33.86,
       postsPerMonth: 12,
-      followerGrowthRate: 2.1,
-      reachRateNonFollowers: 68,
-      reelsCompletionRate: 54,
+      followerGrowthRate: 15.5,
+      reachRateNonFollowers: 85,
+      reelsCompletionRate: 68,
       bestFormat: 'Reels',
       hasLink: true,
-      activeHours: 'Segunda e Quinta às 18:30'
+      activeHours: 'Quarta e Sexta às 18:30'
+    };
+  }
+
+  // 2. Leo Fuchiue
+  if (cleanUser === 'leofuchiue') {
+    return {
+      username: 'leofuchiue',
+      fullName: 'Leo Fuchiue',
+      followers: 310,
+      following: 420,
+      bio: '🧠 Estrategista de Vendas & Negócios Digitais\n💼 Cofundador da @kradagencia\n👇 Fale comigo no direct',
+      profilePic: '',
+      externalUrl: 'https://krad.com.br',
+      postCount: 88,
+      averageLikes: 62,
+      averageComments: 14,
+      averageSaves: 10,
+      averageShares: 12,
+      engagementRate: 24.52,
+      postsPerMonth: 6,
+      followerGrowthRate: 4.2,
+      reachRateNonFollowers: 72,
+      reelsCompletionRate: 59,
+      bestFormat: 'Reels',
+      hasLink: true,
+      activeHours: 'Terça e Quinta às 20:00'
+    };
+  }
+
+  // 3. Lefer Automação Comercial
+  if (cleanUser === 'leferautomacaocomercial' || cleanUser.includes('lefer') || cleanUser.includes('automacao')) {
+    return {
+      username: 'leferautomacaocomercial',
+      fullName: 'Lefer Automação Comercial',
+      followers: 850,
+      following: 610,
+      bio: '🖥️ Sistemas de Automação Comercial para o seu negócio\n🛒 Frente de caixa (PDV), impressoras, balanças e SAT\n📍 Atibaia e região\n👇 Solicite orçamento no WhatsApp',
+      profilePic: '',
+      externalUrl: 'https://wa.me/5511999999999',
+      postCount: 65,
+      averageLikes: 18,
+      averageComments: 2,
+      averageSaves: 1,
+      averageShares: 0,
+      engagementRate: 2.35,
+      postsPerMonth: 3,
+      followerGrowthRate: 0.1,
+      reachRateNonFollowers: 15,
+      reelsCompletionRate: 18,
+      bestFormat: 'Carrossel',
+      hasLink: true,
+      activeHours: 'Segunda às 10:00'
+    };
+  }
+
+  // 4. Instagram
+  if (cleanUser === 'instagram') {
+    return {
+      username: 'instagram',
+      fullName: 'Instagram',
+      followers: 682000000,
+      following: 81,
+      bio: 'Bringing you closer to the people and things you love. 💛',
+      profilePic: '',
+      externalUrl: 'https://linkin.bio/instagram',
+      postCount: 7500,
+      averageLikes: 142000,
+      averageComments: 8900,
+      averageSaves: 24000,
+      averageShares: 92000,
+      engagementRate: 0.02,
+      postsPerMonth: 15,
+      followerGrowthRate: 0.05,
+      reachRateNonFollowers: 45,
+      reelsCompletionRate: 40,
+      bestFormat: 'Reels',
+      hasLink: true,
+      activeHours: 'Todos os dias às 13:00'
+    };
+  }
+
+  // 5. Fred
+  if (cleanUser === 'fred') {
+    return {
+      username: 'fred',
+      fullName: 'Fred Bruno',
+      followers: 11200000,
+      following: 1800,
+      bio: 'Comunicador & Criador de Conteúdo ⚽🎙️\nContato: comercial@fredbruno.com.br\n👇 Assista ao meu último vídeo',
+      profilePic: '',
+      externalUrl: 'https://youtube.com/fredbruno',
+      postCount: 3120,
+      averageLikes: 124000,
+      averageComments: 3100,
+      averageSaves: 5600,
+      averageShares: 34000,
+      engagementRate: 1.13,
+      postsPerMonth: 22,
+      followerGrowthRate: 0.8,
+      reachRateNonFollowers: 55,
+      reelsCompletionRate: 48,
+      bestFormat: 'Reels',
+      hasLink: true,
+      activeHours: 'Quarta e Domingo às 19:30'
+    };
+  }
+
+  // 6. Nike
+  if (cleanUser === 'nike') {
+    return {
+      username: 'nike',
+      fullName: 'Nike',
+      followers: 306000000,
+      following: 140,
+      bio: 'Bringing inspiration and innovation to every athlete* in the world.\n*If you have a body, you are an athlete.\n👇 Shop Nike',
+      profilePic: '',
+      externalUrl: 'https://nike.com',
+      postCount: 1050,
+      averageLikes: 420000,
+      averageComments: 4100,
+      averageSaves: 89000,
+      averageShares: 215000,
+      engagementRate: 0.14,
+      postsPerMonth: 4,
+      followerGrowthRate: 0.12,
+      reachRateNonFollowers: 60,
+      reelsCompletionRate: 52,
+      bestFormat: 'Reels',
+      hasLink: true,
+      activeHours: 'Segunda às 12:00'
     };
   }
 
@@ -372,9 +568,8 @@ function getDeterministicMockData(username) {
 
   const following = 200 + (hash % 600);
   const postCount = 45 + (hash % 200);
-  const postsPerMonth = 3 + (hash % 11); // 3 a 13 posts por mês
+  const postsPerMonth = 3 + (hash % 11);
   
-  // Engajamento simulado
   let baseEng = 3.6 - (followers / 22000);
   if (baseEng < 0.6) baseEng = 0.6;
   const engagementRate = parseFloat((baseEng + ((hash % 140) / 100)).toFixed(2));
@@ -382,29 +577,25 @@ function getDeterministicMockData(username) {
   const averageLikes = Math.round(followers * (engagementRate / 100) * 0.92) || 12;
   const averageComments = Math.round(averageLikes * 0.07) || 1;
 
-  // Métricas profundas
-  // Proporção de salvamentos (meta 10%) - alguns perfis salvam mais, outros menos
-  const saveRatio = 0.03 + ((hash % 11) / 100); // 3% a 14%
+  const saveRatio = 0.03 + ((hash % 11) / 100);
   const averageSaves = Math.round(averageLikes * saveRatio) || 1;
   
-  const shareRatio = 0.02 + ((hash % 15) / 100); // 2% a 17%
+  const shareRatio = 0.02 + ((hash % 15) / 100);
   const averageShares = Math.round(averageLikes * shareRatio) || 1;
 
-  const followerGrowthRate = parseFloat(((hash % 250) / 100 - 0.75).toFixed(2)); // -0.75% a +1.75%
-  const reachRateNonFollowers = 10 + (hash % 65); // 10% a 75%
-  const reelsCompletionRate = 15 + (hash % 45); // 15% a 60%
+  const followerGrowthRate = parseFloat(((hash % 250) / 100 - 0.75).toFixed(2));
+  const reachRateNonFollowers = 10 + (hash % 65);
+  const reelsCompletionRate = 15 + (hash % 45);
   
   const formats = ['Reels', 'Carrossel', 'Humanização'];
   const bestFormat = formats[hash % 3];
 
   const hasLink = hash % 2 === 0;
 
-  // Dias e horários ativos
   const days = ['Segunda e Quarta', 'Terça e Quinta', 'Quarta e Sexta', 'Segunda e Sexta'];
   const times = ['às 12:00', 'às 18:00', 'às 19:00', 'às 20:00'];
   const activeHours = `${days[hash % 4]} ${times[(hash >> 2) % 4]}`;
 
-  // Bio
   let category = 'Empresa Local';
   if (cleanUser.includes('burger') || cleanUser.includes('pizza') || cleanUser.includes('doce') || cleanUser.includes('restaurante') || cleanUser.includes('comida') || cleanUser.includes('sushi')) {
     category = 'Gastronomia';
@@ -448,83 +639,115 @@ function getDeterministicMockData(username) {
 }
 
 /**
- * CALCULO DE SCORE MATEMÁTICO
+ * CALCULO DE SCORE MATEMÁTICO - VERSÃO RIGIDA COMERCIAL
  */
 function calculateMathematicalScore(profile) {
-  let score = 50;
+  let score = 10; // Start very low to be highly critical and commercial
 
-  // 1. Engajamento (máx 30)
-  if (profile.engagementRate > 5.0) score += 30;
-  else if (profile.engagementRate > 3.0) score += 24;
-  else if (profile.engagementRate > 1.8) score += 15;
-  else score += 5;
+  // 1. Fator de Audiência (Seguidores)
+  // Poucos seguidores (< 1500) limitam drasticamente o alcance inicial do algoritmo.
+  if (profile.followers >= 10000) score += 15;
+  else if (profile.followers >= 1500) score += 8;
+  else score += 2; // Penalidade para contas pequenas
 
-  // 2. Frequência (máx 20)
-  if (profile.postsPerMonth >= 10) score += 20;
-  else if (profile.postsPerMonth >= 7) score += 15;
-  else if (profile.postsPerMonth >= 4) score += 8;
-  else score += 2;
+  // 2. Fator de Engajamento Real (relativo à base)
+  // Para contas pequenas, o engajamento DEVE ser alto. Se for baixo, é crítico.
+  const eng = profile.engagementRate;
+  if (profile.followers < 1500) {
+    if (eng >= 5.0) score += 20;
+    else if (eng >= 3.0) score += 12;
+    else if (eng >= 1.5) score += 5;
+    else score += 1;
+  } else {
+    if (eng >= 3.5) score += 20;
+    else if (eng >= 2.0) score += 12;
+    else if (eng >= 1.0) score += 5;
+    else score += 1;
+  }
 
-  // 3. Link na bio (máx 20)
-  if (profile.hasLink) score += 20;
-  else score += 0; // punição severa se não tiver link
-
-  // 4. Retenção de Reels / Saves (máx 20)
-  const saveRatio = profile.averageSaves / profile.averageLikes;
-  if (saveRatio > 0.09 && profile.reelsCompletionRate > 35) score += 20;
-  else if (saveRatio > 0.05 || profile.reelsCompletionRate > 25) score += 12;
-  else score += 5;
-
-  // 5. Crescimento (máx 10)
-  if (profile.followerGrowthRate > 1.2) score += 10;
-  else if (profile.followerGrowthRate > 0.2) score += 7;
-  else if (profile.followerGrowthRate >= 0) score += 4;
+  // 3. Frequência de Postagem (Consistência é rei para o algoritmo)
+  const posts = profile.postsPerMonth;
+  if (posts >= 12) score += 15;
+  else if (posts >= 8) score += 10;
+  else if (posts >= 4) score += 4;
   else score += 0;
 
-  return Math.min(Math.max(score, 12), 98);
+  // 4. Retenção & Compartilhamentos (Sends/Saves - o coração do algoritmo)
+  // Proporção de salvamentos por curtidas e taxa de retenção estimada do Reels
+  const saveRatio = profile.averageSaves / (profile.averageLikes || 1);
+  const completion = profile.reelsCompletionRate || 0;
+  
+  if (saveRatio >= 0.10 && completion >= 45) score += 20;
+  else if (saveRatio >= 0.06 || completion >= 30) score += 10;
+  else score += 2;
+
+  if (profile.hasLink) score += 15;
+  else score += 0;
+
+  return Math.min(Math.max(score, 25), 92);
 }
 
 /**
- * AUDITOR ESTRUTURADO DE FALLBACK
+ * AUDITOR ESTRUTURADO DE FALLBACK - VERSÃO RIGIDA COMERCIAL
  */
 function generateStructuralFallbackAudit(profile) {
   const isNoLink = !profile.hasLink;
-  const isLowFreq = profile.postsPerMonth < 8;
-  const isLowEng = profile.engagementRate < 1.5;
+  const isLowFreq = profile.postsPerMonth < 10;
+  const isLowEng = profile.engagementRate < 2.5;
   const isConfusingBio = profile.bio.length < 30 || !profile.bio.includes('\n');
+
+  const cleanUser = profile.username.toLowerCase();
+  const cleanBio = profile.bio.toLowerCase();
+  let niche = 'Negócios Locais';
+  let suggestionBio = 'reescreva sua biografia focando no seu diferencial de serviço local.';
+  let reelsIdea = 'grave um Reels de 15 segundos mostrando a entrega ou o dia a dia do seu negócio.';
+  
+  if (cleanUser.includes('burger') || cleanUser.includes('pizza') || cleanUser.includes('doce') || cleanUser.includes('restaurante') || cleanUser.includes('comida') || cleanUser.includes('sushi') || cleanBio.includes('sabor') || cleanBio.includes('delivery')) {
+    niche = 'Gastronomia';
+    suggestionBio = 'coloque em destaque o seu diferencial de sabor, horário de funcionamento/delivery e uma chamada para ver o cardápio.';
+    reelsIdea = 'grave em close-up o processo de montagem do seu prato mais vendido hoje (ex: o queijo derretendo) e use um áudio em alta de 7 segundos.';
+  } else if (cleanUser.includes('dr') || cleanUser.includes('dra') || cleanUser.includes('odonto') || cleanUser.includes('med') || cleanUser.includes('estet') || cleanUser.includes('clinic') || cleanBio.includes('consulta') || cleanBio.includes('saúde') || cleanBio.includes('estética')) {
+    niche = 'Saúde/Estética';
+    suggestionBio = 'coloque o seu registro profissional (CRM/CRO), sua especialidade de forma clara e uma frase geradora de autoridade.';
+    reelsIdea = 'grave você mesma respondendo à principal dúvida de consultório que seus clientes trazem toda semana, em até 20 segundos.';
+  } else if (cleanUser.includes('store') || cleanUser.includes('loja') || cleanUser.includes('mod') || cleanUser.includes('pet') || cleanBio.includes('enviamos') || cleanBio.includes('loja')) {
+    niche = 'Varejo/Moda';
+    suggestionBio = 'deixe claro as formas de entrega (ex: "Enviamos para todo o BR") e como comprar direto pelo catálogo ou WhatsApp.';
+    reelsIdea = 'mostre um provador dinâmico ou os detalhes das peças chegando em estoque, com transições rápidas sincronizadas com a batida da música.';
+  }
 
   let bio_feedback = '';
   if (isNoLink) {
-    bio_feedback = `⚠️ ALERTA CRÍTICO: O perfil @${profile.username} não possui um link de conversão ativo na bio. Isso representa uma perda de até 80% das vendas que poderiam ser geradas de forma orgânica pelo Instagram. É essencial configurar um link direto de WhatsApp com mensagem personalizada imediatamente.`;
+    bio_feedback = `Achei essa dor: O perfil @${profile.username} está operando como uma loja de portas fechadas para o algoritmo. Sem um link estratégico na bio, os clientes em potencial entram, mas não sabem onde clicar para comprar ou agendar, resultando em uma perda silenciosa de até 80% das suas vendas do Instagram. Se eu pudesse te dar um conselho de amigo, perfis de ${niche} precisam de um link de WhatsApp imediato e rastreável. Para fazer isso de graça agora, use o gerador de links Convertte para criar um link do seu WhatsApp com uma mensagem de boas-vindas personalizada e coloque no seu perfil hoje mesmo. Agora, se você quer ir além e estruturar um funil de conversão profissional com landing pages e campanhas avançadas, entre em contato com a Krad agência.`;
   } else {
-    bio_feedback = `A presença de um link externo (${profile.externalUrl}) é excelente e facilita a conversão. No entanto, a copy da biografia do perfil @${profile.username} pode ser estruturada com uma Proposta Única de Valor mais forte para prender a atenção do público local imediatamente nos primeiros 3 segundos.`;
+    bio_feedback = `Achei essa dor: Embora você tenha o link (${profile.externalUrl}) ativo, o posicionamento da biografia do perfil @${profile.username} está muito institucional e genérico, não gerando conexão imediata em 3 segundos. Se eu pudesse te dar um conselho de amigo, perfis de ${niche} precisam de uma promessa forte. Para corrigir isso de graça, reescreva sua Bio em 3 linhas focando no seu diferencial: 1) ${suggestionBio}, 2) Uma prova social ou elemento de confiança, e 3) Um convite direto apontando para o link. Se quiser um design de posicionamento premium desenhado por estrategistas para atrair clientes qualificados, fale com a Krad agência.`;
   }
 
   let content_feedback = '';
   if (isLowEng) {
-    content_feedback = `O engajamento atual de ${profile.engagementRate}% está ABAIXO da média de mercado (2.5% a 3.5%). Isso indica que as postagens atuais podem estar muito focadas em panfletagem digital estática (fotos frias ou banco de imagens). A frequência de ${profile.postsPerMonth} posts/mês é razoável, mas o algoritmo está limitando a entrega.`;
+    content_feedback = `Achei essa dor: Seu engajamento de ${profile.engagementRate}% está abaixo do benchmark ideal do algoritmo (2.5%). Suas postagens parecem panfletos digitais frios e não estimulam retenção nem envios por DM, que são os maiores pesos do algoritmo atual. Se eu pudesse te dar um conselho de amigo, contas no nicho de ${niche} precisam de reels magnéticos. Para resolver isso de graça hoje mesmo: ${reelsIdea} Isso aumentará drasticamente o tempo de retenção do perfil. Se você quer parar de quebrar a cabeça gravando e quer que nossa agência cuide de todos os roteiros, captação presencial e edição premium de vídeos, entre em contato com a Krad agência.`;
   } else {
-    content_feedback = `O engajamento de ${profile.engagementRate}% está DENTRO da média esperada. Indica que existe interesse no que você publica. Contudo, para se destacar da concorrência na região e converter seguidores em vendas frequentes, é necessário estruturar melhor a produção de Reels de entretenimento e bastidores.`;
+    content_feedback = `Achei essa dor: Embora o público goste do seu conteúdo (engajamento de ${profile.engagementRate}%), postar apenas ${profile.postsPerMonth} vezes por mês faz o algoritmo esquecer que você existe e derrubar a entrega de novos leads locais. Se eu pudesse te dar um conselho de amigo, perfis de ${niche} precisam de consistência para aquecer o funil. Para resolver isso de graça hoje: estruture um cronograma de 3 postagens por semana intercalando Reels informativos e Carrosséis, agendando tudo pelo Meta Business Suite. Se não tem tempo de gerenciar isso e quer leads chegando todo dia de forma automática via anúncios de tráfego local, fale com a Krad agência.`;
   }
 
   let tips = [];
   if (profile.bestFormat === 'Reels') {
     tips = [
-      'Substitua artes institucionais estáticas por Reels de bastidores e processos reais do seu negócio gravados com celular, que retêm a atenção até 5× mais.',
-      'Insira chamadas para ação claras (CTAs) em todas as legendas, estimulando salvamentos e comentários (ex: "Salve este post para consultar quando precisar!").',
-      'Ative campanhas locais de tráfego pago para direcionar os seus melhores Reels na tela das pessoas que moram ou trabalham a até 5km do seu negócio.'
+      `Crie 3 Reels de bastidores de até 20 segundos focando no público de ${niche}, com ganchos fortes nos primeiros 3 segundos.`,
+      'Estimule salvamentos na legenda (ex: "Salve este post para consultar quando precisar!"), pois salvamentos são o que mais faz o algoritmo entregar seu post.',
+      'Evite artes prontas de Canva ou banco de imagens no feed; prefira fotos reais suas ou da sua equipe trabalhando, o que humaniza a marca.'
     ];
   } else if (profile.bestFormat === 'Carrossel') {
     tips = [
-      'Crie carrosséis de conteúdo educativo ou passo-a-passo resolvendo uma dor do cliente. A última página do carrossel deve ter um CTA direcionando para o WhatsApp.',
-      'Melhore o gancho visual da primeira página do carrossel para forçar o usuário a arrastar para o lado, aumentando o tempo de retenção.',
-      'Utilize legendas com técnicas de copywriting detalhando os pontos mostrados no carrossel, aumentando a taxa de salvamentos.'
+      `Crie um Carrossel educativo resolvendo a maior dor do seu cliente local de ${niche}. A última página deve ter uma chamada direta para clicar no seu link.`,
+      'Melhore o título (gancho) da primeira página para forçar o usuário a arrastar para o lado, o que aumenta o tempo de retenção do perfil.',
+      'Faça uma sequência de Stories diários com enquetes e caixas de perguntas para forçar a interação direta da sua audiência.'
     ];
   } else {
     tips = [
-      'Apareça mais! Poste fotos reais trabalhando, conte a história de como você começou a empresa ou mostre o depoimento de um cliente satisfeito com uma foto sua ao lado.',
-      'Use os Stories diariamente com enquetes e caixas de perguntas para interagir diretamente com a sua base e gerar conexão humana.',
-      'Fixe 3 publicações estratégicas no topo do feed: um post de apresentação do negócio, um depoimento de cliente (prova social) e o seu principal produto/serviço.'
+      `Grave sequências de Stories explicando um benefício específico para clientes de ${niche} e abra caixas de perguntas para gerar conversas no direct.`,
+      'Fixe 3 posts estratégicos no topo do seu perfil: 1 de apresentação ("Quem somos"), 1 depoimento de cliente (prova social) e 1 mostrando seu produto principal.',
+      'Configure respostas automáticas rápidas no direct para que qualquer interessado que mande mensagem receba atendimento em menos de 1 minuto.'
     ];
   }
 
