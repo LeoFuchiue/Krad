@@ -913,8 +913,8 @@ a{text-decoration:none;color:inherit}
   font-weight: 900;
 }
 
-@media(max-width: 600px) {
-  .funnel-step { flex-direction: column; align-items: flex-start; gap: 6px; width: 100%; }
+@media(max-width: 768px) {
+  .funnel-step { flex-direction: column; align-items: stretch; gap: 6px; width: 100%; }
   .step-engage .funnel-shape, .step-convert .funnel-shape { margin: 0; }
   .funnel-shape { width: 100% !important; }
 }
@@ -1538,9 +1538,9 @@ a{text-decoration:none;color:inherit}
         <!-- Mídias e Retenção Profunda -->
         <div class="deep-insights-grid">
           
-          <!-- Alcance de Não-Seguidores com Donut Chart -->
+          <!-- Alcance de NÃ£o-Seguidores com Donut Chart -->
           <div class="insight-card" id="nonfollowers-card" style="transition: all 0.3s ease;">
-            <h5>Alcance de Não-Seguidores</h5>
+            <h5>Alcance de NÃ£o-Seguidores</h5>
             <div class="donut-chart-wrap">
               <svg class="donut-svg" viewBox="0 0 36 36">
                 <!-- Background Ring (Followers) -->
@@ -1550,33 +1550,67 @@ a{text-decoration:none;color:inherit}
               </svg>
               <div class="donut-center-text">
                 <span id="result-nonfollowers">0%</span>
-                <small>PÚBLICO NOVO</small>
+                <small>PÃšBLICO NOVO</small>
               </div>
             </div>
             <div class="donut-label-legend">
               <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--bg5); border-radius:50%; margin-right:4px;"></span>Seguidores</span>
-              <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--k2); border-radius:50%; margin-right:4px;" id="donut-legend-color"></span>Público Novo</span>
+              <span style="font-size:8.5px; color:var(--t3);"><span style="display:inline-block; width:6px; height:6px; background:var(--k2); border-radius:50%; margin-right:4px;" id="donut-legend-color"></span>PÃºblico Novo</span>
             </div>
-            <div class="desc" id="result-nonfollowers-desc" style="margin-top: 10px;">Distribuição orgânica do perfil.</div>
+            <div class="desc" id="result-nonfollowers-desc" style="margin-top: 10px;">DistribuiÃ§Ã£o orgÃ¢nica do perfil.</div>
             
             <!-- Bolha Alerta Box -->
             <div id="bubble-alert-box" style="display:none; margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(212,92,92,0.25); align-items: flex-start; gap: 8px; text-align: left;">
-              <span style="font-size:14px; margin-top:1px;">🚨</span>
+              <span style="font-size:14px; margin-top:1px;">âš ï¸</span>
               <div style="font-size:10px; color:#D45C5C; line-height:1.4;">
-                <strong>Diagnóstico KRAD:</strong> Seu perfil está trancado em uma bolha local. Você só fala para quem já te conhece.
+                <strong>DiagnÃ³stico KRAD:</strong> Seu perfil estÃ¡ trancado em uma bolha local. VocÃª sÃ³ fala para quem jÃ¡ te conhece.
               </div>
             </div>
           </div>
 
+          <!-- Reels Retention Card -->
           <div class="insight-card">
-            <h5>Retenção Reels (3 seg)</h5>
-            <div class="val" id="result-completion">0%</div>
-            <div class="desc" id="result-completion-desc">Retenção de atenção nos vídeos.</div>
+            <h5>RetenÃ§Ã£o Reels (3 seg)</h5>
+            <div style="display: flex; align-items: baseline; gap: 8px; margin: 16px 0 8px;">
+              <span class="val" id="result-completion" style="font-size: 28px; font-weight: 800; color: var(--t1); line-height: 1;">0%</span>
+              <span id="badge-retention" class="amc-badge" style="position: static; font-size: 8px; transform: none; padding: 2px 6px;">Aguardando</span>
+            </div>
+            <div class="bar-track" style="height: 6px; margin-bottom: 16px; background: var(--bg4); overflow: hidden; border-radius: 3px;">
+              <div class="bar-fill client-fill" id="result-completion-fill" style="width: 0%;"></div>
+            </div>
+            <div class="desc" id="result-completion-desc">RetenÃ§Ã£o de atenÃ§Ã£o nos vÃ­deos.</div>
           </div>
-        </div>
 
-        <!-- Gatilhos de Solução Inteligentes (Ações Imediatas Grátis) -->
-        <div class="analyzer-triggers-title">💡 Gatilhos de Solução Automatizada</div>
+          <!-- High-Value Interactions Card -->
+          <div class="insight-card" id="high-value-interactions-card">
+            <h5>InteraÃ§Ãµes de Alto Valor (MÃ©dia)</h5>
+            <div class="high-value-bars" style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
+              <div class="interaction-bar-row">
+                <div style="display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace;">
+                  <span style="color: var(--t2);">âœˆï¸ Compartilhamentos (DM)</span>
+                  <strong style="color: var(--k2);" id="result-shares-val">0</strong>
+                </div>
+                <div class="bar-track" style="height: 6px; background: var(--bg4); overflow: hidden; border-radius: 3px;">
+                  <div class="bar-fill client-fill" id="result-shares-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+              <div class="interaction-bar-row">
+                <div style="display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace;">
+                  <span style="color: var(--t2);">ðŸ’¾ Salvos (ConteÃºdo Ãštil)</span>
+                  <strong style="color: var(--cr3);" id="result-saves-val">0</strong>
+                </div>
+                <div class="bar-track" style="height: 6px; background: var(--bg4); overflow: hidden; border-radius: 3px;">
+                  <div class="bar-fill" id="result-saves-fill" style="width: 0%; background: var(--cr3);"></div>
+                </div>
+              </div>
+            </div>
+            <div class="desc" style="margin-top: 14px; font-size: 9.5px; color: var(--t3); line-height: 1.4;">
+              DM (Sends) atrai novos clientes orgÃ¢nicos; salvos geram autoridade de marca.
+            </div>
+          </div>
+
+        </div><!-- Conselhos para Destravar Seu Perfil -->
+        <div class="analyzer-triggers-title">âš¡ O Que Fazer Hoje para Destravar Seu Perfil (Conselhos de Amigo)</div>
         <div class="trigger-cards-list" id="analyzer-triggers">
           <!-- Dinâmico via JS -->
         </div>
@@ -1591,26 +1625,26 @@ a{text-decoration:none;color:inherit}
         </div>
 
         <!-- Carrossel Antes vs Depois -->
-        <div class="analyzer-comparison-title">🔄 O Plano de Mudança da KRAD para o Seu Negócio</div>
+        <div class="analyzer-comparison-title">⚡ O Plano de Mudança da KRAD para o Seu Negócio</div>
         <div class="comparison-cards-slider-wrap">
           <div class="comparison-slider-track" id="comp-slider-track">
             <!-- Slide 1 -->
             <div class="comparison-slide">
               <div class="comp-card card-before">
                 <span class="comp-card-badge badge-before">Como está hoje</span>
-                <div class="comp-card-icon">🍳</div>
-                <h4>Post Panfleto</h4>
-                <p>Foto estática do produto com preço e legenda curta ("Compre já").</p>
-                <div class="comp-card-why-label">O Erro</div>
-                <p class="comp-card-why-text">O cliente entra no Instagram para se entreter, não para ver anúncios frios.</p>
+                <div class="comp-card-icon">📸</div>
+                <h4>Foto Fria de Venda</h4>
+                <p>Foto simples do produto ou serviço focada em venda direta e sem gerar engajamento.</p>
+                <div class="comp-card-why-label">O Gargalo</div>
+                <p class="comp-card-why-text">Não prende a atenção no feed, pois as pessoas entram no Instagram para se conectar, e não para ver anúncios frios.</p>
               </div>
               <div class="comp-card card-after">
                 <span class="comp-card-badge badge-after">Com a KRAD</span>
-                <div class="comp-card-icon">🎬</div>
-                <h4>Post de Desejo</h4>
-                <p>Reels mostrando o benefício do produto na vida real, resolvendo um problema do cliente.</p>
-                <div class="comp-card-why-label">Como gera vendas</div>
-                <p class="comp-card-why-text">Desperta a curiosidade e o desejo de compra de forma natural e orgânica.</p>
+                <div class="comp-card-icon">🔥</div>
+                <h4>Conteúdo de Desejo (Reels)</h4>
+                <p>Vídeos dinâmicos ou carrosséis mostrando o benefício real do produto e gerando entretenimento.</p>
+                <div class="comp-card-why-label">O Impacto</div>
+                <p class="comp-card-why-text">Chama a atenção instantaneamente, gera compartilhamentos e atrai novos seguidores qualificados.</p>
               </div>
             </div>
 
@@ -1618,19 +1652,19 @@ a{text-decoration:none;color:inherit}
             <div class="comparison-slide">
               <div class="comp-card card-before">
                 <span class="comp-card-badge badge-before">Como está hoje</span>
-                <div class="comp-card-icon">🖼️</div>
-                <h4>Banco de Imagens</h4>
-                <p>Postagens frias e genéricas que tiram a identidade da marca.</p>
-                <div class="comp-card-why-label">O Erro</div>
-                <p class="comp-card-why-text">Transmite amadorismo e falta de credibilidade. Clientes locais compram de marcas reais.</p>
+                <div class="comp-card-icon">🎨</div>
+                <h4>Artes do Canva Prontas</h4>
+                <p>Artes prontas e posts genéricos que tiram a identidade da sua marca.</p>
+                <div class="comp-card-why-label">O Gargalo</div>
+                <p class="comp-card-why-text">Transmite amadorismo e falta de credibilidade. Clientes locais compram de marcas reais e humanizadas.</p>
               </div>
               <div class="comp-card card-after">
                 <span class="comp-card-badge badge-after">Com a KRAD</span>
                 <div class="comp-card-icon">📸</div>
-                <h4>Presença Premium Real</h4>
-                <p>Produção de fotos e vídeos sofisticados feitos direto no seu estabelecimento comercial.</p>
-                <div class="comp-card-why-label">Como gera vendas</div>
-                <p class="comp-card-why-text">Gera confiança imediata, autoridade e destaca você de qualquer concorrente na cidade.</p>
+                <h4>Fotos & Vídeos do Seu Negócio</h4>
+                <p>Produção de fotos e vídeos originais e sofisticados, gravados diretamente no seu estabelecimento comercial.</p>
+                <div class="comp-card-why-label">O Impacto</div>
+                <p class="comp-card-why-text">Gera confiança instantânea, aumenta o valor percebido do seu trabalho e te destaca da concorrência local.</p>
               </div>
             </div>
 
@@ -1639,18 +1673,18 @@ a{text-decoration:none;color:inherit}
               <div class="comp-card card-before">
                 <span class="comp-card-badge badge-before">Como está hoje</span>
                 <div class="comp-card-icon">✍️</div>
-                <h4>Legenda Curta/Vazia</h4>
-                <p>Apenas emojis ou frases prontas ("Foco e Fé").</p>
-                <div class="comp-card-why-label">O Erro</div>
-                <p class="comp-card-why-text">Não retém o leitor e desperdiça a chance de iniciar um contato direto.</p>
+                <h4>Legenda Curta ou Sem Conteúdo</h4>
+                <p>Apenas emojis ou frases vazias, sem qualquer direcionamento para contato.</p>
+                <div class="comp-card-why-label">O Gargalo</div>
+                <p class="comp-card-why-text">Não retém o leitor por tempo suficiente e perde a chance de transformá-lo em cliente no direct.</p>
               </div>
               <div class="comp-card card-after">
                 <span class="comp-card-badge badge-after">Com a KRAD</span>
-                <div class="comp-card-icon">📝</div>
-                <h4>Legenda com Copy</h4>
-                <p>Textos envolventes com ganchos fortes de leitura e chamada clara para ação no link.</p>
-                <div class="comp-card-why-label">Como gera vendas</div>
-                <p class="comp-card-why-text">Aumenta o tempo de tela do post (otimizando o algoritmo) e direciona leads qualificados para o WhatsApp.</p>
+                <div class="comp-card-icon">🚀</div>
+                <h4>Legenda que Prende e Vende</h4>
+                <p>Textos envolventes com títulos fortes, explicação clara da oferta e direcionamento (CTA) para o link.</p>
+                <div class="comp-card-why-label">O Impacto</div>
+                <p class="comp-card-why-text">Aumenta o tempo que a pessoa passa no post (o que o algoritmo adora) e converte leitores em leads qualificados.</p>
               </div>
             </div>
           </div>
@@ -2357,9 +2391,41 @@ async function startAnalysis() {
 
     // Reels completion rate
     document.getElementById('result-completion').textContent = data.profile.reelsCompletionRate + '%';
+    const completionFill = document.getElementById('result-completion-fill');
+    if (completionFill) completionFill.style.width = data.profile.reelsCompletionRate + '%';
+    
+    const badgeRetention = document.getElementById('badge-retention');
+    if (badgeRetention) {
+      if (data.profile.reelsCompletionRate >= 45) {
+        badgeRetention.className = 'amc-badge green';
+        badgeRetention.textContent = 'Retenção Alta';
+        if (completionFill) completionFill.className = 'bar-fill client-fill';
+      } else if (data.profile.reelsCompletionRate >= 30) {
+        badgeRetention.className = 'amc-badge yellow';
+        badgeRetention.textContent = 'Retenção Média';
+        if (completionFill) completionFill.className = 'bar-fill client-fill warning';
+      } else {
+        badgeRetention.className = 'amc-badge red';
+        badgeRetention.textContent = 'Atenção';
+        if (completionFill) completionFill.className = 'bar-fill client-fill danger';
+      }
+    }
     document.getElementById('result-completion-desc').textContent = data.profile.reelsCompletionRate < 35 
-      ? 'Retenção baixa nos primeiros segundos.' 
-      : 'Excelente engajamento e retenção de público.';
+      ? 'Retenção baixa. Visitantes saem nos primeiros 3 segundos.' 
+      : 'Retenção excelente! Mantém a atenção de quem não te segue.';
+
+    // Compartilhamentos vs Salvamentos (Sends vs Saves)
+    const maxVal = Math.max(data.profile.averageShares, data.profile.averageSaves, 1);
+    const sharesPct = Math.round((data.profile.averageShares / maxVal) * 100);
+    const savesPct = Math.round((data.profile.averageSaves / maxVal) * 100);
+    
+    document.getElementById('result-shares-val').textContent = data.profile.averageShares;
+    const sharesFill = document.getElementById('result-shares-fill');
+    if (sharesFill) sharesFill.style.width = sharesPct + '%';
+    
+    document.getElementById('result-saves-val').textContent = data.profile.averageSaves;
+    const savesFill = document.getElementById('result-saves-fill');
+    if (savesFill) savesFill.style.width = savesPct + '%';
 
     // document.getElementById('result-activehours').textContent = data.profile.activeHours;
 
@@ -2399,14 +2465,14 @@ async function startAnalysis() {
       if (data.profile.engagementRate < 1.5) {
         bottleneckCard.className = 'funnel-bottleneck-card';
         bottleneckTitle.innerHTML = '⚠️ Gargalo de Retenção: Baixo Desejo de Compra';
-        bottleneckDesc.innerHTML = `Seu link está ativo, mas o engajamento baixo (${data.profile.engagementRate.toFixed(2)}%) indica que o conteúdo atual (fotos frias ou panfletos) não está gerando conexão ou desejo suficiente nos visitantes para levá-los a clicar.`;
+        bottleneckDesc.innerHTML = `Seu link está ativo, mas o engajamento baixo (${data.profile.engagementRate.toFixed(2)}%) indica que o conteúdo atual (fotos frias de venda) não está gerando conexão ou desejo suficiente nos visitantes para levá-los a clicar.`;
       } else if (data.profile.postsPerMonth < 8) {
         bottleneckCard.className = 'funnel-bottleneck-card';
         bottleneckTitle.innerHTML = '⏳ Gargalo de Distribuição: Postagens Fantasmas';
         bottleneckDesc.innerHTML = `Sua taxa de clique é aceitável, mas sua frequência de postagem (${data.profile.postsPerMonth}/mês) está muito baixa. O algoritmo está entregando seu perfil para poucas pessoas. Aumente o volume de posts para reaquecer o funil.`;
       } else {
         bottleneckCard.className = 'funnel-bottleneck-card healthy';
-        bottleneckTitle.innerHTML = '✨ Funil Equilibrado: Pronto para Escala';
+        bottleneckTitle.innerHTML = '🎉 Perfil Aquecido (Pronto para Tráfego Pago)';
         bottleneckDesc.innerHTML = `Parabéns! Suas taxas estão saudáveis. Para multiplicar seu faturamento, o passo recomendado é iniciar campanhas de <strong>Tráfego Pago Local</strong>, aumentando a quantidade de pessoas que entram no topo do seu funil comercial.`;
       }
     }
@@ -2420,7 +2486,7 @@ async function startAnalysis() {
     
     // 1. Link na bio
     if (data.analysis.triggers.noLink) {
-      triggersList.appendChild(createTriggerCard('tc-danger', '🚨 Gatilho: Link Ausente ou Ineficiente', 
+⚠️ Link Ausente ou Ineficiente na Bio', 
         `Seu perfil é uma loja sem porta. Como você não tem um link estratégico na bio, as pessoas entram, se interessam, mas não sabem onde comprar. Mude isso hoje: Acesse suas configurações e coloque o link direto para o seu WhatsApp Comercial ou catálogo. Não force o cliente a te procurar no direct; facilite o caminho do dinheiro.`,
         `Colocar o link é o passo zero. Nós criamos páginas de alta conversão (Landing Pages) específicas para o Instagram, que transformam visitantes em clientes em 2 cliques.`
       ));
@@ -2428,7 +2494,7 @@ async function startAnalysis() {
     
     // 2. Frequência
     if (data.analysis.triggers.lowFrequency) {
-      triggersList.appendChild(createTriggerCard('tc-warning', '⏳ Gatilho: Baixo Volume de Postagens', 
+⚠️ Postando Pouco (Modo Fantasma)', 
         `Seu perfil está em modo fantasma. O algoritmo do Instagram pune contas com baixa frequência. Para o mercado notar que você está vivo, você precisa de volume com estratégia.<br>Seu desafio para os próximos 7 dias: Poste 3 Reels estruturados (com dicas rápidas do seu nicho) e faça pelo menos 1 sequência de 5 Stories por dia mostrando os bastidores do seu produto/serviço. Alimente o algoritmo.`,
         `Falta de tempo para produzir conteúdo é o que quebra a consistência. A nossa agência cuida de todo o seu calendário editorial, design e roteiros para você focar apenas em atender os clientes que vão chegar.`
       ));
@@ -2444,7 +2510,7 @@ async function startAnalysis() {
 
     // 4. Bio
     if (data.analysis.triggers.confusingBio) {
-      triggersList.appendChild(createTriggerCard('tc-warning', '✏️ Gatilho: Promessa da Bio Fraca ou Confusa', 
+⚠️ Promessa da Bio Fraca ou Confusa', 
         `Sua promessa está fraca. Escreva sua Bio respondendo a 3 perguntas em linhas separadas:<br><br><strong>O que você faz por mim?</strong> (Ex: Te ajudo a emagrecer sem dieta maluca)<br><strong>Por que devo confiar em você?</strong> (Ex: +500 vidas transformadas)<br><strong>O que eu faço agora?</strong> (Ex: Clique abaixo e agende sua avaliação 👇).`,
         `O posicionamento de marca e a bio são o coração do seu marketing. Nós redesenhamos toda a identidade do seu perfil para atrair o público com maior poder aquisitivo do seu nicho.`
       ));
@@ -2570,13 +2636,13 @@ async function startAnalysis() {
 function createTriggerCard(cls, title, freeTip, agencyHook) {
   const card = document.createElement('div');
   card.className = 'trigger-card ' + cls;
-  card.innerHTML = `
-    <div class="trigger-card-header">${title}</div>
+  card.innerHTML = 
+    <div class="trigger-card-header">\</div>
     <div class="trigger-card-body">
-      <div class="trigger-free-tip"><strong>💡 Ação Imediata Grátis:</strong> ${freeTip}</div>
-      <div class="trigger-agency-hook"><strong>🚀 Como a KRAD resolve:</strong> ${agencyHook}</div>
+      <div class="trigger-free-tip"><strong>💡 Conselho de amigo (De graça):</strong> \</div>
+      <div class="trigger-agency-hook"><strong>🔥 Como a KRAD resolve para você:</strong> \</div>
     </div>
-  `;
+  ;
   return card;
 }
 
@@ -2586,7 +2652,7 @@ function generateHeatmap(activeHoursStr) {
   grid.innerHTML = '';
   
   const daysShort = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
-  const strLower = (activeHoursStr || 'Quarta e Sexta �s 12:00').toLowerCase();
+  const strLower = (activeHoursStr || 'Quarta e Sexta �s 12:00').toLowerCase();
   
   for (let i = 0; i < 7; i++) {
     const cell = document.createElement('div');
