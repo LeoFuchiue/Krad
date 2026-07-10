@@ -6,6 +6,8 @@
  */
 
 module.exports = async (req, res) => {
+  const sgMail = require('@sendgrid/mail');
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -324,6 +326,17 @@ Retorne estritamente um objeto JSON com o seguinte formato, sem marcações mark
     if (!audit) {
       audit = generateStructuralFallbackAudit(profileData);
     }
+
+    // Enviar diagnóstico por e‑mail via SendGrid
+    const recipients = process.env.RECIPIENTS ? process.env.RECIPIENTS.split(',') : [];
+    const emailHtml = `<p><strong>Diagnóstico KRAD para @${profileData.username}</strong></p><pre>${JSON.stringify(audit, null, 2)}</pre>`;
+    const msg = {
+      to: recipients,
+      from: process.env.SENDGRID_FROM,
+      subject: `Diagnóstico KRAD – ${profileData.username}`,
+      html: emailHtml
+    };
+    sgMail.send(msg).catch(err => console.error('Erro ao enviar e‑mail:', err));
 
     return res.status(200).json({
       success: true,
