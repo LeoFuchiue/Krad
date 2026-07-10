@@ -4,7 +4,7 @@
   "description": "krad agência landing page & profile analyzer",
   "main": "api/analyze.js",
   "engines": {
-    "node": "24.x"
+    "node": "20.x"
   },
   "dependencies": {"@sendgrid/mail": "^8.0.0"}
 }
