@@ -149,7 +149,7 @@ O formato EXATO do JSON esperado deve ser:
           console.error("Erro na resposta do Gemini:", await geminiResponse.text());
         }
       } catch (err) {
-        console.error("Erro ao chamar Gemini no diagnostic.js:", err.message);
+        console.error("Erro ao chamar Gemini no diagnostic.js:", err);
       }
     }
 
