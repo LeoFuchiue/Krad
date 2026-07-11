@@ -7,7 +7,7 @@ const part2 = 'SdGQVPRM3ogTUg.HXwQoiFj';
 const part3 = 'SgADU7OdcKwWZKJttwYOkga7khfegMl6IoM';
 sgMail.setApiKey(part1 + part2 + part3);
 const fromEmail = 'contato@krad.com.br';
-const toEmail = 'contato@krad.com.br';
+const toEmail = 'leonardo@krad.com.br';
 
 module.exports = async (req, res) => {
   // Configuração de CORS (permitir chamadas do frontend)
@@ -162,3 +162,4 @@ Retorne APENAS um JSON no formato:
     return res.status(500).json({ error: 'Falha ao processar o diagnóstico no servidor.' });
   }
 };
+
