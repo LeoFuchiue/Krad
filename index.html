@@ -928,9 +928,9 @@
 
                         <section class="stage" id="result-stage" aria-labelledby="result-title" style="padding: 0; background: #070806;">
         <!-- DASHBOARD HEADER -->
-        <div class="dash-header" style="background: #0e0f0c; border-bottom: 1px solid #20221c; padding: 40px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <div class="dash-header" style="background: #0e0f0c; border-bottom: 1px solid #20221c; padding: 60px 5% 40px; display: flex; align-items: center; margin-top: 20px; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
           <div>
-            <h1 class="serif" id="dashCompanyName" style="font-size: clamp(24px, 4vw, 32px); color: #EDE4C5; margin: 0; padding-top: 40px; word-break: break-word;">Empresa</h1>
+            <h1 class="serif" id="dashCompanyName" style="font-size: clamp(24px, 4vw, 32px); color: #EDE4C5; margin: 0; word-break: break-word;">Empresa</h1>
             <p id="dashMeta" class="mono" style="color: #6a6f5e; font-size: 12px; margin-top: 8px;">Cidade • Segmento • Faturamento</p>
           </div>
           <div style="text-align: right;">
@@ -1049,8 +1049,8 @@
 
           <!-- CTA PREMIUM -->
           <div class="dash-card" style="background: linear-gradient(135deg, #1f0a0a, #0a0505); border: 1px solid #5c1010; border-radius: 24px; padding: 60px 40px; text-align: center; margin-top: 40px;">
-            <h2 class="serif" style="font-size: clamp(24px, 4vw, 36px); color: #fff; margin-bottom: 20px;">Gostou do seu diagnóstico?</h2>
-            <p style="color: #a0a0a0; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">O relatório mostra onde estão as oportunidades. Na Imersão KRAD nós construímos um plano prático para a sua empresa parar de sobreviver e começar a escalar.</p>
+            <h2 class="serif" style="font-size: clamp(24px, 4vw, 36px); color: #EDE4C5; margin-bottom: 20px;">Gostou do seu diagnóstico?</h2>
+            <p style="color: #6a6f5e; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">O relatório mostra onde estão as oportunidades. Na Imersão KRAD nós construímos um plano prático para a sua empresa parar de sobreviver e começar a escalar.</p>
             
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
               <button class="krad-button light" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20agendar%20minha%20Imers%C3%A3o%20KRAD.', '_blank')" style="background-color: #d12c2c; color: white; border: none; padding: 20px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer;">Agendar Imersão KRAD</button>
@@ -1790,7 +1790,11 @@
         const payload = {
           source: "krad-os-web",
           createdAt: new Date().toISOString(),
-          answers: state.answers,
+          answers: questions.filter(q => state.answers[q.id]).map(q => ({
+            id: q.id,
+            question: q.title || q.id,
+            value: state.answers[q.id]
+          })),
           page: window.location.href
         };
 

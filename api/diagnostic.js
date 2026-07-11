@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
     answers.forEach((ans, index) => {
       answersHtml += `<li style="margin-bottom: 12px;">
         <strong>Pergunta ${index + 1}:</strong> ${ans.question || 'Sem título'}<br/>
-        <strong>Resposta:</strong> ${ans.value || 'Não preenchido'}
+        <strong>Resposta:</strong> ${typeof ans.value === 'object' ? JSON.stringify(ans.value, null, 2) : (ans.value || 'Não preenchido')}
       </li>`;
     });
     answersHtml += `</ul>`;
