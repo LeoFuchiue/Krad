@@ -93,11 +93,11 @@ Siga a risca essas regras:
 2. stage: Um destes estágios: "Sobrevive", "Existe", "Cresce", "Escala", "Transforma".
 3. radarScores: Notas (0 a 10) para gestao, marketing, processos, presenca, relacionamento, crescimento.
 4. barScores: Notas (0 a 10) para gestao, marketing, presenca, estrategia, processos, clientes.
-5. xray: Avalie Produto, Atendimento, Marca, Captacao, Clientes, Financeiro, Estrategia com um status colorido ("🟢", "🟡" ou "🔴") e um texto curto explicativo (max 8 palavras).
+5. xray: Avalie Produto, Atendimento, Marca, Captacao, Clientes, Financeiro, Estrategia com um status colorido ("🟢", "🟡" ou "🔴") e um texto curto explicativo (max 8 palavras). Seja afiado e realista (ex: "Sem previsibilidade", "Forte dependência do dono").
 6. instagramAnalysis: Avalie o instagram com notas (1 a 5) para foto, bio, destaques, organizacao, autoridade, frequencia, conversao, cta. E inclua um pequeno comentário sobre cada. Se não houver dados de Instagram, dê nota 1 e diga "Dados indisponíveis".
-7. actionCards: Retorne 3 arrays de strings curtas (max 6 palavras). Funcionando (Verde), Oportunidades (Amarelo), Prioridades (Vermelho).
-8. conclusion: Um texto direto e acolhedor (human tone), máximo de 8 linhas.
-9. actionPlan: Um array com 4 strings curtas detalhando as etapas recomendadas para a empresa escalar.
+7. actionCards: Retorne 3 arrays de strings curtas (max 8 palavras). Em "Funcionando" (O que ele faz bem), em "Oportunidades" (O que ele está perdendo dinheiro por não fazer), e em "Prioridades" (A dor principal e os gargalos críticos que travam a empresa). Seja muito direto e impactante.
+8. conclusion: Um texto direto, profundo e acolhedor (human tone), máximo de 8 linhas. Provoque reflexão: mostre que você entendeu a dor do negócio dele e por que ele não consegue escalar, trazendo clareza para o problema. Mostre que a KRAD tem a solução.
+9. actionPlan: Um array com 4 strings curtas detalhando as etapas táticas recomendadas para a empresa parar de sangrar e começar a escalar.
 
 O formato EXATO do JSON esperado deve ser:
 {

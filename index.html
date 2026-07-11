@@ -837,9 +837,9 @@
     <div class="brand-mark" aria-label="KRAD OS">
       <svg class="brand-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="100" cy="100" r="97" fill="#3A4418"/>
-        <circle cx="100" cy="100" r="90" fill="none" stroke="#EDE4C5" stroke-width="1.2" opacity=".62"/>
-        <text x="100" y="94" font-family="Georgia,serif" font-size="54" font-weight="900" fill="#EDE4C5" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
-        <text x="100" y="137" font-family="Georgia,serif" font-size="22" fill="#EDE4C5" text-anchor="middle" letter-spacing="1">agência</text>
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#A5B876" stroke-width="1.2" opacity=".62"/>
+        <text x="100" y="94" font-family="Georgia,serif" font-size="54" font-weight="900" fill="#A5B876" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
+        <text x="100" y="137" font-family="Georgia,serif" font-size="22" fill="#A5B876" text-anchor="middle" letter-spacing="1">agência</text>
       </svg>
       <span class="brand-copy">
         <strong>KRAD OS</strong>
@@ -930,24 +930,24 @@
         <!-- DASHBOARD HEADER -->
         <div class="dash-header" style="background: #0e0f0c; border-bottom: 1px solid #20221c; padding: 60px 5% 40px; display: flex; align-items: center; margin-top: 20px; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
           <div>
-            <h1 class="serif" id="dashCompanyName" style="font-size: clamp(24px, 4vw, 32px); color: #EDE4C5; margin: 0; word-break: break-word;">Empresa</h1>
+            <h1 class="serif" id="dashCompanyName" style="font-size: clamp(24px, 4vw, 32px); color: #A5B876; margin: 0; word-break: break-word;">Empresa</h1>
             <p id="dashMeta" class="mono" style="color: #6a6f5e; font-size: 12px; margin-top: 8px;">Cidade • Segmento • Faturamento</p>
           </div>
           <div style="text-align: right;">
             <div class="mono" style="color: #6a6f5e; font-size: 10px; margin-bottom: 5px;">ÍNDICE KRAD DE SAÚDE</div>
             <div style="display: flex; align-items: baseline; gap: 10px; justify-content: flex-end;">
               <span id="dashStage" style="color: #d12c2c; font-weight: bold; font-size: 14px; text-transform: uppercase;">Estágio</span>
-              <span id="dashScore" class="serif" style="font-size: 48px; color: #EDE4C5; line-height: 1;">0</span><span style="color: #6a6f5e; font-size: 20px;">/100</span>
+              <span id="dashScore" class="serif" style="font-size: 48px; color: #A5B876; line-height: 1;">0</span><span style="color: #6a6f5e; font-size: 20px;">/100</span>
             </div>
           </div>
         </div>
 
-        <div class="dash-body" style="padding: 40px 5%; max-width: 1200px; margin: 0 auto; display: grid; gap: 40px;">
+        <div class="dash-body" style="padding: clamp(20px, 5vw, 40px) 5%; max-width: 1200px; margin: 0 auto; display: grid; gap: clamp(20px, 4vw, 40px); overflow-x: hidden;">
           
           <!-- ROW 1: RADAR & BARS -->
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
             <!-- RADAR CARD -->
-            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: clamp(20px, 4vw, 30px);">
               <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Mapeamento de Eixos</h3>
               <div class="radar-container" style="position: relative; max-width: 250px; margin: 0 auto; aspect-ratio: 1/1;">
                 <svg class="result-radar" viewBox="0 0 420 420" style="width: 100%; height: 100%; overflow: visible;">
@@ -961,12 +961,12 @@
                   <line x1="323" y1="97" x2="97" y2="323" stroke="#20221c" stroke-width="1" />
                   <polygon id="radarPolygon" points="210,210 210,210 210,210 210,210 210,210 210,210" fill="rgba(140,26,26,0.1)" stroke="#d12c2c" stroke-width="2" />
                 </svg>
-                <div class="radar-label" style="position:absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#EDE4C5;">Gestão</div>
-                <div class="radar-label" style="position:absolute; bottom: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#EDE4C5;">Crescimento</div>
-                <div class="radar-label" style="position:absolute; top: 20%; right: -30px; font-size:10px; color:#EDE4C5;">Mkt</div>
-                <div class="radar-label" style="position:absolute; top: 20%; left: -30px; font-size:10px; color:#EDE4C5;">Proc</div>
-                <div class="radar-label" style="position:absolute; bottom: 20%; right: -30px; font-size:10px; color:#EDE4C5;">Relac</div>
-                <div class="radar-label" style="position:absolute; bottom: 20%; left: -30px; font-size:10px; color:#EDE4C5;">Digital</div>
+                <div class="radar-label" style="position:absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#A5B876;">Gestão</div>
+                <div class="radar-label" style="position:absolute; bottom: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#A5B876;">Crescimento</div>
+                <div class="radar-label" style="position:absolute; top: 20%; right: -30px; font-size:10px; color:#A5B876;">Mkt</div>
+                <div class="radar-label" style="position:absolute; top: 20%; left: -30px; font-size:10px; color:#A5B876;">Proc</div>
+                <div class="radar-label" style="position:absolute; bottom: 20%; right: -30px; font-size:10px; color:#A5B876;">Relac</div>
+                <div class="radar-label" style="position:absolute; bottom: 20%; left: -30px; font-size:10px; color:#A5B876;">Digital</div>
               </div>
             </div>
 
@@ -1006,15 +1006,15 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
               <div style="background: rgba(30, 80, 40, 0.05); border: 1px solid rgba(30, 80, 40, 0.2); padding: 25px; border-radius: 16px;">
                 <h4 style="color: #4CAF50; font-size: 14px; margin-bottom: 15px;">🟢 O que já funciona</h4>
-                <ul id="cardsGreen" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #EDE4C5; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+                <ul id="cardsGreen" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
               </div>
               <div style="background: rgba(200, 150, 20, 0.05); border: 1px solid rgba(200, 150, 20, 0.2); padding: 25px; border-radius: 16px;">
                 <h4 style="color: #FFC107; font-size: 14px; margin-bottom: 15px;">🟡 Oportunidades</h4>
-                <ul id="cardsYellow" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #EDE4C5; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+                <ul id="cardsYellow" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
               </div>
               <div style="background: rgba(140, 26, 26, 0.05); border: 1px solid rgba(140, 26, 26, 0.2); padding: 25px; border-radius: 16px;">
                 <h4 style="color: #F44336; font-size: 14px; margin-bottom: 15px;">🔴 Prioridades Críticas</h4>
-                <ul id="cardsRed" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #EDE4C5; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+                <ul id="cardsRed" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
               </div>
             </div>
           </div>
@@ -1030,11 +1030,11 @@
             <!-- SIMULATION -->
             <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
               <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Projeção de Potencial</h3>
-              <p style="color: #EDE4C5; font-size: 14px; margin-bottom: 30px; line-height: 1.6;">Se a sua empresa otimizar as áreas críticas e estruturar processos previsíveis, o crescimento acelerará exponencialmente.</p>
+              <p style="color: #A5B876; font-size: 14px; margin-bottom: 30px; line-height: 1.6;">Se a sua empresa otimizar as áreas críticas e estruturar processos previsíveis, o crescimento acelerará exponencialmente.</p>
               <div style="height: 150px; position: relative; border-bottom: 1px solid #20221c; border-left: 1px solid #20221c;">
                 <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width: 100%; height: 100%; overflow: visible;">
                   <path id="simulationCurve" d="M0,100 Q50,90 100,20" fill="none" stroke="#d12c2c" stroke-width="2" stroke-linecap="round" stroke-dasharray="200" stroke-dashoffset="200" />
-                  <circle id="simDot" cx="100" cy="20" r="3" fill="#EDE4C5" opacity="0" />
+                  <circle id="simDot" cx="100" cy="20" r="3" fill="#A5B876" opacity="0" />
                 </svg>
               </div>
             </div>
@@ -1042,14 +1042,14 @@
             <!-- PLAN -->
             <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
               <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Plano de Ação Sugerido</h3>
-              <ol id="dashPlan" style="color: #EDE4C5; font-size: 15px; line-height: 1.8; padding-left: 20px; display: flex; flex-direction: column; gap: 15px; margin:0; font-family: 'Inter', sans-serif;">
+              <ol id="dashPlan" style="color: #A5B876; font-size: 15px; line-height: 1.8; padding-left: 20px; display: flex; flex-direction: column; gap: 15px; margin:0; font-family: 'Inter', sans-serif;">
               </ol>
             </div>
           </div>
 
           <!-- CTA PREMIUM -->
           <div class="dash-card" style="background: linear-gradient(135deg, #1f0a0a, #0a0505); border: 1px solid #5c1010; border-radius: 24px; padding: 60px 40px; text-align: center; margin-top: 40px;">
-            <h2 class="serif" style="font-size: clamp(24px, 4vw, 36px); color: #EDE4C5; margin-bottom: 20px;">Gostou do seu diagnóstico?</h2>
+            <h2 class="serif" style="font-size: clamp(24px, 4vw, 36px); color: #A5B876; margin-bottom: 20px;">Gostou do seu diagnóstico?</h2>
             <p style="color: #6a6f5e; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">O relatório mostra onde estão as oportunidades. Na Imersão KRAD nós construímos um plano prático para a sua empresa parar de sobreviver e começar a escalar.</p>
             
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
@@ -1889,7 +1889,7 @@
         const barContainer = $("#barCharts");
         barContainer.innerHTML = Object.keys(bars).map(k => {
           return `<div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; font-size:12px; color:#EDE4C5; text-transform:capitalize;"><span>${k}</span><span>${bars[k]}/10</span></div>
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:#A5B876; text-transform:capitalize;"><span>${k}</span><span>${bars[k]}/10</span></div>
             <div style="width:100%; height:6px; background:#20221c; border-radius:3px; overflow:hidden;">
               <div class="bar-fill" style="width:0%; height:100%; background:#d12c2c;" data-target="${bars[k]*10}%"></div>
             </div>
@@ -1912,7 +1912,7 @@
           if (isCurr) reached = false;
           return `<div style="display:flex; flex-direction:column; align-items:center; z-index:2; gap:10px;">
             <svg width="20" height="20">${dot}</svg>
-            <span style="font-size:10px; color:${isCurr ? '#EDE4C5' : '#6a6f5e'}; text-transform:uppercase;">${s}</span>
+            <span style="font-size:10px; color:${isCurr ? '#A5B876' : '#6a6f5e'}; text-transform:uppercase;">${s}</span>
           </div>`;
         }).join("");
 
@@ -1920,7 +1920,7 @@
         const xrayData = report.xray || {};
         $("#xrayList").innerHTML = Object.keys(xrayData).filter(k => !k.includes("Text")).map(k => {
           return `<details style="border:1px solid #20221c; border-radius:8px; padding:12px 15px; cursor:pointer;">
-            <summary style="font-size:14px; color:#EDE4C5; font-weight:bold; text-transform:capitalize; list-style:none; display:flex; justify-content:space-between;">
+            <summary style="font-size:14px; color:#A5B876; font-weight:bold; text-transform:capitalize; list-style:none; display:flex; justify-content:space-between;">
               <span>${k}</span> <span>${xrayData[k]}</span>
             </summary>
             <div style="margin-top:10px; font-size:13px; color:#a0a0a0; padding-top:10px; border-top:1px solid #20221c;">${xrayData[k+"Text"] || ""}</div>
@@ -1935,7 +1935,7 @@
         igHtml += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">`;
         ["foto", "bio", "destaques", "autoridade"].forEach(k => {
           const stars = Array(5).fill("").map((_,i) => i < (ia[k] || 0) ? "★" : "☆").join("");
-          igHtml += `<div><div style="font-size:12px; color:#EDE4C5; text-transform:capitalize;">${k}</div>
+          igHtml += `<div><div style="font-size:12px; color:#A5B876; text-transform:capitalize;">${k}</div>
           <div style="color:#d12c2c; font-size:10px; margin-bottom:5px;">${stars}</div>
           <div style="font-size:11px; color:#a0a0a0;">${ia[k+"Text"] || ""}</div></div>`;
         });
