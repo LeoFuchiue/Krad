@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -1412,9 +1412,18 @@
         if (previous) previous.addEventListener("click", goBack);
 
         if (input) {
-          input.addEventListener("input", () => {
+          input.addEventListener("input", (e) => {
             hideError();
             if (question.type === "instagram") scheduleScan(input.value);
+            if (question.id === "cnpj") {
+              let v = e.target.value.replace(/\D/g, "");
+              if (v.length > 14) v = v.substring(0, 14);
+              v = v.replace(/^(\d{2})(\d)/, "$1.$2");
+              v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+              v = v.replace(/\.(\d{3})(\d)/, ".$1/$2");
+              v = v.replace(/(\d{4})(\d)/, "$1-$2");
+              e.target.value = v;
+            }
           });
           input.addEventListener("keydown", event => {
             if (event.key === "Enter" && question.type === "text") {
@@ -1453,9 +1462,40 @@
         const question = questions[state.current];
         const value = readCurrentAnswer();
         if (question.required && !value) {
-          showError();
+          showError("Esse campo é obrigatório.");
           return;
         }
+        
+        if (question.id === "cnpj") {
+          const cleanCnpj = value.replace(/\D/g, "");
+          if (cleanCnpj.length !== 14) {
+            showError("O CNPJ deve ter 14 dígitos.");
+            return;
+          }
+          
+          const finalButton = $("#nextQuestion");
+          const oldText = finalButton.textContent;
+          finalButton.disabled = true;
+          finalButton.textContent = "Validando CNPJ...";
+          
+          try {
+            const res = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cleanCnpj}`);
+            if (!res.ok) throw new Error("CNPJ inválido");
+            const data = await res.json();
+            if (data.situacao_cadastral !== 2) throw new Error("CNPJ inativo");
+            
+            state.answers.razao_social = data.razao_social;
+            state.answers.cnpjValido = true;
+          } catch (e) {
+            finalButton.disabled = false;
+            finalButton.textContent = oldText;
+            showError("CNPJ inválido ou inativo. Verifique os números.");
+            return;
+          }
+          finalButton.disabled = false;
+          finalButton.textContent = oldText;
+        }
+
         state.answers[question.id] = question.type === "instagram" ? normalizeHandle(value) : value;
         persistState();
 
@@ -1485,9 +1525,12 @@
         if (state.current > 0) renderQuestion(state.current - 1, true, -1);
       }
 
-      function showError() {
+      function showError(msg) {
         const error = $("#fieldError");
-        if (error) error.classList.add("visible");
+        if (error) {
+          if (msg) error.textContent = msg;
+          error.classList.add("visible");
+        }
         animate({ targets: ".question-panel", translateX: [0, -7, 6, -4, 0], duration: 420, easing: "easeInOutSine" });
       }
       function hideError() { const error = $("#fieldError"); if (error) error.classList.remove("visible"); }
