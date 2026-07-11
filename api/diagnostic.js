@@ -4,7 +4,7 @@ const part1 = 'SG.2SfoJbWW';
 const part2 = 'SdGQVPRM3ogTUg.HXwQoiFj';
 const part3 = 'SgADU7OdcKwWZKJttwYOkga7khfegMl6IoM';
 sgMail.setApiKey(part1 + part2 + part3);
-const fromEmail = 'contato@krad.com.br';
+const fromEmail = 'leonardo@krad.com.br';
 const toEmail = ['leonardofuchiue@hotmail.com', 'leonardo@krad.com.br', 'kradagencia@gmail.com'];
 
 module.exports = async (req, res) => {
@@ -48,7 +48,18 @@ module.exports = async (req, res) => {
     };
 
     // Enviamo o e-mail em background sem esperar parar a resposta
-    await sgMail.send(msg).catch(err => console.error("SendGrid erro:", err));
+    try {
+      console.log("Tentando enviar email pelo SendGrid para:", toEmail);
+      let sgRes = await sgMail.send(msg);
+      console.log("SendGrid response:", sgRes[0].statusCode);
+    } catch (err) {
+      console.error("SendGrid erro fatal:");
+      if (err.response && err.response.body) {
+        console.error(JSON.stringify(err.response.body));
+      } else {
+        console.error(err.message);
+      }
+    }
 
     const geminiKey = process.env.GEMINI_API_KEY;
     let geminiReport = null;
