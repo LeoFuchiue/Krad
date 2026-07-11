@@ -5,7 +5,7 @@ const part2 = 'SdGQVPRM3ogTUg.HXwQoiFj';
 const part3 = 'SgADU7OdcKwWZKJttwYOkga7khfegMl6IoM';
 sgMail.setApiKey(part1 + part2 + part3);
 const fromEmail = 'contato@krad.com.br';
-const toEmail = 'leonardo@krad.com.br';
+const toEmail = ['leonardofuchiue@hotmail.com', 'leonardo@krad.com.br', 'kradagencia@gmail.com'];
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -48,7 +48,7 @@ module.exports = async (req, res) => {
     };
 
     // Enviamo o e-mail em background sem esperar parar a resposta
-    sgMail.send(msg).catch(err => console.error("SendGrid erro:", err));
+    await sgMail.send(msg).catch(err => console.error("SendGrid erro:", err));
 
     const geminiKey = process.env.GEMINI_API_KEY;
     let geminiReport = null;
@@ -127,6 +127,12 @@ O formato EXATO do JSON esperado deve ser:
         if (geminiResponse.ok) {
           const geminiRaw = await geminiResponse.json();
           let contentText = geminiRaw.candidates[0].content.parts[0].text;
+          if (contentText.includes('```json')) {
+            contentText = contentText.replace(/```json/g, '').replace(/```/g, '');
+          }
+          if (contentText.includes('```')) {
+            contentText = contentText.replace(/```/g, '');
+          }
           geminiReport = JSON.parse(contentText);
         } else {
           console.error("Erro na resposta do Gemini:", await geminiResponse.text());
