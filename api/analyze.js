@@ -227,115 +227,17 @@ module.exports = async (req, res) => {
     }
 
     // Calcular score matemático base para orientar o Gemini
-    profileData.score = calculateMathematicalScore(profileData);
-
-    // 3. Gerar análise inteligente personalizada com a API do Gemini
-    const geminiKey = process.env.GEMINI_API_KEY;
-    let audit = null;
-
-    if (geminiKey) {
-      try {
-        const prompt = `Você é o Diretor de Criação da "krad agência", especialista em posicionamento de marcas premium, tráfego pago local e estratégias de conversão de alto impacto no Instagram.
-Analise com máxima autoridade, clareza e realismo comercial o perfil do Instagram @${profileData.username}.
-
-DADOS REAIS DO PERFIL DO CLIENTE:
-- Nome: ${profileData.fullName}
-- Seguidores: ${profileData.followers.toLocaleString('pt-BR')}
-- Taxa de Engajamento Real: ${profileData.engagementRate}% (Benchmark de mercado local: 2.5% a 4.0%)
-- Frequência de Postagem: ${profileData.postsPerMonth} posts nos últimos 30 dias (Mínimo recomendado comercialmente: 8 a 12 posts)
-- Curtidas Médias: ${profileData.averageLikes} | Comentários Médios: ${profileData.averageComments}
-- Proporção de Salvamentos: ${profileData.averageSaves} salvamentos por post (Meta ideal: 10% das curtidas)
-- Compartilhamentos Médios: ${profileData.averageShares}
-- Melhor Formato da Conta: ${profileData.bestFormat}
-- Link na Bio: ${profileData.hasLink ? profileData.externalUrl : 'NÃO POSSUI LINK NA BIO'}
-- Texto da Bio: "${profileData.bio}"
-
-INSTRUÇÕES DE ESCRITA (ATITUDE COMERCIAL DE VENDAS):
-Você deve estruturar seus comentários de feedback (bio_feedback e content_feedback) divididos estritamente em 3 partes de forma fluida (sem subtítulos ou marcações especiais):
-1. [IDENTIFICAÇÃO DA DOR]: Aponte de forma direta, sincera e impactante a principal dor/gargalo encontrada nos dados reais (ex: "Achei essa dor: [...]"). Seja o auditor experiente que diz o que ninguém tem coragem de dizer.
-2. [SOLUÇÃO IMEDIATA DE GRAÇA]: Dê uma orientação prática, acionável e gratuita para o cliente aplicar hoje mesmo e resolver/minimizar esse problema (ex: reescrever a bio, fazer um gancho específico de vídeo Reels). Mostre que nós realmente dominamos o assunto.
-3. [CTA COMERCIAL DA KRAD]: Faça um convite sutil de vendas indicando que, se ele quiser uma solução profissional, completa e escalável (como landing pages de alta conversão para o link ou produção e edição de vídeos de alto padrão com roteiros de atração), ele deve entrar em contato com a Krad agência.
-
-REGRAS DE RETORNO DO JSON:
-Retorne estritamente um objeto JSON com o seguinte formato, sem marcações markdown de código (como \`\`\`json) e sem qualquer texto adicional antes ou depois:
-{
-  "score": ${profileData.score},
-  "bio_feedback": "Sua análise da bio e do link seguindo estritamente as 3 partes (Dor + Solução de Graça + CTA da Krad). Diga o que está errado e dê uma reescrita prática da bio para o nicho dele.",
-  "content_feedback": "Sua análise do engajamento e formato seguindo estritamente as 3 partes (Dor + Solução de Graça + CTA da Krad). Dê uma sugestão de roteiro/formato de reels ou post.",
-  "tips": [
-    "Dica de ouro prática 1 baseada no formato ideal (${profileData.bestFormat})",
-    "Dica de ouro prática 2 focada em engajamento ou salvamentos",
-    "Dica de ouro prática 3 para funil de captação de clientes locais"
-  ],
-  "triggers": {
-    "noLink": ${!profileData.hasLink},
-    "lowFrequency": ${profileData.postsPerMonth < 10},
-    "lowEngagement": ${profileData.engagementRate < 2.5},
-    "confusingBio": ${profileData.bio.length < 30 || !profileData.bio.includes('\n')}
-  }
-}`;
-
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`;
-        const geminiResponse = await fetch(geminiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              responseMimeType: "application/json",
-              responseSchema: {
-                type: "OBJECT",
-                properties: {
-                  score: { type: "INTEGER" },
-                  bio_feedback: { type: "STRING" },
-                  content_feedback: { type: "STRING" },
-                  tips: {
-                    type: "ARRAY",
-                    items: { type: "STRING" }
-                  },
-                  triggers: {
-                    type: "OBJECT",
-                    properties: {
-                      noLink: { type: "BOOLEAN" },
-                      lowFrequency: { type: "BOOLEAN" },
-                      lowEngagement: { type: "BOOLEAN" },
-                      confusingBio: { type: "BOOLEAN" }
-                    },
-                    required: ["noLink", "lowFrequency", "lowEngagement", "confusingBio"]
-                  }
-                },
-                required: ["score", "bio_feedback", "content_feedback", "tips", "triggers"]
-              }
-            }
-          })
-        });
-
-        if (geminiResponse.ok) {
-          const geminiRaw = await geminiResponse.json();
-          const contentText = geminiRaw.candidates[0].content.parts[0].text;
-          audit = JSON.parse(contentText);
-        }
-      } catch (err) {
-        console.error('Erro ao chamar o Gemini API:', err.message);
-      }
-    }
-
-    // Se o Gemini falhar ou não estiver ativo, usar fallback estruturado
-    if (!audit) {
-      audit = generateStructuralFallbackAudit(profileData);
-    }
-
+    // Retornar apenas os dados de perfil (a análise Gemini foi movida para diagnostic.js)
     return res.status(200).json({
       success: true,
       realtime: isRealData,
-      profile: profileData,
-      analysis: audit
+      profile: profileData
     });
-
   } catch (error) {
-    console.error('Erro interno na API:', error.message);
-    return res.status(500).json({
-      error: 'Ocorreu um erro ao processar a análise do perfil. Tente novamente mais tarde.'
+    console.error('Erro geral no handler /api/analyze:', error);
+    return res.status(500).json({ 
+      error: 'Falha interna ao analisar perfil. Verifique os logs do servidor.',
+      details: error.message
     });
   }
 };

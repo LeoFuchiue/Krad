@@ -4,7 +4,7 @@
   "description": "krad agência landing page & profile analyzer",
   "main": "api/analyze.js",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "build": "echo 'No build step needed'"
