@@ -919,34 +919,38 @@
         </div>
       </section>
 
-            <section class="stage" id="result-stage" aria-labelledby="result-title">
-        <div class="result-hero">
-          <div class="result-hero-inner">
-            <div class="result-kicker mono">Dossiê Estratégico · KRAD OS</div>
-            <h1 class="serif" id="result-title">Nós ouvimos o que sua empresa está tentando dizer.</h1>
-            <p id="resultIntro">Este diagnóstico organiza a história e os sinais que você compartilhou. A inteligência da KRAD leu os dados do seu Instagram (se fornecidos) e o que você contou sobre sua rotina.</p>
-          </div>
+                  <section class="stage" id="result-stage" aria-labelledby="result-title">
+        <div style="background-color: #9f1a1a; color: #fff; padding: 60px 20px; text-align: center; border-radius: 0 0 32px 32px;">
+          <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 56px); margin: 0; text-transform: uppercase;">SEU DIAGNÓSTICO FOI<br><strong style="font-weight: 900; letter-spacing: -0.02em;">ENVIADO COM SUCESSO</strong></h1>
+          <p style="font-family: 'Inter', sans-serif; font-size: clamp(16px, 2vw, 22px); margin-top: 20px; opacity: 0.9;">Um especialista da KRAD entrará em contato com você em breve.</p>
         </div>
 
-        <section class="result-section">
-          <div class="storytelling-container" id="storytellingContent" style="background:var(--cream);color:#070806;padding:clamp(30px, 6vw, 60px);border-radius:24px;font-size:clamp(16px, 2vw, 20px);line-height:1.6;font-family:'Playfair Display', Georgia, serif;">
-            <p>Carregando sua história...</p>
+        <div style="text-align: center; padding: 60px 20px 40px;">
+          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(24px, 4vw, 36px); color: var(--cream); font-weight: 700;">Enquanto isso...</h2>
+        </div>
+
+        <section class="result-section" style="padding-top: 0; padding-bottom: 20px;">
+          <div style="text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 20px; color: var(--cream-muted);">A nossa Inteligência Artificial já cruzou as respostas da sua jornada com o seu Instagram. Veja abaixo a análise preliminar:</p>
+          </div>
+          
+          <div class="storytelling-container" id="storytellingContent" style="background:var(--cream);color:#070806;padding:clamp(30px, 6vw, 60px);border-radius:24px;font-size:clamp(16px, 2vw, 20px);line-height:1.6;font-family:'Playfair Display', Georgia, serif; max-width: 900px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+            <p style="text-align: center; opacity: 0.5;">Processando sua história e gerando plano de ação...</p>
           </div>
         </section>
 
-        <section class="result-section" style="margin-top:60px;">
+        <section class="result-section" style="margin-top:40px; margin-bottom: 120px;">
           <div class="paths-grid" style="grid-template-columns:1fr; max-width:800px; margin: 0 auto;">
-            <article class="path-card" data-path="session" style="border-color:#3A4418; background:#0e0f0c;">
+            <article class="path-card" data-path="session" style="border-color:#5c1010; background:linear-gradient(to bottom, #1a0a0a, #0a0505); text-align: center; display: flex; flex-direction: column; align-items: center; padding: 50px 30px;">
               <div>
-                <div class="mono" style="color:#EDE4C5;">Próximo Passo Recomendado</div>
-                <h3 style="color:#EDE4C5;">Sessão Estratégica Gratuita</h3>
-                <p>Nossa equipe analisou seu perfil e notou oportunidades claras de melhoria. Agende um bate-papo sem compromisso com um de nossos estrategistas para desenharmos um plano de ação para o seu negócio.</p>
+                <h3 style="color:#ffffff; font-size: 32px; margin-bottom: 15px; font-weight: 700;">Quer ter um plano de ação para escalar a sua empresa <span style="color: #d12c2c;">ainda hoje?</span></h3>
+                <p style="margin-bottom: 40px; color: #a0a0a0; font-size: 18px; max-width: 600px; margin-left: auto; margin-right: auto;">Transformamos conhecimento e processos em crescimento previsível. Conheça a KRAD e destrave o seu negócio.</p>
               </div>
-              <button class="krad-button light" style="align-self:start;" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20Sess%C3%A3o%20Estrat%C3%A9gica%20KRAD.', '_blank')">Agendar via WhatsApp</button>
+              <button class="krad-button light" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20acabei%20de%20fazer%20o%20diagn%C3%B3stico%20e%20gostaria%20de%20agendar%20uma%20Sess%C3%A3o%20Estrat%C3%A9gica%20KRAD.', '_blank')" style="background-color: #d12c2c; color: white; border: none; padding: 20px 40px; font-size: 20px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: transform 0.2s;">FALAR COM ESPECIALISTA</button>
             </article>
           </div>
         </section>
-
+        
         <footer class="site-footer">
           <span class="footer-mark">KRAD®</span>
           <span class="mono">Copyright 2026. Todos os direitos reservados.</span>
@@ -1019,6 +1023,12 @@
           title: "Qual é o nome da sua empresa?", placeholder: "Nome da empresa", autocomplete: "organization"
         },
         {
+          id: "cnpj", chapter: "knowledge", type: "text", required: true,
+          chapterTitle: "Identidade do negócio.",
+          chapterText: "Com o seu CNPJ, nossa inteligência consegue cruzar dados de mercado e entender melhor a sua estrutura jurídica.",
+          title: "Qual o CNPJ da empresa?", placeholder: "00.000.000/0000-00", inputMode: "numeric"
+        },
+        {
           id: "city", chapter: "knowledge", type: "text", required: true,
           chapterTitle: "Cada cidade tem o seu jeito de comprar.",
           chapterText: "Entender onde você atua ajuda a olhar concorrência, hábitos dos clientes e oportunidades mais próximas da sua realidade.",
@@ -1029,6 +1039,13 @@
           chapterTitle: "Seu tipo de negócio muda toda a análise.",
           chapterText: "Um restaurante, uma clínica, uma loja e um prestador de serviço enfrentam problemas bem diferentes.",
           title: "O que sua empresa vende ou faz?", placeholder: "Ex.: restaurante, clínica, loja, serviços"
+        },
+        {
+          id: "revenue", chapter: "knowledge", type: "choice", required: true,
+          chapterTitle: "Saúde financeira.",
+          chapterText: "Saber a faixa de faturamento nos ajuda a desenhar um plano de ação realista e que caiba no seu bolso.",
+          title: "Qual é o faturamento médio mensal da empresa?",
+          options: ["Ainda não faturamos", "Até R$ 10.000", "De R$ 10.001 a R$ 50.000", "De R$ 50.001 a R$ 100.000", "Acima de R$ 100.000"]
         },
         {
           id: "companyAge", chapter: "knowledge", type: "choice", required: true,
@@ -1057,7 +1074,7 @@
           chapterTitle: "Toda escolha mexe com o caixa e com a rotina.",
           chapterText: "A experiência é importante. Alguns números simples ajudam a não decidir apenas no susto ou na pressão do dia.",
           title: "Quando precisa investir, contratar ou crescer, como você costuma decidir?",
-          options: ["Olho números organizados", "Junto os números com minha experiência", "Vou mais pela experiência", "Decido conforme o problem aparece"]
+          options: ["Olho números organizados", "Junto os números com minha experiência", "Vou mais pela experiência", "Decido conforme o problema aparece"]
         },
         {
           id: "operationalHours", chapter: "reality", type: "choice", required: true,
@@ -1068,41 +1085,53 @@
         },
         {
           id: "vacation", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Uma empresa organizada continua funcionando sem o dono por perto.",
-          chapterText: "Conseguir se afastar não é abandonar o negócio. É sinal de equipe preparada e de uma rotina que não depende de improviso.",
-          title: "Você conseguiria ficar 15 dias longe da empresa sem tudo parar?",
-          options: ["Sim, sem preocupação", "Sim, mas teria que acompanhar pelo celular", "Só consigo ficar poucos dias", "Hoje não consigo me afastar"]
+          chapterTitle: "O que acontece quando você não está?",
+          chapterText: "Muitos donos nunca desligam, ou porque não confiam que a equipe resolve, ou porque a equipe ainda não tem um processo para seguir.",
+          title: "Como a empresa funciona se você tira uma semana de férias sem olhar o celular?",
+          options: ["Funciona normalmente", "Alguém me chama algumas vezes", "Só consigo ficar poucos dias", "Hoje não consigo me afastar"]
         },
         {
-          id: "fiveYears", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "Agora esqueça a correria por alguns minutos.",
-          chapterText: "Pense no negócio que você gostaria de ter depois de todo esse esforço.",
-          title: "Daqui a 5 anos, como você gostaria que sua empresa estivesse?",
-          placeholder: "Pode falar de clientes, equipe, dinheiro, unidades, tempo livre e da sua família."
+          id: "barrier", chapter: "aspiration", type: "choice", required: true,
+          chapterTitle: "Vamos olhar um pouco para frente.",
+          chapterText: "Todo mundo quer vender mais ou crescer, mas quase sempre existe uma barreira principal segurando a empresa agora.",
+          title: "Se você tivesse que escolher, o que mais atrapalha o crescimento hoje?",
+          options: ["Falta mão de obra ou tempo", "Falta previsibilidade de clientes", "Falta caixa ou lucro no final do mês", "Falta organização e processo"]
         },
         {
-          id: "greatestAchievement", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "Cada empresário tem uma vitória que vale mais.",
-          chapterText: "Para alguns é abrir outra unidade. Para outros é pagar as contas com tranquilidade ou ter mais tempo com a família.",
-          title: "Qual conquista faria você dizer: “todo o esforço valeu a pena”?", placeholder: "Escreva com suas palavras."
+          id: "timeline", chapter: "aspiration", type: "choice", required: true,
+          chapterTitle: "Sentido de urgência.",
+          chapterText: "Uma ideia sem prazo é apenas um desejo. Entender o tempo que temos ajuda a ditar o ritmo.",
+          title: "Qual a sua expectativa para iniciar um projeto estruturado de crescimento?",
+          options: ["Imediatamente", "No próximo mês", "Em até 3 meses", "Apenas pesquisando opções"]
         },
         {
-          id: "barrier", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "Falar do problema com clareza ajuda a enfrentá-lo.",
-          chapterText: "Ele pode estar nas vendas, no dinheiro, na equipe, na organização ou no excesso de tarefas nas suas mãos.",
-          title: "O que mais atrapalha sua empresa de chegar lá hoje?", placeholder: "Conte o que mais pesa na sua rotina."
+          id: "oneProblem", chapter: "aspiration", type: "text", required: false,
+          chapterTitle: "Sua visão importa mais do que as opções prontas.",
+          chapterText: "Existe algum detalhe ou problema que nós não perguntamos, mas que você sente que é o gargalo da empresa?",
+          title: "Descreva a sua principal dor hoje (opcional)", placeholder: "Ex.: Meu estoque está parado, a equipe não vende..."
         },
         {
-          id: "oneProblem", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "Não dá para consertar tudo de uma vez.",
-          chapterText: "Uma boa direção começa escolhendo o problema que precisa ser resolvido primeiro.",
-          title: "Se pudesse resolver um único problema da empresa agora, qual seria?", placeholder: "Escolha o problema mais urgente."
-        },
-        {
-          id: "instagram", chapter: "direction", type: "instagram", required: false,
-          chapterTitle: "Já entendemos uma parte importante da sua realidade.",
-          chapterText: "Agora podemos olhar, como complemento, alguns sinais do perfil da empresa na internet.",
-          title: "Qual é o Instagram da empresa?", placeholder: "@suaempresa"
+          id: "instagramPublic", chapter: "direction", type: "text", required: true,
+          chapterTitle: "Para fechar, o seu reflexo digital.",
+          chapterText: "Vamos olhar rapidamente como o mundo vê a empresa na internet para completar a análise.",
+          title: "Qual o Instagram público da empresa?", placeholder: "Ex.: @kradagencia",
+          onAfter: async (val) => {
+            if (!val || val.length < 2) return null;
+            try {
+              let clean = val.replace('@', '').split('/')[0].trim();
+              const response = await fetch(`${config.instagramEndpoint}?username=${clean}`);
+              if (response.ok) {
+                const data = await response.json();
+                if (data && data.profile) return { username: clean, profile: data.profile };
+              }
+              const fallResponse = await fetch(`${config.instagramFallbackEndpoint}?username=${clean}`);
+              if (fallResponse.ok) {
+                const data = await fallResponse.json();
+                if (data && data.profile) return { username: clean, profile: data.profile };
+              }
+            } catch (e) { console.error('Ig fail', e); }
+            return val;
+          }
         }
       ];
 
