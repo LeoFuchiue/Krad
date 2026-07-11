@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#070806" />
-  <meta name="description" content="KRAD OS � um diagn�stico simples e humano para ajudar empres�rios a entender a realidade da empresa e escolher o pr�ximo passo." />
-  <title>KRAD OS � Entenda onde sua empresa est� hoje</title>
+  <meta name="description" content="KRAD OS — um diagnóstico simples e humano para ajudar empresários a entender a realidade da empresa e escolher o próximo passo." />
+  <title>KRAD OS — Entenda onde sua empresa está hoje</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -194,7 +194,7 @@
       box-shadow: 0 0 12px rgba(106, 122, 44, .9);
     }
 
-    /* Pref�cio */
+    /* Prefácio */
     #preface { overflow: hidden; }
 
     .light-point {
@@ -278,7 +278,7 @@
       outline-offset: 4px;
     }
 
-    /* V�deo */
+    /* Vídeo */
     #video-stage { display: none; opacity: 0; }
     .video-wrap {
       width: min(900px, 94vw);
@@ -564,9 +564,9 @@
     .terminal-row { color: rgba(237, 228, 197, .32); font-size: clamp(9px, 1.1vw, 11px); transition: color .35s ease, transform .35s ease; transform: translateX(-6px); }
     .terminal-row.active { color: var(--cream); transform: none; }
     .terminal-row.done { color: var(--cream-muted); transform: none; }
-    .terminal-row::before { content: "?"; margin-right: 10px; }
-    .terminal-row.active::before { content: "?"; color: var(--olive-mid); }
-    .terminal-row.done::before { content: "?"; color: var(--success); }
+    .terminal-row::before { content: "○"; margin-right: 10px; }
+    .terminal-row.active::before { content: "●"; color: var(--olive-mid); }
+    .terminal-row.done::before { content: "✓"; color: var(--success); }
     .terminal-note { margin-top: 33px; color: var(--cream-muted); font-size: 10px; line-height: 1.7; }
 
     /* Resultado */
@@ -618,7 +618,7 @@
     .treatment-objective { color: var(--cream-muted); font-size: 11px; line-height: 1.7; }
     .treatment-actions { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 13px; }
     .treatment-actions li { display: grid; grid-template-columns: 18px 1fr; gap: 9px; color: var(--cream-muted); font-size: 11px; line-height: 1.6; }
-    .treatment-actions li::before { content: "?"; color: var(--olive-mid); }
+    .treatment-actions li::before { content: "→"; color: var(--olive-mid); }
     .success-signal { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--cream-line); color: var(--cream); font-size: 10px; line-height: 1.7; }
     .success-signal span { display: block; margin-bottom: 6px; color: var(--cream-muted); font: 500 7px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
     .clinical-disclaimer { margin-top: 26px; color: rgba(237, 228, 197, .42); font: 400 8px/1.7 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
@@ -790,7 +790,7 @@
       .video-wrap { width: 100%; }
       .video-frame { aspect-ratio: 4 / 5; }
       .journey-shell { padding-top: 95px; }
-      .question-viewport { min-height: 690px; align-items: start; padding-top: 8vh; padding-bottom: 120px; }
+      .question-viewport { min-height: 690px; align-items: start; padding-top: 8vh; }
       .question-sheet { gap: 31px; }
       .question-context p { margin-top: 18px; }
       .question-title { margin-bottom: 26px; }
@@ -832,25 +832,25 @@
         <circle cx="100" cy="100" r="97" fill="#3A4418"/>
         <circle cx="100" cy="100" r="90" fill="none" stroke="#EDE4C5" stroke-width="1.2" opacity=".62"/>
         <text x="100" y="94" font-family="Georgia,serif" font-size="54" font-weight="900" fill="#EDE4C5" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
-        <text x="100" y="137" font-family="Georgia,serif" font-size="22" fill="#EDE4C5" text-anchor="middle" letter-spacing="1">ag�ncia</text>
+        <text x="100" y="137" font-family="Georgia,serif" font-size="22" fill="#EDE4C5" text-anchor="middle" letter-spacing="1">agência</text>
       </svg>
       <span class="brand-copy">
         <strong>KRAD OS</strong>
         <small>Sistema de desenvolvimento empresarial</small>
       </span>
     </div>
-    <div class="status-corner mono" id="systemStatus">Sistema dispon�vel</div>
+    <div class="status-corner mono" id="systemStatus">Sistema disponível</div>
 
     <main>
       <section class="stage stage-full" id="preface" aria-labelledby="preface-title">
         <canvas id="hero-canvas" aria-hidden="true"></canvas>
         <div class="light-point" aria-hidden="true"></div>
         <div class="preface-copy">
-          <p class="preface-line serif" id="prefaceLine1">Toda empresa come�a com um sonho.</p>
-          <p class="preface-line serif" id="prefaceLine2">Algumas crescem. Outras apenas sobrevivem � rotina.</p>
+          <p class="preface-line serif" id="prefaceLine1">Toda empresa começa com um sonho.</p>
+          <p class="preface-line serif" id="prefaceLine2">Algumas crescem. Outras apenas sobrevivem à rotina.</p>
           <div class="preface-main" id="prefaceMain">
-            <h1 class="serif" id="preface-title">Entenda onde sua empresa est� hoje.</h1>
-            <button class="minimal-button" id="startButton" type="button">Iniciar Diagn�stico</button>
+            <h1 class="serif" id="preface-title">Entenda onde sua empresa está hoje.</h1>
+            <button class="minimal-button" id="startButton" type="button">Iniciar Diagnóstico</button>
           </div>
         </div>
       </section>
@@ -859,28 +859,28 @@
         <div class="video-wrap">
           <div class="system-log mono" aria-live="polite">KRAD OS INITIALIZATION... <span id="kosStatus">OK</span></div>
           <div class="video-frame">
-            <video id="contextVideo" playsinline controls preload="metadata" aria-label="Introdu��o ao diagn�stico KRAD" hidden></video>
+            <video id="contextVideo" playsinline controls preload="metadata" aria-label="Introdução ao diagnóstico KRAD" hidden></video>
             <div class="video-placeholder" id="videoPlaceholder">
               <div class="video-placeholder-inner">
-                <div class="eyebrow mono">Uma conversa antes da an�lise</div>
-                <h2 class="serif" id="video-title">N�o queremos come�ar falando sobre servi�os.</h2>
-                <p>Queremos compreender a hist�ria, a realidade e o futuro que voc� deseja construir. Esta � uma triagem estrat�gica � sem julgamento e sem respostas prontas.</p>
+                <div class="eyebrow mono">Uma conversa antes da análise</div>
+                <h2 class="serif" id="video-title">Não queremos começar falando sobre serviços.</h2>
+                <p>Queremos compreender a história, a realidade e o futuro que você deseja construir. Esta é uma triagem estratégica — sem julgamento e sem respostas prontas.</p>
               </div>
             </div>
             <div class="video-progress" aria-hidden="true"><span id="videoProgressBar"></span></div>
           </div>
-          <button class="primary-button" id="beginJourneyButton" type="button" disabled>Vamos come�ar</button>
+          <button class="primary-button" id="beginJourneyButton" type="button" disabled>Vamos começar</button>
         </div>
       </section>
 
       <section class="stage" id="journey-stage" aria-labelledby="journey-heading">
-        <h1 class="sr-only" id="journey-heading">Diagn�stico empresarial KRAD</h1>
+        <h1 class="sr-only" id="journey-heading">Diagnóstico empresarial KRAD</h1>
         <div class="journey-shell">
           <div class="question-viewport" id="questionViewport" aria-live="polite"></div>
         </div>
         <div class="journey-footer" id="journeyFooter">
           <div>
-            <div class="human-progress" id="humanProgress">Voc� come�ou a compartilhar sua hist�ria.</div>
+            <div class="human-progress" id="humanProgress">Você começou a compartilhar sua história.</div>
             <div class="progress-line" aria-hidden="true"><span id="progressFill"></span></div>
           </div>
           <div class="chapter-index mono" id="chapterIndex">K / CONHECER</div>
@@ -890,7 +890,7 @@
       <section class="stage stage-full" id="processing-stage" aria-labelledby="processing-title">
         <div class="analysis-table">
           <div class="radar-wrap" aria-hidden="true">
-            <svg class="radar-svg" viewBox="0 0 420 420" role="img" aria-label="Matriz de an�lise em constru��o">
+            <svg class="radar-svg" viewBox="0 0 420 420" role="img" aria-label="Matriz de análise em construção">
               <circle class="ring" cx="210" cy="210" r="160" />
               <circle class="ring" cx="210" cy="210" r="120" />
               <circle class="ring" cx="210" cy="210" r="80" />
@@ -904,52 +904,326 @@
             <span class="radar-core"></span>
           </div>
           <div class="terminal">
-            <div class="mono" style="font-size:9px;color:var(--cream-muted);margin-bottom:18px;">Mesa de an�lise t�cnica</div>
-            <h2 class="serif" id="processing-title">Transformando respostas em dire��o.</h2>
+            <div class="mono" style="font-size:9px;color:var(--cream-muted);margin-bottom:18px;">Mesa de análise técnica</div>
+            <h2 class="serif" id="processing-title">Transformando respostas em direção.</h2>
             <div class="terminal-list" id="terminalList">
               <div class="terminal-row mono">Organizando a queixa principal...</div>
-              <div class="terminal-row mono">Cruzando rotina, dinheiro e depend�ncia do fundador...</div>
-              <div class="terminal-row mono">Separando sintomas de causas prov�veis...</div>
+              <div class="terminal-row mono">Cruzando rotina, dinheiro e dependência do fundador...</div>
+              <div class="terminal-row mono">Separando sintomas de causas prováveis...</div>
               <div class="terminal-row mono">Localizando o gargalo que puxa os outros problemas...</div>
               <div class="terminal-row mono">Definindo o cuidado que deve vir primeiro...</div>
-              <div class="terminal-row mono">Escrevendo o prontu�rio na voz da KRAD...</div>
+              <div class="terminal-row mono">Escrevendo o prontuário na voz da KRAD...</div>
             </div>
-            <p class="terminal-note" id="processingNote">A tecnologia organiza os sinais. A KRAD traduz isso em uma dire��o que respeita a hist�ria de quem est� por tr�s do CNPJ.</p>
+            <p class="terminal-note" id="processingNote">A tecnologia organiza os sinais. A KRAD traduz isso em uma direção que respeita a história de quem está por trás do CNPJ.</p>
           </div>
         </div>
       </section>
 
-            <section class="stage" id="result-stage" aria-labelledby="result-title">
+      <section class="stage" id="result-stage" aria-labelledby="result-title">
         <div class="result-hero">
           <div class="result-hero-inner">
-            <div class="result-kicker mono">Dossi� Estrat�gico � KRAD OS</div>
-            <h1 class="serif" id="result-title">N�s ouvimos o que sua empresa est� tentando dizer.</h1>
-            <p id="resultIntro">Este diagn�stico organiza a hist�ria e os sinais que voc� compartilhou. A intelig�ncia da KRAD leu os dados do seu Instagram (se fornecidos) e o que voc� contou sobre sua rotina.</p>
+            <div class="result-kicker mono">Prontuário empresarial inicial · KRAD OS</div>
+            <h1 class="serif" id="result-title">Nws ouvimos o que sua empresa está tentando dizer.</h1>
+            <p id="resultIntro">Este diagnóstico organiza os sinais que você compartilhou. Ele não substitui uma conversa humana, mas mostra com clareza o que parece estar doendo, por que isso acontece e qual cuidado deve vir primeiro.</p>
           </div>
         </div>
 
-        <section class="result-section">
-          <div class="storytelling-container" id="storytellingContent" style="background:var(--cream);color:#070806;padding:clamp(30px, 6vw, 60px);border-radius:24px;font-size:clamp(16px, 2vw, 20px);line-height:1.6;font-family:'Playfair Display', Georgia, serif;">
-            <p>Carregando sua hist�ria...</p>
+        <div class="clinical-intro">
+          <article class="clinical-summary-card">
+            <div class="mono">Queixa principal percebida</div>
+            <h2 id="chiefComplaint">Organizando a principal dor da empresa...</h2>
+            <p id="openingMessage">Suas respostas estão sendo traduzidas em uma leitura simples e direta.</p>
+          </article>
+          <article class="clinical-priority-card">
+            <div>
+              <div class="mono">Prioridade de intervenção</div>
+              <span class="priority-level" id="priorityLevel">avaliando prioridade</span>
+            </div>
+            <div>
+              <h3 id="dominantBottleneck">Identificando o gargalo dominante.</h3>
+              <p id="dominantWhy">A KRAD procura o problem que está puxando outros problemas atrás dele.</p>
+            </div>
+          </article>
+        </div>
+
+        <section class="result-section" aria-labelledby="symptoms-title">
+          <div class="result-grid">
+            <div class="section-label mono">01 · Sinais observados<strong id="symptoms-title">Como a dor aparece na rotina.</strong></div>
+            <div class="clinical-list" id="symptomSignals"></div>
           </div>
         </section>
 
-        <section class="result-section" style="margin-top:60px;">
-          <div class="paths-grid" style="grid-template-columns:1fr; max-width:800px; margin: 0 auto;">
-            <article class="path-card" data-path="session" style="border-color:#3A4418; background:#0e0f0c;">
-              <div>
-                <div class="mono" style="color:#EDE4C5;">Pr�ximo Passo Recomendado</div>
-                <h3 style="color:#EDE4C5;">Sess�o Estrat�gica Gratuita</h3>
-                <p>Nossa equipe analisou seu perfil e notou oportunidades claras de melhoria. Agende um bate-papo sem compromisso com um de nossos estrategistas para desenharmos um plano de a��o para o seu neg�cio.</p>
-              </div>
-              <button class="krad-button light" style="align-self:start;" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20Sess%C3%A3o%20Estrat%C3%A9gica%20KRAD.', '_blank')">Agendar via WhatsApp</button>
+        <section class="result-section" aria-labelledby="strength-title">
+          <div class="result-grid">
+            <div class="section-label mono">02 · Estruturas preservadas<strong id="strength-title">O que já ajuda sua empresa a reagir.</strong></div>
+            <div class="clinical-list" id="strengthSignals"></div>
+          </div>
+        </section>
+
+        <section class="result-section" aria-labelledby="cause-title">
+          <div class="clinical-grid">
+            <article class="clinical-card">
+              <div class="mono">Hipótese do problema de origem</div>
+              <h3 id="cause-title"><span id="rootCauseTitle">Analisando a causa mais provável.</span></h3>
+              <p id="rootCauseText">Uma dor empresarial raramente nasce de uma única postagem ou de uma única semana ruim. Estamos cruzando rotina, dinheiro, atração de clientes e dependência do fundador.</p>
+              <div class="clinical-list" id="rootCauseEvidence"></div>
+            </article>
+            <article class="clinical-card risk-card">
+              <div class="mono">Se nada mudar</div>
+              <span class="risk-label" id="riskLevel">risco em avaliação</span>
+              <h3>O problema tende a cobrar um preço maior.</h3>
+              <p id="riskText">O objetivo desta parte não é assustar. É mostrar o custo de continuar adiando a decisão principal.</p>
             </article>
           </div>
         </section>
 
+        <section class="result-section" aria-labelledby="treatment-title">
+          <div class="section-label mono" style="position:static;max-width:780px;">03 · Plano de cuidado empresarial<strong id="treatment-title">Tratar na ordem certa, sem tentar consertar tudo de uma vez.</strong></div>
+          <div class="treatment-grid" id="treatmentPlan"></div>
+          <p class="clinical-disclaimer">Esta é uma triagem estratégica inicial. Ela não substitui análise contábil, jurídica, financeira ou operacional feita com acesso aos documentos e números reais da empresa.</p>
+        </section>
+
+        <section class="result-section" aria-labelledby="boundaries-title">
+          <div class="clinical-grid">
+            <article class="clinical-card">
+              <div class="mono">O que não recomendamos agora</div>
+              <h3 id="boundaries-title">Evitar o remédio errado também faz parte do cuidado.</h3>
+              <div class="clinical-list" id="avoidNowList"></div>
+            </article>
+            <article class="clinical-card">
+              <div class="mono">O que ainda precisa ser confirmado</div>
+              <h3>As perguntas que uma conversa humana precisa aprofundar.</h3>
+              <div class="clinical-list" id="confirmList"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="result-section" aria-labelledby="maturity-title">
+          <div class="maturity-layout">
+            <div>
+              <div class="section-label mono" style="position:static;">04 · Mapa de maturidade<strong id="maturity-title">Quatro partes da empresa que precisam avançar juntas.</strong></div>
+              <div class="recommended-path">
+                <span class="mono">Caminho indicado nesta triagem</span>
+                <strong id="recommendedPathTitle">Sessão de Descoberta Humana</strong>
+                <p id="recommendedPathReason">O caminho final deve respeitar o caixa, o momento e a autonomia do empresário.</p>
+              </div>
+            </div>
+            <div class="maturity-layout" style="grid-column:1/-1;">
+              <svg class="maturity-chart" viewBox="0 0 260 260" role="img" aria-label="Mapa circular de maturidade nos quatro eixos KRAD">
+                <circle class="track" cx="130" cy="130" r="92" />
+                <circle class="arc arc-k" id="arcK" cx="130" cy="130" r="92" />
+                <circle class="arc arc-r" id="arcR" cx="130" cy="130" r="76" />
+                <circle class="arc arc-a" id="arcA" cx="130" cy="130" r="60" />
+                <circle class="arc arc-d" id="arcD" cx="130" cy="130" r="44" />
+                <text x="130" y="126" class="maturity-center">Evolução</text>
+                <text x="130" y="144" class="maturity-sub">contínua</text>
+              </svg>
+              <div class="axis-list" id="axisList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="result-section">
+          <div class="analogy">
+            <div class="mono">A analogia do atleta</div>
+            <blockquote>Sua empresa é como um atleta. O talento trouxe você até aqui. Agora, o crescimento sustentável depende de treino, acompanhamento e constância. Nenhum atleta evolui apenas assistindo a vídeos. Empresas também não.</blockquote>
+          </div>
+        </section>
+
+        <section class="result-section" aria-labelledby="paths-title">
+          <div class="section-label mono" style="position:static;max-width:720px;">05 · Caminhos possíveis<strong id="paths-title">Escolha a forma de evolução que respeita o seu momento.</strong></div>
+          <div class="paths-grid">
+            <button class="path-card" type="button" data-path="academy">
+              <span class="path-number mono">Caminho 01</span>
+              <h3>Quero estudar e aplicar os fundamentos sozinho.</h3>
+              <p>Acesse uma base organizada de conhecimento prático e avance no seu próprio ritmo.</p>
+              <span class="path-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="path-card" type="button" data-path="session">
+              <span class="path-number mono">Caminho 02</span>
+              <h3>Preciso de um plano estratégico personalizado para o meu momento.</h3>
+              <p>Reserve uma Sessão de Descoberta Humana de 45 minutos para aprofundar o diagnóstico.</p>
+              <span class="path-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="path-card" type="button" data-path="growth">
+              <span class="path-number mono">Caminho 03</span>
+              <h3>Quero acompanhamento e execução técnica do Growth Team.</h3>
+              <p>Converse diretamente com a equipe responsável pela implementação e pelo acompanhamento.</p>
+              <span class="path-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="portfolio-section" aria-labelledby="portfolio-title">
+          <div class="portfolio-inner">
+            <div class="portfolio-head">
+              <div class="mono">Empresas acompanhadas em Atibaia</div>
+              <div>
+                <h2 id="portfolio-title">A KRAD aprende dentro da operação, não olhando de longe.</h2>
+                <p>Estas são as quatro empresas locais que você informou estarem sendo acompanhadas pela KRAD há cerca de quatro meses. Abaixo não há promessa de resultado nem números de vaidade: apenas uma leitura pública e honesta do território de marca que cada negócio já possui.</p>
+              </div>
+            </div>
+
+            <div class="portfolio-grid">
+              <article class="portfolio-card">
+                <div>
+                  <span class="mono">Gastronomia árabe · tradição local</span>
+                  <h3>Allan Esfihas</h3>
+                  <p class="public-position">A comunicação pública apresenta a marca como parte de Atibaia desde 1998, com tradição em gastronomia árabe e presença em mais de um ponto da cidade.</p>
+                </div>
+                <div class="portfolio-insight">
+                  <strong>Insight estratégico real</strong>
+                  <p>O patrimônio mais valioso é a história. O desafio não é inventar uma marca nova, e sim transformar tradição em uma mensagem clara para públicos, unidades e momentos de consumo diferentes, sem diluir a identidade construída.</p>
+                  <a class="portfolio-source" href="https://www.instagram.com/allanesfihas/" target="_blank" rel="noopener noreferrer">Fonte pública consultada ↗</a>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <div>
+                  <span class="mono">Hortifruti · atacado, varejo e entrega</span>
+                  <h3>Maeda Hortifruti</h3>
+                  <p class="public-position">A presença pública reúne atacado, varejo e delivery de frutas, verduras, legumes, polpas e outros congelados, atendendo consumidores e empresas da região.</p>
+                </div>
+                <div class="portfolio-insight">
+                  <strong>Insight estratégico real</strong>
+                  <p>A amplitude é uma vantagem operacional, mas pode confundir a comunicação. O caminho é separar com clareza a compra da família da compra profissional, mantendo uma mesma promessa central: seleção, frescor, variedade e confiança na entrega.</p>
+                  <a class="portfolio-source" href="https://www.instagram.com/maedahortifrutidelivery/" target="_blank" rel="noopener noreferrer">Fonte pública consultada ↗</a>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <div>
+                  <span class="mono">Café · extensão de uma marca tradicional</span>
+                  <h3>Allan Café</h3>
+                  <p class="public-position">O perfil público utiliza a tradição e a qualidade associadas ao Allan desde 1998 e apresenta uma operação própria em Vila Santana, Atibaia.</p>
+                </div>
+                <div class="portfolio-insight">
+                  <strong>Insight estratégico real</strong>
+                  <p>O café pode aproveitar a confiança da marca-mãe, mas precisa ter uma ocasião de consumo própria. A comunicação deve deixar evidente por que o cliente vai ao Allan Café durante o dia, e não apenas repetir a mensagem da esfiaria.</p>
+                  <a class="portfolio-source" href="https://www.instagram.com/allanesfihascafe/" target="_blank" rel="noopener noreferrer">Fonte pública consultada ↗</a>
+                </div>
+              </article>
+
+              <article class="portfolio-card">
+                <div>
+                  <span class="mono">Restaurante · almoço em família</span>
+                  <h3>Moranga Flor</h3>
+                  <p class="public-position">A marca se apresenta com buffet completo, churrasco no almoço e Espaço Kids, criando uma proposta ligada à variedade, convivência e praticidade para famílias.</p>
+                </div>
+                <div class="portfolio-insight">
+                  <strong>Insight estratégico real</strong>
+                  <p>Existe um território forte além da comida: o almoço tranquilo para diferentes gostos e idades. A oportunidade é transformar buffet, churrasco e Espaço Kids em uma única promessa de experiência familiar lembrada em Atibaia.</p>
+                  <a class="portfolio-source" href="https://www.instagram.com/morangaflor/" target="_blank" rel="noopener noreferrer">Fonte pública consultada ↗</a>
+                </div>
+              </article>
+            </div>
+
+            <p class="portfolio-note">Informações públicas consultadas em julho de 2026. Os insights acima são hipóteses estratégicas baseadas na comunicação visível das marcas e devem ser confirmados com dados internos, clientes e operação.</p>
+          </div>
+        </section>
+
+        <section class="ecosystem" aria-labelledby="ecosystem-title">
+          <div class="ecosystem-inner">
+            <div class="ecosystem-head">
+              <div class="mono" style="font-size:9px;color:var(--cream-muted);">Demonstração do ambiente do cliente</div>
+              <div>
+                <h2 class="serif" id="ecosystem-title">Um sistema para acompanhar a evolução — não apenas uma entrega isolada.</h2>
+                <p>As telas abaixo representam a arquitetura planejada para o ecossistema KRAD. Módulos em desenvolvimento devem ser identificados como demonstração até sua ativação oficial.</p>
+              </div>
+            </div>
+
+            <div class="tab-list" role="tablist" aria-label="Módulos do ecossistema KRAD">
+              <button class="tab-button active" role="tab" aria-selected="true" aria-controls="tab-dashboard" id="btn-dashboard" data-tab="dashboard">Dashboard de Evolução</button>
+              <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-community" id="btn-community" data-tab="community">Comunidade por Estágios</button>
+              <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-academy" id="btn-academy" data-tab="academy">Academy Trilhas</button>
+              <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-marketplace" id="btn-marketplace" data-tab="marketplace">Parceiros Certificados</button>
+              <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-houses" id="btn-houses" data-tab="houses">Casas KRAD</button>
+            </div>
+
+            <div class="tab-panel active" role="tabpanel" id="tab-dashboard" aria-labelledby="btn-dashboard">
+              <div class="dashboard-grid">
+                <article class="mock-card">
+                  <div class="mock-head"><h3>Histórico de evolução empresarial</h3><span class="mono">IKDE · VISÃO DEMONSTRATIVA</span></div>
+                  <svg class="line-chart" viewBox="0 0 600 220" preserveAspectRatio="none" aria-label="Linha demonstrativa de evolução ao longo do tempo">
+                    <defs><linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a7a2c" stop-opacity=".28"/><stop offset="1" stop-color="#6a7a2c" stop-opacity="0"/></linearGradient></defs>
+                    <line class="grid" x1="0" y1="44" x2="600" y2="44"/><line class="grid" x1="0" y1="110" x2="600" y2="110"/><line class="grid" x1="0" y1="176" x2="600" y2="176"/>
+                    <path class="area" d="M0,178 C70,170 94,150 145,155 C214,162 225,117 292,125 C356,132 377,90 437,99 C500,108 535,56 600,49 L600,220 L0,220 Z"/>
+                    <path d="M0,178 C70,170 94,150 145,155 C214,162 225,117 292,125 C356,132 377,90 437,99 C500,108 535,56 600,49"/>
+                  </svg>
+                </article>
+                <article class="mock-card">
+                  <div class="mock-head"><h3>Próximas ações</h3><span class="mono">CICLO ATUAL</span></div>
+                  <div class="task-list">
+                    <div class="task-row done"><span class="task-box"></span><span>Revisar a proposta central da empresa</span></div>
+                    <div class="task-row done"><span class="task-box"></span><span>Organizar dados de custos e margem</span></div>
+                    <div class="task-row"><span class="task-box"></span><span>Reduzir dependência do fundador na operação</span></div>
+                    <div class="task-row"><span class="task-box"></span><span>Construir uma rotina previsível de atração</span></div>
+                  </div>
+                </article>
+                <article class="mock-card">
+                  <div class="mock-head"><h3>Próxima reunião</h3><span class="mono">AGENDA</span></div>
+                  <p class="serif" style="font-size:29px;margin:0 0 12px;">Auditoria do ciclo de direção</p>
+                  <p style="color:var(--cream-muted);font-size:11px;line-height:1.7;margin:0;">Revisão das ações, obstáculos percebidos e definição do próximo passo indispensável.</p>
+                </article>
+                <article class="mock-card">
+                  <div class="mock-head"><h3>Biblioteca de ativos</h3><span class="mono">12 ITENS</span></div>
+                  <div class="task-list">
+                    <div class="task-row"><span class="task-box"></span><span>Plano Mestre · Ciclo 01</span></div>
+                    <div class="task-row"><span class="task-box"></span><span>Manual de atendimento</span></div>
+                    <div class="task-row"><span class="task-box"></span><span>Mapa de prioridades</span></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" id="tab-community" aria-labelledby="btn-community">
+              <div class="stage-cards">
+                <article class="stage-card unlocked"><span class="mono">Estágio 01 · atual</span><h3>Sobrevive</h3><p>A rotina consome o fundador e as decisões ainda dependem de urgências.</p></article>
+                <article class="stage-card"><span class="mono">Estágio 02 · bloqueado</span><h3>Existe</h3><p>O negócio ganha presença, processos básicos e uma identidade reconhecível.</p></article>
+                <article class="stage-card"><span class="mono">Estágio 03 · bloqueado</span><h3>Cresce</h3><p>A empresa começa a gerar demanda e caixa com maior previsibilidade.</p></article>
+                <article class="stage-card"><span class="mono">Estágio 04 · bloqueado</span><h3>Amplia</h3><p>O crescimento acontece com processos, equipe e controle de qualidade.</p></article>
+                <article class="stage-card"><span class="mono">Estágio 05 · bloqueado</span><h3>Transforma</h3><p>A empresa gera empregos, forma líderes e eleva o padrão da região.</p></article>
+              </div>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" id="tab-academy" aria-labelledby="btn-academy">
+              <div class="academy-map">
+                <article class="academy-step"><span class="mono">Trilha 01</span><h3>Atrair novos compradores</h3><p>Construir presença e movimento sem depender apenas de indicações ocasionais.</p></article>
+                <article class="academy-step"><span class="mono">Trilha 02</span><h3>Facilitar a decisão de compra</h3><p>Remover dúvidas, reduzir atritos e comunicar valor com clareza.</p></article>
+                <article class="academy-step"><span class="mono">Trilha 03</span><h3>Construir uma marca lembrada</h3><p>Organizar identidade, experiência e consistência para ocupar espaço na memória local.</p></article>
+                <article class="academy-step"><span class="mono">Trilha 04</span><h3>Crescer sem perder a qualidade</h3><p>Desenvolver processos, pessoas e controles para proteger o que tornou a empresa especial.</p></article>
+              </div>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" id="tab-marketplace" aria-labelledby="btn-marketplace">
+              <div class="partner-filters" aria-label="Filtros demonstrativos">
+                <span class="filter-chip">Cidade: todas</span><span class="filter-chip">Especialidade: todas</span><span class="filter-chip">Nível KRAD: todos</span>
+              </div>
+              <div class="partner-list">
+                <div class="partner-row"><strong>Parceiro demonstrativo 01</strong><span>Atibaia · SP</span><span>Presença e conteúdo</span><span class="partner-level">Nível Essencial</span></div>
+                <div class="partner-row"><strong>Parceiro demonstrativo 02</strong><span>Campinas · SP</span><span>Operação comercial</span><span class="partner-level">Nível Avançado</span></div>
+                <div class="partner-row"><strong>Parceiro demonstrativo 03</strong><span>São Paulo · SP</span><span>Tecnologia e dados</span><span class="partner-level">Nível Especialista</span></div>
+              </div>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" id="tab-houses" aria-labelledby="btn-houses">
+              <div class="house-gallery">
+                <article class="house-visual">
+                  <div class="room-lines"></div>
+                  <div class="room-caption"><div class="mono">Conceito arquitetônico</div><h3>Salas de governança e direção.</h3></div>
+                </article>
+                <div class="house-stack">
+                  <article class="house-visual secondary"><div class="room-lines"></div><div class="room-caption"><div class="mono">Estúdio</div><h3>Vozes que constroem.</h3></div></article>
+                  <article class="house-visual secondary"><div class="room-lines"></div><div class="room-caption"><div class="mono">Encontros privados</div><h3>O fim da solidão do topo.</h3></div></article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <footer class="site-footer">
-          <span class="footer-mark">KRAD�</span>
-          <span class="mono">Copyright 2026. Todos os direitos reservados.</span>
+          <span class="footer-mark mono">KRAD · ILUMINAR O CAMINHO DAS MELHORES DECISÕES</span>
+          <span>Todo sonho legítimo merece uma oportunidade real de se tornar extraordinário.</span>
         </footer>
       </section>
     </main>
@@ -999,110 +1273,110 @@
       };
 
       const chapterMeta = {
-        knowledge: { code: "K", label: "CONHECER", progressLead: "Voc� j� compartilhou" },
-        reality: { code: "R", label: "REALIDADE", progressLead: "Sua realidade j� est�" },
-        aspiration: { code: "A", label: "AMBI��O", progressLead: "Seu futuro desejado est�" },
-        direction: { code: "D", label: "DIRE��O", progressLead: "Seu mapa inicial est�" }
+        knowledge: { code: "K", label: "CONHECER", progressLead: "Você já compartilhou" },
+        reality: { code: "R", label: "REALIDADE", progressLead: "Sua realidade já está" },
+        aspiration: { code: "A", label: "AMBIÇÃO", progressLead: "Seu futuro desejado está" },
+        direction: { code: "D", label: "DIREÇÃO", progressLead: "Seu mapa inicial está" }
       };
 
       const questions = [
         {
           id: "founderName", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Toda empresa come�a com algu�m.",
-          chapterText: "Antes de olhar n�meros ou falar de crescimento, queremos conhecer quem enfrenta a rotina e mant�m o neg�cio de p�.",
-          title: "Como voc� gosta de ser chamado?", placeholder: "Seu primeiro nome", autocomplete: "given-name", inputMode: "text"
+          chapterTitle: "Toda empresa começa com alguém.",
+          chapterText: "Antes de olhar números ou falar de crescimento, queremos conhecer quem enfrenta a rotina e mantém o negócio de pé.",
+          title: "Como você gosta de ser chamado?", placeholder: "Seu primeiro nome", autocomplete: "given-name", inputMode: "text"
         },
         {
           id: "companyName", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Agora, conte o nome dessa hist�ria.",
-          chapterText: "N�o importa se a empresa � pequena, nova ou conhecida na cidade. Toda empresa carrega trabalho, risco e uma raz�o para existir.",
-          title: "Qual � o nome da sua empresa?", placeholder: "Nome da empresa", autocomplete: "organization"
+          chapterTitle: "Agora, conte o nome dessa história.",
+          chapterText: "Não importa se a empresa é pequena, nova ou conhecida na cidade. Toda empresa carrega trabalho, risco e uma razão para existir.",
+          title: "Qual é o nome da sua empresa?", placeholder: "Nome da empresa", autocomplete: "organization"
         },
         {
           id: "city", chapter: "knowledge", type: "text", required: true,
           chapterTitle: "Cada cidade tem o seu jeito de comprar.",
-          chapterText: "Entender onde voc� atua ajuda a olhar concorr�ncia, h�bitos dos clientes e oportunidades mais pr�ximas da sua realidade.",
+          chapterText: "Entender onde você atua ajuda a olhar concorrência, hábitos dos clientes e oportunidades mais próximas da sua realidade.",
           title: "Em qual cidade fica a maior parte dos seus clientes?", placeholder: "Ex.: Atibaia, SP", autocomplete: "address-level2"
         },
         {
           id: "segment", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Seu tipo de neg�cio muda toda a an�lise.",
-          chapterText: "Um restaurante, uma cl�nica, uma loja e um prestador de servi�o enfrentam problemas bem diferentes.",
-          title: "O que sua empresa vende ou faz?", placeholder: "Ex.: restaurante, cl�nica, loja, servi�os"
+          chapterTitle: "Seu tipo de negócio muda toda a análise.",
+          chapterText: "Um restaurante, uma clínica, uma loja e um prestador de serviço enfrentam problemas bem diferentes.",
+          title: "O que sua empresa vende ou faz?", placeholder: "Ex.: restaurante, clínica, loja, serviços"
         },
         {
           id: "companyAge", chapter: "knowledge", type: "choice", required: true,
-          chapterTitle: "O tempo de estrada tamb�m conta.",
-          chapterText: "Quem est� come�ando precisa firmar a base. Quem j� tem hist�ria precisa crescer sem perder o que conquistou.",
-          title: "H� quanto tempo sua empresa est� aberta?",
-          options: ["Ainda n�o completou 1 ano", "De 1 a 3 anos", "De 4 a 7 anos", "De 8 a 15 anos", "Mais de 15 anos"]
+          chapterTitle: "O tempo de estrada também conta.",
+          chapterText: "Quem está começando precisa firmar a base. Quem já tem história precisa crescer sem perder o que conquistou.",
+          title: "Há quanto tempo sua empresa está aberta?",
+          options: ["Ainda não completou 1 ano", "De 1 a 3 anos", "De 4 a 7 anos", "De 8 a 15 anos", "Mais de 15 anos"]
         },
         {
           id: "discovery", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Agora vamos olhar o neg�cio como ele est� hoje.",
-          chapterText: "Aqui n�o existe resposta bonita ou feia. Precisamos apenas entender de onde v�m as pessoas que compram de voc�.",
+          chapterTitle: "Agora vamos olhar o negócio como ele está hoje.",
+          chapterText: "Aqui não existe resposta bonita ou feia. Precisamos apenas entender de onde vêm as pessoas que compram de você.",
           title: "Como a maioria dos clientes encontra sua empresa hoje?",
-          options: ["Por indica��o de outras pessoas", "Pelo Instagram ou pelo Google", "Por an�ncios", "Por parceiros e contatos", "Vem de v�rios lugares"],
-          logMap: { "Por indica��o de outras pessoas": "HOJE, O CRESCIMENTO DEPENDE MUITO DE INDICA��ES" }
+          options: ["Por indicação de outras pessoas", "Pelo Instagram ou pelo Google", "Por anúncios", "Por parceiros e contatos", "Vem de vários lugares"],
+          logMap: { "Por indicação de outras pessoas": "HOJE, O CRESCIMENTO DEPENDE MUITO DE INDICAÇÕES" }
         },
         {
           id: "margin", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Vender mais s� ajuda quando sobra dinheiro.",
-          chapterText: "Muita empresa trabalha bastante, mas n�o sabe quais vendas realmente fortalecem o caixa.",
-          title: "Voc� sabe quanto realmente sobra de cada produto ou servi�o vendido?",
-          options: ["Sim, sei com seguran�a", "Sei mais ou menos", "Tenho apenas uma ideia", "Ainda n�o consigo saber"]
+          chapterTitle: "Vender mais só ajuda quando sobra dinheiro.",
+          chapterText: "Muita empresa trabalha bastante, mas não sabe quais vendas realmente fortalecem o caixa.",
+          title: "Você sabe quanto realmente sobra de cada produto ou serviço vendido?",
+          options: ["Sim, sei com segurança", "Sei mais ou menos", "Tenho apenas uma ideia", "Ainda não consigo saber"]
         },
         {
           id: "decisionBasis", chapter: "reality", type: "choice", required: true,
           chapterTitle: "Toda escolha mexe com o caixa e com a rotina.",
-          chapterText: "A experi�ncia � importante. Alguns n�meros simples ajudam a n�o decidir apenas no susto ou na press�o do dia.",
-          title: "Quando precisa investir, contratar ou crescer, como voc� costuma decidir?",
-          options: ["Olho n�meros organizados", "Junto os n�meros com minha experi�ncia", "Vou mais pela experi�ncia", "Decido conforme o problem aparece"]
+          chapterText: "A experiência é importante. Alguns números simples ajudam a não decidir apenas no susto ou na pressão do dia.",
+          title: "Quando precisa investir, contratar ou crescer, como você costuma decidir?",
+          options: ["Olho números organizados", "Junto os números com minha experiência", "Vou mais pela experiência", "Decido conforme o problem aparece"]
         },
         {
           id: "operationalHours", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Seu tempo tamb�m mostra a sa�de da empresa.",
-          chapterText: "Quando quase tudo passa pelo dono, o neg�cio pode funcionar, mas cresce com muito peso nas costas de uma pessoa.",
+          chapterTitle: "Seu tempo também mostra a saúde da empresa.",
+          chapterText: "Quando quase tudo passa pelo dono, o negócio pode funcionar, mas cresce com muito peso nas costas de uma pessoa.",
           title: "Quanto tempo da sua semana fica preso nas tarefas do dia a dia?",
           options: ["Menos de 10 horas", "De 10 a 25 horas", "De 26 a 45 horas", "Mais de 45 horas", "Quase o tempo todo"]
         },
         {
           id: "vacation", chapter: "reality", type: "choice", required: true,
           chapterTitle: "Uma empresa organizada continua funcionando sem o dono por perto.",
-          chapterText: "Conseguir se afastar n�o � abandonar o neg�cio. � sinal de equipe preparada e de uma rotina que n�o depende de improviso.",
-          title: "Voc� conseguiria ficar 15 dias longe da empresa sem tudo parar?",
-          options: ["Sim, sem preocupa��o", "Sim, mas teria que acompanhar pelo celular", "S� consigo ficar poucos dias", "Hoje n�o consigo me afastar"]
+          chapterText: "Conseguir se afastar não é abandonar o negócio. É sinal de equipe preparada e de uma rotina que não depende de improviso.",
+          title: "Você conseguiria ficar 15 dias longe da empresa sem tudo parar?",
+          options: ["Sim, sem preocupação", "Sim, mas teria que acompanhar pelo celular", "Só consigo ficar poucos dias", "Hoje não consigo me afastar"]
         },
         {
           id: "fiveYears", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "Agora esque�a a correria por alguns minutos.",
-          chapterText: "Pense no neg�cio que voc� gostaria de ter depois de todo esse esfor�o.",
-          title: "Daqui a 5 anos, como voc� gostaria que sua empresa estivesse?",
-          placeholder: "Pode falar de clientes, equipe, dinheiro, unidades, tempo livre e da sua fam�lia."
+          chapterTitle: "Agora esqueça a correria por alguns minutos.",
+          chapterText: "Pense no negócio que você gostaria de ter depois de todo esse esforço.",
+          title: "Daqui a 5 anos, como você gostaria que sua empresa estivesse?",
+          placeholder: "Pode falar de clientes, equipe, dinheiro, unidades, tempo livre e da sua família."
         },
         {
           id: "greatestAchievement", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "Cada empres�rio tem uma vit�ria que vale mais.",
-          chapterText: "Para alguns � abrir outra unidade. Para outros � pagar as contas com tranquilidade ou ter mais tempo com a fam�lia.",
-          title: "Qual conquista faria voc� dizer: �todo o esfor�o valeu a pena�?", placeholder: "Escreva com suas palavras."
+          chapterTitle: "Cada empresário tem uma vitória que vale mais.",
+          chapterText: "Para alguns é abrir outra unidade. Para outros é pagar as contas com tranquilidade ou ter mais tempo com a família.",
+          title: "Qual conquista faria você dizer: “todo o esforço valeu a pena”?", placeholder: "Escreva com suas palavras."
         },
         {
           id: "barrier", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "Falar do problema com clareza ajuda a enfrent�-lo.",
-          chapterText: "Ele pode estar nas vendas, no dinheiro, na equipe, na organiza��o ou no excesso de tarefas nas suas m�os.",
-          title: "O que mais atrapalha sua empresa de chegar l� hoje?", placeholder: "Conte o que mais pesa na sua rotina."
+          chapterTitle: "Falar do problema com clareza ajuda a enfrentá-lo.",
+          chapterText: "Ele pode estar nas vendas, no dinheiro, na equipe, na organização ou no excesso de tarefas nas suas mãos.",
+          title: "O que mais atrapalha sua empresa de chegar lá hoje?", placeholder: "Conte o que mais pesa na sua rotina."
         },
         {
           id: "oneProblem", chapter: "aspiration", type: "textarea", required: true,
-          chapterTitle: "N�o d� para consertar tudo de uma vez.",
-          chapterText: "Uma boa dire��o come�a escolhendo o problema que precisa ser resolvido primeiro.",
-          title: "Se pudesse resolver um �nico problema da empresa agora, qual seria?", placeholder: "Escolha o problema mais urgente."
+          chapterTitle: "Não dá para consertar tudo de uma vez.",
+          chapterText: "Uma boa direção começa escolhendo o problema que precisa ser resolvido primeiro.",
+          title: "Se pudesse resolver um único problema da empresa agora, qual seria?", placeholder: "Escolha o problema mais urgente."
         },
         {
           id: "instagram", chapter: "direction", type: "instagram", required: false,
-          chapterTitle: "J� entendemos uma parte importante da sua realidade.",
+          chapterTitle: "Já entendemos uma parte importante da sua realidade.",
           chapterText: "Agora podemos olhar, como complemento, alguns sinais do perfil da empresa na internet.",
-          title: "Qual � o Instagram da empresa?", placeholder: "@suaempresa"
+          title: "Qual é o Instagram da empresa?", placeholder: "@suaempresa"
         }
       ];
 
@@ -1321,14 +1595,14 @@
         if (question.type === "text") {
           control = `<div class="field-wrap"><input class="text-field" id="activeInput" name="${question.id}" type="text" value="${escapeAttribute(value)}" placeholder="${question.placeholder}" autocomplete="${question.autocomplete || "off"}" inputmode="${question.inputMode || "text"}" /><div class="field-error" id="fieldError">Conte um pouco para conseguirmos continuar.</div></div>`;
         } else if (question.type === "textarea") {
-          control = `<div class="field-wrap"><textarea class="long-field" id="activeInput" name="${question.id}" placeholder="${question.placeholder}" maxlength="900">${escapeHtml(value)}</textarea><div class="field-hint">N�o existe resposta certa. Pode escrever do seu jeito.</div><div class="field-error" id="fieldError">Conte um pouco para conseguirmos continuar.</div></div>`;
+          control = `<div class="field-wrap"><textarea class="long-field" id="activeInput" name="${question.id}" placeholder="${question.placeholder}" maxlength="900">${escapeHtml(value)}</textarea><div class="field-hint">Não existe resposta certa. Pode escrever do seu jeito.</div><div class="field-error" id="fieldError">Conte um pouco para conseguirmos continuar.</div></div>`;
         } else if (question.type === "choice") {
-          control = `<div class="choice-grid">${question.options.map(option => `<button class="choice-card ${value === option ? "selected" : ""}" type="button" data-value="${escapeAttribute(option)}"><span>${option}</span><span class="choice-indicator" aria-hidden="true"></span></button>`).join("")}</div><div class="micro-log mono" id="microLog"></div><div class="field-error" id="fieldError">Escolha a op��o que mais parece com sua realidade.</div>`;
+          control = `<div class="choice-grid">${question.options.map(option => `<button class="choice-card ${value === option ? "selected" : ""}" type="button" data-value="${escapeAttribute(option)}"><span>${option}</span><span class="choice-indicator" aria-hidden="true"></span></button>`).join("")}</div><div class="micro-log mono" id="microLog"></div><div class="field-error" id="fieldError">Escolha a opção que mais parece com sua realidade.</div>`;
         } else if (question.type === "instagram") {
           control = `
             <div class="field-wrap">
               <input class="text-field" id="activeInput" name="${question.id}" type="text" value="${escapeAttribute(value)}" placeholder="${question.placeholder}" autocomplete="off" autocapitalize="none" spellcheck="false" />
-              <div class="field-hint">Essa parte � opcional. Se a leitura n�o estiver dispon�vel, seu diagn�stico continua normalmente.</div>
+              <div class="field-hint">Essa parte é opcional. Se a leitura não estiver disponível, seu diagnóstico continua normalmente.</div>
             </div>
             <div class="scanner-card" id="scannerCard" aria-live="polite">
               <div class="scanner-head">
@@ -1336,9 +1610,9 @@
                 <div class="scanner-id"><strong id="scannerHandle">@empresa</strong><span class="mono" id="scannerMode">Aguardando canal</span></div>
               </div>
               <div class="scanner-grid">
-                <div class="scanner-metric"><b id="scanMetric1">�</b><small>Pessoas seguindo</small></div>
-                <div class="scanner-metric"><b id="scanMetric2">�</b><small>Publica��es</small></div>
-                <div class="scanner-metric"><b id="scanMetric3">�</b><small>Intera��o</small></div>
+                <div class="scanner-metric"><b id="scanMetric1">—</b><small>Pessoas seguindo</small></div>
+                <div class="scanner-metric"><b id="scanMetric2">—</b><small>Publicações</small></div>
+                <div class="scanner-metric"><b id="scanMetric3">—</b><small>Interação</small></div>
               </div>
               <div class="scan-sweep" id="scanSweep"></div>
             </div>`;
@@ -1485,10 +1759,10 @@
         const meta = chapterMeta[state.chapter];
         $("#progressFill").style.width = `${percent}%`;
         $("#chapterIndex").textContent = `${meta.code} / ${meta.label}`;
-        if (state.chapter === "knowledge") $("#humanProgress").textContent = `Voc� j� compartilhou ${Math.max(6, percent)}% da sua hist�ria.`;
-        else if (state.chapter === "reality") $("#humanProgress").textContent = `J� entendemos ${percent}% de como sua empresa funciona hoje.`;
-        else if (state.chapter === "aspiration") $("#humanProgress").textContent = `J� entendemos ${percent}% do futuro que voc� quer construir.`;
-        else $("#humanProgress").textContent = `Seu primeiro mapa est� ${percent}% pronto.`;
+        if (state.chapter === "knowledge") $("#humanProgress").textContent = `Você já compartilhou ${Math.max(6, percent)}% da sua história.`;
+        else if (state.chapter === "reality") $("#humanProgress").textContent = `Já entendemos ${percent}% de como sua empresa funciona hoje.`;
+        else if (state.chapter === "aspiration") $("#humanProgress").textContent = `Já entendemos ${percent}% do futuro que você quer construir.`;
+        else $("#humanProgress").textContent = `Seu primeiro mapa está ${percent}% pronto.`;
       }
 
       function normalizeHandle(value) {
@@ -1505,7 +1779,7 @@
         $("#scannerHandle").textContent = handle;
         $("#avatarInitial").textContent = handle.replace("@", "").charAt(0).toUpperCase() || "K";
         $("#scannerMode").textContent = "PREPARANDO LEITURA";
-        ["#scanMetric1", "#scanMetric2", "#scanMetric3"].forEach(id => $(id).textContent = "���");
+        ["#scanMetric1", "#scanMetric2", "#scanMetric3"].forEach(id => $(id).textContent = "···");
         animate({ targets: "#scanSweep", scaleX: [0, 1], duration: 1300, easing: "easeInOutQuart" });
         state.scanTimer = setTimeout(() => runInstagramScan(handle), 650);
       }
@@ -1541,9 +1815,9 @@
           const engagement = Number(profile.engagementRate || 0);
 
           $("#scanMetric1").textContent = followers ? followers.toLocaleString("pt-BR") : "localizado";
-          $("#scanMetric2").textContent = postsPerMonth ? `${postsPerMonth}/m�s` : "vis�vel";
+          $("#scanMetric2").textContent = postsPerMonth ? `${postsPerMonth}/mês` : "visível";
           $("#scanMetric3").textContent = engagement ? `${engagement.toFixed(1)}%` : "em leitura";
-          mode.textContent = "LEITURA COMPLEMENTAR CONCLU�DA";
+          mode.textContent = "LEITURA COMPLEMENTAR CONCLUÍDA";
 
           const avatarUrl = profile.avatarUrl || profile.profilePicUrl || data.avatarUrl;
           if (avatarUrl) {
@@ -1558,9 +1832,9 @@
           return data;
         } catch (error) {
           $("#scanMetric1").textContent = "perfil";
-          $("#scanMetric2").textContent = "n�o lido";
+          $("#scanMetric2").textContent = "não lido";
           $("#scanMetric3").textContent = "opcional";
-          mode.textContent = "N�O FOI POSS�VEL LER � O DIAGN�STICO CONTINUA";
+          mode.textContent = "NÃO FOI POSSÍVEL LER · O DIAGNÓSTICO CONTINUA";
           return null;
         }
       }
@@ -1607,7 +1881,7 @@
         await delay(visualTime);
 
         rows.forEach(row => { row.classList.remove("active"); row.classList.add("done"); });
-        $("#processingNote").textContent = "Finalizando a leitura. Nenhuma resposta ser� apresentada como certeza quando os dados n�o forem suficientes.";
+        $("#processingNote").textContent = "Finalizando a leitura. Nenhuma resposta será apresentada como certeza quando os dados não forem suficientes.";
 
         await Promise.race([ diagnosticPromise, delay(14000) ]);
         buildResult();
@@ -1645,7 +1919,7 @@
           }
           return state.apiResponse;
         } catch (error) {
-          console.warn("KRAD OS: diagn�stico por IA n�o conclu�do. Aplicando leitura segura local.", error);
+          console.warn("KRAD OS: diagnóstico por IA não concluído. Aplicando leitura segura local.", error);
           return null;
         } finally {
           clearTimeout(timeout);
@@ -1656,7 +1930,7 @@
         document.body.classList.remove("locked");
         document.documentElement.classList.remove("locked");
         document.body.dataset.chapter = "result";
-        $("#systemStatus").textContent = "Mapa inicial dispon�vel";
+        $("#systemStatus").textContent = "Mapa inicial disponível";
         setStageVisible(stages.result, true);
         animate({
           targets: stages.processing,
@@ -1674,21 +1948,194 @@
         });
       }
 
-                  function buildResult() {
-        const report = state.apiResponse || {};
-        const story = report.storytelling || "Obrigado por compartilhar o cen�rio da sua empresa conosco.\n\nPercebemos grandes oportunidades de otimiza��o no seu fluxo atual. Para que possamos entender melhor e montar um plano de a��o focado no seu neg�cio, o pr�ximo passo � agendarmos uma r�pida Sess�o Estrat�gica.\n\nNossa equipe j� recebeu seus dados e adorar�amos bater um papo focado em resultados reais.";
-        
-        // Parse markdown to simple HTML (bold and paragraphs)
-        let htmlStory = story
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .split('\n\n')
-            .map(p => p.trim() ? `<p style="margin-bottom: 24px;">${p}</p>` : '')
-            .join('');
+      function buildResult() {
+        const a = state.answers;
+        const firstName = (a.founderName || "").split(" ")[0];
+        const company = a.companyName || "Sua empresa";
+        const report = normalizeReport(state.apiResponse, a, company);
 
-        const container = $('#storytellingContent');
-        if (container) {
-          container.innerHTML = htmlStory;
+        $("#result-title").textContent = firstName ? `${firstName}, nós entendemos por que isso está pesando.` : "Nós entendemos por que isso está pesando.";
+        $("#resultIntro").textContent = report.openingMessage;
+        $("#chiefComplaint").textContent = report.chiefComplaint;
+        $("#openingMessage").textContent = report.diagnosticSummary;
+        $("#priorityLevel").textContent = report.priorityLevel;
+        $("#dominantBottleneck").textContent = report.dominantBottleneck.title;
+        $("#dominantWhy").textContent = report.dominantBottleneck.explanation;
+        $("#rootCauseTitle").textContent = report.rootCause.title;
+        $("#rootCauseText").textContent = report.rootCause.explanation;
+        $("#riskLevel").textContent = report.riskIfUntreated.level;
+        $("#riskText").textContent = report.riskIfUntreated.text;
+
+        renderClinicalItems($("#symptomSignals"), report.symptoms, "S");
+        renderClinicalItems($("#strengthSignals"), report.strengths, "✓");
+        renderSimpleList($("#rootCauseEvidence"), report.rootCause.evidence, "↳");
+        renderSimpleList($("#avoidNowList"), report.avoidNow, "×");
+        renderSimpleList($("#confirmList"), report.questionsToConfirm, "?");
+        renderTreatment(report.treatmentPlan);
+
+        const pathLabels = { academy: "Estudar e aplicar os fundamentos", session: "Sessão de Descoberta Humana", growth: "Acompanhamento do Growth Team" };
+        $("#recommendedPathTitle").textContent = pathLabels[report.recommendedPath] || pathLabels.session;
+        $("#recommendedPathReason").textContent = report.recommendedPathReason;
+
+        const axes = report.axes?.length === 4 ? report.axes : deriveAxes(a);
+        $("#axisList").innerHTML = axes.map(axis => `<div class="axis-item"><span class="axis-code mono">${escapeHtml(axis.code)}</span><span class="axis-name">${escapeHtml(axis.name)}</span><span class="axis-state mono">${escapeHtml(axis.state)}</span></div>`).join("");
+        ["K", "R", "A", "D"].forEach(code => {
+          const axis = axes.find(item => item.code === code) || { value: 50 };
+          const element = $(`#arc${code}`);
+          element.dataset.value = Math.max(10, Math.min(95, Number(axis.value) || 50));
+        });
+
+        $$(".path-card").forEach(card => {
+          card.style.borderColor = card.dataset.path === report.recommendedPath ? "rgba(106,122,44,.72)" : "";
+          card.style.background = card.dataset.path === report.recommendedPath ? "rgba(106,122,44,.09)" : "";
+        });
+      }
+
+      function normalizeReport(apiReport, a, company) {
+        const fallback = buildFallbackClinicalReport(a, company);
+        if (!apiReport || typeof apiReport !== "object") return fallback;
+        const safeArray = (value, alt) => Array.isArray(value) && value.length ? value : alt;
+        const safeObject = (value, alt) => value && typeof value === "object" ? { ...alt, ...value } : alt;
+
+        return {
+          ...fallback,
+          ...apiReport,
+          dominantBottleneck: safeObject(apiReport.dominantBottleneck, fallback.dominantBottleneck),
+          rootCause: {
+            ...fallback.rootCause,
+            ...(apiReport.rootCause || {}),
+            evidence: safeArray(apiReport.rootCause?.evidence, fallback.rootCause.evidence)
+          },
+          riskIfUntreated: safeObject(apiReport.riskIfUntreated, fallback.riskIfUntreated),
+          symptoms: safeArray(apiReport.symptoms, fallback.symptoms).slice(0, 5),
+          strengths: safeArray(apiReport.strengths, fallback.strengths).slice(0, 4),
+          treatmentPlan: safeArray(apiReport.treatmentPlan, fallback.treatmentPlan).slice(0, 3),
+          avoidNow: safeArray(apiReport.avoidNow, fallback.avoidNow).slice(0, 5),
+          questionsToConfirm: safeArray(apiReport.questionsToConfirm, fallback.questionsToConfirm).slice(0, 5),
+          axes: safeArray(apiReport.axes, fallback.axes).slice(0, 4)
+        };
+      }
+
+      function buildFallbackClinicalReport(a, company) {
+        const firstName = (a.founderName || "").split(" ")[0] || "Você";
+        const dependsOnOwner = ["Mais de 45 horas", "Quase o tempo todo"].includes(a.operationalHours) || ["Só consigo ficar poucos dias", "Hoje não consigo me afastar"].includes(a.vacation);
+        const marginBlind = a.margin !== "Sim, sei com segurança";
+        const referralDependent = a.discovery === "Por indicação de outras pessoas";
+        const intuitionDriven = ["Vou mais pela experiência", "Decido conforme o problema aparece"].includes(a.decisionBasis);
+        const digital = a.instagramPublic?.profile || a.instagramPublic || {};
+
+        let bottleneck = { title: "A empresa depende demais de você para continuar funcionando.", explanation: "Quando o dono concentra decisões, tarefas e respostas, qualquer tentativa de crescer aumenta primeiro o cansaço e só depois o resultado." };
+        let priority = "prioridade alta · organização da operação";
+        if (marginBlind) {
+          bottleneck = { title: "A empresa ainda não enxerga com segurança quais vendas fortalecem o caixa.", explanation: "Sem saber quanto realmente sobra, aumentar o movimento pode aumentar trabalho, compras e pressão sem aumentar a saúde financeira." };
+          priority = "prioridade alta · clareza do dinheiro";
+        } else if (referralDependent) {
+          bottleneck = { title: "O crescimento depende de pessoas lembrarem de indicar a empresa.", explanation: "A confiança existe, mas a chegada de novos compradores ainda não é organizada o suficiente para permitir planejamento." };
+          priority = "prioridade moderada · atração previsível";
         }
+
+        const quotedBarrier = (a.barrier || "").trim();
+        const quotedProblem = (a.oneProblem || "").trim();
+        const complaint = quotedProblem || quotedBarrier || (dependsOnOwner ? "Diminuir o peso da rotina sobre o dono." : "Organizar o crescimento sem perder a qualidade.");
+
+        const symptoms = [];
+        if (dependsOnOwner) symptoms.push({ title: "O negócio para ou perde ritmo quando você se afasta.", evidence: `Você informou que gasta ${String(a.operationalHours || "muitas horas").toLowerCase()} nas tarefas do dia a dia e que ${String(a.vacation || "não consegue se afastar").toLowerCase()}.`, impact: "Isso limita férias, planejamento e crescimento com qualidade." });
+        if (marginBlind) symptoms.push({ title: "O lucro real ainda não está totalmente visível.", evidence: `Na pergunta sobre quanto sobra de cada venda, sua resposta foi: “${a.margin || "ainda não consigo saber"}”.`, impact: "Sem essa clareza, preço, promoção e investimento podem ser decididos no escuro." });
+        if (referralDependent) symptoms.push({ title: "A chegada de clientes depende muito da lembrança de terceiros.", evidence: "Você indicou que a maioria dos novos clientes chega por indicação.", impact: "A empresa pode ter semanas fortes e fracas sem conseguir explicar ou planejar a diferença." });
+        if (intuitionDriven) symptoms.push({ title: "Decisões importantes acontecem sob pressão.", evidence: `Você contou que costuma decidir assim: “${a.decisionBasis}”.`, impact: "A experiência ajuda, mas a urgência tende a escolher o problema mais barulhento, não o mais importante." });
+        if (digital.engagementRate && Number(digital.engagementRate) < 1.5) symptoms.push({ title: "A presença digital existe, mas ainda gera pouca resposta visível.", evidence: `A leitura complementar encontrou cerca de ${Number(digital.engagementRate).toFixed(1)}% de interação.`, impact: "O perfil pode estar aparecendo sem facilitar suficientemente o interesse e o contato." });
+        if (!symptoms.length) symptoms.push({ title: "A empresa demonstra funcionamento, mas ainda precisa transformar experiência em método.", evidence: "Suas respostas mostram uma operação ativa e uma ambição clara.", impact: "Sem prioridades registradas, o avanço pode continuar dependendo de esforço extra." });
+
+        const strengths = [
+          { title: "Existe uma história real por trás do CNPJ.", evidence: `${company} está em funcionamento e ${firstName.toLowerCase() !== "você" ? firstName : "você"} consegue explicar o futuro que deseja.`, impact: "Isso dá sentido às mudanças e evita decisões copiadas de outras empresas." },
+          referralDependent ? { title: "A entrega gera confiança suficiente para receber indicações.", evidence: "A indicação é uma prova de confiança humana, porque quem recomenda coloca a própria reputação em jogo.", impact: "Existe valor real para organizar e tornar mais visível." } : { title: "A empresa já possui mais de um caminho para ser encontrada.", evidence: `Você informou que os clientes chegam principalmente: “${a.discovery || "por diferentes caminhos"}”.`, impact: "Isso cria uma base que pode ser medida e melhorada." },
+          { title: "Você conseguiu apontar uma dor prioritária.", evidence: complaint, impact: "Nomear o problema reduces a chance de gastar energia tentando resolver tudo ao mesmo tempo." }
+        ];
+
+        const rootEvidence = [];
+        if (marginBlind) rootEvidence.push("A falta de clareza sobre o que sobra de cada venda afeta preço, promoção, contratação e investimento.");
+        if (dependsOnOwner) rootEvidence.push("A concentração da rotina no fundador impede que a empresa desenvolva autonomia.");
+        if (referralDependent) rootEvidence.push("A confiança dos clientes ainda não foi transformada em um caminho constante para atrair novos compradores.");
+        if (intuitionDriven) rootEvidence.push("A ausência de poucos indicadores simples mantém decisões importantes dependentes do momento.");
+        if (!rootEvidence.length) rootEvidence.push("A principal hipótese é falta de uma prioridade única acompanhada por rotina e responsáveis claros.");
+
+        return {
+          openingMessage: `${firstName}, nós não vemos falta de esforço. Vemos uma empresa que chegou até aqui sustentada por coragem e presença constante do dono. O problema é que o mesmo esforço que manteve ${company} de pé pode estar impedindo o próximo estágio. Esta leitura separa o que é sintoma do que provavelmente é causa, para que você não trate apenas o que aparece na superfície.`,
+          chiefComplaint: complaint,
+          diagnosticSummary: `O que você descreveu não parece ser apenas um problema de divulgação. Existe uma combinação entre rotina, clareza dos números e organização da chegada de clientes. A primeira intervenção deve reduzir o ponto de maior dependência antes de acelerar qualquer ferramenta de marketing.`,
+          priorityLevel: priority,
+          dominantBottleneck: bottleneck,
+          symptoms,
+          strengths,
+          rootCause: {
+            title: marginBlind ? "Falta de visibilidade econômica antes da expansão." : dependsOnOwner ? "Dependência operacional do fundador." : referralDependent ? "Confiança sem um sistema constante de atração." : "Crescimento sem uma prioridade única de gestão.",
+            explanation: "A hipótese principal é que problemas diferentes estão sendo tratados separadamente, embora nasçam do mesmo ponto. Quando a causa não é resolvida, novos conteúdos, anúncios ou contratações apenas colocam mais pressão sobre uma estrutura que ainda precisa de organização.",
+            evidence: rootEvidence
+          },
+          riskIfUntreated: {
+            level: dependsOnOwner || marginBlind ? "atenção elevada" : "atenção moderada",
+            text: dependsOnOwner ? "A tendência é o dono trabalhar cada vez mais para manter o mesmo controle. O crescimento pode aumentar falhas, atrasos e desgaste pessoal antes de gerar liberdade." : marginBlind ? "A empresa pode vender mais e, ainda assim, sentir falta de dinheiro, porque o aumento do movimento também aumenta custos e necessidade de caixa." : "A empresa pode continuar crescendo em alguns meses e parando em outros, sem conseguir repetir o que funcionou."
+          },
+          treatmentPlan: [
+            { phase: "Primeiros 7 dias", objective: "Parar de decidir no escuro e escolher um problema central.", actions: ["Registrar as principais entradas, custos e vendas da semana em uma folha simples.", "Listar as tarefas que somente o dono consegue executar hoje.", "Escolher um único problema para acompanhar durante o próximo ciclo."], successSignal: "A empresa termina a semana sabendo qual problema vem primeiro e quem precisa participar da solução." },
+            { phase: "Próximos 30 dias", objective: "Criar uma rotina que funcione sem depender de memória e urgência.", actions: ["Definir três números simples para acompanhar toda semana.", "Documentar pelo menos uma tarefa repetitiva que hoje depende do dono.", "Organizar um caminho claro para o cliente conhecer, entender e comprar."], successSignal: "As decisões começam a ser tomadas com a mesma base, mesmo em semanas corridas." },
+            { phase: "Próximos 90 dias", objective: "Crescer somente depois que a base conseguir absorver mais movimento.", actions: ["Delegar uma responsabilidade completa, com padrão e acompanhamento.", "Testar uma ação de atração de novos compradores com objetivo e limite de investimento definidos.", "Revisar preço, capacidade e qualidade antes de aumentar o volume."], successSignal: "A empresa consegue receber mais clientes sem aumentar na mesma proporção o peso sobre o dono." }
+          ],
+          avoidNow: [ "Aumentar anúncios antes de saber se a operação consegue atender bem.", "Fazer promoções sem saber quanto sobra depois de todos os custos.", "Contratar ferramentas diferentes para problemas que ainda não foram separados.", "Tentar mudar equipe, preço, divulgação e atendimento na mesma semana." ],
+          questionsToConfirm: [ "Qual produto ou serviço deixa mais dinheiro no caixa depois de todos os custos?", "Quais tarefas realmente param quando o dono não está presente?", "Quantos clientes novos chegam em um mês comum e de onde eles vieram?", "Qual é o limite atual de atendimento sem perder qualidade?", "Qual mudança traria alívio real para a vida do fundador nos próximos 90 dias?" ],
+          axes: deriveAxes(a),
+          recommendedPath: marginBlind || dependsOnOwner ? "session" : "academy",
+          recommendedPathReason: marginBlind || dependsOnOwner ? "As respostas indicam que a prioridade envolve decisões de gestão e operação. Uma conversa humana é mais segura do que entregar apenas uma lista genérica de tarefas." : "A base demonstra condições para começar com fundamentos e acompanhamento leve, sem criar dependência desnecessária."
+        };
+      }
+
+      function renderClinicalItems(container, items, marker) {
+        container.innerHTML = items.map((item, index) => `
+          <article class="clinical-list-item">
+            <span class="clinical-list-marker">${escapeHtml(marker === "S" ? String(index + 1).padStart(2, "0") : marker)}</span>
+            <div>
+              <strong>${escapeHtml(item.title || "Sinal identificado")}</strong>
+              ${item.evidence ? `<span class="evidence-quote">${escapeHtml(item.evidence)}</span>` : ""}
+              ${item.impact ? `<p>${escapeHtml(item.impact)}</p>` : ""}
+            </div>
+          </article>
+        `).join("");
+      }
+
+      function renderSimpleList(container, items, marker) {
+        container.innerHTML = (items || []).map(item => {
+          const text = typeof item === "string" ? item : item.text || item.title || "";
+          return `<article class="clinical-list-item"><span class="clinical-list-marker">${escapeHtml(marker)}</span><div><strong>${escapeHtml(text)}</strong></div></article>`;
+        }).join("");
+      }
+
+      function renderTreatment(plan) {
+        $("#treatmentPlan").innerHTML = (plan || []).map((item, index) => `
+          <article class="treatment-card">
+            <span class="mono">${escapeHtml(item.phase || `Fase ${index + 1}`)}</span>
+            <h3>${escapeHtml(item.objective || "Objetivo do ciclo")}</h3>
+            <ul class="treatment-actions">${(item.actions || []).map(action => `<li>${escapeHtml(action)}</li>`).join("")}</ul>
+            <p class="success-signal"><span>Sinal de melhora esperado</span>${escapeHtml(item.successSignal || "A empresa passa a decidir com mais clareza.")}</p>
+          </article>
+        `).join("");
+      }
+
+      function deriveAxes(a) {
+        const knowledge = 74;
+        let reality = 42;
+        if (a.margin === "Sim, sei com segurança") reality += 17;
+        if (["Olho números organizados", "Junto os números com minha experiência"].includes(a.decisionBasis)) reality += 16;
+        if (["Menos de 10 horas", "De 10 a 25 hours"].includes(a.operationalHours)) reality += 10;
+        const aspiration = Math.min(90, 50 + Math.round(((a.fiveYears || "").length + (a.greatestAchievement || "").length) / 35));
+        let direction = 43;
+        if ((a.oneProblem || "").length > 20) direction += 15;
+        if (a.instagram) direction += 5;
+        return [
+          { code: "K", name: "Conhecer", state: "história visível", value: knowledge },
+          { code: "R", name: "Realidade", state: reality >= 65 ? "base consistente" : "precisa de clareza", value: Math.min(86, reality) },
+          { code: "A", name: "Ambição", state: aspiration >= 70 ? "futuro nítido" : "em construção", value: aspiration },
+          { code: "D", name: "Direção", state: direction >= 64 ? "prioridade definida" : "precisa de foco", value: Math.min(82, direction) }
+        ];
       }
 
       function animateMaturity() {
@@ -1722,11 +2169,11 @@
 
         const company = state.answers.companyName || "minha empresa";
         const founder = state.answers.founderName || "";
-        const base = founder ? `Ol�! Sou ${founder}.` : "Ol�!";
+        const base = founder ? `Olá! Sou ${founder}.` : "Olá!";
 
         const messages = {
-          session: `${base} Fiz o diagn�stico no KRAD OS para ${company} e gostaria de conversar sobre um plano estrat�gico para o momento atual da empresa.`,
-          growth: `${base} Fiz o diagn�stico no KRAD OS para ${company} e quero entender como funciona o acompanhamento e a execu��o do Growth Team KRAD.`
+          session: `${base} Fiz o diagnóstico no KRAD OS para ${company} e gostaria de conversar sobre um plano estratégico para o momento atual da empresa.`,
+          growth: `${base} Fiz o diagnóstico no KRAD OS para ${company} e quero entender como funciona o acompanhamento e a execução do Growth Team KRAD.`
         };
         window.open(whatsappUrl(messages[path] || `${base} Vim pelo KRAD OS e gostaria de conversar.`), "_blank", "noopener,noreferrer");
       }
@@ -1757,6 +2204,3 @@
   </script>
 </body>
 </html>
-
-
-
