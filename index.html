@@ -820,7 +820,8 @@
         transition-duration: .01ms !important;
       }
     }
-  </style>
+    details > summary::-webkit-details-marker { display: none; }
+    </style>
 </head>
 <body class="locked" data-chapter="preface">
   <div class="app-shell" id="app">
@@ -919,39 +920,141 @@
         </div>
       </section>
 
-                  <section class="stage" id="result-stage" aria-labelledby="result-title">
-        <div style="background-color: #9f1a1a; color: #fff; padding: 60px 20px; text-align: center; border-radius: 0 0 32px 32px;">
-          <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 56px); margin: 0; text-transform: uppercase;">SEU DIAGNÓSTICO FOI<br><strong style="font-weight: 900; letter-spacing: -0.02em;">ENVIADO COM SUCESSO</strong></h1>
-          <p style="font-family: 'Inter', sans-serif; font-size: clamp(16px, 2vw, 22px); margin-top: 20px; opacity: 0.9;">Um especialista da KRAD entrará em contato com você em breve.</p>
-        </div>
-
-        <div style="text-align: center; padding: 60px 20px 40px;">
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(24px, 4vw, 36px); color: var(--cream); font-weight: 700;">Enquanto isso...</h2>
-        </div>
-
-        <section class="result-section" style="padding-top: 0; padding-bottom: 20px;">
-          <div style="text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <p style="font-family: 'Inter', sans-serif; font-size: 20px; color: var(--cream-muted);">A nossa Inteligência Artificial já cruzou as respostas da sua jornada com o seu Instagram. Veja abaixo a análise preliminar:</p>
+                        <section class="stage" id="result-stage" aria-labelledby="result-title" style="padding: 0; background: #070806;">
+        <!-- DASHBOARD HEADER -->
+        <div class="dash-header" style="background: #0e0f0c; border-bottom: 1px solid #20221c; padding: 40px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <h1 class="serif" id="dashCompanyName" style="font-size: clamp(24px, 4vw, 32px); color: #EDE4C5; margin: 0;">Empresa</h1>
+            <p id="dashMeta" class="mono" style="color: #6a6f5e; font-size: 12px; margin-top: 8px;">Cidade • Segmento • Faturamento</p>
           </div>
+          <div style="text-align: right;">
+            <div class="mono" style="color: #6a6f5e; font-size: 10px; margin-bottom: 5px;">ÍNDICE KRAD DE SAÚDE</div>
+            <div style="display: flex; align-items: baseline; gap: 10px; justify-content: flex-end;">
+              <span id="dashStage" style="color: #d12c2c; font-weight: bold; font-size: 14px; text-transform: uppercase;">Estágio</span>
+              <span id="dashScore" class="serif" style="font-size: 48px; color: #EDE4C5; line-height: 1;">0</span><span style="color: #6a6f5e; font-size: 20px;">/100</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-body" style="padding: 40px 5%; max-width: 1200px; margin: 0 auto; display: grid; gap: 40px;">
           
-          <div class="storytelling-container" id="storytellingContent" style="background:var(--cream);color:#070806;padding:clamp(30px, 6vw, 60px);border-radius:24px;font-size:clamp(16px, 2vw, 20px);line-height:1.6;font-family:'Playfair Display', Georgia, serif; max-width: 900px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-            <p style="text-align: center; opacity: 0.5;">Processando sua história e gerando plano de ação...</p>
-          </div>
-        </section>
-
-        <section class="result-section" style="margin-top:40px; margin-bottom: 120px;">
-          <div class="paths-grid" style="grid-template-columns:1fr; max-width:800px; margin: 0 auto;">
-            <article class="path-card" data-path="session" style="border-color:#5c1010; background:linear-gradient(to bottom, #1a0a0a, #0a0505); text-align: center; display: flex; flex-direction: column; align-items: center; padding: 50px 30px;">
-              <div>
-                <h3 style="color:#ffffff; font-size: 32px; margin-bottom: 15px; font-weight: 700;">Quer ter um plano de ação para escalar a sua empresa <span style="color: #d12c2c;">ainda hoje?</span></h3>
-                <p style="margin-bottom: 40px; color: #a0a0a0; font-size: 18px; max-width: 600px; margin-left: auto; margin-right: auto;">Transformamos conhecimento e processos em crescimento previsível. Conheça a KRAD e destrave o seu negócio.</p>
+          <!-- ROW 1: RADAR & BARS -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <!-- RADAR CARD -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Mapeamento de Eixos</h3>
+              <div class="radar-container" style="position: relative; max-width: 250px; margin: 0 auto; aspect-ratio: 1/1;">
+                <svg class="result-radar" viewBox="0 0 420 420" style="width: 100%; height: 100%; overflow: visible;">
+                  <circle cx="210" cy="210" r="160" fill="none" stroke="#20221c" stroke-width="1" />
+                  <circle cx="210" cy="210" r="120" fill="none" stroke="#20221c" stroke-width="1" />
+                  <circle cx="210" cy="210" r="80" fill="none" stroke="#20221c" stroke-width="1" />
+                  <circle cx="210" cy="210" r="40" fill="none" stroke="#20221c" stroke-width="1" />
+                  <line x1="210" y1="50" x2="210" y2="370" stroke="#20221c" stroke-width="1" />
+                  <line x1="50" y1="210" x2="370" y2="210" stroke="#20221c" stroke-width="1" />
+                  <line x1="97" y1="97" x2="323" y2="323" stroke="#20221c" stroke-width="1" />
+                  <line x1="323" y1="97" x2="97" y2="323" stroke="#20221c" stroke-width="1" />
+                  <polygon id="radarPolygon" points="210,210 210,210 210,210 210,210 210,210 210,210" fill="rgba(140,26,26,0.1)" stroke="#d12c2c" stroke-width="2" />
+                </svg>
+                <div class="radar-label" style="position:absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#EDE4C5;">Gestão</div>
+                <div class="radar-label" style="position:absolute; bottom: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#EDE4C5;">Crescimento</div>
+                <div class="radar-label" style="position:absolute; top: 20%; right: -30px; font-size:10px; color:#EDE4C5;">Mkt</div>
+                <div class="radar-label" style="position:absolute; top: 20%; left: -30px; font-size:10px; color:#EDE4C5;">Proc</div>
+                <div class="radar-label" style="position:absolute; bottom: 20%; right: -30px; font-size:10px; color:#EDE4C5;">Relac</div>
+                <div class="radar-label" style="position:absolute; bottom: 20%; left: -30px; font-size:10px; color:#EDE4C5;">Digital</div>
               </div>
-              <button class="krad-button light" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20acabei%20de%20fazer%20o%20diagn%C3%B3stico%20e%20gostaria%20de%20agendar%20uma%20Sess%C3%A3o%20Estrat%C3%A9gica%20KRAD.', '_blank')" style="background-color: #d12c2c; color: white; border: none; padding: 20px 40px; font-size: 20px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: transform 0.2s;">FALAR COM ESPECIALISTA</button>
-            </article>
+            </div>
+
+            <!-- BARS CARD -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Indicadores de Saúde</h3>
+              <div id="barCharts" style="display: flex; flex-direction: column; gap: 20px;"></div>
+            </div>
           </div>
-        </section>
+
+          <!-- TIMELINE -->
+          <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 40px 30px; overflow-x: auto;">
+            <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 40px; text-transform: uppercase; text-align: center;">Linha do Tempo de Maturidade</h3>
+            <div class="timeline" id="dashTimeline" style="display: flex; justify-content: space-between; align-items: center; position: relative; min-width: 600px; margin: 0 auto; padding: 0 20px;">
+              <div style="position: absolute; top: 10px; left: 30px; right: 30px; height: 2px; background: #20221c; z-index: 1;"></div>
+            </div>
+          </div>
+
+          <!-- X-RAY AND INSTA -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <!-- X-RAY -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Raio X da Operação</h3>
+              <div id="xrayList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+
+            <!-- INSTA -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Reflexo Digital (Instagram)</h3>
+              <div id="instaContent"></div>
+            </div>
+          </div>
+
+          <!-- PRIORITIES MATRIZ -->
+          <div>
+            <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Matriz de Prioridades</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+              <div style="background: rgba(30, 80, 40, 0.05); border: 1px solid rgba(30, 80, 40, 0.2); padding: 25px; border-radius: 16px;">
+                <h4 style="color: #4CAF50; font-size: 14px; margin-bottom: 15px;">🟢 O que já funciona</h4>
+                <ul id="cardsGreen" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #EDE4C5; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+              </div>
+              <div style="background: rgba(200, 150, 20, 0.05); border: 1px solid rgba(200, 150, 20, 0.2); padding: 25px; border-radius: 16px;">
+                <h4 style="color: #FFC107; font-size: 14px; margin-bottom: 15px;">🟡 Oportunidades</h4>
+                <ul id="cardsYellow" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #EDE4C5; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+              </div>
+              <div style="background: rgba(140, 26, 26, 0.05); border: 1px solid rgba(140, 26, 26, 0.2); padding: 25px; border-radius: 16px;">
+                <h4 style="color: #F44336; font-size: 14px; margin-bottom: 15px;">🔴 Prioridades Críticas</h4>
+                <ul id="cardsRed" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #EDE4C5; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONCLUSION -->
+          <div class="dash-card" style="background: var(--cream); border-radius: 16px; padding: 40px; color: #070806;">
+            <h3 class="mono" style="color: #3A4418; font-size: 12px; margin-bottom: 20px; text-transform: uppercase;">Conclusão KRAD</h3>
+            <p id="dashConclusion" class="serif" style="font-size: 20px; line-height: 1.6; font-weight: 500;">Processando...</p>
+          </div>
+
+          <!-- SIMULATION & ACTION PLAN -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <!-- SIMULATION -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Projeção de Potencial</h3>
+              <p style="color: #EDE4C5; font-size: 14px; margin-bottom: 30px; line-height: 1.6;">Se a sua empresa otimizar as áreas críticas e estruturar processos previsíveis, o crescimento acelerará exponencialmente.</p>
+              <div style="height: 150px; position: relative; border-bottom: 1px solid #20221c; border-left: 1px solid #20221c;">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width: 100%; height: 100%; overflow: visible;">
+                  <path id="simulationCurve" d="M0,100 Q50,90 100,20" fill="none" stroke="#d12c2c" stroke-width="2" stroke-linecap="round" stroke-dasharray="200" stroke-dashoffset="200" />
+                  <circle id="simDot" cx="100" cy="20" r="3" fill="#EDE4C5" opacity="0" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- PLAN -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Plano de Ação Sugerido</h3>
+              <ol id="dashPlan" style="color: #EDE4C5; font-size: 15px; line-height: 1.8; padding-left: 20px; display: flex; flex-direction: column; gap: 15px; margin:0; font-family: 'Inter', sans-serif;">
+              </ol>
+            </div>
+          </div>
+
+          <!-- CTA PREMIUM -->
+          <div class="dash-card" style="background: linear-gradient(135deg, #1f0a0a, #0a0505); border: 1px solid #5c1010; border-radius: 24px; padding: 60px 40px; text-align: center; margin-top: 40px;">
+            <h2 class="serif" style="font-size: clamp(24px, 4vw, 36px); color: #fff; margin-bottom: 20px;">Gostou do seu diagnóstico?</h2>
+            <p style="color: #a0a0a0; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">O relatório mostra onde estão as oportunidades. Na Imersão KRAD nós construímos um plano prático para a sua empresa parar de sobreviver e começar a escalar.</p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+              <button class="krad-button light" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20agendar%20minha%20Imers%C3%A3o%20KRAD.', '_blank')" style="background-color: #d12c2c; color: white; border: none; padding: 20px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer;">Agendar Imersão KRAD</button>
+              <button class="krad-button" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20falar%20com%20um%20Especialista.', '_blank')" style="background-color: transparent; border: 1px solid #d12c2c; color: #d12c2c; padding: 20px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer;">Falar com Especialista</button>
+            </div>
+          </div>
+
+        </div>
         
-        <footer class="site-footer">
+        <footer class="site-footer" style="padding: 40px; border-top: 1px solid #20221c; margin-top: 60px;">
           <span class="footer-mark">KRAD®</span>
           <span class="mono">Copyright 2026. Todos os direitos reservados.</span>
         </footer>
@@ -1730,21 +1833,111 @@
         });
       }
 
-            function buildResult() {
+                  function buildResult() {
         const report = state.apiResponse || {};
-        const story = report.storytelling || "Obrigado por compartilhar o cenário da sua empresa conosco.\n\nPercebemos grandes oportunidades de otimização no seu fluxo atual. Para que possamos entender melhor e montar um plano de ação focado no seu negócio, o próximo passo é agendarmos uma rápida Sessão Estratégica.\n\nNossa equipe já recebeu seus dados e adoraríamos bater um papo focado em resultados reais.";
         
-        // Parse markdown to simple HTML (bold and paragraphs)
-        let htmlStory = story
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .split('\n\n')
-            .map(p => p.trim() ? `<p style="margin-bottom: 24px;">${p}</p>` : '')
-            .join('');
+        // Populate Header
+        const cName = state.answers.companyName || "Empresa";
+        const cCity = state.answers.city || "Cidade Não Informada";
+        const cSeg = state.answers.segment || "Segmento Não Informado";
+        const cRev = state.answers.revenue || "Faturamento Não Informado";
+        $("#dashCompanyName").textContent = cName;
+        $("#dashMeta").textContent = `${cCity} • ${cSeg} • ${cRev}`;
 
-        const container = document.querySelector('#storytellingContent');
-        if (container) {
-          container.innerHTML = htmlStory;
-        }
+        // Krad Index & Stage
+        const score = report.kradIndex || 0;
+        $("#dashStage").textContent = report.stage || "Analisando";
+        anime({ targets: "#dashScore", innerHTML: [0, score], round: 1, duration: 2500, easing: "easeOutExpo" });
+
+        // Radar Polygon
+        const radarData = report.radarScores || {gestao:0, marketing:0, processos:0, presenca:0, relacionamento:0, crescimento:0};
+        const maxR = 160;
+        const vals = [
+          (radarData.gestao || 0)/10 * maxR,
+          (radarData.crescimento || 0)/10 * maxR,
+          (radarData.marketing || 0)/10 * maxR,
+          (radarData.processos || 0)/10 * maxR,
+          (radarData.relacionamento || 0)/10 * maxR,
+          (radarData.presenca || 0)/10 * maxR
+        ];
+        // calculate x,y for 6 angles
+        const angles = [0, 60, 120, 180, 240, 300].map(a => (a - 90) * Math.PI / 180);
+        let points = vals.map((r, i) => {
+          return `${210 + r * Math.cos(angles[i])},${210 + r * Math.sin(angles[i])}`;
+        }).join(" ");
+        anime({ targets: "#radarPolygon", points: [`210,210 210,210 210,210 210,210 210,210 210,210`, points], duration: 1500, easing: "easeOutQuart" });
+
+        // Bar Charts
+        const bars = report.barScores || {gestao:0, marketing:0, presenca:0, estrategia:0, processos:0, clientes:0};
+        const barContainer = $("#barCharts");
+        barContainer.innerHTML = Object.keys(bars).map(k => {
+          return `<div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:#EDE4C5; text-transform:capitalize;"><span>${k}</span><span>${bars[k]}/10</span></div>
+            <div style="width:100%; height:6px; background:#20221c; border-radius:3px; overflow:hidden;">
+              <div class="bar-fill" style="width:0%; height:100%; background:#d12c2c;" data-target="${bars[k]*10}%"></div>
+            </div>
+          </div>`;
+        }).join("");
+        setTimeout(() => {
+          $(".bar-fill").forEach(b => {
+            anime({ targets: b, width: b.dataset.target, duration: 1200, easing: "easeOutQuart" });
+          });
+        }, 500);
+
+        // Timeline
+        const stages = ["Sobrevive", "Existe", "Cresce", "Escala", "Transforma"];
+        const currStage = report.stage || "Sobrevive";
+        let reached = true;
+        $("#dashTimeline").innerHTML += stages.map(s => {
+          const isCurr = s.toLowerCase() === currStage.toLowerCase();
+          const color = reached ? "#d12c2c" : "#20221c";
+          const dot = isCurr ? `<circle cx="10" cy="10" r="6" fill="#fff"/><circle cx="10" cy="10" r="10" fill="none" stroke="#d12c2c" stroke-width="2"/>` : `<circle cx="10" cy="10" r="4" fill="${color}"/>`;
+          if (isCurr) reached = false;
+          return `<div style="display:flex; flex-direction:column; align-items:center; z-index:2; gap:10px;">
+            <svg width="20" height="20">${dot}</svg>
+            <span style="font-size:10px; color:${isCurr ? '#EDE4C5' : '#6a6f5e'}; text-transform:uppercase;">${s}</span>
+          </div>`;
+        }).join("");
+
+        // X-Ray
+        const xrayData = report.xray || {};
+        $("#xrayList").innerHTML = Object.keys(xrayData).filter(k => !k.includes("Text")).map(k => {
+          return `<details style="border:1px solid #20221c; border-radius:8px; padding:12px 15px; cursor:pointer;">
+            <summary style="font-size:14px; color:#EDE4C5; font-weight:bold; text-transform:capitalize; list-style:none; display:flex; justify-content:space-between;">
+              <span>${k}</span> <span>${xrayData[k]}</span>
+            </summary>
+            <div style="margin-top:10px; font-size:13px; color:#a0a0a0; padding-top:10px; border-top:1px solid #20221c;">${xrayData[k+"Text"] || ""}</div>
+          </details>`;
+        }).join("");
+
+        // Instagram
+        const igData = state.answers.instagramPublic ? state.answers.instagramPublic : (state.answers.instagram ? state.answers.instagram : null);
+        let igHtml = `<p style="color:#6a6f5e; font-size:12px; margin-bottom:20px;">@${igData ? (igData.username || igData) : 'Nao informado'}</p>`;
+        
+        const ia = report.instagramAnalysis || {};
+        igHtml += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">`;
+        ["foto", "bio", "destaques", "autoridade"].forEach(k => {
+          const stars = Array(5).fill("").map((_,i) => i < (ia[k] || 0) ? "★" : "☆").join("");
+          igHtml += `<div><div style="font-size:12px; color:#EDE4C5; text-transform:capitalize;">${k}</div>
+          <div style="color:#d12c2c; font-size:10px; margin-bottom:5px;">${stars}</div>
+          <div style="font-size:11px; color:#a0a0a0;">${ia[k+"Text"] || ""}</div></div>`;
+        });
+        igHtml += `</div>`;
+        $("#instaContent").innerHTML = igHtml;
+
+        // Cards
+        const ac = report.actionCards || {funcionando:[], oportunidades:[], prioridades:[]};
+        $("#cardsGreen").innerHTML = (ac.funcionando||[]).map(t => `<li>✓ ${t}</li>`).join("");
+        $("#cardsYellow").innerHTML = (ac.oportunidades||[]).map(t => `<li>• ${t}</li>`).join("");
+        $("#cardsRed").innerHTML = (ac.prioridades||[]).map(t => `<li>! ${t}</li>`).join("");
+
+        // Conclusion & Plan
+        $("#dashConclusion").textContent = report.conclusion || "Finalizado com sucesso.";
+        $("#dashPlan").innerHTML = (report.actionPlan || []).map(t => `<li>${t}</li>`).join("");
+
+        // Simulate Curve
+        anime({ targets: "#simulationCurve", strokeDashoffset: [200, 0], duration: 2500, delay: 1000, easing: "easeOutCubic" });
+        anime({ targets: "#simDot", opacity: [0, 1], duration: 500, delay: 3500 });
       }
 
       function animateMaturity() {
