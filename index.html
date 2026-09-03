@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Fred.o — Infraestrutura de Metrologia e Revenda B2B</title>
+    
+    <title>Fredo Partners - Domine o Checkout com HaaS</title>
+    <meta name="description" content="Pare de brigar por preço na venda de PDV. Use o primeiro Hardware as a Service de metrologia para escalar suas vendas e faturar 40% de comissão recorrente.">
+    
+    <meta name="theme-color" content="#0d0d0d" />
 
-    <!-- Google Fonts: Space Grotesk (Tecnologia) + Playfair Display (Luxo/Impacto) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 
-    <!-- Motores de Animação de Alta Performance (GSAP + ScrollTrigger + SplitType + Rive) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -24,15 +20,15 @@
                 extend: {
                     colors: {
                         fredo: {
-                            bg: '#080a08',
-                            panel: '#101410',
-                            lime: '#D2FF00', /* O Verde Lima exato extraído do Design System */
-                            muted: '#8e9689'
+                            dark: '#0a0a0a',
+                            panel: '#141414',
+                            green: '#00FF66', /* O Verde Neon do Visor */
+                            text: '#e5e5e5',
+                            muted: '#808080'
                         }
                     },
                     fontFamily: {
                         sans: ['Space Grotesk', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
                     }
                 }
             }
@@ -41,279 +37,239 @@
 
     <style>
         :root {
-            --cubic-default: cubic-bezier(0.65, 0.05, 0, 1);
-            --duration-default: 0.75s;
-            --animation-default: var(--duration-default) var(--cubic-default);
-            --min-width: 992px;  
-            --max-width: 1920px; 
-            --design-width: 1728;
-            --design-unit: 16;
-            --fluid-container: clamp(var(--min-width), 100vw, var(--max-width));
-            --fluid-font: calc(var(--fluid-container) / var(--design-width) * var(--design-unit) * 1);
+            --color-lime: #00FF66;
+            --animation-default: 0.75s cubic-bezier(0.65, 0.05, 0, 1);
         }
 
-        html {
-            font-size: var(--fluid-font);
-            scroll-behavior: smooth;
-            background-color: theme('colors.fredo.bg');
-            color: white;
+        body {
+            background-color: #0a0a0a;
+            color: #e5e5e5;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        ::selection { background-color: theme('colors.fredo.lime'); color: black; }
+        /* Seleção de Texto Premium */
+        ::selection { background-color: var(--color-lime); color: #000; }
 
-        /* Oculta barra de rolagem lateral com elegância estilo Awwwards */
-        body::-webkit-scrollbar { width: 6px; }
-        body::-webkit-scrollbar-track { background: #080a08; }
-        body::-webkit-scrollbar-thumb { background: #1a221a; border-radius: 3px; }
+        /* Animações de Scroll e Split Text (Placeholders para GSAP) */
+        [split-text] { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+        .text-reveal-hover { transition: color var(--animation-default); }
+        .text-reveal-hover:hover { color: var(--color-lime); }
 
-        .text-eyebrow {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: theme('colors.fredo.lime');
-            font-weight: 700;
-        }
-
-        /* Configuração de Split Text para Animação GSAP */
-        .line { overflow: hidden; padding-bottom: 0.2rem; }
-        .char { transform: translateY(115%); transition: transform var(--animation-default); }
-
-        /* Painel Glassmorphism Avançado */
-        .glass-panel {
-            background: rgba(16, 20, 16, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Botão Magnético */
+        /* Efeito Magnético e Botões */
         .btn-fredo {
-            transition: all var(--animation-default);
+            background: transparent;
+            border: 1px solid #333;
+            color: #fff;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
         .btn-fredo:hover {
-            background-color: theme('colors.fredo.lime');
-            color: black;
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(210, 255, 0, 0.2);
+            border-color: var(--color-lime);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+        }
+        .btn-fredo::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--color-lime); transition: all 0.4s ease; z-index: -1;
+        }
+        .btn-fredo:hover::before { left: 0; }
+        .btn-fredo:hover span { color: #000; font-weight: 700; }
+
+        /* Efeito de Vidro (Glassmorphism) */
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Marquee Animation (Oceano Vermelho vs Solução) */
+        .marquee-track {
+            display: flex; width: max-content; animation: scroll-left 20s linear infinite;
+        }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Canvas Placeholder (Para o WebGL/Rive do Robô 3D) */
+        .rive-canvas-container {
+            position: absolute; top: 50%; right: -10%; transform: translateY(-50%);
+            width: 800px; height: 800px; opacity: 0.8; pointer-events: none;
+            background: radial-gradient(circle, rgba(0,255,102,0.1) 0%, rgba(10,10,10,0) 60%);
         }
     </style>
 </head>
-<body class="selection:bg-fredo-lime selection:text-black">
 
-    <!-- CABEÇALHO / NAVBAR (Estilo Corporativo Limpo com Acesso Destilado) -->
-    <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter flex items-center gap-3">
-                <div class="w-3 h-3 bg-fredo-lime rounded-full animate-ping"></div>
-                FREDO <span class="text-fredo-muted text-xs tracking-widest uppercase ml-2 border-l border-white/20 pl-3">Partners</span>
+<body class="antialiased font-sans selection:bg-fredo-green selection:text-black">
+
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5" data-nav-wrap>
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter flex items-center gap-2 text-white">
+                <div class="w-3 h-3 bg-fredo-green rounded-full animate-pulse"></div>
+                FREDO <span class="text-fredo-muted text-sm font-normal uppercase tracking-widest ml-2">Partners</span>
             </div>
-
             <div class="hidden md:flex gap-8 text-sm font-medium text-fredo-muted">
-                <a href="#modelo" class="hover:text-fredo-lime transition-colors">Modelo HaaS</a>
-                <a href="#api" class="hover:text-fredo-lime transition-colors">API & Integração</a>
-                <a href="#comissao" class="hover:text-fredo-lime transition-colors">Split 40%</a>
+                <a href="#modelo" class="text-reveal-hover">O Modelo</a>
+                <a href="#api" class="text-reveal-hover">Integração API</a>
+                <a href="#comissao" class="text-reveal-hover">Comissionamento</a>
             </div>
-            
-            <!-- Roteamento Estratégico para o Consumidor Final -->
-            <a href="consumidor.html" class="group flex items-center gap-3 bg-fredo-panel px-5 py-2.5 rounded-full border border-white/10 hover:border-fredo-lime transition-all">
-                <span class="text-xs uppercase tracking-wider font-bold text-white group-hover:text-fredo-lime transition-colors">Sou Dono de Restaurante</span>
-                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-fredo-lime group-hover:text-black transition-all">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </div>
+            <a href="#homologar" class="btn-fredo px-6 py-2 rounded-full text-sm">
+                <span class="relative z-10 transition-colors">Solicitar Homologação</span>
             </a>
         </div>
     </nav>
 
     <main>
-        <!-- HERO SECTION B2B (Foco em Revenda e Autoridade) -->
-        <section class="min-h-screen flex flex-col justify-center px-8 lg:px-24 pt-32 relative overflow-hidden">
-            <div class="max-w-5xl z-10">
-                <div class="text-eyebrow mb-6 flex items-center gap-4">
-                    <span class="w-10 h-px bg-fredo-lime"></span>
-                    Programa Oficial de Revendas Fundadoras
-                </div>
+        <section class="relative min-h-screen flex items-center pt-20 overflow-hidden" data-hero-animation-container>
+            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
                 
-                <h1 id="hero-title" class="text-[5.5rem] lg:text-[7rem] leading-[0.92] font-bold tracking-tighter mb-8">
-                    Venda o software. <br>
-                    Nós dominamos a <span class="font-serif italic text-fredo-lime font-normal tracking-normal">física.</span>
-                </h1>
-                
-                <p id="hero-sub" class="text-xl lg:text-2xl text-fredo-muted max-w-2xl font-medium leading-relaxed mb-12 opacity-0 translate-y-8">
-                    O primeiro sistema <strong class="text-white font-bold">Hardware as a Service (HaaS)</strong> de metrologia que se integra ao seu PDV, elimina as perdas do restaurante e injeta <span class="text-white font-bold">40% de comissão recorrente</span> no seu caixa.
-                </p>
-
-                <div id="hero-cta" class="flex flex-col sm:flex-row gap-5 opacity-0 translate-y-8">
-                    <a href="#homologar" class="btn-fredo bg-fredo-lime text-black px-8 py-5 rounded-full font-bold uppercase tracking-wider text-sm text-center">
-                        Solicitar Homologação de Revenda
-                    </a>
-                    <a href="#modelo" class="btn-fredo border border-white/20 text-white px-8 py-5 rounded-full font-medium tracking-wide text-sm text-center hover:border-fredo-lime">
-                        Entender o Modelo HaaS
-                    </a>
-                </div>
-            </div>
-
-            <!-- Camada interativa Rive / WebGL (Simulação de hardware em execução) -->
-            <div class="absolute right-10 top-1/2 -translate-y-1/2 w-[500px] h-[500px] hidden xl:flex items-center justify-center opacity-30 pointer-events-none">
-                <canvas id="rive-canvas" width="500" height="500"></canvas>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE IMPACTO / MÉTRICAS -->
-        <section class="py-24 bg-fredo-lime text-black px-8">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
-                <div class="space-y-2">
-                    <h3 class="font-serif italic text-7xl font-bold">&lt; 1s</h3>
-                    <p class="font-bold text-xs uppercase tracking-widest opacity-80">Latência de Injeção Direta no PDV</p>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-serif italic text-7xl font-bold">100</h3>
-                    <p class="font-bold text-xs uppercase tracking-widest opacity-80">Pesagens Salvas em Buffer Offline</p>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-serif italic text-7xl font-bold">40%</h3>
-                    <p class="font-bold text-xs uppercase tracking-widest opacity-80">Repasse Mensal Recorrente (MRR)</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- TELA 2: A QUEBRA DA OBJEÇÃO (O Cavalo de Troia) -->
-        <section id="modelo" class="py-32 bg-fredo-panel px-8 relative">
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <div class="text-eyebrow mb-4">Engenharia Comercial</div>
-                    <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-6">
-                        Você foca na venda. <br>Nós blindamos o <span class="text-fredo-muted">suporte.</span>
-                    </h2>
-                    <p class="text-fredo-muted text-lg leading-relaxed">
-                        Sabemos que vender hardware tradicional traz dor de cabeça e margem baixa. O Fredo foi estruturado para proteger a sua operação de suporte de campo no fim de semana.
+                <div class="max-w-3xl">
+                    <div class="inline-block border border-fredo-green/30 rounded-full px-4 py-1 mb-6">
+                        <span class="text-fredo-green text-xs font-bold uppercase tracking-widest" data-anim-high="right">Programa de Revendas Fundadoras</span>
+                    </div>
+                    
+                    <h1 class="text-6xl md:text-8xl font-bold leading-none tracking-tighter mb-8 text-white" split-text="lines">
+                        Pare de brigar <br>
+                        por preço na <span class="text-fredo-green">venda de PDV.</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-fredo-muted mb-12 max-w-2xl leading-relaxed" split-text="lines" data-anim-high="right, delay-200">
+                        O Fredo é o primeiro sistema <strong class="text-white">Hardware as a Service (HaaS)</strong> de metrologia que se integra ao seu software, estanca as perdas do restaurante e injeta 40% de comissão recorrente no seu caixa. Sem suporte físico.
                     </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#homologar" class="bg-fredo-green text-black font-bold px-8 py-4 rounded-full text-center hover:bg-white transition-colors">
+                            Quero ser Revenda Fundadora
+                        </a>
+                        <a href="#api" class="border border-white/20 text-white px-8 py-4 rounded-full text-center hover:border-white transition-colors">
+                            Ver Documentação Técnica
+                        </a>
+                    </div>
                 </div>
 
-                <div class="space-y-8">
-                    <div class="glass-panel p-8 rounded-2xl">
-                        <h3 class="text-2xl font-bold text-fredo-lime mb-3">1. O Abridores de Portas (Cavalo de Troia)</h3>
-                        <p class="text-fredo-muted">O mercado de automação está saturado. O Fredo permite que você bata na porta do restaurante oferecendo uma solução para estancar o roubo invisível de CMV. O robô entra, e o seu PDV entra junto.</p>
+            </div>
+            
+            <div class="rive-canvas-container hidden lg:block">
+                </div>
+        </section>
+
+        <section id="modelo" class="py-32 bg-fredo-panel relative">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row gap-16">
+                    <div class="md:w-1/2">
+                        <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-white" split-text="lines">Você vende o Software.<br>Nós assumimos o <span class="text-fredo-muted italic">"Ferro"</span>.</h2>
                     </div>
-                    <div class="glass-panel p-8 rounded-2xl">
-                        <h3 class="text-2xl font-bold text-white mb-3">2. Zero Visitas de Campo</h3>
-                        <p class="text-fredo-muted">O hardware travou ou deu problema? Nosso protocolo de backup (1 robô reserva a cada 5 instalados) e suporte remoto resolvem a falha. Sua equipe não gasta combustível.</p>
+                    <div class="md:w-1/2 space-y-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-fredo-green mb-3">MRR Blindado (40%)</h3>
+                            <p class="text-fredo-muted text-lg leading-relaxed">Pare de caçar clientes todos os dias. Receba até R$ 158 mensais por máquina instalada. Crie previsibilidade de caixa na sua operação.</p>
+                        </div>
+                        <div class="h-px w-full bg-white/10"></div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-3">Zero Suporte Físico</h3>
+                            <p class="text-fredo-muted text-lg leading-relaxed">O equipamento caiu ou derramaram líquido na placa? O nosso SLA prevê a manutenção e troca (1 robô reserva a cada 5). Sua equipe não gasta gasolina no fim de semana.</p>
+                        </div>
+                        <div class="h-px w-full bg-white/10"></div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-3">O Seu "Cavalo de Tróia"</h3>
+                            <p class="text-fredo-muted text-lg leading-relaxed">Não bata na porta do restaurante para vender "mais um sistema". Chegue oferecendo o fim da fila travada. O robô entra, e o seu PDV entra junto.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TELA 3: ENGENHARIA E API (Para a Software House) -->
-        <section id="api" class="py-32 px-8 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center max-w-3xl mx-auto mb-20">
-                    <div class="text-eyebrow mb-4">Documentação Técnica</div>
-                    <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-6">Pronto para plugar no seu código.</h2>
-                    <p class="text-fredo-muted text-lg">Uma API limpa e estável. Seu desenvolvedor Júnior homologa a integração em poucas horas.</p>
+        <section id="api" class="py-32 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#00FF66 1px, transparent 1px); background-size: 40px 40px;"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">Arquitetura Plug & Play.</h2>
+                    <p class="text-xl text-fredo-muted max-w-2xl mx-auto">Uma API limpa, moderna e bem documentada para que o seu desenvolvedor homologue a integração em horas, não em semanas.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
-                        <div class="font-mono text-xs text-fredo-lime mb-3">01 // CONECTIVIDADE</div>
-                        <h4 class="font-bold text-xl mb-2">Wi-Fi Nativo</h4>
-                        <p class="text-fredo-muted text-sm">Integração sem fio de alta estabilidade diretamente na rede local do estabelecimento.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-panel p-10 rounded-2xl hover:border-fredo-green/50 transition-colors">
+                        <div class="text-fredo-green mb-4 text-sm font-mono">{ buffer_offline }</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Modo Offline (Continuidade)</h3>
+                        <p class="text-fredo-muted">Se o Wi-Fi do cliente cair, a memória flash do Fredo armazena até 100 pesagens locais e sincroniza automaticamente (Batch Upload) quando a rede voltar. A fila não para.</p>
                     </div>
-                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
-                        <div class="font-mono text-xs text-fredo-lime mb-3">02 // SEGURANÇA</div>
-                        <h4 class="font-bold text-xl mb-2">Modo Offline</h4>
-                        <p class="text-fredo-muted text-sm">Memória interna retém pesagens se a internet cair, sincronizando automaticamente no retorno.</p>
+                    
+                    <div class="glass-panel p-10 rounded-2xl hover:border-fredo-green/50 transition-colors">
+                        <div class="text-fredo-green mb-4 text-sm font-mono">{ firmware_ota }</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Atualizações Silenciosas</h3>
+                        <p class="text-fredo-muted">Todo deploy de melhoria (Over-The-Air) é empurrado via nuvem durante a madrugada. A máquina do seu cliente amanhece atualizada sem fricção operacional.</p>
                     </div>
-                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
-                        <div class="font-mono text-xs text-fredo-lime mb-3">03 // ATUALIZAÇÃO</div>
-                        <h4 class="font-bold text-xl mb-2">Deploy OTA</h4>
-                        <p class="text-fredo-muted text-sm">Atualizações de sistema injetadas remotamente durante a madrugada, sem fricção.</p>
+
+                    <div class="glass-panel p-10 rounded-2xl hover:border-fredo-green/50 transition-colors">
+                        <div class="text-fredo-green mb-4 text-sm font-mono">{ latency_ms }</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Injeção em < 1 Segundo</h3>
+                        <p class="text-fredo-muted">A placa embarcada processa o sinal da célula de carga e injeta o dado final diretamente no seu PDV quase instantaneamente, eliminando 100% da digitação humana.</p>
                     </div>
-                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
-                        <div class="font-mono text-xs text-fredo-lime mb-3">04 // GOVERNANÇA</div>
-                        <h4 class="font-bold text-xl mb-2">SLA 24 Horas</h4>
-                        <p class="text-fredo-muted text-sm">Suporte técnico dedicado para reparos rápidos em caso de atualizações de PDV.</p>
+
+                    <div class="glass-panel p-10 rounded-2xl hover:border-fredo-green/50 transition-colors">
+                        <div class="text-fredo-green mb-4 text-sm font-mono">{ sla_24h }</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">SLA de Quebra de API</h3>
+                        <p class="text-fredo-muted">O seu sistema principal atualizou e quebrou a comunicação com o robô? Nossa equipe de engenharia tem o SLA de até 24h úteis para consertar a integração.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TELA 4: FORMULÁRIO DE HOMOLOGAÇÃO DE REVENDA -->
-        <section id="homologar" class="py-32 px-8 bg-fredo-panel border-t border-white/5">
-            <div class="max-w-3xl mx-auto glass-panel p-10 lg:p-16 rounded-3xl">
-                <div class="text-center mb-10">
-                    <div class="text-eyebrow mb-2">Edital de Revendas Fundadoras</div>
-                    <h2 class="text-3xl lg:text-5xl font-bold tracking-tight">Garanta o seu Tier de 40%</h2>
-                    <p class="text-fredo-muted text-sm mt-2">Vagas limitadas por região para consolidação de mercado.</p>
-                </div>
-
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
+        <section id="homologar" class="py-32 bg-fredo-green relative text-black">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-5xl font-bold tracking-tighter mb-6 text-black">Solicite as chaves da API.</h2>
+                <p class="text-xl mb-12 font-medium opacity-80">Preencha os dados da sua operação. Nosso C-Level entrará em contato para uma demonstração técnica ao vivo (com o robô na mesa) e envio do contrato de Revenda Fundadora (Tier 40%).</p>
+                
+                <form class="bg-black/90 p-10 rounded-3xl text-left border border-white/10 shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">Nome do Responsável</label>
-                            <input type="text" class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors" placeholder="Ex: Carlos Alberto">
+                            <label class="block text-fredo-muted text-sm font-medium mb-2">Nome Completo (Responsável)</label>
+                            <input type="text" class="w-full bg-fredo-panel border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-fredo-green transition-colors" placeholder="João Silva">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">E-mail Corporativo</label>
-                            <input type="email" class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors" placeholder="carlos@suarevenda.com.br">
+                            <label class="block text-fredo-muted text-sm font-medium mb-2">E-mail Corporativo</label>
+                            <input type="email" class="w-full bg-fredo-panel border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-fredo-green transition-colors" placeholder="joao@suasoftwarehouse.com.br">
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">Sistema de PDV Representado</label>
-                            <input type="text" class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors" placeholder="Ex: CPlug, TOTVS, Sistema Próprio">
-                        </div>
-                        <div>
-                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">Tamanho da Base Ativa</label>
-                            <select class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors">
-                                <option class="bg-fredo-bg">Até 50 clientes ativos</option>
-                                <option class="bg-fredo-bg">De 51 a 200 clientes ativos</option>
-                                <option class="bg-fredo-bg">Mais de 200 clientes ativos</option>
-                            </select>
-                        </div>
+                    <div class="mb-6">
+                        <label class="block text-fredo-muted text-sm font-medium mb-2">Qual sistema de PDV você representa/desenvolve?</label>
+                        <input type="text" class="w-full bg-fredo-panel border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-fredo-green transition-colors" placeholder="Ex: CPlug, TOTVS, Sistema Próprio...">
                     </div>
 
-                    <button type="submit" class="btn-fredo w-full bg-fredo-lime text-black font-bold uppercase tracking-widest py-5 rounded-xl text-center mt-4">
-                        Enviar Solicitação de Parceria
+                    <div class="mb-10">
+                        <label class="block text-fredo-muted text-sm font-medium mb-2">Qual o tamanho atual da sua carteira de clientes ativos (Food Service)?</label>
+                        <select class="w-full bg-fredo-panel border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-fredo-green transition-colors appearance-none">
+                            <option>Selecione uma opção</option>
+                            <option>De 1 a 50 clientes</option>
+                            <option>De 51 a 200 clientes</option>
+                            <option>Mais de 200 clientes</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full bg-fredo-green text-black font-bold text-lg py-4 rounded-xl hover:bg-white transition-colors">
+                        Agendar Demonstração Técnica e Homologação
                     </button>
+                    <p class="text-center text-fredo-muted text-xs mt-4">Suas informações estão seguras sob as diretrizes da LGPD (Manual FBOS).</p>
                 </form>
             </div>
         </section>
     </main>
 
-    <!-- SCRIPT DE ANIMAÇÃO GSAP E SPLIT TEXT -->
-    <script>
-        document.addEventListener("DOMContentLoaded", (event) => {
-            // Inicializa o corte de texto (SplitType)
-            const splitHeading = new SplitType('#hero-title', { types: 'lines, chars' });
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-2xl font-bold tracking-tighter flex items-center gap-2 text-white opacity-50 hover:opacity-100 transition-opacity">
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+                FREDO
+            </div>
+            <div class="text-fredo-muted text-sm">
+                &copy; 2026 Fredo Automação. Todos os direitos reservados.
+            </div>
+            <div class="flex gap-6 text-sm text-fredo-muted">
+                <a href="#" class="hover:text-white transition-colors">Termos de Revenda</a>
+                <a href="#" class="hover:text-white transition-colors">Documentação da API</a>
+            </div>
+        </div>
+    </footer>
 
-            // Animação de entrada fluida (Curva cubic-bezier extraída da McLaren)
-            gsap.registerPlugin(ScrollTrigger);
-
-            const tl = gsap.timeline();
-            
-            tl.to('.char', {
-                y: 0,
-                stagger: 0.02,
-                duration: 1,
-                ease: "power4.out"
-            })
-            .to('#hero-sub', {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: "power3.out"
-            }, "-=0.6")
-            .to('#hero-cta', {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: "power3.out"
-            }, "-=0.6");
-        });
-    </script>
 </body>
 </html>
