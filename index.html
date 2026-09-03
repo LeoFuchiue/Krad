@@ -61,12 +61,11 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230B132B'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%23C5A47E' font-family='serif'>S</text></svg>"/>
 
 <!-- ═══════════════════════════════════════════
-     CORE CSS (DESIGN SYSTEM)
+     CORE CSS (DESIGN SYSTEM PREMIUM)
 ═══════════════════════════════════════════ -->
 <style>
-/* --- 1. DESIGN TOKENS (Variáveis Globais) --- */
+/* --- 1. DESIGN TOKENS --- */
 :root {
-  /* Paleta de Cores Premium */
   --c-navy-dark:   #050A15;
   --c-navy:        #0B132B;
   --c-navy-light:  #1C2541;
@@ -79,21 +78,17 @@
   --c-border:      rgba(197, 164, 126, 0.2);
   --c-border-dark: rgba(255, 255, 255, 0.1);
 
-  /* Tipografia */
   --f-display: 'Playfair Display', serif;
   --f-body:    'Inter', sans-serif;
   --f-mono:    'Space Mono', monospace;
 
-  /* Espaçamentos Fluidos e Layout */
   --px-container: clamp(1.25rem, 5vw, 4rem);
   --py-section:   clamp(4rem, 8vw, 8rem);
-  --gap-grid:     clamp(1.5rem, 4vw, 3rem);
   --max-width:    1280px;
   
-  /* Efeitos */
   --radius-sm: 4px;
   --radius-md: 8px;
-  --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-sm: 0 4px 10px rgba(0,0,0,0.05);
   --shadow-md: 0 10px 30px rgba(11, 19, 43, 0.08);
   --transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -102,18 +97,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: var(--f-body);
-  color: var(--c-navy);
-  background-color: var(--c-white);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  font-family: var(--f-body); color: var(--c-navy);
+  background-color: var(--c-white); line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
 ul { list-style: none; }
 
-/* Tipografia Fluida (Evita dezenas de media queries) */
 h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.15; color: var(--c-navy); }
 h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; }
 h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; letter-spacing: -0.01em; }
@@ -122,93 +113,44 @@ p { font-size: clamp(0.95rem, 1.2vw, 1.1rem); color: var(--c-gray-text); }
 em { font-style: italic; color: var(--c-gold); }
 
 /* --- 3. COMPONENTES REUTILIZÁVEIS --- */
-.container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--px-container);
-}
-
-/* Tag de Seção (Sobrancelha) */
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 0.75rem;
-  font-family: var(--f-mono); font-size: 0.75rem;
-  text-transform: uppercase; letter-spacing: 0.2em;
-  color: var(--c-gold); margin-bottom: 1.5rem;
-}
+.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--px-container); }
+.eyebrow { display: inline-flex; align-items: center; gap: 0.75rem; font-family: var(--f-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--c-gold); margin-bottom: 1.5rem; }
 .eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--c-gold); }
 
-/* Botões */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  padding: 1rem 2rem; border-radius: var(--radius-sm);
-  font-family: var(--f-body); font-size: 0.875rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.05em;
-  cursor: pointer; transition: var(--transition); border: 1px solid transparent;
-}
-.btn-gold {
-  background-color: var(--c-gold); color: var(--c-navy-dark);
-}
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: var(--radius-sm); font-family: var(--f-body); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); border: 1px solid transparent; }
+.btn-gold { background-color: var(--c-gold); color: var(--c-navy-dark); }
 .btn-gold:hover { background-color: var(--c-gold-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197, 164, 126, 0.3); }
-
-.btn-outline {
-  background-color: transparent; color: var(--c-white);
-  border-color: var(--c-border-dark);
-}
+.btn-outline { background-color: transparent; color: var(--c-white); border-color: var(--c-border-dark); }
 .btn-outline:hover { border-color: var(--c-gold); color: var(--c-gold); background: rgba(197, 164, 126, 0.05); }
 
-/* Animação Reveal (Scroll) */
 .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* --- 4. NAVEGAÇÃO (GLASSMORPHISM) --- */
-.header {
-  position: fixed; top: 0; width: 100%; z-index: 100;
-  padding: 1.25rem 0; transition: var(--transition);
-}
-.header.scrolled {
-  background: rgba(11, 19, 43, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--c-border-dark);
-}
+/* --- 4. HEADER --- */
+.header { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.25rem 0; transition: var(--transition); }
+.header.scrolled { background: rgba(11, 19, 43, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 0; border-bottom: 1px solid var(--c-border-dark); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
 .logo { display: flex; flex-direction: column; color: var(--c-white); font-family: var(--f-display); font-weight: 700; font-size: 1.25rem; line-height: 1; }
 .logo span { font-family: var(--f-body); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--c-gold); text-transform: uppercase; margin-top: 0.2rem; }
-.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
 .nav-links a { color: var(--c-white); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
 .nav-links a:hover { color: var(--c-gold); }
-
-/* Menu Mobile */
 .menu-btn { display: none; background: none; border: none; color: var(--c-white); cursor: pointer; }
 .menu-btn svg { width: 32px; height: 32px; }
 
 /* --- 5. SEÇÕES --- */
-/* Hero Section (Tema Escuro Premium) */
-.hero {
-  position: relative; min-height: 100vh;
-  background-color: var(--c-navy-dark); color: var(--c-white);
-  display: flex; align-items: center; justify-content: center;
-  padding-top: 6rem; overflow: hidden;
-}
-/* Efeito de grade/fundo */
-.hero::after {
-  content: ''; position: absolute; inset: 0; opacity: 0.03;
-  background-image: linear-gradient(var(--c-white) 1px, transparent 1px), linear-gradient(90deg, var(--c-white) 1px, transparent 1px);
-  background-size: 60px 60px; pointer-events: none;
-}
+/* Hero */
+.hero { position: relative; min-height: 100vh; background-color: var(--c-navy-dark); color: var(--c-white); display: flex; align-items: center; justify-content: center; padding-top: 6rem; overflow: hidden; }
+.hero::after { content: ''; position: absolute; inset: 0; opacity: 0.03; background-image: linear-gradient(var(--c-white) 1px, transparent 1px), linear-gradient(90deg, var(--c-white) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
 .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; display: flex; flex-direction: column; align-items: center;}
 .hero h1 { color: var(--c-white); margin-bottom: 1.5rem; }
-.hero h1 em { color: var(--c-gold); font-weight: 400; }
 .hero p { color: #A0AEC0; margin-bottom: 2.5rem; font-size: clamp(1rem, 1.5vw, 1.25rem); }
-
 .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
 .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border: 1px solid var(--c-border-dark); border-radius: 50px; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-gold); text-transform: uppercase; background: rgba(255,255,255,0.02); }
 .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--c-gold); }
-
 .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;}
 
-/* Estatísticas */
+/* Stats */
 .stats { background: var(--c-navy); border-top: 1px solid var(--c-border-dark); position: relative; z-index: 10;}
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 .stat-item { padding: 3rem 2rem; text-align: center; border-right: 1px solid var(--c-border-dark); }
@@ -218,7 +160,7 @@ em { font-style: italic; color: var(--c-gold); }
 
 /* Sobre */
 .about { padding: var(--py-section) 0; background: var(--c-white); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-grid); align-items: center; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
 .about-image { position: relative; }
 .about-image img { border-radius: var(--radius-md); box-shadow: var(--shadow-md); width: 100%; object-fit: cover; aspect-ratio: 3/4;}
 .about-image::before { content:''; position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-top:2px solid var(--c-gold); border-right:2px solid var(--c-gold); z-index:0; }
@@ -227,10 +169,10 @@ em { font-style: italic; color: var(--c-gold); }
 .about-list li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--c-gray-light); color: var(--c-navy-light); }
 .about-list li::before { content: '✓'; color: var(--c-gold); font-weight: bold; }
 
-/* Serviços (CSS Grid Auto-fit) */
+/* Serviços */
 .services { padding: var(--py-section) 0; background: var(--c-off-white); }
 .section-header { max-width: 700px; margin-bottom: 4rem; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
 .service-card { background: var(--c-white); padding: 3rem 2rem; border-radius: var(--radius-md); border: 1px solid var(--c-gray-light); transition: var(--transition); position: relative; overflow: hidden; }
 .service-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:3px; background:var(--c-gold); transition:var(--transition); }
 .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: transparent; }
@@ -238,27 +180,53 @@ em { font-style: italic; color: var(--c-gold); }
 .service-icon { margin-bottom: 1.5rem; color: var(--c-gold); }
 .service-card h3 { margin-bottom: 1rem; font-size: 1.5rem; }
 
-/* Banner Citação */
+/* Quote */
 .quote-banner { background: var(--c-navy-dark); padding: 6rem 0; text-align: center; color: var(--c-white); position: relative;}
 .quote-banner blockquote { font-family: var(--f-display); font-size: clamp(1.5rem, 3vw, 2.5rem); font-style: italic; max-width: 800px; margin: 0 auto 2rem; line-height: 1.4; }
 .quote-banner cite { font-family: var(--f-mono); font-size: 0.875rem; color: var(--c-gold); letter-spacing: 0.1em; text-transform: uppercase; font-style: normal; }
 
-/* Como Funciona */
-.process { padding: var(--py-section) 0; }
-.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; counter-reset: step; }
-.process-step { position: relative; padding-top: 3rem; }
-.process-step::before { counter-increment: step; content: "0" counter(step); position: absolute; top: -10px; left: 0; font-family: var(--f-display); font-size: 4rem; font-weight: 700; color: var(--c-gray-light); line-height: 1; z-index: -1; }
+/* Processo (Como Funciona) */
+.process { padding: var(--py-section) 0; background: var(--c-white); }
+.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 2rem; counter-reset: step; padding-top: 2rem; }
+.process-step { position: relative; padding: 2.5rem 1.5rem 1.5rem; background: var(--c-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border-top: 3px solid var(--c-gold); transition: var(--transition);}
+.process-step:hover { transform: translateY(-3px); box-shadow: var(--shadow-md);}
+.process-step::before { counter-increment: step; content: "0" counter(step) "."; position: absolute; top: -20px; left: 1.5rem; font-family: var(--f-display); font-size: 2.5rem; color: var(--c-gold); background: var(--c-white); padding: 0 10px; line-height: 1; }
 .process-step h3 { font-size: 1.25rem; margin-bottom: 1rem; }
 
-/* Formulário de Contato / Análise */
-.contact { padding: var(--py-section) 0; background: var(--c-navy-dark); color: var(--c-white); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-grid); align-items: center; }
+/* Depoimentos */
+.testimonials { padding: var(--py-section) 0; background: var(--c-navy); color: var(--c-white); }
+.testimonials h2 { color: var(--c-white); margin-bottom: 4rem; }
+.testimonials p { color: #A0AEC0; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
+.test-card { background: rgba(255,255,255,0.03); border: 1px solid var(--c-border-dark); padding: 2.5rem 2rem; border-radius: var(--radius-md); position: relative; }
+.test-mark { font-family: var(--f-display); font-size: 4rem; color: var(--c-gold); line-height: 0.8; opacity: 0.4; margin-bottom: 1rem; }
+.test-text { font-style: italic; margin-bottom: 1.5rem; line-height: 1.8; }
+.test-author { font-weight: 700; color: var(--c-white); font-size: 1rem; }
+.test-role { font-size: 0.8rem; color: var(--c-gold); }
+
+/* FAQ */
+.faq { padding: var(--py-section) 0; background: var(--c-off-white); }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.faq-list { display: flex; flex-direction: column; gap: 1rem; }
+.faq-item { background: var(--c-white); border-radius: var(--radius-sm); border: 1px solid var(--c-gray-light); overflow: hidden; }
+.faq-question { width: 100%; text-align: left; padding: 1.5rem; background: none; border: none; font-family: var(--f-body); font-weight: 600; font-size: 1rem; color: var(--c-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+.faq-question:hover { color: var(--c-gold); }
+.faq-question svg { transition: transform 0.3s ease; color: var(--c-gold); }
+.faq-item.active .faq-question svg { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--c-white); }
+.faq-answer p { padding: 0 1.5rem 1.5rem; }
+
+/* Contato (Form) */
+.contact { padding: var(--py-section) 0; background: linear-gradient(135deg, var(--c-navy-dark) 0%, var(--c-navy) 100%); color: var(--c-white); position: relative; }
+.contact::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--c-gold), transparent); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
 .contact h2 { color: var(--c-white); }
-.contact-form { background: var(--c-navy); padding: 3rem; border-radius: var(--radius-md); border: 1px solid var(--c-border-dark); }
+.contact-form { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); padding: 3rem; border-radius: var(--radius-md); border: 1px solid rgba(197, 164, 126, 0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 .input-group { margin-bottom: 1.5rem; }
 .input-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-gold); margin-bottom: 0.5rem; }
 .input-group input, .input-group select { width: 100%; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border-dark); border-radius: var(--radius-sm); color: var(--c-white); font-family: var(--f-body); transition: var(--transition); }
 .input-group input:focus, .input-group select:focus { outline: none; border-color: var(--c-gold); background: rgba(255,255,255,0.08); }
+.input-group select option { background: var(--c-navy); color: var(--c-white); }
 .contact-form .btn { width: 100%; margin-top: 1rem; }
 
 /* Footer */
@@ -272,11 +240,11 @@ em { font-style: italic; color: var(--c-gold); }
 .footer ul a:hover { color: var(--c-gold); }
 .footer-bottom { border-top: 1px solid var(--c-border-dark); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #A0AEC0; }
 
-/* Botão Flutuante WhatsApp */
+/* Botão Flutuante WPP */
 .wpp-float { position: fixed; bottom: 2rem; right: 2rem; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 999; transition: var(--transition); }
 .wpp-float:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
 
-/* --- 6. RESPONSIVIDADE (MEDIA QUERIES) --- */
+/* --- RESPONSIVO --- */
 @media (max-width: 992px) {
   .nav-links {
     position: absolute; top: 100%; left: 0; width: 100%; background: var(--c-navy-dark);
@@ -288,7 +256,7 @@ em { font-style: italic; color: var(--c-gold); }
   .menu-btn { display: block; }
   .nav-cta { display: none; }
   
-  .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+  .about-grid, .contact-grid, .faq-grid, .footer-grid { grid-template-columns: 1fr; }
   .about-image { order: -1; margin-bottom: 2rem; }
   .footer-grid { gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
@@ -318,7 +286,9 @@ em { font-style: italic; color: var(--c-gold); }
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Especialidades</a></li>
         <li><a href="#processo">Como Funciona</a></li>
-        <li><a href="#contato" class="btn btn-gold" style="color:var(--c-navy-dark); padding:0.5rem 1.5rem; margin-left:1rem;">Análise Gratuita</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contato" class="btn btn-gold nav-cta" style="color:var(--c-navy-dark); padding:0.5rem 1.5rem; margin-left:1rem;">Análise Gratuita</a></li>
       </ul>
     </nav>
 
@@ -342,7 +312,7 @@ em { font-style: italic; color: var(--c-gold); }
     </div>
 
     <div class="hero-actions reveal">
-      <a href="https://wa.me/5519992074605?text=Olá,%20Dra.%20Sâmara!%20Gostaria%20de%20uma%20análise%20gratuita." class="btn btn-gold" target="_blank">Falar com a Advogada</a>
+      <a href="#contato" class="btn btn-gold">Falar com a Advogada</a>
       <a href="#servicos" class="btn btn-outline">Ver Especialidades</a>
     </div>
   </div>
@@ -371,7 +341,6 @@ em { font-style: italic; color: var(--c-gold); }
       </ul>
     </div>
     <div class="about-image reveal">
-      <!-- Imagem com loading lazy para performance -->
       <img src="foto-samara.jpg" alt="Dra. Sâmara Damasceno, advogada especialista em direito bancário" loading="lazy" width="600" height="800">
     </div>
   </div>
@@ -386,25 +355,40 @@ em { font-style: italic; color: var(--c-gold); }
     </div>
 
     <div class="services-grid">
-      <!-- Card 1 -->
       <article class="service-card reveal">
         <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
         <h3>Ações Revisionais</h3>
         <p>Revisão judicial de contratos de veículos, imóveis e empréstimos com taxas abusivas. Identificamos e exigimos o abatimento do que foi cobrado ilegalmente.</p>
       </article>
       
-      <!-- Card 2 -->
       <article class="service-card reveal">
         <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
         <h3>Busca e Apreensão</h3>
         <p>Atuação de urgência para impedir a tomada do seu veículo. Entramos com medidas liminares para suspender a ordem judicial e forçar um acordo justo.</p>
       </article>
 
-      <!-- Card 3 -->
       <article class="service-card reveal">
         <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
         <h3>Superendividamento</h3>
         <p>Aplicação da Lei 14.181/2021 para reunir todas as suas dívidas e repactuá-las em juízo, garantindo que a parcela caiba na sua renda mantendo o mínimo existencial.</p>
+      </article>
+      
+      <article class="service-card reveal">
+        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <h3>Limpeza de Nome</h3>
+        <p>Retirada de apontamentos indevidos no SPC, Serasa e cartórios. Negativação sem fundamento é ilegal — exija reparação por danos morais.</p>
+      </article>
+
+      <article class="service-card reveal">
+        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+        <h3>Renegociação de Dívidas</h3>
+        <p>Negociação extrajudicial qualificada com bancos e financeiras, com respaldo técnico para obter descontos reais sobre o principal da dívida.</p>
+      </article>
+
+      <article class="service-card reveal">
+        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+        <h3>Crédito Consignado</h3>
+        <p>Análise e contestação de descontos indevidos em folha de pagamento e taxas de cartões de crédito acima dos limites do Banco Central.</p>
       </article>
     </div>
   </div>
@@ -427,20 +411,113 @@ em { font-style: italic; color: var(--c-gold); }
     </div>
     <div class="process-grid">
       <div class="process-step reveal">
-        <h3>1. Análise Gratuita</h3>
+        <h3>Análise Gratuita</h3>
         <p>Avaliamos seu contrato ou situação via WhatsApp, sem custo algum, para identificar viabilidade jurídica.</p>
       </div>
       <div class="process-step reveal">
-        <h3>2. Estratégia</h3>
+        <h3>Estratégia</h3>
         <p>Apresentamos o plano de ação exato (revisional, liminar ou negociação extrajudicial) de forma clara.</p>
       </div>
       <div class="process-step reveal">
-        <h3>3. Execução Digital</h3>
+        <h3>Execução Digital</h3>
         <p>Assinatura de documentos via celular. Protocolamos as defesas rapidamente em qualquer estado do Brasil.</p>
       </div>
       <div class="process-step reveal">
-        <h3>4. Resolução</h3>
+        <h3>Resolução</h3>
         <p>Acompanhamento total até a redução da dívida, limpeza do nome ou acordo final favorável a você.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow" style="color:var(--c-white); border-color:var(--c-white);">Depoimentos</span>
+      <h2>O que dizem <em>nossos clientes.</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="test-card reveal">
+        <div class="test-mark">"</div>
+        <p class="test-text">Estava desesperado com a busca e apreensão do meu carro. A Dra. Sâmara conseguiu uma liminar em dois dias e ainda identificou cobranças indevidas que reduziram minha dívida em quase 40%.</p>
+        <div class="test-author">Marcos A.</div>
+        <div class="test-role">Busca e Apreensão</div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-mark">"</div>
+        <p class="test-text">Tinha meu nome negativado indevidamente por um banco. Em menos de 30 dias, o nome foi limpo e recebi indenização por danos morais. Recomendo demais!</p>
+        <div class="test-author">Fernanda R.</div>
+        <div class="test-role">Negativação Indevida</div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-mark">"</div>
+        <p class="test-text">Superendividado, com 7 dívidas diferentes. A Dra. Sâmara usou a Lei 14.181 e conseguiu reunir tudo numa parcela que eu consigo pagar. Finalmente dormi tranquilo após anos de angústia.</p>
+        <div class="test-author">Carlos E.</div>
+        <div class="test-role">Superendividamento</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container faq-grid">
+    <div class="faq-content reveal">
+      <span class="eyebrow">Dúvidas Frequentes</span>
+      <h2>Respostas para suas <em>principais dúvidas.</em></h2>
+      <p>Ainda tem dúvidas? Fique à vontade para nos enviar uma mensagem pelo WhatsApp. Nossa equipe está pronta para avaliar o seu cenário.</p>
+    </div>
+    
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question">
+          O banco pode tomar meu carro enquanto o processo corre?
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Em muitos casos é possível obter uma liminar judicial que suspende a busca e apreensão enquanto o processo tramita. Isso depende de fatores técnicos do contrato, mas é uma das medidas iniciais mais eficazes.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Vale a pena processar o banco mesmo devendo?
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Sim. Uma ação revisional pode identificar cobranças indevidas que, ao serem abatidas, reduzem significativamente o saldo real da dívida. Não se trata de calote, mas de exigir que o banco cumpra a lei.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          O que é a Lei do Superendividamento?
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-answer">
+          <p>A Lei 14.181/2021 permite que pessoas com múltiplas dívidas que comprometem sua sobrevivência básica possam renegociar todas de uma vez, judicialmente, com uma parcela única que respeite um mínimo existencial.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Meu nome está negativado indevidamente, o que fazer?
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Negativações indevidas são ilegais e geram direito a indenização por danos morais. Analisamos cada caso para definir a melhor estratégia de limpeza de nome no SPC, Serasa e cartórios.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Qual o custo para contratar o escritório?
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-answer">
+          <p>A análise inicial é sempre gratuita. Em muitas situações trabalhamos com honorários de êxito — ou seja, você só paga honorários ao final, sobre o benefício econômico obtido.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -450,7 +527,7 @@ em { font-style: italic; color: var(--c-gold); }
 <section class="contact" id="contato">
   <div class="container contact-grid">
     <div class="contact-info reveal">
-      <span class="eyebrow">Fale Conosco</span>
+      <span class="eyebrow" style="color:var(--c-gold); border-color:var(--c-gold);">Fale Conosco</span>
       <h2>Solicite uma <em>Análise Gratuita</em> do seu caso.</h2>
       <p style="color:#A0AEC0; margin-bottom: 2rem;">Preencha o formulário para entendermos seu problema. Entraremos em contato em até 2 horas úteis pelo WhatsApp para orientá-lo sobre seus direitos.</p>
       <ul style="color:var(--c-gold); font-family:var(--f-mono); font-size:0.875rem; display:flex; flex-direction:column; gap:1rem;">
@@ -474,11 +551,12 @@ em { font-style: italic; color: var(--c-gold); }
           <label for="assunto">Qual é a sua situação?</label>
           <select id="assunto" required>
             <option value="" disabled selected>Selecione uma opção...</option>
-            <option value="Juros Abusivos / Revisional">Juros Abusivos (Revisional)</option>
+            <option value="Juros Abusivos / Revisional">Ação Revisional</option>
             <option value="Busca e Apreensão de Veículo">Busca e Apreensão</option>
-            <option value="Superendividamento">Múltiplas Dívidas (Superendividamento)</option>
-            <option value="Nome Negativado Indevidamente">Nome Negativado</option>
-            <option value="Fraude Bancária / Consignado">Fraude Bancária / Consignado</option>
+            <option value="Superendividamento">Superendividamento</option>
+            <option value="Nome Negativado Indevidamente">Limpeza de Nome</option>
+            <option value="Renegociação Estratégica">Renegociação Estratégica</option>
+            <option value="Fraude Bancária / Consignado">Crédito Consignado / Cartões</option>
           </select>
         </div>
         <button type="submit" class="btn btn-gold">Enviar para Análise via WhatsApp</button>
@@ -535,7 +613,6 @@ em { font-style: italic; color: var(--c-gold); }
     navLinks.classList.toggle('active');
   });
 
-  // Fecha o menu ao clicar num link (Mobile)
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
@@ -560,7 +637,7 @@ em { font-style: italic; color: var(--c-gold); }
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Otimização: para de observar após animar
+        observer.unobserve(entry.target);
       }
     });
   }, revealOptions);
@@ -569,17 +646,37 @@ em { font-style: italic; color: var(--c-gold); }
     revealOnScroll.observe(reveal);
   });
 
-  // 4. Lógica do Formulário (Redirecionamento Inteligente pro WhatsApp)
+  // 4. FAQ Accordion Toggle
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Fecha todos
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+        faq.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      // Abre o clicado se não estava aberto
+      if (!isActive) {
+        item.classList.add('active');
+        const answer = item.querySelector('.faq-answer');
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
+
+  // 5. Lógica do Formulário (Redirecionamento Inteligente pro WhatsApp)
   document.getElementById('wpp-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const nome = document.getElementById('nome').value;
     const situacao = document.getElementById('assunto').value;
     
-    // Constrói a mensagem
     const mensagem = `Olá, Dra. Sâmara. Meu nome é *${nome}* e gostaria de uma análise gratuita sobre o meu caso de *${situacao}*.`;
     const whatsappUrl = `https://wa.me/5519992074605?text=${encodeURIComponent(mensagem)}`;
     
-    // Abre o WPP em nova aba
     window.open(whatsappUrl, '_blank');
   });
 </script>
