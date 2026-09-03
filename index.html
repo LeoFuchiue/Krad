@@ -1,2026 +1,319 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#070806" />
-  <meta name="description" content="KRAD OS — um diagnóstico simples e humano para ajudar empresários a entender a realidade da empresa e escolher o próximo passo." />
-  <title>KRAD OS — Entenda onde sua empresa está hoje</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-          id: "phone", chapter: "direction", type: "text", required: true,
-          chapterTitle: "Ótimo. Para onde enviamos os resultados?",
-          chapterText: "Nossa equipe também pode entrar em contato via WhatsApp.",
-          title: "Qual o seu melhor número de WhatsApp?", placeholder: "Ex.: (11) 99999-9999"
-        },
-        {
-      --ink: #070806;
-      --ink-soft: #0d100b;
-      --olive: #4e5b1f;
-      --olive-mid: #6a7a2c;
-      --olive-soft: rgba(106, 122, 44, 0.17);
-      --cream: #ede4c5;
-      --cream-mid: #c8be9a;
-      --cream-faint: rgba(237, 228, 197, 0.08);
-      --cream-line: rgba(237, 228, 197, 0.16);
-      --cream-muted: rgba(237, 228, 197, 0.62);
-      --success: #a8b86d;
-      --danger: #c9a37a;
-      --shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
-      --ease: cubic-bezier(.22, 1, .36, 1);
-      --pad: clamp(22px, 5vw, 86px);
-      --content: min(1120px, calc(100vw - (var(--pad) * 2)));
-    }
-
-    * { box-sizing: border-box; }
-    html { background: var(--ink); color-scheme: dark; }
-    html.locked, body.locked { overflow: hidden; }
-    body {
-      margin: 0;
-      min-height: 100%;
-      background:
-        radial-gradient(circle at 50% 28%, rgba(106, 122, 44, 0.08), transparent 28%),
-        var(--ink);
-      color: var(--cream);
-      font-family: "Manrope", system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    button, input, textarea, select { font: inherit; }
-    button { color: inherit; }
-    a { color: inherit; text-decoration: none; }
-    [hidden] { display: none !important; }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .mono {
-      font-family: "JetBrains Mono", monospace;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .serif {
-      font-family: "Playfair Display", Georgia, serif;
-      font-weight: 500;
-    }
-
-    .app-shell {
-      min-height: 100vh;
-      position: relative;
-      isolation: isolate;
-      overflow: clip;
-    }
-
-    .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 100;
-      opacity: .025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
-    }
-
-    .ambient {
-      position: fixed;
-      inset: -20%;
-      z-index: -2;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 50% 48%, rgba(237, 228, 197, 0.07) 0, rgba(106, 122, 44, 0.08) 12%, transparent 32%),
-        radial-gradient(circle at 18% 80%, rgba(78, 91, 31, 0.10), transparent 30%);
-      filter: blur(18px);
-      transform: scale(1.02);
-      transition: background 1.4s var(--ease), opacity 1.4s var(--ease);
-    }
-
-    body[data-chapter="reality"] .ambient {
-      background:
-        radial-gradient(circle at 66% 42%, rgba(106, 122, 44, 0.17), transparent 28%),
-        radial-gradient(circle at 18% 70%, rgba(78, 91, 31, 0.08), transparent 28%);
-    }
-
-    body[data-chapter="aspiration"] .ambient {
-      background:
-        radial-gradient(circle at 50% 44%, rgba(237, 228, 197, 0.09), transparent 25%),
-        radial-gradient(circle at 72% 72%, rgba(78, 91, 31, 0.13), transparent 30%);
-    }
-
-    body[data-chapter="direction"] .ambient,
-    body[data-chapter="processing"] .ambient {
-      background:
-        radial-gradient(circle at 50% 50%, rgba(106, 122, 44, 0.15), transparent 30%),
-        linear-gradient(135deg, rgba(78, 91, 31, 0.06), transparent 50%);
-    }
-
-    .stage {
-      min-height: 100svh;
-      width: 100%;
-      position: relative;
-    }
-
-    .stage-full {
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      padding: var(--pad);
-    }
-
-    .brand-mark {
-      position: fixed;
-      top: clamp(18px, 3vw, 34px);
-      left: clamp(20px, 4vw, 54px);
-      z-index: 50;
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      opacity: .88;
-      pointer-events: none;
-    }
-
-    .brand-symbol {
-      width: 23px;
-      height: 23px;
-      border: 1px solid rgba(237, 228, 197, .46);
-      border-radius: 50%;
-      position: relative;
-    }
-
-    .brand-symbol::before,
-    .brand-symbol::after {
-      content: "";
-      position: absolute;
-      background: var(--cream);
-      opacity: .76;
-    }
-
-    .brand-symbol::before { width: 1px; height: 13px; left: 10px; top: 4px; transform: rotate(36deg); }
-    .brand-symbol::after { width: 10px; height: 1px; left: 6px; top: 10px; transform: rotate(-36deg); }
-
-    .brand-name {
-      font: 600 12px/1 "Manrope", sans-serif;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-
-    .status-corner {
-      position: fixed;
-      top: clamp(21px, 3vw, 37px);
-      right: clamp(20px, 4vw, 54px);
-      z-index: 50;
-      color: var(--cream-muted);
-      font-size: 9px;
-      pointer-events: none;
-    }
-
-    .status-corner::before {
-      content: "";
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      margin-right: 8px;
-      border-radius: 50%;
-      background: var(--olive-mid);
-      box-shadow: 0 0 12px rgba(106, 122, 44, .9);
-    }
-
-    /* Prefácio */
-    #preface { overflow: hidden; }
-
-    .light-point {
-      position: absolute;
-      width: min(64vw, 720px);
-      aspect-ratio: 1;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(237, 228, 197, .12) 0, rgba(106, 122, 44, .08) 16%, transparent 62%);
-      filter: blur(18px);
-      opacity: .7;
-    }
-
-    .preface-copy {
-      width: min(940px, 92vw);
-      text-align: center;
-      position: relative;
-      min-height: 360px;
-      display: grid;
-      place-items: center;
-    }
-
-    .preface-line {
-      position: absolute;
-      inset-inline: 0;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(14px);
-      font-size: clamp(23px, 3.1vw, 48px);
-      line-height: 1.2;
-      letter-spacing: -.02em;
-      color: var(--cream);
-    }
-
-    .preface-main {
-      position: absolute;
-      inset-inline: 0;
-      display: grid;
-      justify-items: center;
-      gap: 36px;
-      opacity: 0;
-      transform: translateY(18px);
-    }
-
-    .preface-main h1 {
-      max-width: 880px;
-      margin: 0;
-      font-size: clamp(48px, 7.6vw, 112px);
-      line-height: .98;
-      letter-spacing: -.055em;
-    }
-
-    .minimal-button,
-    .primary-button,
-    .quiet-button {
-      border: 0;
-      cursor: pointer;
-      transition: transform .35s var(--ease), border-color .35s ease, background .35s ease, color .35s ease, opacity .35s ease;
-    }
-
-    .minimal-button {
-      min-height: 50px;
-      padding: 0 3px 11px;
-      background: transparent;
-      border-bottom: 1px solid rgba(237, 228, 197, .56);
-      font-size: 13px;
-      letter-spacing: .12em;
-    }
-
-    .minimal-button:hover { transform: translateY(-2px); border-color: var(--cream); }
-    
-    .minimal-button:focus-visible,
-    .primary-button:focus-visible,
-    .quiet-button:focus-visible,
-    .choice-card:focus-visible,
-    .path-card:focus-visible,
-    .tab-button:focus-visible {
-      outline: 2px solid var(--cream);
-      outline-offset: 4px;
-    }
-
-    /* Vídeo */
-    #video-stage { display: none; opacity: 0; }
-    .video-wrap {
-      width: min(900px, 94vw);
-      display: grid;
-      gap: 18px;
-      justify-items: center;
-    }
-
-    .system-log {
-      color: var(--cream-muted);
-      font-size: clamp(9px, 1vw, 11px);
-    }
-
-    .video-frame {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 1px solid var(--cream-line);
-      border-radius: 2px;
-      overflow: hidden;
-      position: relative;
-      background: linear-gradient(135deg, rgba(78, 91, 31, .18), transparent 50%), #0b0c09;
-      box-shadow: var(--shadow);
-    }
-
-    .video-frame video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      background: #090a08;
-    }
-
-    .video-placeholder {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 30px;
-      background: radial-gradient(circle at 50% 45%, rgba(237, 228, 197, .10), transparent 30%), linear-gradient(145deg, rgba(106, 122, 44, .14), rgba(7, 8, 6, .96));
-    }
-
-    .video-placeholder-inner { max-width: 620px; }
-    .video-placeholder .eyebrow { margin-bottom: 18px; }
-    .video-placeholder h2 {
-      margin: 0 0 16px;
-      font-size: clamp(31px, 5vw, 66px);
-      line-height: 1.02;
-      letter-spacing: -.04em;
-    }
-    .video-placeholder p {
-      margin: 0 auto;
-      max-width: 520px;
-      color: var(--cream-muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    .video-progress {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
-      background: rgba(237, 228, 197, .08);
-    }
-    .video-progress span {
-      display: block;
-      width: 0;
-      height: 100%;
-      background: var(--olive-mid);
-      box-shadow: 0 0 14px rgba(106, 122, 44, .8);
-    }
-
-    .primary-button {
-      min-height: 52px;
-      padding: 0 24px;
-      border: 1px solid rgba(237, 228, 197, .42);
-      background: rgba(237, 228, 197, .03);
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: .04em;
-    }
-    .primary-button:hover { transform: translateY(-2px); background: var(--cream); color: var(--ink); }
-    .primary-button[disabled] { opacity: .28; cursor: not-allowed; transform: none; }
-
-    /* Jornada */
-    #journey-stage { display: none; min-height: 100svh; opacity: 0; }
-    .journey-shell {
-      width: var(--content);
-      min-height: 100svh;
-      margin: 0 auto;
-      padding: clamp(96px, 13vh, 146px) 0 clamp(94px, 13vh, 140px);
-      display: grid;
-      align-items: center;
-      position: relative;
-    }
-
-    .question-viewport {
-      padding-bottom: 140px;
-      position: relative;
-      min-height: min(670px, 72svh);
-      display: grid;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .question-sheet {
-      width: 100%;
-      display: grid;
-      grid-template-columns: minmax(0, .72fr) minmax(300px, 1fr);
-      gap: clamp(42px, 8vw, 120px);
-      align-items: center;
-      will-change: transform, opacity;
-    }
-
-    .question-sheet.single-column {
-      grid-template-columns: 1fr;
-      width: min(920px, 100%);
-      margin-inline: auto;
-    }
-
-    .question-context {
-      align-self: stretch;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-width: 0;
-    }
-
-    .chapter-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--cream-muted);
-      font-size: 10px;
-      margin-bottom: 25px;
-    }
-    .chapter-tag strong {
-      color: var(--cream);
-      font-weight: 500;
-      border: 1px solid var(--cream-line);
-      width: 31px;
-      height: 31px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-    }
-
-    .question-context h2, .question-panel h2 {
-      margin: 0;
-      font-size: clamp(38px, 5.4vw, 78px);
-      line-height: 1.04;
-      letter-spacing: -.045em;
-      text-wrap: balance;
-    }
-
-    .question-context p {
-      color: var(--cream-muted);
-      line-height: 1.75;
-      font-size: clamp(14px, 1.4vw, 17px);
-      max-width: 520px;
-      margin: 28px 0 0;
-    }
-
-    .line-illustration {
-      width: min(380px, 90%);
-      margin-top: 42px;
-      opacity: .78;
-    }
-    .line-illustration path, .line-illustration line, .line-illustration circle, .line-illustration rect {
-      stroke: var(--cream-mid);
-      stroke-width: 1.2;
-      fill: none;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .question-panel { min-width: 0; }
-    .question-number { margin-bottom: 17px; color: var(--cream-muted); font-size: 10px; }
-    .question-title {
-      margin: 0 0 34px;
-      font-size: clamp(27px, 3.7vw, 51px);
-      line-height: 1.12;
-      letter-spacing: -.035em;
-      text-wrap: balance;
-    }
-
-    .field-wrap { position: relative; }
-    .text-field, .select-field, .long-field {
-      width: 100%;
-      color: var(--cream);
-      background: transparent;
-      border: 0;
-      border-bottom: 1px solid rgba(237, 228, 197, .25);
-      border-radius: 0;
-      padding: 16px 0 15px;
-      outline: none;
-      font-size: clamp(18px, 2.2vw, 28px);
-      transition: border-color .3s ease;
-    }
-    .text-field:focus, .select-field:focus, .long-field:focus { border-color: var(--cream); }
-    .text-field::placeholder, .long-field::placeholder { color: rgba(237, 228, 197, .28); }
-    .select-field { appearance: none; cursor: pointer; }
-    .select-field option { color: var(--cream); background: var(--ink); }
-    .long-field { min-height: 160px; resize: vertical; line-height: 1.55; font-size: clamp(17px, 1.8vw, 23px); }
-
-    .field-hint { margin-top: 13px; color: var(--cream-muted); font-size: 11px; line-height: 1.6; }
-    .field-error { min-height: 20px; margin-top: 10px; color: #d1a888; font-size: 11px; opacity: 0; transform: translateY(-4px); }
-    .field-error.visible { opacity: 1; transform: none; }
-
-    .choice-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .choice-card {
-      width: 100%;
-      min-height: 58px;
-      padding: 15px 18px;
-      text-align: left;
-      border: 1px solid var(--cream-line);
-      background: rgba(237, 228, 197, .015);
-      border-radius: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      transition: transform .32s var(--ease), border-color .32s ease, background .32s ease;
-    }
-    .choice-card:hover { transform: translateX(4px); border-color: rgba(237, 228, 197, .38); }
-    .choice-card.selected { background: rgba(106, 122, 44, .14); border-color: var(--olive-mid); }
-    .choice-card span:first-child { line-height: 1.45; font-size: 13px; }
-    .choice-indicator { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(237, 228, 197, .28); flex: 0 0 auto; position: relative; }
-    .choice-card.selected .choice-indicator::after { content: ""; position: absolute; inset: 3px; background: var(--cream); border-radius: 50%; }
-
-    .micro-log { margin-top: 14px; min-height: 21px; color: var(--cream-muted); font-size: 9px; opacity: 0; transform: translateY(4px); }
-    .micro-log.visible { opacity: 1; transform: none; }
-
-    .journey-actions { margin-top: 36px; display: flex; align-items: center; gap: 16px; }
-    .quiet-button { min-height: 46px; padding: 0 8px; background: transparent; color: var(--cream-muted); font-size: 11px; }
-    .quiet-button:hover { color: var(--cream); }
-
-    .journey-footer {
-      position: fixed; left: var(--pad); right: var(--pad); bottom: clamp(22px, 4vw, 42px); z-index: 30;
-      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px; pointer-events: none;
-    }
-    .human-progress { color: var(--cream-muted); font-size: 10px; }
-    .progress-line { width: min(320px, 48vw); height: 1px; margin-top: 11px; background: rgba(237, 228, 197, .12); overflow: hidden; }
-    .progress-line span { display: block; height: 100%; width: 0; background: var(--cream-mid); transition: width .8s var(--ease); }
-    .chapter-index { color: rgba(237, 228, 197, .38); font-size: 9px; }
-
-    /* Scanner */
-    .scanner-card { margin-top: 26px; border: 1px solid var(--cream-line); border-radius: 16px; padding: 18px; background: rgba(7, 8, 6, .55); opacity: 0; transform: translateY(9px); }
-    .scanner-card.visible { opacity: 1; transform: none; }
-    .scanner-head { display: flex; align-items: center; gap: 13px; }
-    .scanner-avatar { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--cream-line); display: grid; place-items: center; background: var(--olive-soft); overflow: hidden; }
-    .scanner-avatar img { width: 100%; height: 100%; object-fit: cover; display: none; }
-    .scanner-id strong { display: block; font-size: 12px; }
-    .scanner-id span { display: block; margin-top: 4px; color: var(--cream-muted); font-size: 9px; }
-    .scanner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 17px; }
-    .scanner-metric { border-top: 1px solid var(--cream-line); padding-top: 12px; min-width: 0; }
-    .scanner-metric b { display: block; min-height: 20px; font: 500 12px/1.4 "JetBrains Mono", monospace; }
-    .scanner-metric small { color: var(--cream-muted); font-size: 8px; text-transform: uppercase; letter-spacing: .08em; }
-    .scan-sweep { height: 1px; margin-top: 16px; background: linear-gradient(90deg, transparent, var(--olive-mid), transparent); transform-origin: left; transform: scaleX(0); }
-
-    /* Processamento */
-    #processing-stage { display: none; opacity: 0; overflow: hidden; }
-    .analysis-table {
-      width: min(1040px, 94vw); min-height: min(720px, 82svh); position: relative;
-      display: grid; grid-template-columns: minmax(300px, .88fr) minmax(320px, 1fr); align-items: center;
-      gap: clamp(40px, 8vw, 110px); padding: clamp(28px, 5vw, 66px); border: 1px solid rgba(237, 228, 197, .11); background: rgba(7, 8, 6, .45);
-    }
-    .analysis-table::before, .analysis-table::after { content: ""; position: absolute; pointer-events: none; background: rgba(237, 228, 197, .08); }
-    .analysis-table::before { left: 50%; top: 0; bottom: 0; width: 1px; }
-    .analysis-table::after { top: 50%; left: 0; right: 0; height: 1px; }
-
-    .radar-wrap { position: relative; display: grid; place-items: center; }
-    .radar-svg { width: min(470px, 78vw); overflow: visible; }
-    .radar-svg .grid-line, .radar-svg .ring { fill: none; stroke: rgba(237, 228, 197, .15); stroke-width: 1; stroke-dasharray: 900; stroke-dashoffset: 900; }
-    .radar-svg .signal { fill: rgba(106, 122, 44, .13); stroke: var(--olive-mid); stroke-width: 1.5; stroke-dasharray: 900; stroke-dashoffset: 900; }
-    .radar-core { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--cream); box-shadow: 0 0 25px rgba(237, 228, 197, .8); opacity: 0; }
-
-    .terminal { position: relative; z-index: 1; }
-    .terminal h2 { margin: 0 0 32px; font-size: clamp(38px, 5vw, 66px); line-height: 1; letter-spacing: -.045em; }
-    .terminal-list { display: grid; gap: 15px; }
-    .terminal-row { color: rgba(237, 228, 197, .32); font-size: clamp(9px, 1.1vw, 11px); transition: color .35s ease, transform .35s ease; transform: translateX(-6px); }
-    .terminal-row.active { color: var(--cream); transform: none; }
-    .terminal-row.done { color: var(--cream-muted); transform: none; }
-    .terminal-row::before { content: "○"; margin-right: 10px; }
-    .terminal-row.active::before { content: "●"; color: var(--olive-mid); }
-    .terminal-row.done::before { content: "✓"; color: var(--success); }
-    .terminal-note { margin-top: 33px; color: var(--cream-muted); font-size: 10px; line-height: 1.7; }
-
-    /* Resultado */
-    #result-stage { display: none; opacity: 0; }
-    .result-hero { min-height: 100svh; display: grid; place-items: center; padding: clamp(110px, 15vh, 170px) var(--pad) 90px; }
-    .result-hero-inner { width: min(980px, 100%); }
-    .result-kicker { color: var(--cream-muted); font-size: 10px; margin-bottom: 28px; }
-    .result-hero h1 { margin: 0; font-size: clamp(53px, 8vw, 116px); line-height: .95; letter-spacing: -.06em; text-wrap: balance; }
-    .result-hero p { max-width: 660px; margin: 34px 0 0; color: var(--cream-muted); line-height: 1.85; font-size: clamp(15px, 1.6vw, 18px); }
-
-    .result-section { width: min(1180px, calc(100vw - (var(--pad) * 2))); margin: 0 auto; padding: clamp(80px, 12vw, 160px) 0; border-top: 1px solid var(--cream-line); }
-    .result-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(40px, 9vw, 130px); align-items: start; }
-    .section-label { color: var(--cream-muted); font-size: 10px; position: sticky; top: 110px; }
-    .section-label strong { display: block; margin-top: 18px; color: var(--cream); font: 500 clamp(28px, 3.4vw, 47px)/1.08 "Playfair Display", serif; letter-spacing: -.035em; }
-
-    .clinical-intro { width: min(1180px, calc(100vw - (var(--pad) * 2))); margin: -8vh auto 0; position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr .9fr; gap: 12px; }
-    .clinical-summary-card, .clinical-priority-card, .clinical-card, .treatment-card, .portfolio-card { border: 1px solid var(--cream-line); background: rgba(237, 228, 197, .018); }
-    .clinical-summary-card, .clinical-priority-card { min-height: 260px; padding: clamp(26px, 4vw, 48px); }
-    .clinical-summary-card .mono, .clinical-priority-card .mono, .clinical-card .mono, .treatment-card .mono, .portfolio-card .mono { color: var(--cream-muted); font-size: 8px; }
-    .clinical-summary-card h2 { margin: 22px 0 0; font: 500 clamp(32px, 4.2vw, 59px)/1.08 "Playfair Display", serif; letter-spacing: -.04em; }
-    .clinical-summary-card p { max-width: 700px; margin: 22px 0 0; color: var(--cream-muted); font-size: 13px; line-height: 1.85; white-space: pre-line; }
-    .clinical-priority-card { display: grid; align-content: space-between; background: linear-gradient(145deg, rgba(78, 91, 31, .18), rgba(237, 228, 197, .015)); }
-    
-    .priority-level { display: inline-flex; align-items: center; gap: 8px; width: max-content; padding: 7px 10px; border: 1px solid var(--cream-line); border-radius: 999px; color: var(--cream-mid); font: 500 8px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
-    .priority-level::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--olive-mid); box-shadow: 0 0 16px rgba(106, 122, 44, .8); }
-    .clinical-priority-card h3 { margin: 18px 0 0; font: 500 clamp(30px, 3.7vw, 52px)/1.05 "Playfair Display", serif; letter-spacing: -.035em; }
-    .clinical-priority-card p { margin: 20px 0 0; color: var(--cream-muted); font-size: 12px; line-height: 1.75; }
-
-    .clinical-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .clinical-card { min-height: 310px; padding: clamp(25px, 4vw, 44px); }
-    .clinical-card.full { grid-column: 1 / -1; min-height: auto; }
-    .clinical-card h3 { margin: 18px 0 0; font: 500 clamp(28px, 3.2vw, 45px)/1.08 "Playfair Display", serif; letter-spacing: -.03em; }
-    .clinical-card > p { margin: 20px 0 0; color: var(--cream-muted); font-size: 13px; line-height: 1.82; white-space: pre-line; }
-
-    .clinical-list { display: grid; gap: 0; margin-top: 25px; }
-    .clinical-list-item { display: grid; grid-template-columns: 27px 1fr; gap: 14px; padding: 17px 0; border-top: 1px solid var(--cream-line); }
-    .clinical-list-item:first-child { border-top: 0; }
-    .clinical-list-marker { color: var(--cream-mid); font: 500 11px/1.4 "JetBrains Mono", monospace; }
-    .clinical-list-item strong { display: block; font-size: 13px; font-weight: 600; }
-    .clinical-list-item p { margin: 7px 0 0; color: var(--cream-muted); font-size: 11px; line-height: 1.72; }
-    .evidence-quote { display: block; margin-top: 12px; padding-left: 15px; border-left: 1px solid var(--olive-mid); color: var(--cream); font: italic 500 15px/1.55 "Playfair Display", serif; }
-
-    .risk-card { border-color: rgba(201, 163, 122, .32); background: linear-gradient(145deg, rgba(201, 163, 122, .07), rgba(237, 228, 197, .012)); }
-    .risk-label { display: inline-flex; margin-top: 20px; padding: 7px 10px; border: 1px solid rgba(201, 163, 122, .35); border-radius: 999px; color: #d3b590; font: 500 8px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
-
-    .treatment-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 42px; }
-    .treatment-card { min-height: 390px; padding: 28px; display: flex; flex-direction: column; }
-    .treatment-card h3 { margin: 35px 0 10px; font: 500 clamp(28px, 3vw, 42px)/1.08 "Playfair Display", serif; letter-spacing: -.035em; }
-    .treatment-objective { color: var(--cream-muted); font-size: 11px; line-height: 1.7; }
-    .treatment-actions { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 13px; }
-    .treatment-actions li { display: grid; grid-template-columns: 18px 1fr; gap: 9px; color: var(--cream-muted); font-size: 11px; line-height: 1.6; }
-    .treatment-actions li::before { content: "→"; color: var(--olive-mid); }
-    .success-signal { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--cream-line); color: var(--cream); font-size: 10px; line-height: 1.7; }
-    .success-signal span { display: block; margin-bottom: 6px; color: var(--cream-muted); font: 500 7px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
-    .clinical-disclaimer { margin-top: 26px; color: rgba(237, 228, 197, .42); font: 400 8px/1.7 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
-
-    .recommended-path { margin-top: 32px; padding: 23px; border: 1px solid rgba(106, 122, 44, .32); background: rgba(106, 122, 44, .07); }
-    .recommended-path strong { display: block; font: 500 clamp(25px, 3vw, 39px)/1.12 "Playfair Display", serif; }
-    .recommended-path p { margin: 10px 0 0; color: var(--cream-muted); font-size: 11px; line-height: 1.7; }
-
-    .maturity-layout { display: grid; grid-template-columns: minmax(280px, .9fr) minmax(300px, 1.1fr); gap: clamp(38px, 8vw, 100px); align-items: center; }
-    .maturity-chart { width: min(430px, 100%); margin-inline: auto; }
-    .maturity-chart circle { fill: none; stroke-width: 12; transform-origin: 50% 50%; transform: rotate(-90deg); }
-    .maturity-chart .track { stroke: rgba(237, 228, 197, .07); }
-    .maturity-chart .arc { stroke-linecap: round; stroke-dasharray: 0 999; }
-    .maturity-chart .arc-k { stroke: #ede4c5; }
-    .maturity-chart .arc-r { stroke: #c8be9a; }
-    .maturity-chart .arc-a { stroke: #6a7a2c; }
-    .maturity-chart .arc-d { stroke: #4e5b1f; }
-    .maturity-center { font-family: "Playfair Display", serif; fill: var(--cream); font-size: 19px; text-anchor: middle; }
-    .maturity-sub { font-family: "JetBrains Mono", monospace; fill: var(--cream-muted); font-size: 6px; letter-spacing: 1px; text-anchor: middle; text-transform: uppercase; }
-
-    .axis-list { display: grid; gap: 18px; }
-    .axis-item { display: grid; grid-template-columns: 28px 1fr auto; gap: 13px; align-items: center; padding-bottom: 17px; border-bottom: 1px solid var(--cream-line); }
-    .axis-code { width: 24px; height: 24px; border: 1px solid var(--cream-line); border-radius: 50%; display: grid; place-items: center; font-size: 9px; }
-    .axis-name { font-size: 13px; }
-    .axis-state { color: var(--cream-muted); font-size: 9px; }
-
-    .analogy { max-width: 980px; margin-inline: auto; text-align: center; }
-    .analogy .mono { color: var(--cream-muted); font-size: 9px; }
-    .analogy blockquote { margin: 31px 0 0; font: 500 clamp(34px, 5.5vw, 75px)/1.1 "Playfair Display", serif; letter-spacing: -.045em; }
-
-    /* Caminhos */
-    .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 50px; }
-    .path-card { min-height: 370px; padding: 28px; border: 1px solid var(--cream-line); background: rgba(237, 228, 197, .012); cursor: pointer; display: flex; flex-direction: column; transition: transform .45s var(--ease), border-color .35s ease, background .35s ease; }
-    .path-card:hover { transform: translateY(-7px); border-color: rgba(237, 228, 197, .4); background: rgba(106, 122, 44, .08); }
-    .path-number { color: var(--cream-muted); font-size: 9px; }
-    .path-card h3 { margin: auto 0 20px; font: 500 clamp(28px, 3vw, 42px)/1.08 "Playfair Display", serif; letter-spacing: -.035em; }
-    .path-card p { margin: 0; color: var(--cream-muted); line-height: 1.7; font-size: 12px; }
-    .path-arrow { margin-top: 28px; font-size: 18px; }
-
-    /* Carteira atual */
-    .portfolio-section { padding: clamp(80px, 12vw, 155px) var(--pad); border-top: 1px solid var(--cream-line); background: var(--ink-soft); }
-    .portfolio-inner { width: var(--content); margin: 0 auto; }
-    .portfolio-head { display: grid; grid-template-columns: .58fr 1.42fr; gap: clamp(35px, 8vw, 120px); align-items: start; }
-    .portfolio-head .mono { color: var(--cream-muted); font-size: 9px; }
-    .portfolio-head h2 { margin: 0; font: 500 clamp(41px, 6vw, 82px)/.99 "Playfair Display", serif; letter-spacing: -.05em; }
-    .portfolio-head p { max-width: 720px; margin: 22px 0 0; color: var(--cream-muted); font-size: 13px; line-height: 1.85; }
-
-    .portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 54px; }
-    .portfolio-card { min-height: 355px; padding: clamp(25px, 4vw, 43px); display: grid; align-content: space-between; gap: 20px; transition: transform .4s var(--ease), border-color .3s ease; }
-    .portfolio-card:hover { transform: translateY(-5px); border-color: rgba(237, 228, 197, .36); }
-    .portfolio-card h3 { margin: 15px 0 0; font: 500 clamp(30px, 3.4vw, 48px)/1.05 "Playfair Display", serif; letter-spacing: -.035em; }
-    .portfolio-card .public-position { margin: 17px 0 0; color: var(--cream-muted); font-size: 12px; line-height: 1.75; }
-    .portfolio-insight { padding-top: 23px; border-top: 1px solid var(--cream-line); }
-    .portfolio-insight strong { display: block; margin-bottom: 9px; font-size: 11px; }
-    .portfolio-insight p { margin: 0; color: var(--cream-muted); font-size: 11px; line-height: 1.72; }
-    .portfolio-source { display: inline-block; margin-top: 18px; color: var(--cream-mid); font: 500 8px/1 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
-    .portfolio-note { margin-top: 25px; color: rgba(237, 228, 197, .42); font: 400 8px/1.7 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
-
-    /* Ecossistema */
-    .ecosystem { background: #090a08; border-top: 1px solid var(--cream-line); padding: clamp(90px, 13vw, 170px) var(--pad); }
-    .ecosystem-inner { width: min(1220px, 100%); margin: 0 auto; }
-    .ecosystem-head { display: grid; grid-template-columns: .65fr 1.35fr; gap: 50px; align-items: end; }
-    .ecosystem-head h2 { margin: 0; font-size: clamp(48px, 7vw, 96px); line-height: .96; letter-spacing: -.055em; }
-    .ecosystem-head p { margin: 0 0 7px; max-width: 570px; color: var(--cream-muted); line-height: 1.8; font-size: 14px; }
-
-    .tab-list { display: flex; gap: 8px; overflow-x: auto; padding: 46px 0 14px; scrollbar-width: none; }
-    .tab-list::-webkit-scrollbar { display: none; }
-    .tab-button { white-space: nowrap; min-height: 42px; padding: 0 17px; border: 1px solid var(--cream-line); border-radius: 999px; background: transparent; color: var(--cream-muted); cursor: pointer; font-size: 10px; }
-    .tab-button.active { background: var(--cream); color: var(--ink); border-color: var(--cream); }
-
-    .tab-panel { display: none; min-height: 520px; border: 1px solid var(--cream-line); background: rgba(237, 228, 197, .012); padding: clamp(24px, 4vw, 46px); margin-top: 15px; }
-    .tab-panel.active { display: block; }
-
-    .dashboard-grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: 14px; }
-    .mock-card { border: 1px solid var(--cream-line); padding: 22px; background: rgba(7, 8, 6, .42); min-width: 0; }
-    .mock-head { display: flex; justify-content: space-between; gap: 15px; align-items: center; margin-bottom: 23px; }
-    .mock-head h3 { margin: 0; font-size: 13px; }
-    .mock-head span { color: var(--cream-muted); font-size: 8px; }
-    
-    .line-chart { width: 100%; height: 220px; }
-    .line-chart path { fill: none; stroke: var(--olive-mid); stroke-width: 2; }
-    .line-chart .grid { stroke: rgba(237, 228, 197, .08); stroke-width: 1; }
-    .line-chart .area { fill: url(#chartGradient); stroke: none; }
-    
-    .task-list { display: grid; gap: 12px; }
-    .task-row { display: grid; grid-template-columns: 16px 1fr; gap: 10px; color: var(--cream-muted); font-size: 11px; line-height: 1.5; }
-    .task-box { width: 13px; height: 13px; border: 1px solid var(--cream-line); margin-top: 2px; }
-    .task-row.done .task-box { background: var(--olive-mid); border-color: var(--olive-mid); }
-    .task-row.done { color: var(--cream); }
-
-    .stage-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
-    .stage-card { min-height: 250px; border: 1px solid var(--cream-line); padding: 18px; display: flex; flex-direction: column; opacity: .42; }
-    .stage-card.unlocked { opacity: 1; background: linear-gradient(155deg, rgba(106, 122, 44, .12), transparent 60%); }
-    .stage-card .mono { font-size: 8px; color: var(--cream-muted); }
-    .stage-card h3 { margin: auto 0 10px; font: 500 25px/1.1 "Playfair Display", serif; }
-    .stage-card p { margin: 0; color: var(--cream-muted); font-size: 10px; line-height: 1.6; }
-
-    .academy-map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .academy-step { min-height: 330px; border: 1px solid var(--cream-line); padding: 22px; position: relative; overflow: hidden; }
-    .academy-step::after { content: ""; position: absolute; width: 130px; height: 130px; border: 1px solid var(--cream-line); border-radius: 50%; right: -50px; top: -50px; }
-    .academy-step .mono { color: var(--cream-muted); font-size: 8px; }
-    .academy-step h3 { margin: 140px 0 14px; font: 500 28px/1.08 "Playfair Display", serif; }
-    .academy-step p { margin: 0; color: var(--cream-muted); font-size: 10px; line-height: 1.7; }
-
-    .partner-filters { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 22px; }
-    .filter-chip { border: 1px solid var(--cream-line); border-radius: 999px; padding: 10px 13px; color: var(--cream-muted); font-size: 9px; }
-    .partner-list { display: grid; }
-    .partner-row { display: grid; grid-template-columns: 1.2fr .8fr .8fr auto; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--cream-line); align-items: center; }
-    .partner-row strong { font-size: 13px; }
-    .partner-row span { color: var(--cream-muted); font-size: 10px; }
-    .partner-level { border: 1px solid var(--cream-line); border-radius: 999px; padding: 8px 11px; }
-
-    .house-gallery { display: grid; grid-template-columns: 1.2fr .8fr; gap: 12px; }
-    .house-visual {
-      min-height: 470px; border: 1px solid var(--cream-line); position: relative; overflow: hidden;
-      background: linear-gradient(180deg, transparent 0 58%, rgba(7, 8, 6, .92) 100%), radial-gradient(circle at 72% 22%, rgba(237, 228, 197, .22), transparent 18%), linear-gradient(120deg, #1c2014, #0b0d09 48%, #25291b);
-    }
-    .house-visual.secondary { min-height: 229px; background: linear-gradient(180deg, transparent 0 55%, rgba(7, 8, 6, .94) 100%), radial-gradient(circle at 30% 30%, rgba(237, 228, 197, .19), transparent 16%), linear-gradient(145deg, #15180f, #25291b); }
-    .room-lines { position: absolute; inset: 0; opacity: .45; }
-    .room-lines::before, .room-lines::after { content: ""; position: absolute; border: 1px solid rgba(237, 228, 197, .16); }
-    .room-lines::before { width: 52%; height: 45%; left: 11%; top: 17%; transform: perspective(300px) rotateY(12deg); }
-    .room-lines::after { width: 31%; height: 25%; right: 8%; bottom: 17%; border-radius: 50% 50% 10% 10%; }
-    .room-caption { position: absolute; left: 22px; right: 22px; bottom: 20px; z-index: 2; }
-    .room-caption .mono { color: var(--cream-muted); font-size: 8px; }
-    .room-caption h3 { margin: 8px 0 0; font: 500 29px/1.05 "Playfair Display", serif; }
-    .house-stack { display: grid; gap: 12px; }
-
-    .site-footer { border-top: 1px solid var(--cream-line); padding: 42px var(--pad); display: flex; justify-content: space-between; gap: 30px; align-items: center; color: var(--cream-muted); font-size: 9px; background: #090a08; }
-    .footer-mark { color: var(--cream); letter-spacing: .18em; }
-
-    .toast { position: fixed; left: 50%; bottom: 26px; z-index: 200; transform: translate(-50%, 14px); padding: 12px 16px; border: 1px solid var(--cream-line); background: rgba(7, 8, 6, .94); color: var(--cream); font-size: 10px; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease); }
-    .toast.visible { opacity: 1; transform: translate(-50%, 0); }
-
-    /* Reaproveitado / Legado */
-    .brand-logo { width: 38px; height: 38px; flex: 0 0 auto; filter: drop-shadow(0 8px 24px rgba(0,0,0,.34)); }
-    .brand-copy { display: grid; gap: 3px; }
-    .brand-copy strong { font: 600 13px/1 "Playfair Display", Georgia, serif; letter-spacing: .02em; color: var(--cream); }
-    .brand-copy small { font: 500 7px/1 "JetBrains Mono", monospace; letter-spacing: .15em; text-transform: uppercase; color: var(--cream-muted); }
-    #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .48; }
-
-    @media (max-width: 900px) {
-      .clinical-intro, .portfolio-head { grid-template-columns: 1fr; }
-      .clinical-intro { margin-top: -3vh; }
-      .clinical-grid, .treatment-grid, .portfolio-grid { grid-template-columns: 1fr; }
-      .clinical-card.full { grid-column: auto; }
-    }
-
-    @media (max-width: 880px) {
-      .question-sheet, .analysis-table, .result-grid, .maturity-layout, .ecosystem-head, .dashboard-grid, .house-gallery { grid-template-columns: 1fr; }
-      .question-viewport { min-height: 700px; }
-      .question-context { align-self: auto; }
-      .question-context h2 { font-size: clamp(34px, 9vw, 57px); }
-      .line-illustration { display: none; }
-      .analysis-table::before { display: none; }
-      .paths-grid { grid-template-columns: 1fr; }
-      .path-card { min-height: 260px; }
-      .stage-cards, .academy-map { grid-template-columns: 1fr; }
-      .section-label { position: static; }
-      .result-grid { gap: 42px; }
-      .partner-row { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 560px) {
-      :root { --pad: 21px; }
-      .brand-name { display: none; }
-      .status-corner { font-size: 7px; }
-      .preface-copy { min-height: 430px; }
-      .preface-main { gap: 32px; }
-      .video-wrap { width: 100%; }
-      .video-frame { aspect-ratio: 4 / 5; }
-      .journey-shell { padding-top: 95px; }
-      .question-viewport { min-height: 690px; align-items: start; padding-top: 8vh; padding-bottom: 180px; }
-      .question-sheet { gap: 31px; }
-      .question-context p { margin-top: 18px; }
-      .question-title { margin-bottom: 26px; }
-      .choice-card { min-height: 54px; padding: 13px 14px; }
-      .journey-actions { margin-top: 28px; }
-      .journey-footer { left: 21px; right: 21px; }
-      .scanner-grid { grid-template-columns: 1fr; }
-      .analysis-table { min-height: 88svh; padding-top: 80px; gap: 20px; }
-      .radar-svg { width: 260px; }
-      .terminal h2 { font-size: 36px; margin-bottom: 24px; }
-      .result-hero { align-items: end; }
-      .result-section { width: calc(100vw - 42px); }
-      .paths-grid { margin-top: 34px; }
-      .stage-cards, .academy-map { grid-template-columns: 1fr; }
-      .stage-card { min-height: 190px; }
-      .academy-step { min-height: 250px; }
-      .academy-step h3 { margin-top: 95px; }
-      .partner-row { grid-template-columns: 1fr; gap: 7px; }
-      .site-footer { align-items: flex-start; flex-direction: column; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-    }
-    details > summary::-webkit-details-marker { display: none; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Fred.o — Infraestrutura de Metrologia e Revenda B2B</title>
+
+    <!-- Google Fonts: Space Grotesk (Tecnologia) + Playfair Display (Luxo/Impacto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Motores de Animação de Alta Performance (GSAP + ScrollTrigger + SplitType + Rive) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fredo: {
+                            bg: '#080a08',
+                            panel: '#101410',
+                            lime: '#D2FF00', /* O Verde Lima exato extraído do Design System */
+                            muted: '#8e9689'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --cubic-default: cubic-bezier(0.65, 0.05, 0, 1);
+            --duration-default: 0.75s;
+            --animation-default: var(--duration-default) var(--cubic-default);
+            --min-width: 992px;  
+            --max-width: 1920px; 
+            --design-width: 1728;
+            --design-unit: 16;
+            --fluid-container: clamp(var(--min-width), 100vw, var(--max-width));
+            --fluid-font: calc(var(--fluid-container) / var(--design-width) * var(--design-unit) * 1);
+        }
+
+        html {
+            font-size: var(--fluid-font);
+            scroll-behavior: smooth;
+            background-color: theme('colors.fredo.bg');
+            color: white;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background-color: theme('colors.fredo.lime'); color: black; }
+
+        /* Oculta barra de rolagem lateral com elegância estilo Awwwards */
+        body::-webkit-scrollbar { width: 6px; }
+        body::-webkit-scrollbar-track { background: #080a08; }
+        body::-webkit-scrollbar-thumb { background: #1a221a; border-radius: 3px; }
+
+        .text-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: theme('colors.fredo.lime');
+            font-weight: 700;
+        }
+
+        /* Configuração de Split Text para Animação GSAP */
+        .line { overflow: hidden; padding-bottom: 0.2rem; }
+        .char { transform: translateY(115%); transition: transform var(--animation-default); }
+
+        /* Painel Glassmorphism Avançado */
+        .glass-panel {
+            background: rgba(16, 20, 16, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Botão Magnético */
+        .btn-fredo {
+            transition: all var(--animation-default);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-fredo:hover {
+            background-color: theme('colors.fredo.lime');
+            color: black;
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(210, 255, 0, 0.2);
+        }
     </style>
 </head>
-<body class="locked" data-chapter="preface">
-  <div class="app-shell" id="app">
-    <div class="noise" aria-hidden="true"></div>
-    <div class="ambient" aria-hidden="true"></div>
+<body class="selection:bg-fredo-lime selection:text-black">
 
-    <div class="brand-mark" aria-label="KRAD OS">
-      <svg class="brand-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="100" cy="100" r="97" fill="#3A4418"/>
-        <circle cx="100" cy="100" r="90" fill="none" stroke="#A5B876" stroke-width="1.2" opacity=".62"/>
-        <text x="100" y="94" font-family="Georgia,serif" font-size="54" font-weight="900" fill="#A5B876" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
-        <text x="100" y="137" font-family="Georgia,serif" font-size="22" fill="#A5B876" text-anchor="middle" letter-spacing="1">agência</text>
-      </svg>
-      <span class="brand-copy">
-        <strong>KRAD OS</strong>
-        <small>Sistema de desenvolvimento empresarial</small>
-      </span>
-    </div>
-    <div class="status-corner mono" id="systemStatus">Sistema disponível</div>
+    <!-- CABEÇALHO / NAVBAR (Estilo Corporativo Limpo com Acesso Destilado) -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter flex items-center gap-3">
+                <div class="w-3 h-3 bg-fredo-lime rounded-full animate-ping"></div>
+                FREDO <span class="text-fredo-muted text-xs tracking-widest uppercase ml-2 border-l border-white/20 pl-3">Partners</span>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-sm font-medium text-fredo-muted">
+                <a href="#modelo" class="hover:text-fredo-lime transition-colors">Modelo HaaS</a>
+                <a href="#api" class="hover:text-fredo-lime transition-colors">API & Integração</a>
+                <a href="#comissao" class="hover:text-fredo-lime transition-colors">Split 40%</a>
+            </div>
+            
+            <!-- Roteamento Estratégico para o Consumidor Final -->
+            <a href="consumidor.html" class="group flex items-center gap-3 bg-fredo-panel px-5 py-2.5 rounded-full border border-white/10 hover:border-fredo-lime transition-all">
+                <span class="text-xs uppercase tracking-wider font-bold text-white group-hover:text-fredo-lime transition-colors">Sou Dono de Restaurante</span>
+                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-fredo-lime group-hover:text-black transition-all">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </nav>
 
     <main>
-      <section class="stage stage-full" id="preface" aria-labelledby="preface-title">
-        <canvas id="hero-canvas" aria-hidden="true"></canvas>
-        <div class="light-point" aria-hidden="true"></div>
-        <div class="preface-copy">
-          <p class="preface-line serif" id="prefaceLine1">Toda empresa começa com um sonho.</p>
-          <p class="preface-line serif" id="prefaceLine2">Algumas crescem. Outras apenas sobrevivem à rotina.</p>
-          <div class="preface-main" id="prefaceMain">
-            <h1 class="serif" id="preface-title">Entenda onde sua empresa está hoje.</h1>
-            <button class="minimal-button" id="startButton" type="button">Iniciar Diagnóstico</button>
-          </div>
-        </div>
-      </section>
+        <!-- HERO SECTION B2B (Foco em Revenda e Autoridade) -->
+        <section class="min-h-screen flex flex-col justify-center px-8 lg:px-24 pt-32 relative overflow-hidden">
+            <div class="max-w-5xl z-10">
+                <div class="text-eyebrow mb-6 flex items-center gap-4">
+                    <span class="w-10 h-px bg-fredo-lime"></span>
+                    Programa Oficial de Revendas Fundadoras
+                </div>
+                
+                <h1 id="hero-title" class="text-[5.5rem] lg:text-[7rem] leading-[0.92] font-bold tracking-tighter mb-8">
+                    Venda o software. <br>
+                    Nós dominamos a <span class="font-serif italic text-fredo-lime font-normal tracking-normal">física.</span>
+                </h1>
+                
+                <p id="hero-sub" class="text-xl lg:text-2xl text-fredo-muted max-w-2xl font-medium leading-relaxed mb-12 opacity-0 translate-y-8">
+                    O primeiro sistema <strong class="text-white font-bold">Hardware as a Service (HaaS)</strong> de metrologia que se integra ao seu PDV, elimina as perdas do restaurante e injeta <span class="text-white font-bold">40% de comissão recorrente</span> no seu caixa.
+                </p>
 
-      <section class="stage stage-full" id="video-stage" aria-labelledby="video-title">
-        <div class="video-wrap">
-          <div class="system-log mono" aria-live="polite">KRAD OS INITIALIZATION... <span id="kosStatus">OK</span></div>
-          <div class="video-frame">
-            <video id="contextVideo" playsinline controls preload="metadata" aria-label="Introdução ao diagnóstico KRAD" hidden></video>
-            <div class="video-placeholder" id="videoPlaceholder">
-              <div class="video-placeholder-inner">
-                <div class="eyebrow mono">Uma conversa antes da análise</div>
-                <h2 class="serif" id="video-title">Não queremos começar falando sobre serviços.</h2>
-                <p>Queremos compreender a história, a realidade e o futuro que você deseja construir. Esta é uma triagem estratégica — sem julgamento e sem respostas prontas.</p>
-              </div>
-            </div>
-            <div class="video-progress" aria-hidden="true"><span id="videoProgressBar"></span></div>
-          </div>
-          <button class="primary-button" id="beginJourneyButton" type="button" disabled>Vamos começar</button>
-        </div>
-      </section>
-
-      <section class="stage" id="journey-stage" aria-labelledby="journey-heading">
-        <h1 class="sr-only" id="journey-heading">Diagnóstico empresarial KRAD</h1>
-        <div class="journey-shell">
-          <div class="question-viewport" id="questionViewport" aria-live="polite"></div>
-        </div>
-        <div class="journey-footer" id="journeyFooter">
-          <div>
-            <div class="human-progress" id="humanProgress">Você começou a compartilhar sua história.</div>
-            <div class="progress-line" aria-hidden="true"><span id="progressFill"></span></div>
-          </div>
-          <div class="chapter-index mono" id="chapterIndex">K / CONHECER</div>
-        </div>
-      </section>
-
-      <section class="stage stage-full" id="processing-stage" aria-labelledby="processing-title">
-        <div class="analysis-table">
-          <div class="radar-wrap" aria-hidden="true">
-            <svg class="radar-svg" viewBox="0 0 420 420" role="img" aria-label="Matriz de análise em construção">
-              <circle class="ring" cx="210" cy="210" r="160" />
-              <circle class="ring" cx="210" cy="210" r="120" />
-              <circle class="ring" cx="210" cy="210" r="80" />
-              <circle class="ring" cx="210" cy="210" r="40" />
-              <line class="grid-line" x1="210" y1="30" x2="210" y2="390" />
-              <line class="grid-line" x1="30" y1="210" x2="390" y2="210" />
-              <line class="grid-line" x1="82" y1="82" x2="338" y2="338" />
-              <line class="grid-line" x1="338" y1="82" x2="82" y2="338" />
-              <polygon class="signal" points="210,63 337,172 300,325 145,340 73,196" />
-            </svg>
-            <span class="radar-core"></span>
-          </div>
-          <div class="terminal">
-            <div class="mono" style="font-size:9px;color:var(--cream-muted);margin-bottom:18px;">Mesa de análise técnica</div>
-            <h2 class="serif" id="processing-title">Transformando respostas em direção.</h2>
-            <div class="terminal-list" id="terminalList">
-              <div class="terminal-row mono">Organizando a queixa principal...</div>
-              <div class="terminal-row mono">Cruzando rotina, dinheiro e dependência do fundador...</div>
-              <div class="terminal-row mono">Separando sintomas de causas prováveis...</div>
-              <div class="terminal-row mono">Localizando o gargalo que puxa os outros problemas...</div>
-              <div class="terminal-row mono">Definindo o cuidado que deve vir primeiro...</div>
-              <div class="terminal-row mono">Escrevendo o prontuário na voz da KRAD...</div>
-            </div>
-            <p class="terminal-note" id="processingNote">A tecnologia organiza os sinais. A KRAD traduz isso em uma direção que respeita a história de quem está por trás do CNPJ.</p>
-          </div>
-        </div>
-      </section>
-
-                        <section class="stage" id="result-stage" aria-labelledby="result-title" style="padding: 0; background: #070806;">
-        <!-- DASHBOARD HEADER -->
-        <div class="dash-header" style="background: #0e0f0c; border-bottom: 1px solid #20221c; padding: 60px 5% 40px; display: flex; align-items: center; margin-top: 20px; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-          <div>
-            <h1 class="serif" id="dashCompanyName" style="font-size: clamp(24px, 4vw, 32px); color: #A5B876; margin: 0; word-break: break-word;">Empresa</h1>
-            <p id="dashMeta" class="mono" style="color: #6a6f5e; font-size: 12px; margin-top: 8px;">Cidade • Segmento • Faturamento</p>
-          </div>
-          <div style="text-align: right;">
-            <div class="mono" style="color: #6a6f5e; font-size: 10px; margin-bottom: 5px;">ÍNDICE KRAD DE SAÚDE</div>
-            <div style="display: flex; align-items: baseline; gap: 10px; justify-content: flex-end;">
-              <span id="dashStage" style="color: #d12c2c; font-weight: bold; font-size: 14px; text-transform: uppercase;">Estágio</span>
-              <span id="dashScore" class="serif" style="font-size: 48px; color: #A5B876; line-height: 1;">0</span><span style="color: #6a6f5e; font-size: 20px;">/100</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="dash-body" style="padding: clamp(20px, 5vw, 40px) 5%; max-width: 1200px; margin: 0 auto; display: grid; gap: 20px; overflow-x: hidden;">
-          
-          <!-- ROW 1: RADAR & BARS -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            <!-- RADAR CARD -->
-            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: clamp(20px, 4vw, 30px);">
-              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Mapeamento de Eixos</h3>
-              <div class="radar-container" style="position: relative; max-width: 250px; margin: 0 auto; aspect-ratio: 1/1;">
-                <svg class="result-radar" viewBox="0 0 420 420" style="width: 100%; height: 100%; overflow: visible;">
-                  <circle cx="210" cy="210" r="160" fill="none" stroke="#20221c" stroke-width="1" />
-                  <circle cx="210" cy="210" r="120" fill="none" stroke="#20221c" stroke-width="1" />
-                  <circle cx="210" cy="210" r="80" fill="none" stroke="#20221c" stroke-width="1" />
-                  <circle cx="210" cy="210" r="40" fill="none" stroke="#20221c" stroke-width="1" />
-                  <line x1="210" y1="50" x2="210" y2="370" stroke="#20221c" stroke-width="1" />
-                  <line x1="50" y1="210" x2="370" y2="210" stroke="#20221c" stroke-width="1" />
-                  <line x1="97" y1="97" x2="323" y2="323" stroke="#20221c" stroke-width="1" />
-                  <line x1="323" y1="97" x2="97" y2="323" stroke="#20221c" stroke-width="1" />
-                  <polygon id="radarPolygon" points="210,210 210,210 210,210 210,210 210,210 210,210" fill="rgba(140,26,26,0.1)" stroke="#d12c2c" stroke-width="2" />
-                </svg>
-                <div class="radar-label" style="position:absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#A5B876;">Gestão</div>
-                <div class="radar-label" style="position:absolute; bottom: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#A5B876;">Crescimento</div>
-                <div class="radar-label" style="position:absolute; top: 20%; right: -30px; font-size:10px; color:#A5B876;">Mkt</div>
-                <div class="radar-label" style="position:absolute; top: 20%; left: -30px; font-size:10px; color:#A5B876;">Proc</div>
-                <div class="radar-label" style="position:absolute; bottom: 20%; right: -30px; font-size:10px; color:#A5B876;">Relac</div>
-                <div class="radar-label" style="position:absolute; bottom: 20%; left: -30px; font-size:10px; color:#A5B876;">Digital</div>
-              </div>
+                <div id="hero-cta" class="flex flex-col sm:flex-row gap-5 opacity-0 translate-y-8">
+                    <a href="#homologar" class="btn-fredo bg-fredo-lime text-black px-8 py-5 rounded-full font-bold uppercase tracking-wider text-sm text-center">
+                        Solicitar Homologação de Revenda
+                    </a>
+                    <a href="#modelo" class="btn-fredo border border-white/20 text-white px-8 py-5 rounded-full font-medium tracking-wide text-sm text-center hover:border-fredo-lime">
+                        Entender o Modelo HaaS
+                    </a>
+                </div>
             </div>
 
-            <!-- BARS CARD -->
-            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
-              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Indicadores de Saúde</h3>
-              <div id="barCharts" style="display: flex; flex-direction: column; gap: 20px;"></div>
+            <!-- Camada interativa Rive / WebGL (Simulação de hardware em execução) -->
+            <div class="absolute right-10 top-1/2 -translate-y-1/2 w-[500px] h-[500px] hidden xl:flex items-center justify-center opacity-30 pointer-events-none">
+                <canvas id="rive-canvas" width="500" height="500"></canvas>
             </div>
-          </div>
+        </section>
 
-          <!-- TIMELINE -->
-          <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 40px 30px; overflow-x: auto;">
-            <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 40px; text-transform: uppercase; text-align: center;">Linha do Tempo de Maturidade</h3>
-            <div class="timeline" id="dashTimeline" style="display: flex; justify-content: space-between; align-items: center; position: relative; min-width: 600px; margin: 0 auto; padding: 0 20px;">
-              <div style="position: absolute; top: 10px; left: 30px; right: 30px; height: 2px; background: #20221c; z-index: 1;"></div>
+        <!-- SEÇÃO DE IMPACTO / MÉTRICAS -->
+        <section class="py-24 bg-fredo-lime text-black px-8">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+                <div class="space-y-2">
+                    <h3 class="font-serif italic text-7xl font-bold">&lt; 1s</h3>
+                    <p class="font-bold text-xs uppercase tracking-widest opacity-80">Latência de Injeção Direta no PDV</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-serif italic text-7xl font-bold">100</h3>
+                    <p class="font-bold text-xs uppercase tracking-widest opacity-80">Pesagens Salvas em Buffer Offline</p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-serif italic text-7xl font-bold">40%</h3>
+                    <p class="font-bold text-xs uppercase tracking-widest opacity-80">Repasse Mensal Recorrente (MRR)</p>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <!-- X-RAY AND INSTA -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            <!-- X-RAY -->
-            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
-              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Raio X da Operação</h3>
-              <div id="xrayList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+        <!-- TELA 2: A QUEBRA DA OBJEÇÃO (O Cavalo de Troia) -->
+        <section id="modelo" class="py-32 bg-fredo-panel px-8 relative">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="text-eyebrow mb-4">Engenharia Comercial</div>
+                    <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-6">
+                        Você foca na venda. <br>Nós blindamos o <span class="text-fredo-muted">suporte.</span>
+                    </h2>
+                    <p class="text-fredo-muted text-lg leading-relaxed">
+                        Sabemos que vender hardware tradicional traz dor de cabeça e margem baixa. O Fredo foi estruturado para proteger a sua operação de suporte de campo no fim de semana.
+                    </p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="glass-panel p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-fredo-lime mb-3">1. O Abridores de Portas (Cavalo de Troia)</h3>
+                        <p class="text-fredo-muted">O mercado de automação está saturado. O Fredo permite que você bata na porta do restaurante oferecendo uma solução para estancar o roubo invisível de CMV. O robô entra, e o seu PDV entra junto.</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-white mb-3">2. Zero Visitas de Campo</h3>
+                        <p class="text-fredo-muted">O hardware travou ou deu problema? Nosso protocolo de backup (1 robô reserva a cada 5 instalados) e suporte remoto resolvem a falha. Sua equipe não gasta combustível.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- INSTA -->
-            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
-              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Reflexo Digital (Instagram)</h3>
-              <div id="instaContent"></div>
+        <!-- TELA 3: ENGENHARIA E API (Para a Software House) -->
+        <section id="api" class="py-32 px-8 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <div class="text-eyebrow mb-4">Documentação Técnica</div>
+                    <h2 class="text-4xl lg:text-6xl font-bold tracking-tight mb-6">Pronto para plugar no seu código.</h2>
+                    <p class="text-fredo-muted text-lg">Uma API limpa e estável. Seu desenvolvedor Júnior homologa a integração em poucas horas.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
+                        <div class="font-mono text-xs text-fredo-lime mb-3">01 // CONECTIVIDADE</div>
+                        <h4 class="font-bold text-xl mb-2">Wi-Fi Nativo</h4>
+                        <p class="text-fredo-muted text-sm">Integração sem fio de alta estabilidade diretamente na rede local do estabelecimento.</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
+                        <div class="font-mono text-xs text-fredo-lime mb-3">02 // SEGURANÇA</div>
+                        <h4 class="font-bold text-xl mb-2">Modo Offline</h4>
+                        <p class="text-fredo-muted text-sm">Memória interna retém pesagens se a internet cair, sincronizando automaticamente no retorno.</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
+                        <div class="font-mono text-xs text-fredo-lime mb-3">03 // ATUALIZAÇÃO</div>
+                        <h4 class="font-bold text-xl mb-2">Deploy OTA</h4>
+                        <p class="text-fredo-muted text-sm">Atualizações de sistema injetadas remotamente durante a madrugada, sem fricção.</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl border-t-2 border-t-fredo-lime">
+                        <div class="font-mono text-xs text-fredo-lime mb-3">04 // GOVERNANÇA</div>
+                        <h4 class="font-bold text-xl mb-2">SLA 24 Horas</h4>
+                        <p class="text-fredo-muted text-sm">Suporte técnico dedicado para reparos rápidos em caso de atualizações de PDV.</p>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <!-- PRIORITIES MATRIZ -->
-          <div>
-            <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Matriz de Prioridades</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-              <div style="background: rgba(30, 80, 40, 0.05); border: 1px solid rgba(30, 80, 40, 0.2); padding: 25px; border-radius: 16px;">
-                <h4 style="color: #4CAF50; font-size: 14px; margin-bottom: 15px;">🟢 O que já funciona</h4>
-                <ul id="cardsGreen" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
-              </div>
-              <div style="background: rgba(200, 150, 20, 0.05); border: 1px solid rgba(200, 150, 20, 0.2); padding: 25px; border-radius: 16px;">
-                <h4 style="color: #FFC107; font-size: 14px; margin-bottom: 15px;">🟡 Oportunidades</h4>
-                <ul id="cardsYellow" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
-              </div>
-              <div style="background: rgba(140, 26, 26, 0.05); border: 1px solid rgba(140, 26, 26, 0.2); padding: 25px; border-radius: 16px;">
-                <h4 style="color: #F44336; font-size: 14px; margin-bottom: 15px;">🔴 Prioridades Críticas</h4>
-                <ul id="cardsRed" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
-              </div>
+        <!-- TELA 4: FORMULÁRIO DE HOMOLOGAÇÃO DE REVENDA -->
+        <section id="homologar" class="py-32 px-8 bg-fredo-panel border-t border-white/5">
+            <div class="max-w-3xl mx-auto glass-panel p-10 lg:p-16 rounded-3xl">
+                <div class="text-center mb-10">
+                    <div class="text-eyebrow mb-2">Edital de Revendas Fundadoras</div>
+                    <h2 class="text-3xl lg:text-5xl font-bold tracking-tight">Garanta o seu Tier de 40%</h2>
+                    <p class="text-fredo-muted text-sm mt-2">Vagas limitadas por região para consolidação de mercado.</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">Nome do Responsável</label>
+                            <input type="text" class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors" placeholder="Ex: Carlos Alberto">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">E-mail Corporativo</label>
+                            <input type="email" class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors" placeholder="carlos@suarevenda.com.br">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">Sistema de PDV Representado</label>
+                            <input type="text" class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors" placeholder="Ex: CPlug, TOTVS, Sistema Próprio">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-fredo-muted font-bold mb-2">Tamanho da Base Ativa</label>
+                            <select class="w-full bg-fredo-bg border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-fredo-lime transition-colors">
+                                <option class="bg-fredo-bg">Até 50 clientes ativos</option>
+                                <option class="bg-fredo-bg">De 51 a 200 clientes ativos</option>
+                                <option class="bg-fredo-bg">Mais de 200 clientes ativos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-fredo w-full bg-fredo-lime text-black font-bold uppercase tracking-widest py-5 rounded-xl text-center mt-4">
+                        Enviar Solicitação de Parceria
+                    </button>
+                </form>
             </div>
-          </div>
-
-          <!-- CONCLUSION -->
-          <div class="dash-card" style="background: #A5B876; border-radius: 16px; padding: clamp(20px, 4vw, 40px); color: #0e0f0c;">
-            <h3 class="mono" style="color: #3A4418; font-size: 12px; margin-bottom: 20px; text-transform: uppercase;">Conclusão KRAD</h3>
-            <p id="dashConclusion" class="serif" style="font-size: 20px; line-height: 1.6; font-weight: 500;">Processando...</p>
-          </div>
-
-          <!-- SIMULATION & ACTION PLAN -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            <!-- SIMULATION -->
-            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
-              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Projeção de Potencial</h3>
-              <p style="color: #A5B876; font-size: 14px; margin-bottom: 30px; line-height: 1.6;">Se a sua empresa otimizar as áreas críticas e estruturar processos previsíveis, o crescimento acelerará exponencialmente.</p>
-              <div style="height: 150px; position: relative; border-bottom: 1px solid #20221c; border-left: 1px solid #20221c;">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width: 100%; height: 100%; overflow: visible;">
-                  <path id="simulationCurve" d="M0,100 Q50,90 100,20" fill="none" stroke="#d12c2c" stroke-width="2" stroke-linecap="round" stroke-dasharray="200" stroke-dashoffset="200" />
-                  <circle id="simDot" cx="100" cy="20" r="3" fill="#A5B876" opacity="0" />
-                </svg>
-              </div>
-            </div>
-
-            <!-- PLAN -->
-            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
-              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Plano de Ação Sugerido</h3>
-              <ol id="dashPlan" style="color: #A5B876; font-size: 15px; line-height: 1.8; padding-left: 20px; display: flex; flex-direction: column; gap: 15px; margin:0; font-family: 'Inter', sans-serif;">
-              </ol>
-            </div>
-          </div>
-
-          <!-- CTA PREMIUM -->
-          <div class="dash-card" style="background: linear-gradient(135deg, #1f0a0a, #0a0505); border: 1px solid #5c1010; border-radius: 24px; padding: 60px 40px; text-align: center; margin-top: 40px;">
-            <h2 class="serif" style="font-size: clamp(24px, 4vw, 36px); color: #A5B876; margin-bottom: 20px;">Gostou do seu diagnóstico?</h2>
-            <p style="color: #6a6f5e; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">O relatório mostra onde estão as oportunidades. Na Imersão KRAD nós construímos um plano prático para a sua empresa parar de sobreviver e começar a escalar.</p>
-            
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-              <button class="krad-button light" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20agendar%20minha%20Imers%C3%A3o%20KRAD.', '_blank')" style="background-color: #d12c2c; color: white; border: none; padding: 20px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer;">Agendar Imersão KRAD</button>
-              <button class="krad-button" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20falar%20com%20um%20Especialista.', '_blank')" style="background-color: transparent; border: 1px solid #d12c2c; color: #d12c2c; padding: 20px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer;">Falar com Especialista</button>
-            </div>
-          </div>
-
-        </div>
-        
-        <footer class="site-footer" style="padding: 40px; border-top: 1px solid #20221c; margin-top: 60px;">
-          <span class="footer-mark">KRAD®</span>
-          <span class="mono">Copyright 2026. Todos os direitos reservados.</span>
-        </footer>
-      </section>
+        </section>
     </main>
 
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  </div>
+    <!-- SCRIPT DE ANIMAÇÃO GSAP E SPLIT TEXT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            // Inicializa o corte de texto (SplitType)
+            const splitHeading = new SplitType('#hero-title', { types: 'lines, chars' });
 
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
-  <script>
-    window.KRAD_CONFIG = Object.assign({
-      videoUrl: "",
-      diagnosticEndpoint: "/api/diagnostic",
-      instagramEndpoint: "/api/analyze",
-      instagramFallbackEndpoint: "https://krad-psi.vercel.app/api/analyze",
-      academyUrl: "#academy",
-      discoverySessionUrl: "whatsapp:session",
-      whatsappUrl: "whatsapp:growth",
-      whatsappPhone: "5511977842164",
-      requestHeaders: {},
-      demoVideoSeconds: 9
-    }, window.KRAD_CONFIG || {});
+            // Animação de entrada fluida (Curva cubic-bezier extraída da McLaren)
+            gsap.registerPlugin(ScrollTrigger);
 
-    (() => {
-      "use strict";
-
-      const $ = (selector, root = document) => root.querySelector(selector);
-      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const hasAnime = typeof window.anime === "function";
-      const config = window.KRAD_CONFIG;
-
-      const state = {
-        current: 0,
-        answers: {},
-        chapter: "knowledge",
-        scanTimer: null,
-        submitted: false,
-        apiResponse: null
-      };
-
-      const stages = {
-        preface: $("#preface"),
-        video: $("#video-stage"),
-        journey: $("#journey-stage"),
-        processing: $("#processing-stage"),
-        result: $("#result-stage")
-      };
-
-      const chapterMeta = {
-        knowledge: { code: "K", label: "CONHECER", progressLead: "Você já compartilhou" },
-        reality: { code: "R", label: "REALIDADE", progressLead: "Sua realidade já está" },
-        aspiration: { code: "A", label: "AMBIÇÃO", progressLead: "Seu futuro desejado está" },
-        direction: { code: "D", label: "DIREÇÃO", progressLead: "Seu mapa inicial está" }
-      };
-
-      const questions = [
-        {
-          id: "founderName", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Toda empresa começa com alguém.",
-          chapterText: "Antes de olhar números ou falar de crescimento, queremos conhecer quem enfrenta a rotina e mantém o negócio de pé.",
-          title: "Como você gosta de ser chamado?", placeholder: "Seu primeiro nome", autocomplete: "given-name", inputMode: "text"
-        },
-        {
-          id: "companyName", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Agora, conte o nome dessa história.",
-          chapterText: "Não importa se a empresa é pequena, nova ou conhecida na cidade. Toda empresa carrega trabalho, risco e uma razão para existir.",
-          title: "Qual é o nome da sua empresa?", placeholder: "Nome da empresa", autocomplete: "organization"
-        },
-        {
-          id: "cnpj", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Identidade do negócio.",
-          chapterText: "Com o seu CNPJ, nossa inteligência consegue cruzar dados de mercado e entender melhor a sua estrutura jurídica.",
-          title: "Qual o CNPJ da empresa?", placeholder: "00.000.000/0000-00", inputMode: "numeric"
-        },
-        {
-          id: "city", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Cada cidade tem o seu jeito de comprar.",
-          chapterText: "Entender onde você atua ajuda a olhar concorrência, hábitos dos clientes e oportunidades mais próximas da sua realidade.",
-          title: "Em qual cidade fica a maior parte dos seus clientes?", placeholder: "Ex.: Atibaia, SP", autocomplete: "address-level2"
-        },
-        {
-          id: "segment", chapter: "knowledge", type: "text", required: true,
-          chapterTitle: "Seu tipo de negócio muda toda a análise.",
-          chapterText: "Um restaurante, uma clínica, uma loja e um prestador de serviço enfrentam problemas bem diferentes.",
-          title: "O que sua empresa vende ou faz?", placeholder: "Ex.: restaurante, clínica, loja, serviços"
-        },
-        {
-          id: "revenue", chapter: "knowledge", type: "choice", required: true,
-          chapterTitle: "Saúde financeira.",
-          chapterText: "Saber a faixa de faturamento nos ajuda a desenhar um plano de ação realista e que caiba no seu bolso.",
-          title: "Qual é o faturamento médio mensal da empresa?",
-          options: ["Ainda não faturamos", "Até R$ 10.000", "De R$ 10.001 a R$ 50.000", "De R$ 50.001 a R$ 100.000", "Acima de R$ 100.000"]
-        },
-        {
-          id: "companyAge", chapter: "knowledge", type: "choice", required: true,
-          chapterTitle: "O tempo de estrada também conta.",
-          chapterText: "Quem está começando precisa firmar a base. Quem já tem história precisa crescer sem perder o que conquistou.",
-          title: "Há quanto tempo sua empresa está aberta?",
-          options: ["Ainda não completou 1 ano", "De 1 a 3 anos", "De 4 a 7 anos", "De 8 a 15 anos", "Mais de 15 anos"]
-        },
-        {
-          id: "discovery", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Agora vamos olhar o negócio como ele está hoje.",
-          chapterText: "Aqui não existe resposta bonita ou feia. Precisamos apenas entender de onde vêm as pessoas que compram de você.",
-          title: "Como a maioria dos clientes encontra sua empresa hoje?",
-          options: ["Por indicação de outras pessoas", "Pelo Instagram ou pelo Google", "Por anúncios", "Por parceiros e contatos", "Vem de vários lugares"],
-          logMap: { "Por indicação de outras pessoas": "HOJE, O CRESCIMENTO DEPENDE MUITO DE INDICAÇÕES" }
-        },
-        {
-          id: "margin", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Vender mais só ajuda quando sobra dinheiro.",
-          chapterText: "Muita empresa trabalha bastante, mas não sabe quais vendas realmente fortalecem o caixa.",
-          title: "Você sabe quanto realmente sobra de cada produto ou serviço vendido?",
-          options: ["Sim, sei com segurança", "Sei mais ou menos", "Tenho apenas uma ideia", "Ainda não consigo saber"]
-        },
-        {
-          id: "decisionBasis", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Toda escolha mexe com o caixa e com a rotina.",
-          chapterText: "A experiência é importante. Alguns números simples ajudam a não decidir apenas no susto ou na pressão do dia.",
-          title: "Quando precisa investir, contratar ou crescer, como você costuma decidir?",
-          options: ["Olho números organizados", "Junto os números com minha experiência", "Vou mais pela experiência", "Decido conforme o problema aparece"]
-        },
-        {
-          id: "operationalHours", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "Seu tempo também mostra a saúde da empresa.",
-          chapterText: "Quando quase tudo passa pelo dono, o negócio pode funcionar, mas cresce com muito peso nas costas de uma pessoa.",
-          title: "Quanto tempo da sua semana fica preso nas tarefas do dia a dia?",
-          options: ["Menos de 10 horas", "De 10 a 25 horas", "De 26 a 45 horas", "Mais de 45 horas", "Quase o tempo todo"]
-        },
-        {
-          id: "vacation", chapter: "reality", type: "choice", required: true,
-          chapterTitle: "O que acontece quando você não está?",
-          chapterText: "Muitos donos nunca desligam, ou porque não confiam que a equipe resolve, ou porque a equipe ainda não tem um processo para seguir.",
-          title: "Como a empresa funciona se você tira uma semana de férias sem olhar o celular?",
-          options: ["Funciona normalmente", "Alguém me chama algumas vezes", "Só consigo ficar poucos dias", "Hoje não consigo me afastar"]
-        },
-        {
-          id: "barrier", chapter: "aspiration", type: "choice", required: true,
-          chapterTitle: "Vamos olhar um pouco para frente.",
-          chapterText: "Todo mundo quer vender mais ou crescer, mas quase sempre existe uma barreira principal segurando a empresa agora.",
-          title: "Se você tivesse que escolher, o que mais atrapalha o crescimento hoje?",
-          options: ["Falta mão de obra ou tempo", "Falta previsibilidade de clientes", "Falta caixa ou lucro no final do mês", "Falta organização e processo"]
-        },
-        {
-          id: "timeline", chapter: "aspiration", type: "choice", required: true,
-          chapterTitle: "Sentido de urgência.",
-          chapterText: "Uma ideia sem prazo é apenas um desejo. Entender o tempo que temos ajuda a ditar o ritmo.",
-          title: "Qual a sua expectativa para iniciar um projeto estruturado de crescimento?",
-          options: ["Imediatamente", "No próximo mês", "Em até 3 meses", "Apenas pesquisando opções"]
-        },
-        {
-          id: "oneProblem", chapter: "aspiration", type: "text", required: false,
-          chapterTitle: "Sua visão importa mais do que as opções prontas.",
-          chapterText: "Existe algum detalhe ou problema que nós não perguntamos, mas que você sente que é o gargalo da empresa?",
-          title: "Descreva a sua principal dor hoje (opcional)", placeholder: "Ex.: Meu estoque está parado, a equipe não vende..."
-        },
-        {
-          id: "instagramPublic", chapter: "direction", type: "instagram", required: true,
-          chapterTitle: "Para fechar, o seu reflexo digital.",
-          chapterText: "Vamos olhar rapidamente como o mundo vê a empresa na internet para completar a análise.",
-          title: "Qual o Instagram público da empresa?", placeholder: "Ex.: @kradagencia",
-          onAfter: async (val) => {
-            if (!val || val.length < 2) return null;
-            try {
-              let clean = val.replace('@', '').split('/')[0].trim();
-              const response = await fetch(`${config.instagramEndpoint}?username=${clean}`);
-              if (response.ok) {
-                const data = await response.json();
-                if (data && data.profile) return { username: clean, profile: data.profile };
-              }
-              const fallResponse = await fetch(`${config.instagramFallbackEndpoint}?username=${clean}`);
-              if (fallResponse.ok) {
-                const data = await fallResponse.json();
-                if (data && data.profile) return { username: clean, profile: data.profile };
-              }
-            } catch (e) { console.error('Ig fail', e); }
-            return val;
-          }
-        }
-      ];
-
-      function startLegacyParticles() {
-        const canvas = $("#hero-canvas");
-        if (!canvas || prefersReducedMotion) return;
-        const ctx = canvas.getContext("2d");
-        const particles = [];
-        let frame;
-
-        const resize = () => {
-          const rect = canvas.getBoundingClientRect();
-          const dpr = Math.min(window.devicePixelRatio || 1, 2);
-          canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-          canvas.height = Math.max(1, Math.floor(rect.height * dpr));
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        };
-
-        resize();
-        window.addEventListener("resize", resize, { passive: true });
-
-        for (let i = 0; i < 46; i += 1) {
-          particles.push({
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            r: Math.random() * 1.5 + .35,
-            vx: (Math.random() - .5) * .22,
-            vy: (Math.random() - .5) * .22,
-            a: Math.random() * .34 + .05
-          });
-        }
-
-        const draw = () => {
-          const width = canvas.clientWidth;
-          const height = canvas.clientHeight;
-          ctx.clearRect(0, 0, width, height);
-
-          particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(106,122,44,${p.a})`;
-            ctx.fill();
-            p.x += p.vx; p.y += p.vy;
-            if (p.x < 0) p.x = width;
-            if (p.x > width) p.x = 0;
-            if (p.y < 0) p.y = height;
-            if (p.y > height) p.y = 0;
-          });
-
-          for (let i = 0; i < particles.length; i += 1) {
-            for (let j = i + 1; j < particles.length; j += 1) {
-              const dx = particles[i].x - particles[j].x;
-              const dy = particles[i].y - particles[j].y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance < 115) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(78,91,31,${.1 * (1 - distance / 115)})`;
-                ctx.lineWidth = .6;
-                ctx.stroke();
-              }
-            }
-          }
-          frame = requestAnimationFrame(draw);
-        };
-
-        draw();
-        window.addEventListener("pagehide", () => cancelAnimationFrame(frame), { once: true });
-      }
-
-      function animate(options) {
-        if (prefersReducedMotion || !hasAnime) {
-          const targets = typeof options.targets === "string" ? $$(options.targets) : (options.targets instanceof Element ? [options.targets] : options.targets || []);
-          targets.forEach(el => {
-            if (!el || !el.style) return;
-            if (options.opacity !== undefined) el.style.opacity = Array.isArray(options.opacity) ? options.opacity.at(-1) : options.opacity;
-            if (options.translateY !== undefined || options.translateX !== undefined || options.scale !== undefined) el.style.transform = "none";
-          });
-          if (typeof options.complete === "function") options.complete();
-          return { pause(){} };
-        }
-        return window.anime(options);
-      }
-
-      function setStageVisible(stage, visible) {
-        stage.style.display = visible ? (stage.id === "journey-stage" || stage.id === "result-stage" ? "block" : "grid") : "none";
-      }
-
-      function showToast(message) {
-        const toast = $("#toast");
-        toast.textContent = message;
-        toast.classList.add("visible");
-        clearTimeout(showToast.timer);
-        showToast.timer = setTimeout(() => toast.classList.remove("visible"), 3200);
-      }
-
-      function runPreface() {
-        if (prefersReducedMotion || !hasAnime) {
-          $("#prefaceLine1").style.display = "none";
-          $("#prefaceLine2").style.display = "none";
-          $("#prefaceMain").style.opacity = "1";
-          $("#prefaceMain").style.transform = "none";
-          return;
-        }
-        const timeline = anime.timeline({ easing: "easeOutQuart" });
-        timeline
-          .add({ targets: "#prefaceLine1", opacity: [0, 1], translateY: [14, 0], duration: 900 })
-          .add({ targets: "#prefaceLine1", opacity: 0, translateY: -10, duration: 700, delay: 1500 })
-          .add({ targets: "#prefaceLine2", opacity: [0, 1], translateY: [14, 0], duration: 900 })
-          .add({ targets: "#prefaceLine2", opacity: 0, translateY: -10, duration: 700, delay: 1500 })
-          .add({ targets: "#prefaceMain", opacity: [0, 1], translateY: [18, 0], duration: 1200 })
-          .add({ targets: "#startButton", opacity: [0, 1], translateY: [8, 0], duration: 700 }, "-=420");
-      }
-
-      function openVideoStage() {
-        document.body.dataset.chapter = "video";
-        $("#systemStatus").textContent = "Triagem iniciada";
-        setStageVisible(stages.video, true);
-        animate({
-          targets: stages.preface,
-          opacity: [1, 0],
-          scale: [1, 1.06],
-          duration: 950,
-          easing: "easeInOutQuart",
-          complete: () => {
-            setStageVisible(stages.preface, false);
-            animate({ targets: stages.video, opacity: [0, 1], scale: [1.04, 1], duration: 1050, easing: "easeOutExpo" });
-            initializeVideo();
-          }
-        });
-      }
-
-      function initializeVideo() {
-        const video = $("#contextVideo");
-        const placeholder = $("#videoPlaceholder");
-        const button = $("#beginJourneyButton");
-        const bar = $("#videoProgressBar");
-
-        if (config.videoUrl) {
-          video.src = config.videoUrl;
-          video.hidden = false;
-          placeholder.hidden = true;
-          video.addEventListener("timeupdate", () => {
-            const ratio = video.duration ? video.currentTime / video.duration : 0;
-            bar.style.width = `${Math.min(100, ratio * 100)}%`;
-            if (ratio >= .72) button.disabled = false;
-          });
-          video.addEventListener("ended", () => { button.disabled = false; bar.style.width = "100%"; });
-          video.addEventListener("error", () => runDemoVideo(button, bar));
-        } else {
-          runDemoVideo(button, bar);
-        }
-      }
-
-      function runDemoVideo(button, bar) {
-        const duration = Math.max(3, Number(config.demoVideoSeconds) || 9) * 1000;
-        animate({
-          targets: bar,
-          width: ["0%", "100%"],
-          duration,
-          easing: "linear",
-          complete: () => { button.disabled = false; }
-        });
-      }
-
-      function beginJourney() {
-        document.body.dataset.chapter = "knowledge";
-        $("#systemStatus").textContent = "Escuta em andamento";
-        setStageVisible(stages.journey, true);
-        renderQuestion(0, false);
-        animate({
-          targets: stages.video,
-          opacity: [1, 0],
-          translateY: [0, -28],
-          duration: 720,
-          easing: "easeInOutQuart",
-          complete: () => {
-            setStageVisible(stages.video, false);
-            animate({ targets: stages.journey, opacity: [0, 1], duration: 850, easing: "easeOutQuart" });
-          }
-        });
-      }
-
-      function illustrationMarkup() { return ``; }
-
-      function createQuestionMarkup(question, index) {
-        const meta = chapterMeta[question.chapter];
-        const value = state.answers[question.id] || "";
-        const isAspiration = question.chapter === "aspiration";
-        const context = `
-          <div class="question-context">
-            <div class="chapter-tag mono"><strong>${meta.code}</strong>${meta.label}</div>
-            <h2 class="serif">${question.chapterTitle}</h2>
-            <p>${question.chapterText}</p>
-            ${question.chapter === "knowledge" && index === 0 ? illustrationMarkup() : ""}
-          </div>`;
-
-        let control = "";
-        if (question.type === "text") {
-          control = `<div class="field-wrap"><input class="text-field" id="activeInput" name="${question.id}" type="text" value="${escapeAttribute(value)}" placeholder="${question.placeholder}" autocomplete="${question.autocomplete || "off"}" inputmode="${question.inputMode || "text"}" /><div class="field-error" id="fieldError">Conte um pouco para conseguirmos continuar.</div></div>`;
-        } else if (question.type === "textarea") {
-          control = `<div class="field-wrap"><textarea class="long-field" id="activeInput" name="${question.id}" placeholder="${question.placeholder}" maxlength="900">${escapeHtml(value)}</textarea><div class="field-hint">Não existe resposta certa. Pode escrever do seu jeito.</div><div class="field-error" id="fieldError">Conte um pouco para conseguirmos continuar.</div></div>`;
-        } else if (question.type === "choice") {
-          control = `<div class="choice-grid">${question.options.map(option => `<button class="choice-card ${value === option ? "selected" : ""}" type="button" data-value="${escapeAttribute(option)}"><span>${option}</span><span class="choice-indicator" aria-hidden="true"></span></button>`).join("")}</div><div class="micro-log mono" id="microLog"></div><div class="field-error" id="fieldError">Escolha a opção que mais parece com sua realidade.</div>`;
-        } else if (question.type === "instagram") {
-          control = `
-            <div class="field-wrap">
-              <input class="text-field" id="activeInput" name="${question.id}" type="text" value="${escapeAttribute(value)}" placeholder="${question.placeholder}" autocomplete="off" autocapitalize="none" spellcheck="false" />
-              <div class="field-hint">Essa parte é opcional. Se a leitura não estiver disponível, seu diagnóstico continua normalmente.</div>
-            </div>
-            <div class="scanner-card" id="scannerCard" aria-live="polite">
-              <div class="scanner-head">
-                <div class="scanner-avatar" id="scannerAvatar"><span id="avatarInitial">K</span><img id="avatarImage" alt="" /></div>
-                <div class="scanner-id"><strong id="scannerHandle">@empresa</strong><span class="mono" id="scannerMode">Aguardando canal</span></div>
-              </div>
-              <div class="scanner-grid">
-                <div class="scanner-metric"><b id="scanMetric1">—</b><small>Pessoas seguindo</small></div>
-                <div class="scanner-metric"><b id="scanMetric2">—</b><small>Publicações</small></div>
-                <div class="scanner-metric"><b id="scanMetric3">—</b><small>Interação</small></div>
-              </div>
-              <div class="scan-sweep" id="scanSweep"></div>
-            </div>`;
-        }
-
-        const panel = `
-          <div class="question-panel">
-            <div class="question-number mono">Pergunta ${String(index + 1).padStart(2, "0")} de ${questions.length}</div>
-            <h3 class="question-title serif">${question.title}</h3>
-            ${control}
-            <div class="journey-actions">
-              <button class="primary-button" id="nextQuestion" type="button">${index === questions.length - 1 ? "Construir meu mapa" : "Continuar"}</button>
-              ${index > 0 ? `<button class="quiet-button" id="previousQuestion" type="button">Voltar</button>` : ""}
-            </div>
-          </div>`;
-
-        return `<article class="question-sheet ${isAspiration ? "single-column" : ""}" data-question="${question.id}">${isAspiration ? panel : context + panel}</article>`;
-      }
-
-      function renderQuestion(index, transition = true, direction = 1) {
-        const viewport = $("#questionViewport");
-        const old = $(".question-sheet", viewport);
-        const question = questions[index];
-        state.current = index;
-        state.chapter = question.chapter;
-        document.body.dataset.chapter = question.chapter;
-        updateProgress();
-
-        const insert = () => {
-          viewport.innerHTML = createQuestionMarkup(question, index);
-          const sheet = $(".question-sheet", viewport);
-          bindQuestionEvents(question);
-          if (transition) {
-            animate({ targets: sheet, opacity: [0, 1], translateY: [direction > 0 ? 72 : -72, 0], duration: 820, easing: "easeOutExpo" });
-          }
-          const input = $("#activeInput", sheet);
-          if (input && window.innerWidth > 760) setTimeout(() => input.focus({ preventScroll: true }), 350);
-        };
-
-        if (old && transition) {
-          animate({
-            targets: old,
-            opacity: [1, 0],
-            translateY: [0, direction > 0 ? -88 : 88],
-            duration: 540,
-            easing: "easeInQuart",
-            complete: insert
-          });
-        } else insert();
-      }
-
-      function bindQuestionEvents(question) {
-        const next = $("#nextQuestion");
-        const previous = $("#previousQuestion");
-        const input = $("#activeInput");
-
-        next.addEventListener("click", advanceQuestion);
-        if (previous) previous.addEventListener("click", goBack);
-
-        if (input) {
-          input.addEventListener("input", (e) => {
-            hideError();
-            if (question.type === "instagram") scheduleScan(input.value);
-            if (question.id === "cnpj") {
-              let v = e.target.value.replace(/\D/g, "");
-              if (v.length > 14) v = v.substring(0, 14);
-              v = v.replace(/^(\d{2})(\d)/, "$1.$2");
-              v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
-              v = v.replace(/\.(\d{3})(\d)/, ".$1/$2");
-              v = v.replace(/(\d{4})(\d)/, "$1-$2");
-              e.target.value = v;
-            }
-          });
-          input.addEventListener("keydown", event => {
-            if (event.key === "Enter" && question.type === "text") {
-              event.preventDefault();
-              advanceQuestion();
-            }
-          });
-          if (question.type === "instagram" && input.value) scheduleScan(input.value);
-        }
-
-        $$(".choice-card").forEach(card => {
-          card.addEventListener("click", () => {
-            $$(".choice-card").forEach(item => item.classList.remove("selected"));
-            card.classList.add("selected");
-            state.answers[question.id] = card.dataset.value;
-            hideError();
-            const microLog = $("#microLog");
-            const log = question.logMap?.[card.dataset.value] || "";
-            if (microLog) {
-              microLog.textContent = log;
-              microLog.classList.toggle("visible", Boolean(log));
-            }
-            setTimeout(advanceQuestion, 480);
-          });
-        });
-      }
-
-      function readCurrentAnswer() {
-        const question = questions[state.current];
-        if (question.type === "choice") return state.answers[question.id] || "";
-        const input = $("#activeInput");
-        return input ? input.value.trim() : "";
-      }
-
-      async function advanceQuestion() {
-        const question = questions[state.current];
-        const value = readCurrentAnswer();
-        if (question.required && !value) {
-          showError("Esse campo é obrigatório.");
-          return;
-        }
-        
-        if (question.id === "cnpj") {
-          const cleanCnpj = value.replace(/\D/g, "");
-          if (cleanCnpj.length !== 14) {
-            showError("O CNPJ deve ter 14 dígitos.");
-            return;
-          }
-          
-          const finalButton = $("#nextQuestion");
-          const oldText = finalButton.textContent;
-          finalButton.disabled = true;
-          finalButton.textContent = "Validando CNPJ...";
-          
-          try {
-            const res = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cleanCnpj}`);
-            if (!res.ok) throw new Error("CNPJ inválido");
-            const data = await res.json();
-            if (data.situacao_cadastral !== 2) throw new Error("CNPJ inativo");
+            const tl = gsap.timeline();
             
-            state.answers.razao_social = data.razao_social;
-            state.answers.cnpjValido = true;
-          } catch (e) {
-            finalButton.disabled = false;
-            finalButton.textContent = oldText;
-            showError("CNPJ inválido ou inativo. Verifique os números.");
-            return;
-          }
-          finalButton.disabled = false;
-          finalButton.textContent = oldText;
-        }
-
-        if (question.type === "instagram") {
-          const handle = normalizeHandle(value);
-          if (typeof state.answers[question.id] !== "object") {
-            state.answers[question.id] = handle;
-          }
-        } else if (question.id !== "cnpj") {
-          state.answers[question.id] = value;
-        }
-        persistState();
-
-        if (state.current < questions.length - 1) {
-          renderQuestion(state.current + 1, true, 1);
-          return;
-        }
-
-        const finalButton = $("#nextQuestion");
-        if (finalButton) {
-          finalButton.disabled = true;
-          finalButton.textContent = state.answers.instagram ? "Lendo o perfil..." : "Construindo seu mapa...";
-        }
-
-        if (question.type === "instagram" && !state.answers.instagramPublicProfile) {
-          clearTimeout(state.scanTimer);
-          await runInstagramScan(value);
-        }
-
-        startProcessing();
-      }
-
-      function goBack() {
-        const question = questions[state.current];
-        state.answers[question.id] = readCurrentAnswer();
-        persistState();
-        if (state.current > 0) renderQuestion(state.current - 1, true, -1);
-      }
-
-      function showError(msg) {
-        const error = $("#fieldError");
-        if (error) {
-          if (msg) error.textContent = msg;
-          error.classList.add("visible");
-        }
-        animate({ targets: ".question-panel", translateX: [0, -7, 6, -4, 0], duration: 420, easing: "easeInOutSine" });
-      }
-      function hideError() { const error = $("#fieldError"); if (error) error.classList.remove("visible"); }
-
-      function updateProgress() {
-        const completed = state.current;
-        const percent = Math.max(3, Math.round((completed / questions.length) * 100));
-        const meta = chapterMeta[state.chapter];
-        $("#progressFill").style.width = `${percent}%`;
-        $("#chapterIndex").textContent = `${meta.code} / ${meta.label}`;
-        if (state.chapter === "knowledge") $("#humanProgress").textContent = `Você já compartilhou ${Math.max(6, percent)}% da sua história.`;
-        else if (state.chapter === "reality") $("#humanProgress").textContent = `Já entendemos ${percent}% de como sua empresa funciona hoje.`;
-        else if (state.chapter === "aspiration") $("#humanProgress").textContent = `Já entendemos ${percent}% do futuro que você quer construir.`;
-        else $("#humanProgress").textContent = `Seu primeiro mapa está ${percent}% pronto.`;
-      }
-
-      function normalizeHandle(value) {
-        const clean = String(value || "").trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/\/$/, "").replace(/^@/, "").split(/[/?#]/)[0];
-        return clean ? `@${clean.replace(/[^a-zA-Z0-9._]/g, "")}` : "";
-      }
-
-      function scheduleScan(value) {
-        clearTimeout(state.scanTimer);
-        const handle = normalizeHandle(value);
-        const card = $("#scannerCard");
-        if (!handle) { card?.classList.remove("visible"); return; }
-        card.classList.add("visible");
-        $("#scannerHandle").textContent = handle;
-        $("#avatarInitial").textContent = handle.replace("@", "").charAt(0).toUpperCase() || "K";
-        $("#scannerMode").textContent = "PREPARANDO LEITURA";
-        ["#scanMetric1", "#scanMetric2", "#scanMetric3"].forEach(id => $(id).textContent = "···");
-        animate({ targets: "#scanSweep", scaleX: [0, 1], duration: 1300, easing: "easeInOutQuart" });
-        state.scanTimer = setTimeout(() => runInstagramScan(handle), 650);
-      }
-
-      async function runInstagramScan(handle) {
-        const mode = $("#scannerMode");
-        const username = handle.replace("@", "");
-
-        const fetchProfile = async (endpoint) => {
-          if (!endpoint) throw new Error("NO_ENDPOINT");
-          const url = new URL(endpoint, window.location.href);
-          url.searchParams.set("username", username);
-          const response = await fetch(url.toString(), { headers: config.requestHeaders });
-          if (!response.ok) throw new Error(`HTTP_${response.status}`);
-          const payload = await response.json();
-          if (payload?.error || payload?.success === false) throw new Error(payload?.error || "API_ERROR");
-          return payload;
-        };
-
-        try {
-          mode.textContent = "LENDO O CANAL DA EMPRESA";
-          let data;
-          try {
-            data = await fetchProfile(config.instagramEndpoint);
-          } catch (primaryError) {
-            if (!config.instagramFallbackEndpoint) throw primaryError;
-            data = await fetchProfile(config.instagramFallbackEndpoint);
-          }
-
-          const profile = data.profile || data;
-          const followers = Number(profile.followers || 0);
-          const postsPerMonth = Number(profile.postsPerMonth || 0);
-          const engagement = Number(profile.engagementRate || 0);
-
-          $("#scanMetric1").textContent = followers ? followers.toLocaleString("pt-BR") : "localizado";
-          $("#scanMetric2").textContent = postsPerMonth ? `${postsPerMonth}/mês` : "visível";
-          $("#scanMetric3").textContent = engagement ? `${engagement.toFixed(1)}%` : "em leitura";
-          mode.textContent = "LEITURA COMPLEMENTAR CONCLUÍDA";
-
-          const avatarUrl = profile.avatarUrl || profile.profilePicUrl || data.avatarUrl;
-          if (avatarUrl) {
-            const img = $("#avatarImage");
-            img.src = avatarUrl;
-            img.style.display = "block";
-            $("#avatarInitial").style.display = "none";
-          }
-
-          state.answers.instagramPublic = data;
-          persistState();
-          return data;
-        } catch (error) {
-          $("#scanMetric1").textContent = "perfil";
-          $("#scanMetric2").textContent = "não lido";
-          $("#scanMetric3").textContent = "opcional";
-          mode.textContent = "NÃO FOI POSSÍVEL LER · O DIAGNÓSTICO CONTINUA";
-          return null;
-        }
-      }
-
-      function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
-
-      function startProcessing() {
-        document.body.dataset.chapter = "processing";
-        $("#systemStatus").textContent = "Matriz em processamento";
-        $("#journeyFooter").style.display = "none";
-        setStageVisible(stages.processing, true);
-        animate({
-          targets: stages.journey,
-          opacity: [1, 0],
-          translateY: [0, -38],
-          duration: 700,
-          easing: "easeInOutQuart",
-          complete: async () => {
-            setStageVisible(stages.journey, false);
-            animate({ targets: stages.processing, opacity: [0, 1], duration: 900, easing: "easeOutQuart" });
-            await runProcessingSequence();
-          }
+            tl.to('.char', {
+                y: 0,
+                stagger: 0.02,
+                duration: 1,
+                ease: "power4.out"
+            })
+            .to('#hero-sub', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.6")
+            .to('#hero-cta', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.6");
         });
-      }
-
-      async function runProcessingSequence() {
-        animate({ targets: ".radar-svg .ring, .radar-svg .grid-line", strokeDashoffset: [900, 0], delay: hasAnime ? anime.stagger(90) : 0, duration: 1200, easing: "easeInOutSine" });
-        animate({ targets: ".radar-svg .signal", strokeDashoffset: [900, 0], duration: 1800, delay: 750, easing: "easeInOutQuart" });
-        animate({ targets: ".radar-core", opacity: [0, 1, .4, 1], scale: [.6, 1.5, 1], duration: 1900, delay: 1050, easing: "easeInOutSine" });
-
-        const rows = $$(".terminal-row");
-        const interval = prefersReducedMotion ? 80 : 850;
-        rows.forEach((row, index) => {
-          setTimeout(() => {
-            rows.forEach((item, i) => {
-              item.classList.toggle("active", i === index);
-              if (i < index) item.classList.add("done");
-            });
-          }, 550 + index * interval);
-        });
-
-        const visualTime = 550 + rows.length * interval + 750;
-        const diagnosticPromise = submitDiagnostic();
-        await delay(visualTime);
-
-        rows.forEach(row => { row.classList.remove("active"); row.classList.add("done"); });
-        $("#processingNote").textContent = "Finalizando a leitura. Nenhuma resposta será apresentada como certeza quando os dados não forem suficientes.";
-
-        await Promise.race([ diagnosticPromise, delay(14000) ]);
-        buildResult();
-        openResults();
-      }
-
-      async function submitDiagnostic() {
-        const payload = {
-          source: "krad-os-web",
-          createdAt: new Date().toISOString(),
-          answers: questions.filter(q => state.answers[q.id]).map(q => ({
-            id: q.id,
-            question: q.title || q.id,
-            value: state.answers[q.id]
-          })),
-          page: window.location.href
-        };
-
-        if (!config.diagnosticEndpoint) return null;
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 25000);
-
-        try {
-          const response = await fetch(config.diagnosticEndpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", ...config.requestHeaders },
-            body: JSON.stringify(payload),
-            signal: controller.signal
-          });
-          if (!response.ok) throw new Error(`HTTP_${response.status}`);
-          const data = await response.json();
-          state.apiResponse = data.report || data;
-          state.submitted = true;
-          persistState();
-
-          if (stages.result.style.display !== "none") {
-            buildResult();
-            animateMaturity();
-          }
-          return state.apiResponse;
-        } catch (error) {
-          console.warn("KRAD OS: diagnóstico por IA não concluído. Aplicando leitura segura local.", error);
-          return null;
-        } finally {
-          clearTimeout(timeout);
-        }
-      }
-
-      function openResults() {
-        document.body.classList.remove("locked");
-        document.documentElement.classList.remove("locked");
-        document.body.dataset.chapter = "result";
-        $("#systemStatus").textContent = "Mapa inicial disponível";
-        setStageVisible(stages.result, true);
-        animate({
-          targets: stages.processing,
-          opacity: [1, 0],
-          scale: [1, .98],
-          duration: 800,
-          easing: "easeInOutQuart",
-          complete: () => {
-            setStageVisible(stages.processing, false);
-            stages.result.style.opacity = "1";
-            window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-            animate({ targets: ".result-hero-inner > *", opacity: [0, 1], translateY: [32, 0], delay: hasAnime ? anime.stagger(140) : 0, duration: 1000, easing: "easeOutExpo" });
-            animateMaturity();
-          }
-        });
-      }
-
-                  function buildResult() {
-        const report = state.apiResponse || {};
-        
-        // Populate Header
-        const cName = state.answers.companyName || "Empresa";
-        const cCity = state.answers.city || "Cidade Não Informada";
-        const cSeg = state.answers.segment || "Segmento Não Informado";
-        const cRev = state.answers.revenue || "Faturamento Não Informado";
-        $("#dashCompanyName").textContent = cName;
-        $("#dashMeta").textContent = `${cCity} • ${cSeg} • ${cRev}`;
-
-        // Krad Index & Stage
-        const score = report.kradIndex || 0;
-        $("#dashStage").textContent = report.stage || "Analisando";
-        anime({ targets: "#dashScore", innerHTML: [0, score], round: 1, duration: 2500, easing: "easeOutExpo" });
-
-        // Radar Polygon
-        const radarData = report.radarScores || {gestao:0, marketing:0, processos:0, presenca:0, relacionamento:0, crescimento:0};
-        const maxR = 160;
-        const vals = [
-          (radarData.gestao || 0)/10 * maxR,
-          (radarData.crescimento || 0)/10 * maxR,
-          (radarData.marketing || 0)/10 * maxR,
-          (radarData.processos || 0)/10 * maxR,
-          (radarData.relacionamento || 0)/10 * maxR,
-          (radarData.presenca || 0)/10 * maxR
-        ];
-        // calculate x,y for 6 angles
-        const angles = [0, 60, 120, 180, 240, 300].map(a => (a - 90) * Math.PI / 180);
-        let points = vals.map((r, i) => {
-          return `${210 + r * Math.cos(angles[i])},${210 + r * Math.sin(angles[i])}`;
-        }).join(" ");
-        anime({ targets: "#radarPolygon", points: [`210,210 210,210 210,210 210,210 210,210 210,210`, points], duration: 1500, easing: "easeOutQuart" });
-
-        // Bar Charts
-        const bars = report.barScores || {gestao:0, marketing:0, presenca:0, estrategia:0, processos:0, clientes:0};
-        const barContainer = $("#barCharts");
-        barContainer.innerHTML = Object.keys(bars).map(k => {
-          return `<div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; font-size:12px; color:#A5B876; text-transform:capitalize;"><span>${k}</span><span>${bars[k]}/10</span></div>
-            <div style="width:100%; height:6px; background:#20221c; border-radius:3px; overflow:hidden;">
-              <div class="bar-fill" style="width:0%; height:100%; background:#d12c2c;" data-target="${bars[k]*10}%"></div>
-            </div>
-          </div>`;
-        }).join("");
-        setTimeout(() => {
-          $(".bar-fill").forEach(b => {
-            anime({ targets: b, width: b.dataset.target, duration: 1200, easing: "easeOutQuart" });
-          });
-        }, 500);
-
-        // Timeline
-        const stages = ["Sobrevive", "Existe", "Cresce", "Escala", "Transforma"];
-        const currStage = report.stage || "Sobrevive";
-        let reached = true;
-        $("#dashTimeline").innerHTML += stages.map(s => {
-          const isCurr = s.toLowerCase() === currStage.toLowerCase();
-          const color = reached ? "#d12c2c" : "#20221c";
-          const dot = isCurr ? `<circle cx="10" cy="10" r="6" fill="#fff"/><circle cx="10" cy="10" r="10" fill="none" stroke="#d12c2c" stroke-width="2"/>` : `<circle cx="10" cy="10" r="4" fill="${color}"/>`;
-          if (isCurr) reached = false;
-          return `<div style="display:flex; flex-direction:column; align-items:center; z-index:2; gap:10px;">
-            <svg width="20" height="20">${dot}</svg>
-            <span style="font-size:10px; color:${isCurr ? '#A5B876' : '#6a6f5e'}; text-transform:uppercase;">${s}</span>
-          </div>`;
-        }).join("");
-
-        // X-Ray
-        const xrayData = report.xray || {};
-        $("#xrayList").innerHTML = Object.keys(xrayData).filter(k => !k.includes("Text")).map(k => {
-          return `<details style="border:1px solid #20221c; border-radius:8px; padding:12px 15px; cursor:pointer;">
-            <summary style="font-size:14px; color:#A5B876; font-weight:bold; text-transform:capitalize; list-style:none; display:flex; justify-content:space-between;">
-              <span>${k}</span> <span>${xrayData[k]}</span>
-            </summary>
-            <div style="margin-top:10px; font-size:13px; color:#a0a0a0; padding-top:10px; border-top:1px solid #20221c;">${xrayData[k+"Text"] || ""}</div>
-          </details>`;
-        }).join("");
-
-        // Instagram
-        const igData = state.answers.instagramPublic ? state.answers.instagramPublic : (state.answers.instagram ? state.answers.instagram : null);
-        let igHtml = `<p style="color:#6a6f5e; font-size:12px; margin-bottom:20px;">@${igData ? (igData.username || igData) : 'Nao informado'}</p>`;
-        
-        const ia = report.instagramAnalysis || {};
-        igHtml += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">`;
-        ["foto", "bio", "destaques", "autoridade"].forEach(k => {
-          const stars = Array(5).fill("").map((_,i) => i < (ia[k] || 0) ? "★" : "☆").join("");
-          igHtml += `<div><div style="font-size:12px; color:#A5B876; text-transform:capitalize;">${k}</div>
-          <div style="color:#d12c2c; font-size:10px; margin-bottom:5px;">${stars}</div>
-          <div style="font-size:11px; color:#a0a0a0;">${ia[k+"Text"] || ""}</div></div>`;
-        });
-        igHtml += `</div>`;
-        $("#instaContent").innerHTML = igHtml;
-
-        // Cards
-        const ac = report.actionCards || {funcionando:[], oportunidades:[], prioridades:[]};
-        $("#cardsGreen").innerHTML = (ac.funcionando||[]).map(t => `<li>✓ ${t}</li>`).join("");
-        $("#cardsYellow").innerHTML = (ac.oportunidades||[]).map(t => `<li>• ${t}</li>`).join("");
-        $("#cardsRed").innerHTML = (ac.prioridades||[]).map(t => `<li>! ${t}</li>`).join("");
-
-        // Conclusion & Plan
-        $("#dashConclusion").textContent = report.conclusion || "Finalizado com sucesso.";
-        $("#dashPlan").innerHTML = (report.actionPlan || []).map(t => `<li>${t}</li>`).join("");
-
-        // Simulate Curve
-        anime({ targets: "#simulationCurve", strokeDashoffset: [200, 0], duration: 2500, delay: 1000, easing: "easeOutCubic" });
-        anime({ targets: "#simDot", opacity: [0, 1], duration: 500, delay: 3500 });
-      }
-
-      function animateMaturity() {
-        const radii = { K: 92, R: 76, A: 60, D: 44 };
-        ["K", "R", "A", "D"].forEach((code, index) => {
-          const el = $(`#arc${code}`);
-          const circumference = 2 * Math.PI * radii[code];
-          const value = Number(el.dataset.value || 60);
-          const length = circumference * (value / 100);
-          el.style.strokeDasharray = `0 ${circumference}`;
-          animate({ targets: el, strokeDasharray: [`0 ${circumference}`, `${length} ${circumference}`], duration: 1500, delay: index * 150 + 450, easing: "easeOutQuart" });
-        });
-      }
-
-      function persistState() {
-        try { localStorage.setItem("krad-os-diagnostic", JSON.stringify({ answers: state.answers, current: state.current, apiResponse: state.apiResponse || null })); } catch (_) {}
-      }
-
-      function whatsappUrl(message) {
-        const phone = String(config.whatsappPhone || "5511977842164").replace(/\D/g, "");
-        return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      }
-
-      function handlePath(path) {
-        if (path === "academy") {
-          const academyButton = $('[data-tab="academy"]');
-          academyButton?.click();
-          $("#tab-academy")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
-          return;
-        }
-
-        const company = state.answers.companyName || "minha empresa";
-        const founder = state.answers.founderName || "";
-        const base = founder ? `Olá! Sou ${founder}.` : "Olá!";
-
-        const messages = {
-          session: `${base} Fiz o diagnóstico no KRAD OS para ${company} e gostaria de conversar sobre um plano estratégico para o momento atual da empresa.`,
-          growth: `${base} Fiz o diagnóstico no KRAD OS para ${company} e quero entender como funciona o acompanhamento e a execução do Growth Team KRAD.`
-        };
-        window.open(whatsappUrl(messages[path] || `${base} Vim pelo KRAD OS e gostaria de conversar.`), "_blank", "noopener,noreferrer");
-      }
-
-      function bindTabs() {
-        $$(".tab-button").forEach(button => {
-          button.addEventListener("click", () => {
-            const id = button.dataset.tab;
-            $$(".tab-button").forEach(btn => { btn.classList.toggle("active", btn === button); btn.setAttribute("aria-selected", String(btn === button)); });
-            $$(".tab-panel").forEach(panel => panel.classList.toggle("active", panel.id === `tab-${id}`));
-            animate({ targets: `#tab-${id} > *`, opacity: [0, 1], translateY: [14, 0], duration: 550, easing: "easeOutQuart" });
-          });
-        });
-      }
-
-      function escapeHtml(value) {
-        return String(value ?? "").replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
-      }
-      function escapeAttribute(value) { return escapeHtml(value).replace(/`/g, "&#96;"); }
-
-      $("#startButton").addEventListener("click", openVideoStage);
-      $("#beginJourneyButton").addEventListener("click", beginJourney);
-      $$(".path-card").forEach(card => card.addEventListener("click", () => handlePath(card.dataset.path)));
-      bindTabs();
-      startLegacyParticles();
-      runPreface();
-    })();
-  </script>
+    </script>
 </body>
 </html>
