@@ -1,684 +1,2094 @@
 <!DOCTYPE html>
-<html lang="pt-BR" prefix="og: https://ogp.me/ns#">
+<html lang="pt-BR">
 <head>
-<!-- ═══════════════════════════════════════════
-     SEO CORE & META TAGS
-═══════════════════════════════════════════ -->
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070806" />
+  <meta name="description" content="KRAD OS — um diagnóstico simples e humano para ajudar empresários a entender a realidade da empresa e escolher o próximo passo." />
+  <title>KRAD OS — Entenda onde sua empresa está hoje</title>
 
-<title>Sâmara Damasceno | Advogada Especialista em Direito Bancário e Defesa do Consumidor</title>
-<meta name="description" content="Advogada especialista em Direito Bancário, Defesa do Consumidor e Superendividamento. Reduza juros abusivos, limpe seu nome e proteja seu patrimônio. Análise gratuita. Atendimento em todo o Brasil."/>
-<meta name="keywords" content="advogada direito bancário, defesa do consumidor, superendividamento, ação revisional, busca e apreensão veículo, limpar nome serasa, juros abusivos, renegociação de dívidas"/>
-<meta name="author" content="Sâmara Damasceno"/>
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
-<link rel="canonical" href="https://www.samaradamasceno.adv.br/"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
 
-<!-- GEO / LOCAL SEO -->
-<meta name="geo.region" content="BR"/>
-<meta name="geo.placename" content="Brasil"/>
-
-<!-- OPEN GRAPH -->
-<meta property="og:type" content="website"/>
-<meta property="og:locale" content="pt_BR"/>
-<meta property="og:site_name" content="Sâmara Damasceno Advocacia"/>
-<meta property="og:title" content="Sâmara Damasceno | Advogada Especialista em Direito Bancário"/>
-<meta property="og:description" content="Proteja seu patrimônio e combata abusos bancários com quem entende do assunto. Especialista em Ações Revisionais e Superendividamento."/>
-<meta property="og:url" content="https://www.samaradamasceno.adv.br/"/>
-<meta property="og:image" content="https://www.samaradamasceno.adv.br/og-image.jpg"/>
-
-<!-- ═══════════════════════════════════════════
-     SCHEMA.ORG — STRUCTURED DATA
-═══════════════════════════════════════════ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "Sâmara Damasceno Advocacia",
-  "description": "Escritório especializado em Direito Bancário e Defesa do Consumidor.",
-  "url": "https://www.samaradamasceno.adv.br/",
-  "telephone": "+55-19-99207-4605",
-  "email": "contato@samaradamasceno.adv.br",
-  "areaServed": "BR",
-  "founder": {
-    "@type": "Person",
-    "name": "Sâmara Damasceno",
-    "jobTitle": "Advogada — OAB/SP 477.139"
-  }
-}
-</script>
-
-<!-- ═══════════════════════════════════════════
-     PERFORMANCE & FONTS
-═══════════════════════════════════════════ -->
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="dns-prefetch" href="https://wa.me"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet"/>
-
-<!-- FAVICON -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230B132B'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%23C5A47E' font-family='serif'>S</text></svg>"/>
-
-<!-- ═══════════════════════════════════════════
-     CORE CSS (DESIGN SYSTEM PREMIUM)
-═══════════════════════════════════════════ -->
-<style>
-/* --- 1. DESIGN TOKENS --- */
-:root {
-  --c-navy-dark:   #050A15;
-  --c-navy:        #0B132B;
-  --c-navy-light:  #1C2541;
-  --c-gold:        #C5A47E;
-  --c-gold-light:  #E0C29F;
-  --c-white:       #FFFFFF;
-  --c-off-white:   #F8F9FA;
-  --c-gray-text:   #4A5568;
-  --c-gray-light:  #EDF2F7;
-  --c-border:      rgba(197, 164, 126, 0.2);
-  --c-border-dark: rgba(255, 255, 255, 0.1);
-
-  --f-display: 'Playfair Display', serif;
-  --f-body:    'Inter', sans-serif;
-  --f-mono:    'Space Mono', monospace;
-
-  --px-container: clamp(1.25rem, 5vw, 4rem);
-  --py-section:   clamp(4rem, 8vw, 8rem);
-  --max-width:    1280px;
-  
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --shadow-sm: 0 4px 10px rgba(0,0,0,0.05);
-  --shadow-md: 0 10px 30px rgba(11, 19, 43, 0.08);
-  --transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* --- 2. RESET E BASE --- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--f-body); color: var(--c-navy);
-  background-color: var(--c-white); line-height: 1.6;
-  -webkit-font-smoothing: antialiased; overflow-x: hidden;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { text-decoration: none; color: inherit; transition: var(--transition); }
-ul { list-style: none; }
-
-h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.15; color: var(--c-navy); }
-h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; }
-h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; letter-spacing: -0.01em; }
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 600; }
-p { font-size: clamp(0.95rem, 1.2vw, 1.1rem); color: var(--c-gray-text); }
-em { font-style: italic; color: var(--c-gold); }
-
-/* --- 3. COMPONENTES REUTILIZÁVEIS --- */
-.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--px-container); }
-.eyebrow { display: inline-flex; align-items: center; gap: 0.75rem; font-family: var(--f-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--c-gold); margin-bottom: 1.5rem; }
-.eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--c-gold); }
-
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: var(--radius-sm); font-family: var(--f-body); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); border: 1px solid transparent; }
-.btn-gold { background-color: var(--c-gold); color: var(--c-navy-dark); }
-.btn-gold:hover { background-color: var(--c-gold-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197, 164, 126, 0.3); }
-.btn-outline { background-color: transparent; color: var(--c-white); border-color: var(--c-border-dark); }
-.btn-outline:hover { border-color: var(--c-gold); color: var(--c-gold); background: rgba(197, 164, 126, 0.05); }
-
-.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* --- 4. HEADER --- */
-.header { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.25rem 0; transition: var(--transition); }
-.header.scrolled { background: rgba(11, 19, 43, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 0; border-bottom: 1px solid var(--c-border-dark); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; }
-.logo { display: flex; flex-direction: column; color: var(--c-white); font-family: var(--f-display); font-weight: 700; font-size: 1.25rem; line-height: 1; }
-.logo span { font-family: var(--f-body); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--c-gold); text-transform: uppercase; margin-top: 0.2rem; }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-links a { color: var(--c-white); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
-.nav-links a:hover { color: var(--c-gold); }
-.menu-btn { display: none; background: none; border: none; color: var(--c-white); cursor: pointer; }
-.menu-btn svg { width: 32px; height: 32px; }
-
-/* --- 5. SEÇÕES --- */
-/* Hero */
-.hero { position: relative; min-height: 100vh; background-color: var(--c-navy-dark); color: var(--c-white); display: flex; align-items: center; justify-content: center; padding-top: 6rem; overflow: hidden; }
-.hero::after { content: ''; position: absolute; inset: 0; opacity: 0.03; background-image: linear-gradient(var(--c-white) 1px, transparent 1px), linear-gradient(90deg, var(--c-white) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
-.hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; display: flex; flex-direction: column; align-items: center;}
-.hero h1 { color: var(--c-white); margin-bottom: 1.5rem; }
-.hero p { color: #A0AEC0; margin-bottom: 2.5rem; font-size: clamp(1rem, 1.5vw, 1.25rem); }
-.trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
-.badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border: 1px solid var(--c-border-dark); border-radius: 50px; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--c-gold); text-transform: uppercase; background: rgba(255,255,255,0.02); }
-.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--c-gold); }
-.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;}
-
-/* Stats */
-.stats { background: var(--c-navy); border-top: 1px solid var(--c-border-dark); position: relative; z-index: 10;}
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-.stat-item { padding: 3rem 2rem; text-align: center; border-right: 1px solid var(--c-border-dark); }
-.stat-item:last-child { border-right: none; }
-.stat-item strong { display: block; font-family: var(--f-display); font-size: 2.5rem; color: var(--c-gold); line-height: 1; margin-bottom: 0.5rem; }
-.stat-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #A0AEC0; }
-
-/* Sobre */
-.about { padding: var(--py-section) 0; background: var(--c-white); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-.about-image { position: relative; }
-.about-image img { border-radius: var(--radius-md); box-shadow: var(--shadow-md); width: 100%; object-fit: cover; aspect-ratio: 3/4;}
-.about-image::before { content:''; position:absolute; top:-20px; right:-20px; width:100px; height:100px; border-top:2px solid var(--c-gold); border-right:2px solid var(--c-gold); z-index:0; }
-.about-content h2 { margin-bottom: 1.5rem; }
-.about-list { margin-top: 2rem; }
-.about-list li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--c-gray-light); color: var(--c-navy-light); }
-.about-list li::before { content: '✓'; color: var(--c-gold); font-weight: bold; }
-
-/* Serviços */
-.services { padding: var(--py-section) 0; background: var(--c-off-white); }
-.section-header { max-width: 700px; margin-bottom: 4rem; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
-.service-card { background: var(--c-white); padding: 3rem 2rem; border-radius: var(--radius-md); border: 1px solid var(--c-gray-light); transition: var(--transition); position: relative; overflow: hidden; }
-.service-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:3px; background:var(--c-gold); transition:var(--transition); }
-.service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: transparent; }
-.service-card:hover::after { width: 100%; }
-.service-icon { margin-bottom: 1.5rem; color: var(--c-gold); }
-.service-card h3 { margin-bottom: 1rem; font-size: 1.5rem; }
-
-/* Quote */
-.quote-banner { background: var(--c-navy-dark); padding: 6rem 0; text-align: center; color: var(--c-white); position: relative;}
-.quote-banner blockquote { font-family: var(--f-display); font-size: clamp(1.5rem, 3vw, 2.5rem); font-style: italic; max-width: 800px; margin: 0 auto 2rem; line-height: 1.4; }
-.quote-banner cite { font-family: var(--f-mono); font-size: 0.875rem; color: var(--c-gold); letter-spacing: 0.1em; text-transform: uppercase; font-style: normal; }
-
-/* Processo (Como Funciona) */
-.process { padding: var(--py-section) 0; background: var(--c-white); }
-.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 2rem; counter-reset: step; padding-top: 2rem; }
-.process-step { position: relative; padding: 2.5rem 1.5rem 1.5rem; background: var(--c-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border-top: 3px solid var(--c-gold); transition: var(--transition);}
-.process-step:hover { transform: translateY(-3px); box-shadow: var(--shadow-md);}
-.process-step::before { counter-increment: step; content: "0" counter(step) "."; position: absolute; top: -20px; left: 1.5rem; font-family: var(--f-display); font-size: 2.5rem; color: var(--c-gold); background: var(--c-white); padding: 0 10px; line-height: 1; }
-.process-step h3 { font-size: 1.25rem; margin-bottom: 1rem; }
-
-/* Depoimentos */
-.testimonials { padding: var(--py-section) 0; background: var(--c-navy); color: var(--c-white); }
-.testimonials h2 { color: var(--c-white); margin-bottom: 4rem; }
-.testimonials p { color: #A0AEC0; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
-.test-card { background: rgba(255,255,255,0.03); border: 1px solid var(--c-border-dark); padding: 2.5rem 2rem; border-radius: var(--radius-md); position: relative; }
-.test-mark { font-family: var(--f-display); font-size: 4rem; color: var(--c-gold); line-height: 0.8; opacity: 0.4; margin-bottom: 1rem; }
-.test-text { font-style: italic; margin-bottom: 1.5rem; line-height: 1.8; }
-.test-author { font-weight: 700; color: var(--c-white); font-size: 1rem; }
-.test-role { font-size: 0.8rem; color: var(--c-gold); }
-
-/* FAQ */
-.faq { padding: var(--py-section) 0; background: var(--c-off-white); }
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
-.faq-list { display: flex; flex-direction: column; gap: 1rem; }
-.faq-item { background: var(--c-white); border-radius: var(--radius-sm); border: 1px solid var(--c-gray-light); overflow: hidden; }
-.faq-question { width: 100%; text-align: left; padding: 1.5rem; background: none; border: none; font-family: var(--f-body); font-weight: 600; font-size: 1rem; color: var(--c-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
-.faq-question:hover { color: var(--c-gold); }
-.faq-question svg { transition: transform 0.3s ease; color: var(--c-gold); }
-.faq-item.active .faq-question svg { transform: rotate(180deg); }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--c-white); }
-.faq-answer p { padding: 0 1.5rem 1.5rem; }
-
-/* Contato (Form) */
-.contact { padding: var(--py-section) 0; background: linear-gradient(135deg, var(--c-navy-dark) 0%, var(--c-navy) 100%); color: var(--c-white); position: relative; }
-.contact::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--c-gold), transparent); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-.contact h2 { color: var(--c-white); }
-.contact-form { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); padding: 3rem; border-radius: var(--radius-md); border: 1px solid rgba(197, 164, 126, 0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-.input-group { margin-bottom: 1.5rem; }
-.input-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-gold); margin-bottom: 0.5rem; }
-.input-group input, .input-group select { width: 100%; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border-dark); border-radius: var(--radius-sm); color: var(--c-white); font-family: var(--f-body); transition: var(--transition); }
-.input-group input:focus, .input-group select:focus { outline: none; border-color: var(--c-gold); background: rgba(255,255,255,0.08); }
-.input-group select option { background: var(--c-navy); color: var(--c-white); }
-.contact-form .btn { width: 100%; margin-top: 1rem; }
-
-/* Footer */
-.footer { background: #02040A; color: var(--c-white); padding: 5rem 0 2rem; border-top: 1px solid var(--c-border-dark); }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
-.footer-logo { font-family: var(--f-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; display: block;}
-.footer-desc { color: #A0AEC0; font-size: 0.875rem; max-width: 300px; }
-.footer h4 { color: var(--c-white); font-family: var(--f-body); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
-.footer ul li { margin-bottom: 0.75rem; }
-.footer ul a { color: #A0AEC0; font-size: 0.875rem; }
-.footer ul a:hover { color: var(--c-gold); }
-.footer-bottom { border-top: 1px solid var(--c-border-dark); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #A0AEC0; }
-
-/* Botão Flutuante WPP */
-.wpp-float { position: fixed; bottom: 2rem; right: 2rem; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 999; transition: var(--transition); }
-.wpp-float:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
-
-/* --- RESPONSIVO --- */
-@media (max-width: 992px) {
-  .nav-links {
-    position: absolute; top: 100%; left: 0; width: 100%; background: var(--c-navy-dark);
-    flex-direction: column; gap: 0; padding: 0; clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transition: var(--transition);
-  }
-  .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); padding: 2rem 0; border-bottom: 1px solid var(--c-border-dark); }
-  .nav-links a { display: block; padding: 1rem 2rem; width: 100%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .menu-btn { display: block; }
-  .nav-cta { display: none; }
-  
-  .about-grid, .contact-grid, .faq-grid, .footer-grid { grid-template-columns: 1fr; }
-  .about-image { order: -1; margin-bottom: 2rem; }
-  .footer-grid { gap: 2rem; }
-  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-  .stat-item { border-right: none; border-bottom: 1px solid var(--c-border-dark); }
-}
-
-@media (max-width: 480px) {
-  .hero-actions { flex-direction: column; width: 100%; }
-  .hero-actions .btn { width: 100%; }
-  .contact-form { padding: 2rem 1.5rem; }
-  .wpp-float { width: 50px; height: 50px; bottom: 1.5rem; right: 1.5rem; }
-}
-</style>
-</head>
-<body>
-
-<!-- HEADER -->
-<header class="header" id="header">
-  <div class="container nav-container">
-    <a href="#" class="logo">
-      Sâmara Damasceno
-      <span>Advocacia Bancária</span>
-    </a>
-    
-    <nav>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#servicos">Especialidades</a></li>
-        <li><a href="#processo">Como Funciona</a></li>
-        <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contato" class="btn btn-gold nav-cta" style="color:var(--c-navy-dark); padding:0.5rem 1.5rem; margin-left:1rem;">Análise Gratuita</a></li>
-      </ul>
-    </nav>
-
-    <button class="menu-btn" id="menu-btn" aria-label="Abrir menu">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-    </button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="container hero-content">
-    <span class="eyebrow reveal">Atendimento em todo o Brasil</span>
-    <h1 class="reveal">Enfrente os abusos bancários com quem <em>protege o seu patrimônio.</em></h1>
-    <p class="reveal">Reduza juros abusivos, defenda-se de busca e apreensão e renegocie dívidas com amparo da Lei do Superendividamento. Não deixe os bancos ditarem as regras.</p>
-    
-    <div class="trust-badges reveal">
-      <span class="badge">OAB/SP 477.139</span>
-      <span class="badge">Análise Gratuita</span>
-      <span class="badge">Atuação 100% Digital</span>
-    </div>
-
-    <div class="hero-actions reveal">
-      <a href="#contato" class="btn btn-gold">Falar com a Advogada</a>
-      <a href="#servicos" class="btn btn-outline">Ver Especialidades</a>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="container stats-grid">
-    <div class="stat-item reveal"><strong>500+</strong><span>Casos Analisados</span></div>
-    <div class="stat-item reveal"><strong>8+</strong><span>Anos de Experiência</span></div>
-    <div class="stat-item reveal"><strong>100%</strong><span>Foco no Consumidor</span></div>
-  </div>
-</section>
-
-<!-- SOBRE -->
-<section class="about" id="sobre">
-  <div class="container about-grid">
-    <div class="about-content reveal">
-      <span class="eyebrow">A Especialista</span>
-      <h2>A lei deve funcionar a favor de <em>quem mais precisa.</em></h2>
-      <p>A Dra. Sâmara Damasceno dedica sua carreira a equilibrar a balança entre cidadãos e grandes instituições financeiras. Com atuação rigorosa e técnica focada em Direito Bancário, transformamos contratos abusivos em justiça.</p>
-      <ul class="about-list">
-        <li>Especialista em Ações Revisionais e Defesa do Consumidor.</li>
-        <li>Expertise prática na Lei do Superendividamento (14.181/21).</li>
-        <li>Transparência total: você entende cada passo do processo.</li>
-      </ul>
-    </div>
-    <div class="about-image reveal">
-      <img src="foto-samara.jpg" alt="Dra. Sâmara Damasceno, advogada especialista em direito bancário" loading="lazy" width="600" height="800">
-    </div>
-  </div>
-</section>
-
-<!-- SERVIÇOS -->
-<section class="services" id="servicos">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="eyebrow">Áreas de Atuação</span>
-      <h2>Soluções jurídicas para <em>recuperar sua paz financeira.</em></h2>
-    </div>
-
-    <div class="services-grid">
-      <article class="service-card reveal">
-        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-        <h3>Ações Revisionais</h3>
-        <p>Revisão judicial de contratos de veículos, imóveis e empréstimos com taxas abusivas. Identificamos e exigimos o abatimento do que foi cobrado ilegalmente.</p>
-      </article>
-      
-      <article class="service-card reveal">
-        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-        <h3>Busca e Apreensão</h3>
-        <p>Atuação de urgência para impedir a tomada do seu veículo. Entramos com medidas liminares para suspender a ordem judicial e forçar um acordo justo.</p>
-      </article>
-
-      <article class="service-card reveal">
-        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
-        <h3>Superendividamento</h3>
-        <p>Aplicação da Lei 14.181/2021 para reunir todas as suas dívidas e repactuá-las em juízo, garantindo que a parcela caiba na sua renda mantendo o mínimo existencial.</p>
-      </article>
-      
-      <article class="service-card reveal">
-        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-        <h3>Limpeza de Nome</h3>
-        <p>Retirada de apontamentos indevidos no SPC, Serasa e cartórios. Negativação sem fundamento é ilegal — exija reparação por danos morais.</p>
-      </article>
-
-      <article class="service-card reveal">
-        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
-        <h3>Renegociação de Dívidas</h3>
-        <p>Negociação extrajudicial qualificada com bancos e financeiras, com respaldo técnico para obter descontos reais sobre o principal da dívida.</p>
-      </article>
-
-      <article class="service-card reveal">
-        <svg class="service-icon" width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-        <h3>Crédito Consignado</h3>
-        <p>Análise e contestação de descontos indevidos em folha de pagamento e taxas de cartões de crédito acima dos limites do Banco Central.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE -->
-<section class="quote-banner">
-  <div class="container reveal">
-    <blockquote>"A aceitação silenciosa de uma cláusula abusiva alimenta o lucro indevido dos bancos. Exigir os seus direitos é um ato de proteção ao seu suor e patrimônio."</blockquote>
-    <cite>— Sâmara Damasceno</cite>
-  </div>
-</section>
-
-<!-- PROCESSO -->
-<section class="process" id="processo">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="eyebrow">Passo a Passo</span>
-      <h2>Como resolvemos o seu problema de forma <em>ágil e transparente.</em></h2>
-    </div>
-    <div class="process-grid">
-      <div class="process-step reveal">
-        <h3>Análise Gratuita</h3>
-        <p>Avaliamos seu contrato ou situação via WhatsApp, sem custo algum, para identificar viabilidade jurídica.</p>
-      </div>
-      <div class="process-step reveal">
-        <h3>Estratégia</h3>
-        <p>Apresentamos o plano de ação exato (revisional, liminar ou negociação extrajudicial) de forma clara.</p>
-      </div>
-      <div class="process-step reveal">
-        <h3>Execução Digital</h3>
-        <p>Assinatura de documentos via celular. Protocolamos as defesas rapidamente em qualquer estado do Brasil.</p>
-      </div>
-      <div class="process-step reveal">
-        <h3>Resolução</h3>
-        <p>Acompanhamento total até a redução da dívida, limpeza do nome ou acordo final favorável a você.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPOIMENTOS -->
-<section class="testimonials" id="depoimentos">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="eyebrow" style="color:var(--c-white); border-color:var(--c-white);">Depoimentos</span>
-      <h2>O que dizem <em>nossos clientes.</em></h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="test-card reveal">
-        <div class="test-mark">"</div>
-        <p class="test-text">Estava desesperado com a busca e apreensão do meu carro. A Dra. Sâmara conseguiu uma liminar em dois dias e ainda identificou cobranças indevidas que reduziram minha dívida em quase 40%.</p>
-        <div class="test-author">Marcos A.</div>
-        <div class="test-role">Busca e Apreensão</div>
-      </div>
-      <div class="test-card reveal">
-        <div class="test-mark">"</div>
-        <p class="test-text">Tinha meu nome negativado indevidamente por um banco. Em menos de 30 dias, o nome foi limpo e recebi indenização por danos morais. Recomendo demais!</p>
-        <div class="test-author">Fernanda R.</div>
-        <div class="test-role">Negativação Indevida</div>
-      </div>
-      <div class="test-card reveal">
-        <div class="test-mark">"</div>
-        <p class="test-text">Superendividado, com 7 dívidas diferentes. A Dra. Sâmara usou a Lei 14.181 e conseguiu reunir tudo numa parcela que eu consigo pagar. Finalmente dormi tranquilo após anos de angústia.</p>
-        <div class="test-author">Carlos E.</div>
-        <div class="test-role">Superendividamento</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="container faq-grid">
-    <div class="faq-content reveal">
-      <span class="eyebrow">Dúvidas Frequentes</span>
-      <h2>Respostas para suas <em>principais dúvidas.</em></h2>
-      <p>Ainda tem dúvidas? Fique à vontade para nos enviar uma mensagem pelo WhatsApp. Nossa equipe está pronta para avaliar o seu cenário.</p>
-    </div>
-    
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <button class="faq-question">
-          O banco pode tomar meu carro enquanto o processo corre?
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="faq-answer">
-          <p>Em muitos casos é possível obter uma liminar judicial que suspende a busca e apreensão enquanto o processo tramita. Isso depende de fatores técnicos do contrato, mas é uma das medidas iniciais mais eficazes.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          Vale a pena processar o banco mesmo devendo?
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="faq-answer">
-          <p>Sim. Uma ação revisional pode identificar cobranças indevidas que, ao serem abatidas, reduzem significativamente o saldo real da dívida. Não se trata de calote, mas de exigir que o banco cumpra a lei.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          O que é a Lei do Superendividamento?
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="faq-answer">
-          <p>A Lei 14.181/2021 permite que pessoas com múltiplas dívidas que comprometem sua sobrevivência básica possam renegociar todas de uma vez, judicialmente, com uma parcela única que respeite um mínimo existencial.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          Meu nome está negativado indevidamente, o que fazer?
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="faq-answer">
-          <p>Negativações indevidas são ilegais e geram direito a indenização por danos morais. Analisamos cada caso para definir a melhor estratégia de limpeza de nome no SPC, Serasa e cartórios.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          Qual o custo para contratar o escritório?
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="faq-answer">
-          <p>A análise inicial é sempre gratuita. Em muitas situações trabalhamos com honorários de êxito — ou seja, você só paga honorários ao final, sobre o benefício econômico obtido.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATO (FORMULÁRIO) -->
-<section class="contact" id="contato">
-  <div class="container contact-grid">
-    <div class="contact-info reveal">
-      <span class="eyebrow" style="color:var(--c-gold); border-color:var(--c-gold);">Fale Conosco</span>
-      <h2>Solicite uma <em>Análise Gratuita</em> do seu caso.</h2>
-      <p style="color:#A0AEC0; margin-bottom: 2rem;">Preencha o formulário para entendermos seu problema. Entraremos em contato em até 2 horas úteis pelo WhatsApp para orientá-lo sobre seus direitos.</p>
-      <ul style="color:var(--c-gold); font-family:var(--f-mono); font-size:0.875rem; display:flex; flex-direction:column; gap:1rem;">
-        <li>✓ Atendimento Nacional 100% Digital</li>
-        <li>✓ Sigilo Absoluto Advogado-Cliente</li>
-        <li>✓ Possibilidade de Honorários no Êxito</li>
-      </ul>
-    </div>
-
-    <div class="contact-form reveal">
-      <form id="wpp-form">
-        <div class="input-group">
-          <label for="nome">Nome Completo</label>
-          <input type="text" id="nome" required placeholder="Como devemos chamar você?">
-        </div>
-        <div class="input-group">
-          <label for="telefone">WhatsApp</label>
-          <input type="tel" id="telefone" required placeholder="(XX) 9XXXX-XXXX">
-        </div>
-        <div class="input-group">
-          <label for="assunto">Qual é a sua situação?</label>
-          <select id="assunto" required>
-            <option value="" disabled selected>Selecione uma opção...</option>
-            <option value="Juros Abusivos / Revisional">Ação Revisional</option>
-            <option value="Busca e Apreensão de Veículo">Busca e Apreensão</option>
-            <option value="Superendividamento">Superendividamento</option>
-            <option value="Nome Negativado Indevidamente">Limpeza de Nome</option>
-            <option value="Renegociação Estratégica">Renegociação Estratégica</option>
-            <option value="Fraude Bancária / Consignado">Crédito Consignado / Cartões</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-gold">Enviar para Análise via WhatsApp</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="#" class="footer-logo">Sâmara Damasceno</a>
-        <p class="footer-desc" style="margin-bottom: 1rem;">Advocacia Bancária Especializada.</p>
-        <span style="font-family:var(--f-mono); color:var(--c-gold); font-size:0.75rem;">OAB/SP 477.139</span>
-      </div>
-      <div>
-        <h4>Links Rápidos</h4>
-        <ul>
-          <li><a href="#sobre">A Especialista</a></li>
-          <li><a href="#servicos">Áreas de Atuação</a></li>
-          <li><a href="#processo">Nossa Metodologia</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="https://wa.me/5519992074605" target="_blank">WhatsApp: (19) 99207-4605</a></li>
-          <li><a href="mailto:contato@samaradamasceno.adv.br">contato@samaradamasceno.adv.br</a></li>
-          <li><a href="https://www.instagram.com/samaradamascenoadv" target="_blank">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Sâmara Damasceno Advocacia. Todos os direitos reservados.</p>
-      <p>Desenvolvido com foco na Experiência do Cliente.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- WPP FLOATING BUTTON -->
-<a href="https://wa.me/5519992074605" class="wpp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
-  <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- JAVASCRIPT OTIMIZADO -->
-<script>
-  // 1. Menu Mobile Toggle
-  const menuBtn = document.getElementById('menu-btn');
-  const navLinks = document.getElementById('nav-links');
-  
-  menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-    });
-  });
-
-  // 2. Efeito Glassmorphism no Header ao scrollar
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+  <style>
+    :root {
+      --ink: #070806;
+      --ink-soft: #0d100b;
+      --olive: #4e5b1f;
+      --olive-mid: #6a7a2c;
+      --olive-soft: rgba(106, 122, 44, 0.17);
+      --cream: #ede4c5;
+      --cream-mid: #c8be9a;
+      --cream-faint: rgba(237, 228, 197, 0.08);
+      --cream-line: rgba(237, 228, 197, 0.16);
+      --cream-muted: rgba(237, 228, 197, 0.62);
+      --success: #a8b86d;
+      --danger: #c9a37a;
+      --shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --pad: clamp(22px, 5vw, 86px);
+      --content: min(1120px, calc(100vw - (var(--pad) * 2)));
     }
-  }, { passive: true });
 
-  // 3. Animações de Reveal (Intersection Observer)
-  const reveals = document.querySelectorAll('.reveal');
-  const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-  
-  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, revealOptions);
+    * { box-sizing: border-box; }
+    html { background: var(--ink); color-scheme: dark; }
+    html.locked, body.locked { overflow: hidden; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(106, 122, 44, 0.08), transparent 28%),
+        var(--ink);
+      color: var(--cream);
+      font-family: "Manrope", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-  reveals.forEach(reveal => {
-    revealOnScroll.observe(reveal);
-  });
+    button, input, textarea, select { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    [hidden] { display: none !important; }
 
-  // 4. FAQ Accordion Toggle
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      const item = question.parentElement;
-      const isActive = item.classList.contains('active');
-      
-      // Fecha todos
-      document.querySelectorAll('.faq-item').forEach(faq => {
-        faq.classList.remove('active');
-        faq.querySelector('.faq-answer').style.maxHeight = null;
-      });
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
-      // Abre o clicado se não estava aberto
-      if (!isActive) {
-        item.classList.add('active');
-        const answer = item.querySelector('.faq-answer');
-        answer.style.maxHeight = answer.scrollHeight + "px";
-      }
-    });
-  });
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
-  // 5. Lógica do Formulário (Redirecionamento Inteligente pro WhatsApp)
-  document.getElementById('wpp-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nome = document.getElementById('nome').value;
-    const situacao = document.getElementById('assunto').value;
+    .serif {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 500;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      position: relative;
+      isolation: isolate;
+      overflow: clip;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: -20%;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(237, 228, 197, 0.07) 0, rgba(106, 122, 44, 0.08) 12%, transparent 32%),
+        radial-gradient(circle at 18% 80%, rgba(78, 91, 31, 0.10), transparent 30%);
+      filter: blur(18px);
+      transform: scale(1.02);
+      transition: background 1.4s var(--ease), opacity 1.4s var(--ease);
+    }
+
+    body[data-chapter="reality"] .ambient {
+      background:
+        radial-gradient(circle at 66% 42%, rgba(106, 122, 44, 0.17), transparent 28%),
+        radial-gradient(circle at 18% 70%, rgba(78, 91, 31, 0.08), transparent 28%);
+    }
+
+    body[data-chapter="aspiration"] .ambient {
+      background:
+        radial-gradient(circle at 50% 44%, rgba(237, 228, 197, 0.09), transparent 25%),
+        radial-gradient(circle at 72% 72%, rgba(78, 91, 31, 0.13), transparent 30%);
+    }
+
+    body[data-chapter="direction"] .ambient,
+    body[data-chapter="processing"] .ambient {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(106, 122, 44, 0.15), transparent 30%),
+        linear-gradient(135deg, rgba(78, 91, 31, 0.06), transparent 50%);
+    }
+
+    .stage {
+      min-height: 100svh;
+      width: 100%;
+      position: relative;
+    }
+
+    .stage-full {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: var(--pad);
+    }
+
+    .brand-mark {
+      position: fixed;
+      top: clamp(18px, 3vw, 34px);
+      left: clamp(20px, 4vw, 54px);
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      opacity: .88;
+      pointer-events: none;
+    }
+
+    .brand-symbol {
+      width: 23px;
+      height: 23px;
+      border: 1px solid rgba(237, 228, 197, .46);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .brand-symbol::before,
+    .brand-symbol::after {
+      content: "";
+      position: absolute;
+      background: var(--cream);
+      opacity: .76;
+    }
+
+    .brand-symbol::before { width: 1px; height: 13px; left: 10px; top: 4px; transform: rotate(36deg); }
+    .brand-symbol::after { width: 10px; height: 1px; left: 6px; top: 10px; transform: rotate(-36deg); }
+
+    .brand-name {
+      font: 600 12px/1 "Manrope", sans-serif;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .status-corner {
+      position: fixed;
+      top: clamp(21px, 3vw, 37px);
+      right: clamp(20px, 4vw, 54px);
+      z-index: 50;
+      color: var(--cream-muted);
+      font-size: 9px;
+      pointer-events: none;
+    }
+
+    .status-corner::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--olive-mid);
+      box-shadow: 0 0 12px rgba(106, 122, 44, .9);
+    }
+
+    /* Prefácio */
+    #preface { overflow: hidden; }
+
+    .light-point {
+      position: absolute;
+      width: min(64vw, 720px);
+      aspect-ratio: 1;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(237, 228, 197, .12) 0, rgba(106, 122, 44, .08) 16%, transparent 62%);
+      filter: blur(18px);
+      opacity: .7;
+    }
+
+    .preface-copy {
+      width: min(940px, 92vw);
+      text-align: center;
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+    }
+
+    .preface-line {
+      position: absolute;
+      inset-inline: 0;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(14px);
+      font-size: clamp(23px, 3.1vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: var(--cream);
+    }
+
+    .preface-main {
+      position: absolute;
+      inset-inline: 0;
+      display: grid;
+      justify-items: center;
+      gap: 36px;
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .preface-main h1 {
+      max-width: 880px;
+      margin: 0;
+      font-size: clamp(48px, 7.6vw, 112px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .minimal-button,
+    .primary-button,
+    .quiet-button {
+      border: 0;
+      cursor: pointer;
+      transition: transform .35s var(--ease), border-color .35s ease, background .35s ease, color .35s ease, opacity .35s ease;
+    }
+
+    .minimal-button {
+      min-height: 50px;
+      padding: 0 3px 11px;
+      background: transparent;
+      border-bottom: 1px solid rgba(237, 228, 197, .56);
+      font-size: 13px;
+      letter-spacing: .12em;
+    }
+
+    .minimal-button:hover { transform: translateY(-2px); border-color: var(--cream); }
     
-    const mensagem = `Olá, Dra. Sâmara. Meu nome é *${nome}* e gostaria de uma análise gratuita sobre o meu caso de *${situacao}*.`;
-    const whatsappUrl = `https://wa.me/5519992074605?text=${encodeURIComponent(mensagem)}`;
+    .minimal-button:focus-visible,
+    .primary-button:focus-visible,
+    .quiet-button:focus-visible,
+    .choice-card:focus-visible,
+    .path-card:focus-visible,
+    .tab-button:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 4px;
+    }
+
+    /* Vídeo */
+    #video-stage { display: none; opacity: 0; }
+    .video-wrap {
+      width: min(900px, 94vw);
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+    }
+
+    .system-log {
+      color: var(--cream-muted);
+      font-size: clamp(9px, 1vw, 11px);
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--cream-line);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, rgba(78, 91, 31, .18), transparent 50%), #0b0c09;
+      box-shadow: var(--shadow);
+    }
+
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #090a08;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 30px;
+      background: radial-gradient(circle at 50% 45%, rgba(237, 228, 197, .10), transparent 30%), linear-gradient(145deg, rgba(106, 122, 44, .14), rgba(7, 8, 6, .96));
+    }
+
+    .video-placeholder-inner { max-width: 620px; }
+    .video-placeholder .eyebrow { margin-bottom: 18px; }
+    .video-placeholder h2 {
+      margin: 0 0 16px;
+      font-size: clamp(31px, 5vw, 66px);
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+    .video-placeholder p {
+      margin: 0 auto;
+      max-width: 520px;
+      color: var(--cream-muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .video-progress {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: rgba(237, 228, 197, .08);
+    }
+    .video-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--olive-mid);
+      box-shadow: 0 0 14px rgba(106, 122, 44, .8);
+    }
+
+    .primary-button {
+      min-height: 52px;
+      padding: 0 24px;
+      border: 1px solid rgba(237, 228, 197, .42);
+      background: rgba(237, 228, 197, .03);
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .primary-button:hover { transform: translateY(-2px); background: var(--cream); color: var(--ink); }
+    .primary-button[disabled] { opacity: .28; cursor: not-allowed; transform: none; }
+
+    /* Jornada */
+    #journey-stage { display: none; min-height: 100svh; opacity: 0; }
+    .journey-shell {
+      width: var(--content);
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: clamp(96px, 13vh, 146px) 0 clamp(94px, 13vh, 140px);
+      display: grid;
+      align-items: center;
+      position: relative;
+    }
+
+    .question-viewport {
+      padding-bottom: 140px;
+      position: relative;
+      min-height: min(670px, 72svh);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .question-sheet {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, .72fr) minmax(300px, 1fr);
+      gap: clamp(42px, 8vw, 120px);
+      align-items: center;
+      will-change: transform, opacity;
+    }
+
+    .question-sheet.single-column {
+      grid-template-columns: 1fr;
+      width: min(920px, 100%);
+      margin-inline: auto;
+    }
+
+    .question-context {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .chapter-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--cream-muted);
+      font-size: 10px;
+      margin-bottom: 25px;
+    }
+    .chapter-tag strong {
+      color: var(--cream);
+      font-weight: 500;
+      border: 1px solid var(--cream-line);
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+    }
+
+    .question-context h2, .question-panel h2 {
+      margin: 0;
+      font-size: clamp(38px, 5.4vw, 78px);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+
+    .question-context p {
+      color: var(--cream-muted);
+      line-height: 1.75;
+      font-size: clamp(14px, 1.4vw, 17px);
+      max-width: 520px;
+      margin: 28px 0 0;
+    }
+
+    .line-illustration {
+      width: min(380px, 90%);
+      margin-top: 42px;
+      opacity: .78;
+    }
+    .line-illustration path, .line-illustration line, .line-illustration circle, .line-illustration rect {
+      stroke: var(--cream-mid);
+      stroke-width: 1.2;
+      fill: none;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .question-panel { min-width: 0; }
+    .question-number { margin-bottom: 17px; color: var(--cream-muted); font-size: 10px; }
+    .question-title {
+      margin: 0 0 34px;
+      font-size: clamp(27px, 3.7vw, 51px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      text-wrap: balance;
+    }
+
+    .field-wrap { position: relative; }
+    .text-field, .select-field, .long-field {
+      width: 100%;
+      color: var(--cream);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(237, 228, 197, .25);
+      border-radius: 0;
+      padding: 16px 0 15px;
+      outline: none;
+      font-size: clamp(18px, 2.2vw, 28px);
+      transition: border-color .3s ease;
+    }
+    .text-field:focus, .select-field:focus, .long-field:focus { border-color: var(--cream); }
+    .text-field::placeholder, .long-field::placeholder { color: rgba(237, 228, 197, .28); }
+    .select-field { appearance: none; cursor: pointer; }
+    .select-field option { color: var(--cream); background: var(--ink); }
+    .long-field { min-height: 160px; resize: vertical; line-height: 1.55; font-size: clamp(17px, 1.8vw, 23px); }
+
+    .field-hint { margin-top: 13px; color: var(--cream-muted); font-size: 11px; line-height: 1.6; }
+    .field-error { min-height: 20px; margin-top: 10px; color: #d1a888; font-size: 11px; opacity: 0; transform: translateY(-4px); }
+    .field-error.visible { opacity: 1; transform: none; }
+
+    .choice-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .choice-card {
+      width: 100%;
+      min-height: 58px;
+      padding: 15px 18px;
+      text-align: left;
+      border: 1px solid var(--cream-line);
+      background: rgba(237, 228, 197, .015);
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      transition: transform .32s var(--ease), border-color .32s ease, background .32s ease;
+    }
+    .choice-card:hover { transform: translateX(4px); border-color: rgba(237, 228, 197, .38); }
+    .choice-card.selected { background: rgba(106, 122, 44, .14); border-color: var(--olive-mid); }
+    .choice-card span:first-child { line-height: 1.45; font-size: 13px; }
+    .choice-indicator { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(237, 228, 197, .28); flex: 0 0 auto; position: relative; }
+    .choice-card.selected .choice-indicator::after { content: ""; position: absolute; inset: 3px; background: var(--cream); border-radius: 50%; }
+
+    .micro-log { margin-top: 14px; min-height: 21px; color: var(--cream-muted); font-size: 9px; opacity: 0; transform: translateY(4px); }
+    .micro-log.visible { opacity: 1; transform: none; }
+
+    .journey-actions { margin-top: 36px; display: flex; align-items: center; gap: 16px; }
+    .quiet-button { min-height: 46px; padding: 0 8px; background: transparent; color: var(--cream-muted); font-size: 11px; }
+    .quiet-button:hover { color: var(--cream); }
+
+    .journey-footer {
+      position: fixed; left: var(--pad); right: var(--pad); bottom: clamp(22px, 4vw, 42px); z-index: 30;
+      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px; pointer-events: none;
+    }
+    .human-progress { color: var(--cream-muted); font-size: 10px; }
+    .progress-line { width: min(320px, 48vw); height: 1px; margin-top: 11px; background: rgba(237, 228, 197, .12); overflow: hidden; }
+    .progress-line span { display: block; height: 100%; width: 0; background: var(--cream-mid); transition: width .8s var(--ease); }
+    .chapter-index { color: rgba(237, 228, 197, .38); font-size: 9px; }
+
+    /* Scanner */
+    .scanner-card { margin-top: 26px; border: 1px solid var(--cream-line); border-radius: 16px; padding: 18px; background: rgba(7, 8, 6, .55); opacity: 0; transform: translateY(9px); }
+    .scanner-card.visible { opacity: 1; transform: none; }
+    .scanner-head { display: flex; align-items: center; gap: 13px; }
+    .scanner-avatar { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--cream-line); display: grid; place-items: center; background: var(--olive-soft); overflow: hidden; }
+    .scanner-avatar img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .scanner-id strong { display: block; font-size: 12px; }
+    .scanner-id span { display: block; margin-top: 4px; color: var(--cream-muted); font-size: 9px; }
+    .scanner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 17px; }
+    .scanner-metric { border-top: 1px solid var(--cream-line); padding-top: 12px; min-width: 0; }
+    .scanner-metric b { display: block; min-height: 20px; font: 500 12px/1.4 "JetBrains Mono", monospace; }
+    .scanner-metric small { color: var(--cream-muted); font-size: 8px; text-transform: uppercase; letter-spacing: .08em; }
+    .scan-sweep { height: 1px; margin-top: 16px; background: linear-gradient(90deg, transparent, var(--olive-mid), transparent); transform-origin: left; transform: scaleX(0); }
+
+    /* Processamento */
+    #processing-stage { display: none; opacity: 0; overflow: hidden; }
+    .analysis-table {
+      width: min(1040px, 94vw); min-height: min(720px, 82svh); position: relative;
+      display: grid; grid-template-columns: minmax(300px, .88fr) minmax(320px, 1fr); align-items: center;
+      gap: clamp(40px, 8vw, 110px); padding: clamp(28px, 5vw, 66px); border: 1px solid rgba(237, 228, 197, .11); background: rgba(7, 8, 6, .45);
+    }
+    .analysis-table::before, .analysis-table::after { content: ""; position: absolute; pointer-events: none; background: rgba(237, 228, 197, .08); }
+    .analysis-table::before { left: 50%; top: 0; bottom: 0; width: 1px; }
+    .analysis-table::after { top: 50%; left: 0; right: 0; height: 1px; }
+
+    .radar-wrap { position: relative; display: grid; place-items: center; }
+    .radar-svg { width: min(470px, 78vw); overflow: visible; }
+    .radar-svg .grid-line, .radar-svg .ring { fill: none; stroke: rgba(237, 228, 197, .15); stroke-width: 1; stroke-dasharray: 900; stroke-dashoffset: 900; }
+    .radar-svg .signal { fill: rgba(106, 122, 44, .13); stroke: var(--olive-mid); stroke-width: 1.5; stroke-dasharray: 900; stroke-dashoffset: 900; }
+    .radar-core { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--cream); box-shadow: 0 0 25px rgba(237, 228, 197, .8); opacity: 0; }
+
+    .terminal { position: relative; z-index: 1; }
+    .terminal h2 { margin: 0 0 32px; font-size: clamp(38px, 5vw, 66px); line-height: 1; letter-spacing: -.045em; }
+    .terminal-list { display: grid; gap: 15px; }
+    .terminal-row { color: rgba(237, 228, 197, .32); font-size: clamp(9px, 1.1vw, 11px); transition: color .35s ease, transform .35s ease; transform: translateX(-6px); }
+    .terminal-row.active { color: var(--cream); transform: none; }
+    .terminal-row.done { color: var(--cream-muted); transform: none; }
+    .terminal-row::before { content: "○"; margin-right: 10px; }
+    .terminal-row.active::before { content: "●"; color: var(--olive-mid); }
+    .terminal-row.done::before { content: "✓"; color: var(--success); }
+    .terminal-note { margin-top: 33px; color: var(--cream-muted); font-size: 10px; line-height: 1.7; }
+
+    /* Resultado */
+    #result-stage { display: none; opacity: 0; }
+    .result-hero { min-height: 100svh; display: grid; place-items: center; padding: clamp(110px, 15vh, 170px) var(--pad) 90px; }
+    .result-hero-inner { width: min(980px, 100%); }
+    .result-kicker { color: var(--cream-muted); font-size: 10px; margin-bottom: 28px; }
+    .result-hero h1 { margin: 0; font-size: clamp(53px, 8vw, 116px); line-height: .95; letter-spacing: -.06em; text-wrap: balance; }
+    .result-hero p { max-width: 660px; margin: 34px 0 0; color: var(--cream-muted); line-height: 1.85; font-size: clamp(15px, 1.6vw, 18px); }
+
+    .result-section { width: min(1180px, calc(100vw - (var(--pad) * 2))); margin: 0 auto; padding: clamp(80px, 12vw, 160px) 0; border-top: 1px solid var(--cream-line); }
+    .result-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(40px, 9vw, 130px); align-items: start; }
+    .section-label { color: var(--cream-muted); font-size: 10px; position: sticky; top: 110px; }
+    .section-label strong { display: block; margin-top: 18px; color: var(--cream); font: 500 clamp(28px, 3.4vw, 47px)/1.08 "Playfair Display", serif; letter-spacing: -.035em; }
+
+    .clinical-intro { width: min(1180px, calc(100vw - (var(--pad) * 2))); margin: -8vh auto 0; position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr .9fr; gap: 12px; }
+    .clinical-summary-card, .clinical-priority-card, .clinical-card, .treatment-card, .portfolio-card { border: 1px solid var(--cream-line); background: rgba(237, 228, 197, .018); }
+    .clinical-summary-card, .clinical-priority-card { min-height: 260px; padding: clamp(26px, 4vw, 48px); }
+    .clinical-summary-card .mono, .clinical-priority-card .mono, .clinical-card .mono, .treatment-card .mono, .portfolio-card .mono { color: var(--cream-muted); font-size: 8px; }
+    .clinical-summary-card h2 { margin: 22px 0 0; font: 500 clamp(32px, 4.2vw, 59px)/1.08 "Playfair Display", serif; letter-spacing: -.04em; }
+    .clinical-summary-card p { max-width: 700px; margin: 22px 0 0; color: var(--cream-muted); font-size: 13px; line-height: 1.85; white-space: pre-line; }
+    .clinical-priority-card { display: grid; align-content: space-between; background: linear-gradient(145deg, rgba(78, 91, 31, .18), rgba(237, 228, 197, .015)); }
     
-    window.open(whatsappUrl, '_blank');
-  });
-</script>
+    .priority-level { display: inline-flex; align-items: center; gap: 8px; width: max-content; padding: 7px 10px; border: 1px solid var(--cream-line); border-radius: 999px; color: var(--cream-mid); font: 500 8px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .priority-level::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--olive-mid); box-shadow: 0 0 16px rgba(106, 122, 44, .8); }
+    .clinical-priority-card h3 { margin: 18px 0 0; font: 500 clamp(30px, 3.7vw, 52px)/1.05 "Playfair Display", serif; letter-spacing: -.035em; }
+    .clinical-priority-card p { margin: 20px 0 0; color: var(--cream-muted); font-size: 12px; line-height: 1.75; }
+
+    .clinical-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .clinical-card { min-height: 310px; padding: clamp(25px, 4vw, 44px); }
+    .clinical-card.full { grid-column: 1 / -1; min-height: auto; }
+    .clinical-card h3 { margin: 18px 0 0; font: 500 clamp(28px, 3.2vw, 45px)/1.08 "Playfair Display", serif; letter-spacing: -.03em; }
+    .clinical-card > p { margin: 20px 0 0; color: var(--cream-muted); font-size: 13px; line-height: 1.82; white-space: pre-line; }
+
+    .clinical-list { display: grid; gap: 0; margin-top: 25px; }
+    .clinical-list-item { display: grid; grid-template-columns: 27px 1fr; gap: 14px; padding: 17px 0; border-top: 1px solid var(--cream-line); }
+    .clinical-list-item:first-child { border-top: 0; }
+    .clinical-list-marker { color: var(--cream-mid); font: 500 11px/1.4 "JetBrains Mono", monospace; }
+    .clinical-list-item strong { display: block; font-size: 13px; font-weight: 600; }
+    .clinical-list-item p { margin: 7px 0 0; color: var(--cream-muted); font-size: 11px; line-height: 1.72; }
+    .evidence-quote { display: block; margin-top: 12px; padding-left: 15px; border-left: 1px solid var(--olive-mid); color: var(--cream); font: italic 500 15px/1.55 "Playfair Display", serif; }
+
+    .risk-card { border-color: rgba(201, 163, 122, .32); background: linear-gradient(145deg, rgba(201, 163, 122, .07), rgba(237, 228, 197, .012)); }
+    .risk-label { display: inline-flex; margin-top: 20px; padding: 7px 10px; border: 1px solid rgba(201, 163, 122, .35); border-radius: 999px; color: #d3b590; font: 500 8px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+
+    .treatment-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 42px; }
+    .treatment-card { min-height: 390px; padding: 28px; display: flex; flex-direction: column; }
+    .treatment-card h3 { margin: 35px 0 10px; font: 500 clamp(28px, 3vw, 42px)/1.08 "Playfair Display", serif; letter-spacing: -.035em; }
+    .treatment-objective { color: var(--cream-muted); font-size: 11px; line-height: 1.7; }
+    .treatment-actions { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 13px; }
+    .treatment-actions li { display: grid; grid-template-columns: 18px 1fr; gap: 9px; color: var(--cream-muted); font-size: 11px; line-height: 1.6; }
+    .treatment-actions li::before { content: "→"; color: var(--olive-mid); }
+    .success-signal { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--cream-line); color: var(--cream); font-size: 10px; line-height: 1.7; }
+    .success-signal span { display: block; margin-bottom: 6px; color: var(--cream-muted); font: 500 7px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .clinical-disclaimer { margin-top: 26px; color: rgba(237, 228, 197, .42); font: 400 8px/1.7 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
+
+    .recommended-path { margin-top: 32px; padding: 23px; border: 1px solid rgba(106, 122, 44, .32); background: rgba(106, 122, 44, .07); }
+    .recommended-path strong { display: block; font: 500 clamp(25px, 3vw, 39px)/1.12 "Playfair Display", serif; }
+    .recommended-path p { margin: 10px 0 0; color: var(--cream-muted); font-size: 11px; line-height: 1.7; }
+
+    .maturity-layout { display: grid; grid-template-columns: minmax(280px, .9fr) minmax(300px, 1.1fr); gap: clamp(38px, 8vw, 100px); align-items: center; }
+    .maturity-chart { width: min(430px, 100%); margin-inline: auto; }
+    .maturity-chart circle { fill: none; stroke-width: 12; transform-origin: 50% 50%; transform: rotate(-90deg); }
+    .maturity-chart .track { stroke: rgba(237, 228, 197, .07); }
+    .maturity-chart .arc { stroke-linecap: round; stroke-dasharray: 0 999; }
+    .maturity-chart .arc-k { stroke: #ede4c5; }
+    .maturity-chart .arc-r { stroke: #c8be9a; }
+    .maturity-chart .arc-a { stroke: #6a7a2c; }
+    .maturity-chart .arc-d { stroke: #4e5b1f; }
+    .maturity-center { font-family: "Playfair Display", serif; fill: var(--cream); font-size: 19px; text-anchor: middle; }
+    .maturity-sub { font-family: "JetBrains Mono", monospace; fill: var(--cream-muted); font-size: 6px; letter-spacing: 1px; text-anchor: middle; text-transform: uppercase; }
+
+    .axis-list { display: grid; gap: 18px; }
+    .axis-item { display: grid; grid-template-columns: 28px 1fr auto; gap: 13px; align-items: center; padding-bottom: 17px; border-bottom: 1px solid var(--cream-line); }
+    .axis-code { width: 24px; height: 24px; border: 1px solid var(--cream-line); border-radius: 50%; display: grid; place-items: center; font-size: 9px; }
+    .axis-name { font-size: 13px; }
+    .axis-state { color: var(--cream-muted); font-size: 9px; }
+
+    .analogy { max-width: 980px; margin-inline: auto; text-align: center; }
+    .analogy .mono { color: var(--cream-muted); font-size: 9px; }
+    .analogy blockquote { margin: 31px 0 0; font: 500 clamp(34px, 5.5vw, 75px)/1.1 "Playfair Display", serif; letter-spacing: -.045em; }
+
+    /* Caminhos */
+    .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 50px; }
+    .path-card { min-height: 370px; padding: 28px; border: 1px solid var(--cream-line); background: rgba(237, 228, 197, .012); cursor: pointer; display: flex; flex-direction: column; transition: transform .45s var(--ease), border-color .35s ease, background .35s ease; }
+    .path-card:hover { transform: translateY(-7px); border-color: rgba(237, 228, 197, .4); background: rgba(106, 122, 44, .08); }
+    .path-number { color: var(--cream-muted); font-size: 9px; }
+    .path-card h3 { margin: auto 0 20px; font: 500 clamp(28px, 3vw, 42px)/1.08 "Playfair Display", serif; letter-spacing: -.035em; }
+    .path-card p { margin: 0; color: var(--cream-muted); line-height: 1.7; font-size: 12px; }
+    .path-arrow { margin-top: 28px; font-size: 18px; }
+
+    /* Carteira atual */
+    .portfolio-section { padding: clamp(80px, 12vw, 155px) var(--pad); border-top: 1px solid var(--cream-line); background: var(--ink-soft); }
+    .portfolio-inner { width: var(--content); margin: 0 auto; }
+    .portfolio-head { display: grid; grid-template-columns: .58fr 1.42fr; gap: clamp(35px, 8vw, 120px); align-items: start; }
+    .portfolio-head .mono { color: var(--cream-muted); font-size: 9px; }
+    .portfolio-head h2 { margin: 0; font: 500 clamp(41px, 6vw, 82px)/.99 "Playfair Display", serif; letter-spacing: -.05em; }
+    .portfolio-head p { max-width: 720px; margin: 22px 0 0; color: var(--cream-muted); font-size: 13px; line-height: 1.85; }
+
+    .portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 54px; }
+    .portfolio-card { min-height: 355px; padding: clamp(25px, 4vw, 43px); display: grid; align-content: space-between; gap: 20px; transition: transform .4s var(--ease), border-color .3s ease; }
+    .portfolio-card:hover { transform: translateY(-5px); border-color: rgba(237, 228, 197, .36); }
+    .portfolio-card h3 { margin: 15px 0 0; font: 500 clamp(30px, 3.4vw, 48px)/1.05 "Playfair Display", serif; letter-spacing: -.035em; }
+    .portfolio-card .public-position { margin: 17px 0 0; color: var(--cream-muted); font-size: 12px; line-height: 1.75; }
+    .portfolio-insight { padding-top: 23px; border-top: 1px solid var(--cream-line); }
+    .portfolio-insight strong { display: block; margin-bottom: 9px; font-size: 11px; }
+    .portfolio-insight p { margin: 0; color: var(--cream-muted); font-size: 11px; line-height: 1.72; }
+    .portfolio-source { display: inline-block; margin-top: 18px; color: var(--cream-mid); font: 500 8px/1 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
+    .portfolio-note { margin-top: 25px; color: rgba(237, 228, 197, .42); font: 400 8px/1.7 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
+
+    /* Ecossistema */
+    .ecosystem { background: #090a08; border-top: 1px solid var(--cream-line); padding: clamp(90px, 13vw, 170px) var(--pad); }
+    .ecosystem-inner { width: min(1220px, 100%); margin: 0 auto; }
+    .ecosystem-head { display: grid; grid-template-columns: .65fr 1.35fr; gap: 50px; align-items: end; }
+    .ecosystem-head h2 { margin: 0; font-size: clamp(48px, 7vw, 96px); line-height: .96; letter-spacing: -.055em; }
+    .ecosystem-head p { margin: 0 0 7px; max-width: 570px; color: var(--cream-muted); line-height: 1.8; font-size: 14px; }
+
+    .tab-list { display: flex; gap: 8px; overflow-x: auto; padding: 46px 0 14px; scrollbar-width: none; }
+    .tab-list::-webkit-scrollbar { display: none; }
+    .tab-button { white-space: nowrap; min-height: 42px; padding: 0 17px; border: 1px solid var(--cream-line); border-radius: 999px; background: transparent; color: var(--cream-muted); cursor: pointer; font-size: 10px; }
+    .tab-button.active { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+
+    .tab-panel { display: none; min-height: 520px; border: 1px solid var(--cream-line); background: rgba(237, 228, 197, .012); padding: clamp(24px, 4vw, 46px); margin-top: 15px; }
+    .tab-panel.active { display: block; }
+
+    .dashboard-grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: 14px; }
+    .mock-card { border: 1px solid var(--cream-line); padding: 22px; background: rgba(7, 8, 6, .42); min-width: 0; }
+    .mock-head { display: flex; justify-content: space-between; gap: 15px; align-items: center; margin-bottom: 23px; }
+    .mock-head h3 { margin: 0; font-size: 13px; }
+    .mock-head span { color: var(--cream-muted); font-size: 8px; }
+    
+    .line-chart { width: 100%; height: 220px; }
+    .line-chart path { fill: none; stroke: var(--olive-mid); stroke-width: 2; }
+    .line-chart .grid { stroke: rgba(237, 228, 197, .08); stroke-width: 1; }
+    .line-chart .area { fill: url(#chartGradient); stroke: none; }
+    
+    .task-list { display: grid; gap: 12px; }
+    .task-row { display: grid; grid-template-columns: 16px 1fr; gap: 10px; color: var(--cream-muted); font-size: 11px; line-height: 1.5; }
+    .task-box { width: 13px; height: 13px; border: 1px solid var(--cream-line); margin-top: 2px; }
+    .task-row.done .task-box { background: var(--olive-mid); border-color: var(--olive-mid); }
+    .task-row.done { color: var(--cream); }
+
+    .stage-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .stage-card { min-height: 250px; border: 1px solid var(--cream-line); padding: 18px; display: flex; flex-direction: column; opacity: .42; }
+    .stage-card.unlocked { opacity: 1; background: linear-gradient(155deg, rgba(106, 122, 44, .12), transparent 60%); }
+    .stage-card .mono { font-size: 8px; color: var(--cream-muted); }
+    .stage-card h3 { margin: auto 0 10px; font: 500 25px/1.1 "Playfair Display", serif; }
+    .stage-card p { margin: 0; color: var(--cream-muted); font-size: 10px; line-height: 1.6; }
+
+    .academy-map { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .academy-step { min-height: 330px; border: 1px solid var(--cream-line); padding: 22px; position: relative; overflow: hidden; }
+    .academy-step::after { content: ""; position: absolute; width: 130px; height: 130px; border: 1px solid var(--cream-line); border-radius: 50%; right: -50px; top: -50px; }
+    .academy-step .mono { color: var(--cream-muted); font-size: 8px; }
+    .academy-step h3 { margin: 140px 0 14px; font: 500 28px/1.08 "Playfair Display", serif; }
+    .academy-step p { margin: 0; color: var(--cream-muted); font-size: 10px; line-height: 1.7; }
+
+    .partner-filters { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 22px; }
+    .filter-chip { border: 1px solid var(--cream-line); border-radius: 999px; padding: 10px 13px; color: var(--cream-muted); font-size: 9px; }
+    .partner-list { display: grid; }
+    .partner-row { display: grid; grid-template-columns: 1.2fr .8fr .8fr auto; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--cream-line); align-items: center; }
+    .partner-row strong { font-size: 13px; }
+    .partner-row span { color: var(--cream-muted); font-size: 10px; }
+    .partner-level { border: 1px solid var(--cream-line); border-radius: 999px; padding: 8px 11px; }
+
+    .house-gallery { display: grid; grid-template-columns: 1.2fr .8fr; gap: 12px; }
+    .house-visual {
+      min-height: 470px; border: 1px solid var(--cream-line); position: relative; overflow: hidden;
+      background: linear-gradient(180deg, transparent 0 58%, rgba(7, 8, 6, .92) 100%), radial-gradient(circle at 72% 22%, rgba(237, 228, 197, .22), transparent 18%), linear-gradient(120deg, #1c2014, #0b0d09 48%, #25291b);
+    }
+    .house-visual.secondary { min-height: 229px; background: linear-gradient(180deg, transparent 0 55%, rgba(7, 8, 6, .94) 100%), radial-gradient(circle at 30% 30%, rgba(237, 228, 197, .19), transparent 16%), linear-gradient(145deg, #15180f, #25291b); }
+    .room-lines { position: absolute; inset: 0; opacity: .45; }
+    .room-lines::before, .room-lines::after { content: ""; position: absolute; border: 1px solid rgba(237, 228, 197, .16); }
+    .room-lines::before { width: 52%; height: 45%; left: 11%; top: 17%; transform: perspective(300px) rotateY(12deg); }
+    .room-lines::after { width: 31%; height: 25%; right: 8%; bottom: 17%; border-radius: 50% 50% 10% 10%; }
+    .room-caption { position: absolute; left: 22px; right: 22px; bottom: 20px; z-index: 2; }
+    .room-caption .mono { color: var(--cream-muted); font-size: 8px; }
+    .room-caption h3 { margin: 8px 0 0; font: 500 29px/1.05 "Playfair Display", serif; }
+    .house-stack { display: grid; gap: 12px; }
+
+    .site-footer { border-top: 1px solid var(--cream-line); padding: 42px var(--pad); display: flex; justify-content: space-between; gap: 30px; align-items: center; color: var(--cream-muted); font-size: 9px; background: #090a08; }
+    .footer-mark { color: var(--cream); letter-spacing: .18em; }
+
+    .toast { position: fixed; left: 50%; bottom: 26px; z-index: 200; transform: translate(-50%, 14px); padding: 12px 16px; border: 1px solid var(--cream-line); background: rgba(7, 8, 6, .94); color: var(--cream); font-size: 10px; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease); }
+    .toast.visible { opacity: 1; transform: translate(-50%, 0); }
+
+    /* Reaproveitado / Legado */
+    .brand-logo { width: 38px; height: 38px; flex: 0 0 auto; filter: drop-shadow(0 8px 24px rgba(0,0,0,.34)); }
+    .brand-copy { display: grid; gap: 3px; }
+    .brand-copy strong { font: 600 13px/1 "Playfair Display", Georgia, serif; letter-spacing: .02em; color: var(--cream); }
+    .brand-copy small { font: 500 7px/1 "JetBrains Mono", monospace; letter-spacing: .15em; text-transform: uppercase; color: var(--cream-muted); }
+    #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .48; }
+
+    @media (max-width: 900px) {
+      .clinical-intro, .portfolio-head { grid-template-columns: 1fr; }
+      .clinical-intro { margin-top: -3vh; }
+      .clinical-grid, .treatment-grid, .portfolio-grid { grid-template-columns: 1fr; }
+      .clinical-card.full { grid-column: auto; }
+    }
+
+    @media (max-width: 880px) {
+      .question-sheet, .analysis-table, .result-grid, .maturity-layout, .ecosystem-head, .dashboard-grid, .house-gallery { grid-template-columns: 1fr; }
+      .question-viewport { min-height: 700px; }
+      .question-context { align-self: auto; }
+      .question-context h2 { font-size: clamp(34px, 9vw, 57px); }
+      .line-illustration { display: none; }
+      .analysis-table::before { display: none; }
+      .paths-grid { grid-template-columns: 1fr; }
+      .path-card { min-height: 260px; }
+      .stage-cards, .academy-map { grid-template-columns: 1fr; }
+      .section-label { position: static; }
+      .result-grid { gap: 42px; }
+      .partner-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      :root { --pad: 21px; }
+      .brand-name { display: none; }
+      .status-corner { font-size: 7px; }
+      .preface-copy { min-height: 430px; }
+      .preface-main { gap: 32px; }
+      .video-wrap { width: 100%; }
+      .video-frame { aspect-ratio: 4 / 5; }
+      .journey-shell { padding-top: 95px; }
+      .question-viewport { min-height: 690px; align-items: start; padding-top: 8vh; padding-bottom: 180px; }
+      .question-sheet { gap: 31px; }
+      .question-context p { margin-top: 18px; }
+      .question-title { margin-bottom: 26px; }
+      .choice-card { min-height: 54px; padding: 13px 14px; }
+      .journey-actions { margin-top: 28px; }
+      .journey-footer { left: 21px; right: 21px; }
+      .scanner-grid { grid-template-columns: 1fr; }
+      .analysis-table { min-height: 88svh; padding-top: 80px; gap: 20px; }
+      .radar-svg { width: 260px; }
+      .terminal h2 { font-size: 36px; margin-bottom: 24px; }
+      .result-hero { align-items: end; }
+      .result-section { width: calc(100vw - 42px); }
+      .paths-grid { margin-top: 34px; }
+      .stage-cards, .academy-map { grid-template-columns: 1fr; }
+      .stage-card { min-height: 190px; }
+      .academy-step { min-height: 250px; }
+      .academy-step h3 { margin-top: 95px; }
+      .partner-row { grid-template-columns: 1fr; gap: 7px; }
+      .site-footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+    details > summary::-webkit-details-marker { display: none; }
+
+    /* =========================================================
+       MELHORIAS DE RESPONSIVIDADE E NAVEGAÇÃO (KRAD OS)
+       ========================================================= */
+    .tab-list {
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 20px;
+    }
+    .tab-button {
+      scroll-snap-align: start;
+    }
+    .dash-body > div[style*="grid-template-columns"] {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    }
+
+    @media (max-width: 768px) {
+      .dash-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 40px 5% 20px !important;
+      }
+      .dash-header > div:last-child {
+        text-align: left !important;
+        width: 100%;
+        margin-top: 15px;
+      }
+      .dash-header > div:last-child > div {
+        justify-content: flex-start !important;
+      }
+      .dash-card {
+        padding: 20px !important;
+      }
+      #dashTimeline {
+        min-width: 100% !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 25px !important;
+        padding-left: 10px !important;
+      }
+      #dashTimeline > div[style*="position: absolute"] {
+        width: 2px !important;
+        height: 100% !important;
+        left: 20px !important;
+        top: 0 !important;
+        right: auto !important;
+      }
+      #dashTimeline > div:not([style*="position: absolute"]) {
+        flex-direction: row !important;
+        gap: 15px !important;
+        width: 100%;
+        text-align: left;
+      }
+      .dash-card[style*="linear-gradient"] {
+        padding: 30px 20px !important;
+      }
+      .dash-card[style*="linear-gradient"] div {
+        flex-direction: column;
+      }
+      .dash-card[style*="linear-gradient"] button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .dash-body > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+      #dashScore {
+        font-size: 38px !important;
+      }
+      .radar-container {
+        max-width: 100% !important;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      input[type="text"], textarea, select {
+        font-size: 16px !important;
+      }
+      .journey-footer {
+        bottom: 15px !important;
+      }
+    }
+  </style>
+</head>
+<body class="locked" data-chapter="preface">
+  <div class="app-shell" id="app">
+    <div class="noise" aria-hidden="true"></div>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <div class="brand-mark" aria-label="KRAD OS">
+      <svg class="brand-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="100" cy="100" r="97" fill="#3A4418"/>
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#A5B876" stroke-width="1.2" opacity=".62"/>
+        <text x="100" y="94" font-family="Georgia,serif" font-size="54" font-weight="900" fill="#A5B876" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">krad</text>
+        <text x="100" y="137" font-family="Georgia,serif" font-size="22" fill="#A5B876" text-anchor="middle" letter-spacing="1">agência</text>
+      </svg>
+      <span class="brand-copy">
+        <strong>KRAD OS</strong>
+        <small>Sistema de desenvolvimento empresarial</small>
+      </span>
+    </div>
+    <div class="status-corner mono" id="systemStatus">Sistema disponível</div>
+
+    <main>
+      <section class="stage stage-full" id="preface" aria-labelledby="preface-title">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="light-point" aria-hidden="true"></div>
+        <div class="preface-copy">
+          <p class="preface-line serif" id="prefaceLine1">Toda empresa começa com um sonho.</p>
+          <p class="preface-line serif" id="prefaceLine2">Algumas crescem. Outras apenas sobrevivem à rotina.</p>
+          <div class="preface-main" id="prefaceMain">
+            <h1 class="serif" id="preface-title">Entenda onde sua empresa está hoje.</h1>
+            <button class="minimal-button" id="startButton" type="button">Iniciar Diagnóstico</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="stage stage-full" id="video-stage" aria-labelledby="video-title">
+        <div class="video-wrap">
+          <div class="system-log mono" aria-live="polite">KRAD OS INITIALIZATION... <span id="kosStatus">OK</span></div>
+          <div class="video-frame">
+            <video id="contextVideo" playsinline controls preload="metadata" aria-label="Introdução ao diagnóstico KRAD" hidden></video>
+            <div class="video-placeholder" id="videoPlaceholder">
+              <div class="video-placeholder-inner">
+                <div class="eyebrow mono">Uma conversa antes da análise</div>
+                <h2 class="serif" id="video-title">Não queremos começar falando sobre serviços.</h2>
+                <p>Queremos compreender a história, a realidade e o futuro que você deseja construir. Esta é uma triagem estratégica — sem julgamento e sem respostas prontas.</p>
+              </div>
+            </div>
+            <div class="video-progress" aria-hidden="true"><span id="videoProgressBar"></span></div>
+          </div>
+          <button class="primary-button" id="beginJourneyButton" type="button" disabled>Vamos começar</button>
+        </div>
+      </section>
+
+      <section class="stage" id="journey-stage" aria-labelledby="journey-heading">
+        <h1 class="sr-only" id="journey-heading">Diagnóstico empresarial KRAD</h1>
+        <div class="journey-shell">
+          <div class="question-viewport" id="questionViewport" aria-live="polite"></div>
+        </div>
+        <div class="journey-footer" id="journeyFooter">
+          <div>
+            <div class="human-progress" id="humanProgress">Você começou a compartilhar sua história.</div>
+            <div class="progress-line" aria-hidden="true"><span id="progressFill"></span></div>
+          </div>
+          <div class="chapter-index mono" id="chapterIndex">K / CONHECER</div>
+        </div>
+      </section>
+
+      <section class="stage stage-full" id="processing-stage" aria-labelledby="processing-title">
+        <div class="analysis-table">
+          <div class="radar-wrap" aria-hidden="true">
+            <svg class="radar-svg" viewBox="0 0 420 420" role="img" aria-label="Matriz de análise em construção">
+              <circle class="ring" cx="210" cy="210" r="160" />
+              <circle class="ring" cx="210" cy="210" r="120" />
+              <circle class="ring" cx="210" cy="210" r="80" />
+              <circle class="ring" cx="210" cy="210" r="40" />
+              <line class="grid-line" x1="210" y1="30" x2="210" y2="390" />
+              <line class="grid-line" x1="30" y1="210" x2="390" y2="210" />
+              <line class="grid-line" x1="82" y1="82" x2="338" y2="338" />
+              <line class="grid-line" x1="338" y1="82" x2="82" y2="338" />
+              <polygon class="signal" points="210,63 337,172 300,325 145,340 73,196" />
+            </svg>
+            <span class="radar-core"></span>
+          </div>
+          <div class="terminal">
+            <div class="mono" style="font-size:9px;color:var(--cream-muted);margin-bottom:18px;">Mesa de análise técnica</div>
+            <h2 class="serif" id="processing-title">Transformando respostas em direção.</h2>
+            <div class="terminal-list" id="terminalList">
+              <div class="terminal-row mono">Organizando a queixa principal...</div>
+              <div class="terminal-row mono">Cruzando rotina, dinheiro e dependência do fundador...</div>
+              <div class="terminal-row mono">Separando sintomas de causas prováveis...</div>
+              <div class="terminal-row mono">Localizando o gargalo que puxa os outros problemas...</div>
+              <div class="terminal-row mono">Definindo o cuidado que deve vir primeiro...</div>
+              <div class="terminal-row mono">Escrevendo o prontuário na voz da KRAD...</div>
+            </div>
+            <p class="terminal-note" id="processingNote">A tecnologia organiza os sinais. A KRAD traduz isso em uma direção que respeita a história de quem está por trás do CNPJ.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="stage" id="result-stage" aria-labelledby="result-title" style="padding: 0; background: #070806;">
+        <!-- DASHBOARD HEADER -->
+        <div class="dash-header" style="background: #0e0f0c; border-bottom: 1px solid #20221c; padding: 60px 5% 40px; display: flex; align-items: center; margin-top: 20px; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <h1 class="serif" id="dashCompanyName" style="font-size: clamp(24px, 4vw, 32px); color: #A5B876; margin: 0; word-break: break-word;">Empresa</h1>
+            <p id="dashMeta" class="mono" style="color: #6a6f5e; font-size: 12px; margin-top: 8px;">Cidade • Segmento • Faturamento</p>
+          </div>
+          <div style="text-align: right;">
+            <div class="mono" style="color: #6a6f5e; font-size: 10px; margin-bottom: 5px;">ÍNDICE KRAD DE SAÚDE</div>
+            <div style="display: flex; align-items: baseline; gap: 10px; justify-content: flex-end;">
+              <span id="dashStage" style="color: #d12c2c; font-weight: bold; font-size: 14px; text-transform: uppercase;">Estágio</span>
+              <span id="dashScore" class="serif" style="font-size: 48px; color: #A5B876; line-height: 1;">0</span><span style="color: #6a6f5e; font-size: 20px;">/100</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-body" style="padding: clamp(20px, 5vw, 40px) 5%; max-width: 1200px; margin: 0 auto; display: grid; gap: 20px; overflow-x: hidden;">
+          
+          <!-- ROW 1: RADAR & BARS -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <!-- RADAR CARD -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: clamp(20px, 4vw, 30px);">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Mapeamento de Eixos</h3>
+              <div class="radar-container" style="position: relative; max-width: 250px; margin: 0 auto; aspect-ratio: 1/1;">
+                <svg class="result-radar" viewBox="0 0 420 420" style="width: 100%; height: 100%; overflow: visible;">
+                  <circle cx="210" cy="210" r="160" fill="none" stroke="#20221c" stroke-width="1" />
+                  <circle cx="210" cy="210" r="120" fill="none" stroke="#20221c" stroke-width="1" />
+                  <circle cx="210" cy="210" r="80" fill="none" stroke="#20221c" stroke-width="1" />
+                  <circle cx="210" cy="210" r="40" fill="none" stroke="#20221c" stroke-width="1" />
+                  <line x1="210" y1="50" x2="210" y2="370" stroke="#20221c" stroke-width="1" />
+                  <line x1="50" y1="210" x2="370" y2="210" stroke="#20221c" stroke-width="1" />
+                  <line x1="97" y1="97" x2="323" y2="323" stroke="#20221c" stroke-width="1" />
+                  <line x1="323" y1="97" x2="97" y2="323" stroke="#20221c" stroke-width="1" />
+                  <polygon id="radarPolygon" points="210,210 210,210 210,210 210,210 210,210 210,210" fill="rgba(140,26,26,0.1)" stroke="#d12c2c" stroke-width="2" />
+                </svg>
+                <div class="radar-label" style="position:absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#A5B876;">Gestão</div>
+                <div class="radar-label" style="position:absolute; bottom: -15px; left: 50%; transform: translateX(-50%); font-size:10px; color:#A5B876;">Crescimento</div>
+                <div class="radar-label" style="position:absolute; top: 20%; right: -30px; font-size:10px; color:#A5B876;">Mkt</div>
+                <div class="radar-label" style="position:absolute; top: 20%; left: -30px; font-size:10px; color:#A5B876;">Proc</div>
+                <div class="radar-label" style="position:absolute; bottom: 20%; right: -30px; font-size:10px; color:#A5B876;">Relac</div>
+                <div class="radar-label" style="position:absolute; bottom: 20%; left: -30px; font-size:10px; color:#A5B876;">Digital</div>
+              </div>
+            </div>
+
+            <!-- BARS CARD -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Indicadores de Saúde</h3>
+              <div id="barCharts" style="display: flex; flex-direction: column; gap: 20px;"></div>
+            </div>
+          </div>
+
+          <!-- TIMELINE -->
+          <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 40px 30px; overflow-x: auto;">
+            <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 40px; text-transform: uppercase; text-align: center;">Linha do Tempo de Maturidade</h3>
+            <div class="timeline" id="dashTimeline" style="display: flex; justify-content: space-between; align-items: center; position: relative; min-width: 600px; margin: 0 auto; padding: 0 20px;">
+              <div style="position: absolute; top: 10px; left: 30px; right: 30px; height: 2px; background: #20221c; z-index: 1;"></div>
+            </div>
+          </div>
+
+          <!-- X-RAY AND INSTA -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <!-- X-RAY -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Raio X da Operação</h3>
+              <div id="xrayList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+
+            <!-- INSTA -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Reflexo Digital (Instagram)</h3>
+              <div id="instaContent"></div>
+            </div>
+          </div>
+
+          <!-- PRIORITIES MATRIZ -->
+          <div>
+            <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 20px; text-transform: uppercase; text-align: center;">Matriz de Prioridades</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+              <div style="background: rgba(30, 80, 40, 0.05); border: 1px solid rgba(30, 80, 40, 0.2); padding: 25px; border-radius: 16px;">
+                <h4 style="color: #4CAF50; font-size: 14px; margin-bottom: 15px;">🟢 O que já funciona</h4>
+                <ul id="cardsGreen" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+              </div>
+              <div style="background: rgba(200, 150, 20, 0.05); border: 1px solid rgba(200, 150, 20, 0.2); padding: 25px; border-radius: 16px;">
+                <h4 style="color: #FFC107; font-size: 14px; margin-bottom: 15px;">🟡 Oportunidades</h4>
+                <ul id="cardsYellow" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+              </div>
+              <div style="background: rgba(140, 26, 26, 0.05); border: 1px solid rgba(140, 26, 26, 0.2); padding: 25px; border-radius: 16px;">
+                <h4 style="color: #F44336; font-size: 14px; margin-bottom: 15px;">🔴 Prioridades Críticas</h4>
+                <ul id="cardsRed" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: #A5B876; line-height: 1.6; display: flex; flex-direction: column; gap: 15px;"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONCLUSION -->
+          <div class="dash-card" style="background: #A5B876; border-radius: 16px; padding: clamp(20px, 4vw, 40px); color: #0e0f0c;">
+            <h3 class="mono" style="color: #3A4418; font-size: 12px; margin-bottom: 20px; text-transform: uppercase;">Conclusão KRAD</h3>
+            <p id="dashConclusion" class="serif" style="font-size: 20px; line-height: 1.6; font-weight: 500;">Processando...</p>
+          </div>
+
+          <!-- SIMULATION & ACTION PLAN -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <!-- SIMULATION -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Projeção de Potencial</h3>
+              <p style="color: #A5B876; font-size: 14px; margin-bottom: 30px; line-height: 1.6;">Se a sua empresa otimizar as áreas críticas e estruturar processos previsíveis, o crescimento acelerará exponencialmente.</p>
+              <div style="height: 150px; position: relative; border-bottom: 1px solid #20221c; border-left: 1px solid #20221c;">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width: 100%; height: 100%; overflow: visible;">
+                  <path id="simulationCurve" d="M0,100 Q50,90 100,20" fill="none" stroke="#d12c2c" stroke-width="2" stroke-linecap="round" stroke-dasharray="200" stroke-dashoffset="200" />
+                  <circle id="simDot" cx="100" cy="20" r="3" fill="#A5B876" opacity="0" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- PLAN -->
+            <div class="dash-card" style="background: #0e0f0c; border: 1px solid #20221c; border-radius: 16px; padding: 30px;">
+              <h3 class="mono" style="color: #6a6f5e; font-size: 12px; margin-bottom: 30px; text-transform: uppercase;">Plano de Ação Sugerido</h3>
+              <ol id="dashPlan" style="color: #A5B876; font-size: 15px; line-height: 1.8; padding-left: 20px; display: flex; flex-direction: column; gap: 15px; margin:0; font-family: 'Inter', sans-serif;">
+              </ol>
+            </div>
+          </div>
+
+          <!-- CTA PREMIUM -->
+          <div class="dash-card" style="background: linear-gradient(135deg, #1f0a0a, #0a0505); border: 1px solid #5c1010; border-radius: 24px; padding: 60px 40px; text-align: center; margin-top: 40px;">
+            <h2 class="serif" style="font-size: clamp(24px, 4vw, 36px); color: #A5B876; margin-bottom: 20px;">Gostou do seu diagnóstico?</h2>
+            <p style="color: #6a6f5e; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">O relatório mostra onde estão as oportunidades. Na Imersão KRAD nós construímos um plano prático para a sua empresa parar de sobreviver e começar a escalar.</p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+              <button class="krad-button light" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20agendar%20minha%20Imers%C3%A3o%20KRAD.', '_blank')" style="background-color: #d12c2c; color: white; border: none; padding: 20px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer;">Agendar Imersão KRAD</button>
+              <button class="krad-button" onclick="window.open('https://wa.me/5511977842164?text=Ol%C3%A1,%20gostaria%20de%20falar%20com%20um%20Especialista.', '_blank')" style="background-color: transparent; border: 1px solid #d12c2c; color: #d12c2c; padding: 20px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer;">Falar com Especialista</button>
+            </div>
+          </div>
+
+        </div>
+        
+        <footer class="site-footer" style="padding: 40px; border-top: 1px solid #20221c; margin-top: 60px;">
+          <span class="footer-mark">KRAD®</span>
+          <span class="mono">Copyright 2026. Todos os direitos reservados.</span>
+        </footer>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+  <script>
+    window.KRAD_CONFIG = Object.assign({
+      videoUrl: "",
+      diagnosticEndpoint: "/api/diagnostic",
+      instagramEndpoint: "/api/analyze",
+      instagramFallbackEndpoint: "https://krad-psi.vercel.app/api/analyze",
+      academyUrl: "#academy",
+      discoverySessionUrl: "whatsapp:session",
+      whatsappUrl: "whatsapp:growth",
+      whatsappPhone: "5511977842164",
+      requestHeaders: {},
+      demoVideoSeconds: 9
+    }, window.KRAD_CONFIG || {});
+
+    (() => {
+      "use strict";
+
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const hasAnime = typeof window.anime === "function";
+      const config = window.KRAD_CONFIG;
+
+      const state = {
+        current: 0,
+        answers: {},
+        chapter: "knowledge",
+        scanTimer: null,
+        submitted: false,
+        apiResponse: null
+      };
+
+      const stages = {
+        preface: $("#preface"),
+        video: $("#video-stage"),
+        journey: $("#journey-stage"),
+        processing: $("#processing-stage"),
+        result: $("#result-stage")
+      };
+
+      const chapterMeta = {
+        knowledge: { code: "K", label: "CONHECER", progressLead: "Você já compartilhou" },
+        reality: { code: "R", label: "REALIDADE", progressLead: "Sua realidade já está" },
+        aspiration: { code: "A", label: "AMBIÇÃO", progressLead: "Seu futuro desejado está" },
+        direction: { code: "D", label: "DIREÇÃO", progressLead: "Seu mapa inicial está" }
+      };
+
+      const questions = [
+        {
+          id: "founderName", chapter: "knowledge", type: "text", required: true,
+          chapterTitle: "Toda empresa começa com alguém.",
+          chapterText: "Antes de olhar números ou falar de crescimento, queremos conhecer quem enfrenta a rotina e mantém o negócio de pé.",
+          title: "Como você gosta de ser chamado?", placeholder: "Seu primeiro nome", autocomplete: "given-name", inputMode: "text"
+        },
+        {
+          id: "companyName", chapter: "knowledge", type: "text", required: true,
+          chapterTitle: "Agora, conte o nome dessa história.",
+          chapterText: "Não importa se a empresa é pequena, nova ou conhecida na cidade. Toda empresa carrega trabalho, risco e uma razão para existir.",
+          title: "Qual é o nome da sua empresa?", placeholder: "Nome da empresa", autocomplete: "organization"
+        },
+        {
+          id: "cnpj", chapter: "knowledge", type: "text", required: true,
+          chapterTitle: "Identidade do negócio.",
+          chapterText: "Com o seu CNPJ, nossa inteligência consegue cruzar dados de mercado e entender melhor a sua estrutura jurídica.",
+          title: "Qual o CNPJ da empresa?", placeholder: "00.000.000/0000-00", inputMode: "numeric"
+        },
+        {
+          id: "city", chapter: "knowledge", type: "text", required: true,
+          chapterTitle: "Cada cidade tem o seu jeito de comprar.",
+          chapterText: "Entender onde você atua ajuda a olhar concorrência, hábitos dos clientes e oportunidades mais próximas da sua realidade.",
+          title: "Em qual cidade fica a maior parte dos seus clientes?", placeholder: "Ex.: Atibaia, SP", autocomplete: "address-level2"
+        },
+        {
+          id: "segment", chapter: "knowledge", type: "text", required: true,
+          chapterTitle: "Seu tipo de negócio muda toda a análise.",
+          chapterText: "Um restaurante, uma clínica, uma loja e um prestador de serviço enfrentam problemas bem diferentes.",
+          title: "O que sua empresa vende ou faz?", placeholder: "Ex.: restaurante, clínica, loja, serviços"
+        },
+        {
+          id: "revenue", chapter: "knowledge", type: "choice", required: true,
+          chapterTitle: "Saúde financeira.",
+          chapterText: "Saber a faixa de faturamento nos ajuda a desenhar um plano de ação realista e que caiba no seu bolso.",
+          title: "Qual é o faturamento médio mensal da empresa?",
+          options: ["Ainda não faturamos", "Até R$ 10.000", "De R$ 10.001 a R$ 50.000", "De R$ 50.001 a R$ 100.000", "Acima de R$ 100.000"]
+        },
+        {
+          id: "companyAge", chapter: "knowledge", type: "choice", required: true,
+          chapterTitle: "O tempo de estrada também conta.",
+          chapterText: "Quem está começando precisa firmar a base. Quem já tem história precisa crescer sem perder o que conquistou.",
+          title: "Há quanto tempo sua empresa está aberta?",
+          options: ["Ainda não completou 1 ano", "De 1 a 3 anos", "De 4 a 7 anos", "De 8 a 15 anos", "Mais de 15 anos"]
+        },
+        {
+          id: "discovery", chapter: "reality", type: "choice", required: true,
+          chapterTitle: "Agora vamos olhar o negócio como ele está hoje.",
+          chapterText: "Aqui não existe resposta bonita ou feia. Precisamos apenas entender de onde vêm as pessoas que compram de você.",
+          title: "Como a maioria dos clientes encontra sua empresa hoje?",
+          options: ["Por indicação de outras pessoas", "Pelo Instagram ou pelo Google", "Por anúncios", "Por parceiros e contatos", "Vem de vários lugares"],
+          logMap: { "Por indicação de outras pessoas": "HOJE, O CRESCIMENTO DEPENDE MUITO DE INDICAÇÕES" }
+        },
+        {
+          id: "margin", chapter: "reality", type: "choice", required: true,
+          chapterTitle: "Vender mais só ajuda quando sobra dinheiro.",
+          chapterText: "Muita empresa trabalha bastante, mas não sabe quais vendas realmente fortalecem o caixa.",
+          title: "Você sabe quanto realmente sobra de cada produto ou serviço vendido?",
+          options: ["Sim, sei com segurança", "Sei mais ou menos", "Tenho apenas uma ideia", "Ainda não consigo saber"]
+        },
+        {
+          id: "decisionBasis", chapter: "reality", type: "choice", required: true,
+          chapterTitle: "Toda escolha mexe com o caixa e com a rotina.",
+          chapterText: "A experiência é importante. Alguns números simples ajudam a não decidir apenas no susto ou na pressão do dia.",
+          title: "Quando precisa investir, contratar ou crescer, como você costuma decidir?",
+          options: ["Olho números organizados", "Junto os números com minha experiência", "Vou mais pela experiência", "Decido conforme o problema aparece"]
+        },
+        {
+          id: "operationalHours", chapter: "reality", type: "choice", required: true,
+          chapterTitle: "Seu tempo também mostra a saúde da empresa.",
+          chapterText: "Quando quase tudo passa pelo dono, o negócio pode funcionar, mas cresce com muito peso nas costas de uma pessoa.",
+          title: "Quanto tempo da sua semana fica preso nas tarefas do dia a dia?",
+          options: ["Menos de 10 horas", "De 10 a 25 horas", "De 26 a 45 horas", "Mais de 45 horas", "Quase o tempo todo"]
+        },
+        {
+          id: "vacation", chapter: "reality", type: "choice", required: true,
+          chapterTitle: "O que acontece quando você não está?",
+          chapterText: "Muitos donos nunca desligam, ou porque não confiam que a equipe resolve, ou porque a equipe ainda não tem um processo para seguir.",
+          title: "Como a empresa funciona se você tira uma semana de férias sem olhar o celular?",
+          options: ["Funciona normalmente", "Alguém me chama algumas vezes", "Só consigo ficar poucos dias", "Hoje não consigo me afastar"]
+        },
+        {
+          id: "barrier", chapter: "aspiration", type: "choice", required: true,
+          chapterTitle: "Vamos olhar um pouco para frente.",
+          chapterText: "Todo mundo quer vender mais ou crescer, mas quase sempre existe uma barreira principal segurando a empresa agora.",
+          title: "Se você tivesse que escolher, o que mais atrapalha o crescimento hoje?",
+          options: ["Falta mão de obra ou tempo", "Falta previsibilidade de clientes", "Falta caixa ou lucro no final do mês", "Falta organização e processo"]
+        },
+        {
+          id: "timeline", chapter: "aspiration", type: "choice", required: true,
+          chapterTitle: "Sentido de urgência.",
+          chapterText: "Uma ideia sem prazo é apenas um desejo. Entender o tempo que temos ajuda a ditar o ritmo.",
+          title: "Qual a sua expectativa para iniciar um projeto estruturado de crescimento?",
+          options: ["Imediatamente", "No próximo mês", "Em até 3 meses", "Apenas pesquisando opções"]
+        },
+        {
+          id: "oneProblem", chapter: "aspiration", type: "text", required: false,
+          chapterTitle: "Sua visão importa mais do que as opções prontas.",
+          chapterText: "Existe algum detalhe ou problema que nós não perguntamos, mas que você sente que é o gargalo da empresa?",
+          title: "Descreva a sua principal dor hoje (opcional)", placeholder: "Ex.: Meu estoque está parado, a equipe não vende..."
+        },
+        {
+          id: "instagramPublic", chapter: "direction", type: "instagram", required: true,
+          chapterTitle: "Para fechar, o seu reflexo digital.",
+          chapterText: "Vamos olhar rapidamente como o mundo vê a empresa na internet para completar a análise.",
+          title: "Qual o Instagram público da empresa?", placeholder: "Ex.: @kradagencia",
+          onAfter: async (val) => {
+            if (!val || val.length < 2) return null;
+            try {
+              let clean = val.replace('@', '').split('/')[0].trim();
+              const response = await fetch(`${config.instagramEndpoint}?username=${clean}`);
+              if (response.ok) {
+                const data = await response.json();
+                if (data && data.profile) return { username: clean, profile: data.profile };
+              }
+              const fallResponse = await fetch(`${config.instagramFallbackEndpoint}?username=${clean}`);
+              if (fallResponse.ok) {
+                const data = await fallResponse.json();
+                if (data && data.profile) return { username: clean, profile: data.profile };
+              }
+            } catch (e) { console.error('Ig fail', e); }
+            return val;
+          }
+        }
+      ];
+
+      function startLegacyParticles() {
+        const canvas = $("#hero-canvas");
+        if (!canvas || prefersReducedMotion) return;
+        const ctx = canvas.getContext("2d");
+        const particles = [];
+        let frame;
+
+        const resize = () => {
+          const rect = canvas.getBoundingClientRect();
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+          canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        resize();
+        window.addEventListener("resize", resize, { passive: true });
+
+        for (let i = 0; i < 46; i += 1) {
+          particles.push({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            r: Math.random() * 1.5 + .35,
+            vx: (Math.random() - .5) * .22,
+            vy: (Math.random() - .5) * .22,
+            a: Math.random() * .34 + .05
+          });
+        }
+
+        const draw = () => {
+          const width = canvas.clientWidth;
+          const height = canvas.clientHeight;
+          ctx.clearRect(0, 0, width, height);
+
+          particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(106,122,44,${p.a})`;
+            ctx.fill();
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0) p.x = width;
+            if (p.x > width) p.x = 0;
+            if (p.y < 0) p.y = height;
+            if (p.y > height) p.y = 0;
+          });
+
+          for (let i = 0; i < particles.length; i += 1) {
+            for (let j = i + 1; j < particles.length; j += 1) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < 115) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(78,91,31,${.1 * (1 - distance / 115)})`;
+                ctx.lineWidth = .6;
+                ctx.stroke();
+              }
+            }
+          }
+          frame = requestAnimationFrame(draw);
+        };
+
+        draw();
+        window.addEventListener("pagehide", () => cancelAnimationFrame(frame), { once: true });
+      }
+
+      function animate(options) {
+        if (prefersReducedMotion || !hasAnime) {
+          const targets = typeof options.targets === "string" ? $$(options.targets) : (options.targets instanceof Element ? [options.targets] : options.targets || []);
+          targets.forEach(el => {
+            if (!el || !el.style) return;
+            if (options.opacity !== undefined) el.style.opacity = Array.isArray(options.opacity) ? options.opacity.at(-1) : options.opacity;
+            if (options.translateY !== undefined || options.translateX !== undefined || options.scale !== undefined) el.style.transform = "none";
+          });
+          if (typeof options.complete === "function") options.complete();
+          return { pause(){} };
+        }
+        return window.anime(options);
+      }
+
+      function setStageVisible(stage, visible) {
+        stage.style.display = visible ? (stage.id === "journey-stage" || stage.id === "result-stage" ? "block" : "grid") : "none";
+      }
+
+      function showToast(message) {
+        const toast = $("#toast");
+        toast.textContent = message;
+        toast.classList.add("visible");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove("visible"), 3200);
+      }
+
+      function runPreface() {
+        if (prefersReducedMotion || !hasAnime) {
+          $("#prefaceLine1").style.display = "none";
+          $("#prefaceLine2").style.display = "none";
+          $("#prefaceMain").style.opacity = "1";
+          $("#prefaceMain").style.transform = "none";
+          return;
+        }
+        const timeline = anime.timeline({ easing: "easeOutQuart" });
+        timeline
+          .add({ targets: "#prefaceLine1", opacity: [0, 1], translateY: [14, 0], duration: 900 })
+          .add({ targets: "#prefaceLine1", opacity: 0, translateY: -10, duration: 700, delay: 1500 })
+          .add({ targets: "#prefaceLine2", opacity: [0, 1], translateY: [14, 0], duration: 900 })
+          .add({ targets: "#prefaceLine2", opacity: 0, translateY: -10, duration: 700, delay: 1500 })
+          .add({ targets: "#prefaceMain", opacity: [0, 1], translateY: [18, 0], duration: 1200 })
+          .add({ targets: "#startButton", opacity: [0, 1], translateY: [8, 0], duration: 700 }, "-=420");
+      }
+
+      function openVideoStage() {
+        document.body.dataset.chapter = "video";
+        $("#systemStatus").textContent = "Triagem iniciada";
+        setStageVisible(stages.video, true);
+        animate({
+          targets: stages.preface,
+          opacity: [1, 0],
+          scale: [1, 1.06],
+          duration: 950,
+          easing: "easeInOutQuart",
+          complete: () => {
+            setStageVisible(stages.preface, false);
+            animate({ targets: stages.video, opacity: [0, 1], scale: [1.04, 1], duration: 1050, easing: "easeOutExpo" });
+            initializeVideo();
+          }
+        });
+      }
+
+      function initializeVideo() {
+        const video = $("#contextVideo");
+        const placeholder = $("#videoPlaceholder");
+        const button = $("#beginJourneyButton");
+        const bar = $("#videoProgressBar");
+
+        if (config.videoUrl) {
+          video.src = config.videoUrl;
+          video.hidden = false;
+          placeholder.hidden = true;
+          video.addEventListener("timeupdate", () => {
+            const ratio = video.duration ? video.currentTime / video.duration : 0;
+            bar.style.width = `${Math.min(100, ratio * 100)}%`;
+            if (ratio >= .72) button.disabled = false;
+          });
+          video.addEventListener("ended", () => { button.disabled = false; bar.style.width = "100%"; });
+          video.addEventListener("error", () => runDemoVideo(button, bar));
+        } else {
+          runDemoVideo(button, bar);
+        }
+      }
+
+      function runDemoVideo(button, bar) {
+        const duration = Math.max(3, Number(config.demoVideoSeconds) || 9) * 1000;
+        animate({
+          targets: bar,
+          width: ["0%", "100%"],
+          duration,
+          easing: "linear",
+          complete: () => { button.disabled = false; }
+        });
+      }
+
+      function beginJourney() {
+        document.body.dataset.chapter = "knowledge";
+        $("#systemStatus").textContent = "Escuta em andamento";
+        setStageVisible(stages.journey, true);
+        renderQuestion(0, false);
+        animate({
+          targets: stages.video,
+          opacity: [1, 0],
+          translateY: [0, -28],
+          duration: 720,
+          easing: "easeInOutQuart",
+          complete: () => {
+            setStageVisible(stages.video, false);
+            animate({ targets: stages.journey, opacity: [0, 1], duration: 850, easing: "easeOutQuart" });
+          }
+        });
+      }
+
+      function illustrationMarkup() { return ``; }
+
+      function createQuestionMarkup(question, index) {
+        const meta = chapterMeta[question.chapter];
+        const value = state.answers[question.id] || "";
+        const isAspiration = question.chapter === "aspiration";
+        const context = `
+          <div class="question-context">
+            <div class="chapter-tag mono"><strong>${meta.code}</strong>${meta.label}</div>
+            <h2 class="serif">${question.chapterTitle}</h2>
+            <p>${question.chapterText}</p>
+            ${question.chapter === "knowledge" && index === 0 ? illustrationMarkup() : ""}
+          </div>`;
+
+        let control = "";
+        if (question.type === "text") {
+          control = `<div class="field-wrap"><input class="text-field" id="activeInput" name="${question.id}" type="text" value="${escapeAttribute(value)}" placeholder="${question.placeholder}" autocomplete="${question.autocomplete || "off"}" inputmode="${question.inputMode || "text"}" /><div class="field-error" id="fieldError">Conte um pouco para conseguirmos continuar.</div></div>`;
+        } else if (question.type === "textarea") {
+          control = `<div class="field-wrap"><textarea class="long-field" id="activeInput" name="${question.id}" placeholder="${question.placeholder}" maxlength="900">${escapeHtml(value)}</textarea><div class="field-hint">Não existe resposta certa. Pode escrever do seu jeito.</div><div class="field-error" id="fieldError">Conte um pouco para conseguirmos continuar.</div></div>`;
+        } else if (question.type === "choice") {
+          control = `<div class="choice-grid">${question.options.map(option => `<button class="choice-card ${value === option ? "selected" : ""}" type="button" data-value="${escapeAttribute(option)}"><span>${option}</span><span class="choice-indicator" aria-hidden="true"></span></button>`).join("")}</div><div class="micro-log mono" id="microLog"></div><div class="field-error" id="fieldError">Escolha a opção que mais parece com sua realidade.</div>`;
+        } else if (question.type === "instagram") {
+          control = `
+            <div class="field-wrap">
+              <input class="text-field" id="activeInput" name="${question.id}" type="text" value="${escapeAttribute(value)}" placeholder="${question.placeholder}" autocomplete="off" autocapitalize="none" spellcheck="false" />
+              <div class="field-hint">Essa parte é opcional. Se a leitura não estiver disponível, seu diagnóstico continua normalmente.</div>
+            </div>
+            <div class="scanner-card" id="scannerCard" aria-live="polite">
+              <div class="scanner-head">
+                <div class="scanner-avatar" id="scannerAvatar"><span id="avatarInitial">K</span><img id="avatarImage" alt="" /></div>
+                <div class="scanner-id"><strong id="scannerHandle">@empresa</strong><span class="mono" id="scannerMode">Aguardando canal</span></div>
+              </div>
+              <div class="scanner-grid">
+                <div class="scanner-metric"><b id="scanMetric1">—</b><small>Pessoas seguindo</small></div>
+                <div class="scanner-metric"><b id="scanMetric2">—</b><small>Publicações</small></div>
+                <div class="scanner-metric"><b id="scanMetric3">—</b><small>Interação</small></div>
+              </div>
+              <div class="scan-sweep" id="scanSweep"></div>
+            </div>`;
+        }
+
+        const panel = `
+          <div class="question-panel">
+            <div class="question-number mono">Pergunta ${String(index + 1).padStart(2, "0")} de ${questions.length}</div>
+            <h3 class="question-title serif">${question.title}</h3>
+            ${control}
+            <div class="journey-actions">
+              <button class="primary-button" id="nextQuestion" type="button">${index === questions.length - 1 ? "Construir meu mapa" : "Continuar"}</button>
+              ${index > 0 ? `<button class="quiet-button" id="previousQuestion" type="button">Voltar</button>` : ""}
+            </div>
+          </div>`;
+
+        return `<article class="question-sheet ${isAspiration ? "single-column" : ""}" data-question="${question.id}">${isAspiration ? panel : context + panel}</article>`;
+      }
+
+      function renderQuestion(index, transition = true, direction = 1) {
+        const viewport = $("#questionViewport");
+        const old = $(".question-sheet", viewport);
+        const question = questions[index];
+        state.current = index;
+        state.chapter = question.chapter;
+        document.body.dataset.chapter = question.chapter;
+        updateProgress();
+
+        const insert = () => {
+          viewport.innerHTML = createQuestionMarkup(question, index);
+          const sheet = $(".question-sheet", viewport);
+          bindQuestionEvents(question);
+          if (transition) {
+            animate({ targets: sheet, opacity: [0, 1], translateY: [direction > 0 ? 72 : -72, 0], duration: 820, easing: "easeOutExpo" });
+          }
+          const input = $("#activeInput", sheet);
+          if (input && window.innerWidth > 760) setTimeout(() => input.focus({ preventScroll: true }), 350);
+        };
+
+        if (old && transition) {
+          animate({
+            targets: old,
+            opacity: [1, 0],
+            translateY: [0, direction > 0 ? -88 : 88],
+            duration: 540,
+            easing: "easeInQuart",
+            complete: insert
+          });
+        } else insert();
+      }
+
+      function bindQuestionEvents(question) {
+        const next = $("#nextQuestion");
+        const previous = $("#previousQuestion");
+        const input = $("#activeInput");
+
+        next.addEventListener("click", advanceQuestion);
+        if (previous) previous.addEventListener("click", goBack);
+
+        if (input) {
+          input.addEventListener("input", (e) => {
+            hideError();
+            if (question.type === "instagram") scheduleScan(input.value);
+            if (question.id === "cnpj") {
+              let v = e.target.value.replace(/\D/g, "");
+              if (v.length > 14) v = v.substring(0, 14);
+              v = v.replace(/^(\d{2})(\d)/, "$1.$2");
+              v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+              v = v.replace(/\.(\d{3})(\d)/, ".$1/$2");
+              v = v.replace(/(\d{4})(\d)/, "$1-$2");
+              e.target.value = v;
+            }
+          });
+          input.addEventListener("keydown", event => {
+            if (event.key === "Enter" && question.type === "text") {
+              event.preventDefault();
+              advanceQuestion();
+            }
+          });
+          if (question.type === "instagram" && input.value) scheduleScan(input.value);
+        }
+
+        $$(".choice-card").forEach(card => {
+          card.addEventListener("click", () => {
+            $$(".choice-card").forEach(item => item.classList.remove("selected"));
+            card.classList.add("selected");
+            state.answers[question.id] = card.dataset.value;
+            hideError();
+            const microLog = $("#microLog");
+            const log = question.logMap?.[card.dataset.value] || "";
+            if (microLog) {
+              microLog.textContent = log;
+              microLog.classList.toggle("visible", Boolean(log));
+            }
+            setTimeout(advanceQuestion, 480);
+          });
+        });
+      }
+
+      function readCurrentAnswer() {
+        const question = questions[state.current];
+        if (question.type === "choice") return state.answers[question.id] || "";
+        const input = $("#activeInput");
+        return input ? input.value.trim() : "";
+      }
+
+      async function advanceQuestion() {
+        const question = questions[state.current];
+        const value = readCurrentAnswer();
+        if (question.required && !value) {
+          showError("Esse campo é obrigatório.");
+          return;
+        }
+        
+        if (question.id === "cnpj") {
+          const cleanCnpj = value.replace(/\D/g, "");
+          if (cleanCnpj.length !== 14) {
+            showError("O CNPJ deve ter 14 dígitos.");
+            return;
+          }
+          
+          const finalButton = $("#nextQuestion");
+          const oldText = finalButton.textContent;
+          finalButton.disabled = true;
+          finalButton.textContent = "Validando CNPJ...";
+          
+          try {
+            const res = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cleanCnpj}`);
+            if (!res.ok) throw new Error("CNPJ inválido");
+            const data = await res.json();
+            if (data.situacao_cadastral !== 2) throw new Error("CNPJ inativo");
+            
+            state.answers.razao_social = data.razao_social;
+            state.answers.cnpjValido = true;
+          } catch (e) {
+            finalButton.disabled = false;
+            finalButton.textContent = oldText;
+            showError("CNPJ inválido ou inativo. Verifique os números.");
+            return;
+          }
+          finalButton.disabled = false;
+          finalButton.textContent = oldText;
+        }
+
+        if (question.type === "instagram") {
+          const handle = normalizeHandle(value);
+          if (typeof state.answers[question.id] !== "object") {
+            state.answers[question.id] = handle;
+          }
+        } else if (question.id !== "cnpj") {
+          state.answers[question.id] = value;
+        }
+        persistState();
+
+        if (state.current < questions.length - 1) {
+          renderQuestion(state.current + 1, true, 1);
+          return;
+        }
+
+        const finalButton = $("#nextQuestion");
+        if (finalButton) {
+          finalButton.disabled = true;
+          finalButton.textContent = state.answers.instagram ? "Lendo o perfil..." : "Construindo seu mapa...";
+        }
+
+        if (question.type === "instagram" && !state.answers.instagramPublicProfile) {
+          clearTimeout(state.scanTimer);
+          await runInstagramScan(value);
+        }
+
+        startProcessing();
+      }
+
+      function goBack() {
+        const question = questions[state.current];
+        state.answers[question.id] = readCurrentAnswer();
+        persistState();
+        if (state.current > 0) renderQuestion(state.current - 1, true, -1);
+      }
+
+      function showError(msg) {
+        const error = $("#fieldError");
+        if (error) {
+          if (msg) error.textContent = msg;
+          error.classList.add("visible");
+        }
+        animate({ targets: ".question-panel", translateX: [0, -7, 6, -4, 0], duration: 420, easing: "easeInOutSine" });
+      }
+      function hideError() { const error = $("#fieldError"); if (error) error.classList.remove("visible"); }
+
+      function updateProgress() {
+        const completed = state.current;
+        const percent = Math.max(3, Math.round((completed / questions.length) * 100));
+        const meta = chapterMeta[state.chapter];
+        $("#progressFill").style.width = `${percent}%`;
+        $("#chapterIndex").textContent = `${meta.code} / ${meta.label}`;
+        if (state.chapter === "knowledge") $("#humanProgress").textContent = `Você já compartilhou ${Math.max(6, percent)}% da sua história.`;
+        else if (state.chapter === "reality") $("#humanProgress").textContent = `Já entendemos ${percent}% de como sua empresa funciona hoje.`;
+        else if (state.chapter === "aspiration") $("#humanProgress").textContent = `Já entendemos ${percent}% do futuro que você quer construir.`;
+        else $("#humanProgress").textContent = `Seu primeiro mapa está ${percent}% pronto.`;
+      }
+
+      function normalizeHandle(value) {
+        const clean = String(value || "").trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/\/$/, "").replace(/^@/, "").split(/[/?#]/)[0];
+        return clean ? `@${clean.replace(/[^a-zA-Z0-9._]/g, "")}` : "";
+      }
+
+      function scheduleScan(value) {
+        clearTimeout(state.scanTimer);
+        const handle = normalizeHandle(value);
+        const card = $("#scannerCard");
+        if (!handle) { card?.classList.remove("visible"); return; }
+        card.classList.add("visible");
+        $("#scannerHandle").textContent = handle;
+        $("#avatarInitial").textContent = handle.replace("@", "").charAt(0).toUpperCase() || "K";
+        $("#scannerMode").textContent = "PREPARANDO LEITURA";
+        ["#scanMetric1", "#scanMetric2", "#scanMetric3"].forEach(id => $(id).textContent = "···");
+        animate({ targets: "#scanSweep", scaleX: [0, 1], duration: 1300, easing: "easeInOutQuart" });
+        state.scanTimer = setTimeout(() => runInstagramScan(handle), 650);
+      }
+
+      async function runInstagramScan(handle) {
+        const mode = $("#scannerMode");
+        const username = handle.replace("@", "");
+
+        const fetchProfile = async (endpoint) => {
+          if (!endpoint) throw new Error("NO_ENDPOINT");
+          const url = new URL(endpoint, window.location.href);
+          url.searchParams.set("username", username);
+          const response = await fetch(url.toString(), { headers: config.requestHeaders });
+          if (!response.ok) throw new Error(`HTTP_${response.status}`);
+          const payload = await response.json();
+          if (payload?.error || payload?.success === false) throw new Error(payload?.error || "API_ERROR");
+          return payload;
+        };
+
+        try {
+          mode.textContent = "LENDO O CANAL DA EMPRESA";
+          let data;
+          try {
+            data = await fetchProfile(config.instagramEndpoint);
+          } catch (primaryError) {
+            if (!config.instagramFallbackEndpoint) throw primaryError;
+            data = await fetchProfile(config.instagramFallbackEndpoint);
+          }
+
+          const profile = data.profile || data;
+          const followers = Number(profile.followers || 0);
+          const postsPerMonth = Number(profile.postsPerMonth || 0);
+          const engagement = Number(profile.engagementRate || 0);
+
+          $("#scanMetric1").textContent = followers ? followers.toLocaleString("pt-BR") : "localizado";
+          $("#scanMetric2").textContent = postsPerMonth ? `${postsPerMonth}/mês` : "visível";
+          $("#scanMetric3").textContent = engagement ? `${engagement.toFixed(1)}%` : "em leitura";
+          mode.textContent = "LEITURA COMPLEMENTAR CONCLUÍDA";
+
+          const avatarUrl = profile.avatarUrl || profile.profilePicUrl || data.avatarUrl;
+          if (avatarUrl) {
+            const img = $("#avatarImage");
+            img.src = avatarUrl;
+            img.style.display = "block";
+            $("#avatarInitial").style.display = "none";
+          }
+
+          state.answers.instagramPublic = data;
+          persistState();
+          return data;
+        } catch (error) {
+          $("#scanMetric1").textContent = "perfil";
+          $("#scanMetric2").textContent = "não lido";
+          $("#scanMetric3").textContent = "opcional";
+          mode.textContent = "NÃO FOI POSSÍVEL LER · O DIAGNÓSTICO CONTINUA";
+          return null;
+        }
+      }
+
+      function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+      function startProcessing() {
+        document.body.dataset.chapter = "processing";
+        $("#systemStatus").textContent = "Matriz em processamento";
+        $("#journeyFooter").style.display = "none";
+        setStageVisible(stages.processing, true);
+        animate({
+          targets: stages.journey,
+          opacity: [1, 0],
+          translateY: [0, -38],
+          duration: 700,
+          easing: "easeInOutQuart",
+          complete: async () => {
+            setStageVisible(stages.journey, false);
+            animate({ targets: stages.processing, opacity: [0, 1], duration: 900, easing: "easeOutQuart" });
+            await runProcessingSequence();
+          }
+        });
+      }
+
+      async function runProcessingSequence() {
+        animate({ targets: ".radar-svg .ring, .radar-svg .grid-line", strokeDashoffset: [900, 0], delay: hasAnime ? anime.stagger(90) : 0, duration: 1200, easing: "easeInOutSine" });
+        animate({ targets: ".radar-svg .signal", strokeDashoffset: [900, 0], duration: 1800, delay: 750, easing: "easeInOutQuart" });
+        animate({ targets: ".radar-core", opacity: [0, 1, .4, 1], scale: [.6, 1.5, 1], duration: 1900, delay: 1050, easing: "easeInOutSine" });
+
+        const rows = $$(".terminal-row");
+        const interval = prefersReducedMotion ? 80 : 850;
+        rows.forEach((row, index) => {
+          setTimeout(() => {
+            rows.forEach((item, i) => {
+              item.classList.toggle("active", i === index);
+              if (i < index) item.classList.add("done");
+            });
+          }, 550 + index * interval);
+        });
+
+        const visualTime = 550 + rows.length * interval + 750;
+        const diagnosticPromise = submitDiagnostic();
+        await delay(visualTime);
+
+        rows.forEach(row => { row.classList.remove("active"); row.classList.add("done"); });
+        $("#processingNote").textContent = "Finalizando a leitura. Nenhuma resposta será apresentada como certeza quando os dados não forem suficientes.";
+
+        await Promise.race([ diagnosticPromise, delay(14000) ]);
+        buildResult();
+        openResults();
+      }
+
+      async function submitDiagnostic() {
+        const payload = {
+          source: "krad-os-web",
+          createdAt: new Date().toISOString(),
+          answers: questions.filter(q => state.answers[q.id]).map(q => ({
+            id: q.id,
+            question: q.title || q.id,
+            value: state.answers[q.id]
+          })),
+          page: window.location.href
+        };
+
+        if (!config.diagnosticEndpoint) return null;
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 25000);
+
+        try {
+          const response = await fetch(config.diagnosticEndpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", ...config.requestHeaders },
+            body: JSON.stringify(payload),
+            signal: controller.signal
+          });
+          if (!response.ok) throw new Error(`HTTP_${response.status}`);
+          const data = await response.json();
+          state.apiResponse = data.report || data;
+          state.submitted = true;
+          persistState();
+
+          if (stages.result.style.display !== "none") {
+            buildResult();
+            animateMaturity();
+          }
+          return state.apiResponse;
+        } catch (error) {
+          console.warn("KRAD OS: diagnóstico por IA não concluído. Aplicando leitura segura local.", error);
+          return null;
+        } finally {
+          clearTimeout(timeout);
+        }
+      }
+
+      function openResults() {
+        document.body.classList.remove("locked");
+        document.documentElement.classList.remove("locked");
+        document.body.dataset.chapter = "result";
+        $("#systemStatus").textContent = "Mapa inicial disponível";
+        setStageVisible(stages.result, true);
+        animate({
+          targets: stages.processing,
+          opacity: [1, 0],
+          scale: [1, .98],
+          duration: 800,
+          easing: "easeInOutQuart",
+          complete: () => {
+            setStageVisible(stages.processing, false);
+            stages.result.style.opacity = "1";
+            window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+            animate({ targets: ".result-hero-inner > *", opacity: [0, 1], translateY: [32, 0], delay: hasAnime ? anime.stagger(140) : 0, duration: 1000, easing: "easeOutExpo" });
+            animateMaturity();
+          }
+        });
+      }
+
+      function buildResult() {
+        const report = state.apiResponse || {};
+        
+        const cName = state.answers.companyName || "Empresa";
+        const cCity = state.answers.city || "Cidade Não Informada";
+        const cSeg = state.answers.segment || "Segmento Não Informado";
+        const cRev = state.answers.revenue || "Faturamento Não Informado";
+        $("#dashCompanyName").textContent = cName;
+        $("#dashMeta").textContent = `${cCity} • ${cSeg} • ${cRev}`;
+
+        const score = report.kradIndex || 0;
+        $("#dashStage").textContent = report.stage || "Analisando";
+        anime({ targets: "#dashScore", innerHTML: [0, score], round: 1, duration: 2500, easing: "easeOutExpo" });
+
+        const radarData = report.radarScores || {gestao:0, marketing:0, processos:0, presenca:0, relacionamento:0, crescimento:0};
+        const maxR = 160;
+        const vals = [
+          (radarData.gestao || 0)/10 * maxR,
+          (radarData.crescimento || 0)/10 * maxR,
+          (radarData.marketing || 0)/10 * maxR,
+          (radarData.processos || 0)/10 * maxR,
+          (radarData.relacionamento || 0)/10 * maxR,
+          (radarData.presenca || 0)/10 * maxR
+        ];
+        const angles = [0, 60, 120, 180, 240, 300].map(a => (a - 90) * Math.PI / 180);
+        let points = vals.map((r, i) => {
+          return `${210 + r * Math.cos(angles[i])},${210 + r * Math.sin(angles[i])}`;
+        }).join(" ");
+        anime({ targets: "#radarPolygon", points: [`210,210 210,210 210,210 210,210 210,210 210,210`, points], duration: 1500, easing: "easeOutQuart" });
+
+        const bars = report.barScores || {gestao:0, marketing:0, presenca:0, estrategia:0, processos:0, clientes:0};
+        const barContainer = $("#barCharts");
+        barContainer.innerHTML = Object.keys(bars).map(k => {
+          return `<div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:#A5B876; text-transform:capitalize;"><span>${k}</span><span>${bars[k]}/10</span></div>
+            <div style="width:100%; height:6px; background:#20221c; border-radius:3px; overflow:hidden;">
+              <div class="bar-fill" style="width:0%; height:100%; background:#d12c2c;" data-target="${bars[k]*10}%"></div>
+            </div>
+          </div>`;
+        }).join("");
+        setTimeout(() => {
+          $(".bar-fill").forEach(b => {
+            anime({ targets: b, width: b.dataset.target, duration: 1200, easing: "easeOutQuart" });
+          });
+        }, 500);
+
+        // Timeline (Refatorada para Responsividade)
+        const stagesList = ["Sobrevive", "Existe", "Cresce", "Escala", "Transforma"];
+        const currStage = report.stage || "Sobrevive";
+        let reached = true;
+        $("#dashTimeline").innerHTML += stagesList.map(s => {
+          const isCurr = s.toLowerCase() === currStage.toLowerCase();
+          const color = reached ? "#d12c2c" : "#20221c";
+          const dot = isCurr ? `<circle cx="10" cy="10" r="6" fill="#fff"/><circle cx="10" cy="10" r="10" fill="none" stroke="#d12c2c" stroke-width="2"/>` : `<circle cx="10" cy="10" r="4" fill="${color}"/>`;
+          if (isCurr) reached = false;
+          return `<div style="display:flex; flex-direction:column; position:relative; z-index:2; gap:10px; align-items: center;">
+            <svg width="20" height="20" style="flex-shrink: 0;">${dot}</svg>
+            <span style="font-size:10px; color:${isCurr ? '#A5B876' : '#6a6f5e'}; text-transform:uppercase;">${s}</span>
+          </div>`;
+        }).join("");
+
+        const xrayData = report.xray || {};
+        $("#xrayList").innerHTML = Object.keys(xrayData).filter(k => !k.includes("Text")).map(k => {
+          return `<details style="border:1px solid #20221c; border-radius:8px; padding:12px 15px; cursor:pointer;">
+            <summary style="font-size:14px; color:#A5B876; font-weight:bold; text-transform:capitalize; list-style:none; display:flex; justify-content:space-between;">
+              <span>${k}</span> <span>${xrayData[k]}</span>
+            </summary>
+            <div style="margin-top:10px; font-size:13px; color:#a0a0a0; padding-top:10px; border-top:1px solid #20221c;">${xrayData[k+"Text"] || ""}</div>
+          </details>`;
+        }).join("");
+
+        const igData = state.answers.instagramPublic ? state.answers.instagramPublic : (state.answers.instagram ? state.answers.instagram : null);
+        let igHtml = `<p style="color:#6a6f5e; font-size:12px; margin-bottom:20px;">@${igData ? (igData.username || igData) : 'Nao informado'}</p>`;
+        
+        const ia = report.instagramAnalysis || {};
+        igHtml += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">`;
+        ["foto", "bio", "destaques", "autoridade"].forEach(k => {
+          const stars = Array(5).fill("").map((_,i) => i < (ia[k] || 0) ? "★" : "☆").join("");
+          igHtml += `<div><div style="font-size:12px; color:#A5B876; text-transform:capitalize;">${k}</div>
+          <div style="color:#d12c2c; font-size:10px; margin-bottom:5px;">${stars}</div>
+          <div style="font-size:11px; color:#a0a0a0;">${ia[k+"Text"] || ""}</div></div>`;
+        });
+        igHtml += `</div>`;
+        $("#instaContent").innerHTML = igHtml;
+
+        const ac = report.actionCards || {funcionando:[], oportunidades:[], prioridades:[]};
+        $("#cardsGreen").innerHTML = (ac.funcionando||[]).map(t => `<li>✓ ${t}</li>`).join("");
+        $("#cardsYellow").innerHTML = (ac.oportunidades||[]).map(t => `<li>• ${t}</li>`).join("");
+        $("#cardsRed").innerHTML = (ac.prioridades||[]).map(t => `<li>! ${t}</li>`).join("");
+
+        $("#dashConclusion").textContent = report.conclusion || "Finalizado com sucesso.";
+        $("#dashPlan").innerHTML = (report.actionPlan || []).map(t => `<li>${t}</li>`).join("");
+
+        anime({ targets: "#simulationCurve", strokeDashoffset: [200, 0], duration: 2500, delay: 1000, easing: "easeOutCubic" });
+        anime({ targets: "#simDot", opacity: [0, 1], duration: 500, delay: 3500 });
+      }
+
+      function animateMaturity() {
+        const radii = { K: 92, R: 76, A: 60, D: 44 };
+        ["K", "R", "A", "D"].forEach((code, index) => {
+          const el = $(`#arc${code}`);
+          const circumference = 2 * Math.PI * radii[code];
+          const value = Number(el.dataset.value || 60);
+          const length = circumference * (value / 100);
+          el.style.strokeDasharray = `0 ${circumference}`;
+          animate({ targets: el, strokeDasharray: [`0 ${circumference}`, `${length} ${circumference}`], duration: 1500, delay: index * 150 + 450, easing: "easeOutQuart" });
+        });
+      }
+
+      function persistState() {
+        try { localStorage.setItem("krad-os-diagnostic", JSON.stringify({ answers: state.answers, current: state.current, apiResponse: state.apiResponse || null })); } catch (_) {}
+      }
+
+      function whatsappUrl(message) {
+        const phone = String(config.whatsappPhone || "5511977842164").replace(/\D/g, "");
+        return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      }
+
+      function handlePath(path) {
+        if (path === "academy") {
+          const academyButton = $('[data-tab="academy"]');
+          academyButton?.click();
+          $("#tab-academy")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+          return;
+        }
+
+        const company = state.answers.companyName || "minha empresa";
+        const founder = state.answers.founderName || "";
+        const base = founder ? `Olá! Sou ${founder}.` : "Olá!";
+
+        const messages = {
+          session: `${base} Fiz o diagnóstico no KRAD OS para ${company} e gostaria de conversar sobre um plano estratégico para o momento atual da empresa.`,
+          growth: `${base} Fiz o diagnóstico no KRAD OS para ${company} e quero entender como funciona o acompanhamento e a execução do Growth Team KRAD.`
+        };
+        window.open(whatsappUrl(messages[path] || `${base} Vim pelo KRAD OS e gostaria de conversar.`), "_blank", "noopener,noreferrer");
+      }
+
+      function bindTabs() {
+        $$(".tab-button").forEach(button => {
+          button.addEventListener("click", () => {
+            const id = button.dataset.tab;
+            $$(".tab-button").forEach(btn => { btn.classList.toggle("active", btn === button); btn.setAttribute("aria-selected", String(btn === button)); });
+            $$(".tab-panel").forEach(panel => panel.classList.toggle("active", panel.id === `tab-${id}`));
+            animate({ targets: `#tab-${id} > *`, opacity: [0, 1], translateY: [14, 0], duration: 550, easing: "easeOutQuart" });
+          });
+        });
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "").replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
+      }
+      function escapeAttribute(value) { return escapeHtml(value).replace(/`/g, "&#96;"); }
+
+      $("#startButton").addEventListener("click", openVideoStage);
+      $("#beginJourneyButton").addEventListener("click", beginJourney);
+      $$(".path-card").forEach(card => card.addEventListener("click", () => handlePath(card.dataset.path)));
+      bindTabs();
+      startLegacyParticles();
+      runPreface();
+    })();
+  </script>
 </body>
 </html>
